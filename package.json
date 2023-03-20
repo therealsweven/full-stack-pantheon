@@ -1,0 +1,23 @@
+{
+  "name": "full-stack-pantheon",
+  "version": "1.0.0",
+  "description": "Project 2 Repository",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "npx nodemon server.js",
+    "seed": "node seeds/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "mysql2": "^3.2.0",
+    "sequelize": "^6.29.3"
+  }
+}
