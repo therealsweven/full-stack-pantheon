@@ -99,4 +99,51 @@ Request Body should be as follows:
   }
 });
 
+// Employee Login
+router.post("/login", async (req, res) => {
+  /* 
+req.body should be:
+
+{
+  id: INT
+}
+
+*/
+  try {
+    const dbMerchantData = await Merchant.findOne({
+      where: {
+        id: req.body.id,
+      },
+    });
+
+    if (!dbMerchantData) {
+      res
+        .status(400)
+        .json({ message: "No employee found.  Please try again!" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.employeeLoggedIn = true;
+      res
+        .status(200)
+        .json({ user: dbMerchantData, message: "You are now logged in!" });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Employee Logout
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 module.exports = router;
