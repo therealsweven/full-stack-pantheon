@@ -6,7 +6,6 @@ const sequelize = require('../config/connection');
 // Initialize model (table) by extending off Sequelize's Model class
 class Ticket extends Model { }
 
-// set up fields and rules for Product model
 Ticket.init(
     {
         id: {

@@ -27,15 +27,24 @@ Ticket.belongsTo(Tables);
 Ticket.belongsTo(Bar_tabs);
 Ticket.belongsTo(Employee);
 
+//Employee tickets
 Employee.hasMany(Ticket);
 
 //Allergens
 Menu_items.belongsToMany(Allergens, {through: Menu_item_allergens});
 Allergens.belongsToMany(Menu_items, {through: Menu_item_allergens});
 
+//Transactions
+Transactions.belongsTo(Ticket);
+
 module.exports = {
-  Product,
-  Category,
-  Tag,
-  ProductTag,
+  Menu_items,
+  Ticket,
+  Merchnat,
+  Tables,
+  Bar_tabs,
+  Employee,
+  Allergens,
+  Ticket_items,
+  Transactions
 };
