@@ -2,9 +2,13 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
 
-class Merchnat extends Model {}
+class Merchant extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
-Merchnat.init(
+Merchant.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -26,6 +30,11 @@ Merchnat.init(
     },
   },
   {
+    hooks: {
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
     sequelize,
     timestamps: false,
     freezeTableName: true,
