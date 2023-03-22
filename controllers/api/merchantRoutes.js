@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt");
 URL route:    /api/merchant
 */
 
-// id, location_name, username, password
 // Send Create Account Page
 router.get("/new", (req, res) => {
   try {
@@ -41,7 +40,7 @@ req.body should be:
   }
 });
 
-// Login
+// Merchant Login
 router.post("/login", async (req, res) => {
   /* 
 req.body should be:
@@ -91,7 +90,7 @@ req.body should be:
   }
 });
 
-// Logout
+// Merchant Logout
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
