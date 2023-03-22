@@ -2,13 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection.js");
 
-class Merchant extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
+class Merchnat extends Model {}
 
-Merchant.init(
+Merchnat.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,13 +16,6 @@ Merchant.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      verification: {
-        isEmail: true,
-      },
-    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,12 +26,6 @@ Merchant.init(
     },
   },
   {
-    hooks: {
-      async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
@@ -51,4 +34,4 @@ Merchant.init(
   }
 );
 
-module.exports = Merchant;
+module.exports = Merchnat;
