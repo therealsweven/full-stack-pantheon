@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Merchant } = require("../models/merchant");
-const sendmail = require("sendmail")();
+const helpers = require("../helpers/helpers");
 
 // id, location_name, username, password
 // Send Create Account Page
@@ -27,19 +27,7 @@ password: STRING
 */
   try {
     const newMerchant = await Merchant.create(req.body);
-
-    // sendmail(
-    //   {
-    //     from: "no-reply@mercurypos.com",
-    //     to: req.body.email,
-    //     subject: "test sendmail",
-    //     html: `Welcome ${newMerchant.username} to Mercury POS!  Your account has been successfully created.`,
-    //   },
-    //   function (err, reply) {
-    //     console.log(err && err.stack);
-    //     console.dir(reply);
-    //   }
-    // );
+    await sendWelcomeEmail().catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {
