@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Merchant } = require("../models/merchant");
+const { Merchant } = require("../../models");
 const helpers = require("../../helpers/helpers");
 const bcrypt = require("bcrypt");
 /* 

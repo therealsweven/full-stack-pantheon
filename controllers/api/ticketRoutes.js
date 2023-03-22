@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Ticket } = require("../models");
+const { Ticket } = require("../../models");
 
 /* 
 URL route:    /api/tickets

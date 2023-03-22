@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Menu } = require("../models");
+const { Menu } = require("../../models");
 
 /* 
 URL route:    /api/menu

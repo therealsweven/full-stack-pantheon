@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Employee } = require("../models");
+const { Employee } = require("../../models");
 
 /* 
 URL route:    /api/employees
