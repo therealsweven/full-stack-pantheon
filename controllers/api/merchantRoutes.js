@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { Merchant } = require("../models/merchant");
-const helpers = require("../helpers/helpers");
+const helpers = require("../../helpers/helpers");
+const bcrypt = require("bcrypt");
+/* 
+URL route:    /api/merchant
+*/
 
 // id, location_name, username, password
 // Send Create Account Page
@@ -18,10 +22,10 @@ router.post("/new", async (req, res) => {
 req.body should be:
 
 {
-email: STRING,
-location_name: STRING,
-username: STRING,
-password: STRING
+  location_name: STRING,
+  email: STRING,
+  username: STRING,
+  password: STRING
 }
 
 */
@@ -29,7 +33,7 @@ password: STRING
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
     // send welcome email
-    await sendWelcomeEmail(newMerchant.email).catch(console.error);
+    await helpers.sendWelcomeEmail(newMerchant.email).catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {
@@ -39,6 +43,15 @@ password: STRING
 
 // Login
 router.post("/login", async (req, res) => {
+  /* 
+req.body should be:
+
+{
+  username: STRING,
+  password: STRING
+}
+
+*/
   try {
     const dbMerchantData = await Merchant.findOne({
       where: {
@@ -52,12 +65,6 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
-
-    // class Merchant extends Model {
-    //   checkPassword(loginPw) {
-    //     return bcrypt.compareSync(loginPw, this.password);
-    //   }
-    // }
 
     // const validPassword = await dbMerchantData.checkPassword(req.body.password);
     const validPassword = await bcrypt.compareSync(
