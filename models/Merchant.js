@@ -1,10 +1,14 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require('../config/connection.js');
+const sequelize = require("../config/connection.js");
 
-class Merchnat extends Model {}
+class Merchant extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
-Merchnat.init(
+Merchant.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,26 +16,32 @@ Merchnat.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    location_name:{
+    location_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    username:{
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password:{
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
+    hooks: {
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'merchant',
+    modelName: "merchant",
   }
 );
 
-module.exports = Merchnat;
+module.exports = Merchant;
