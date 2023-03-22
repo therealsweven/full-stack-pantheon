@@ -12,8 +12,8 @@ Tables.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        table_number: {
-            type: DataTypes.INTEGER,
+        table_name: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         max_size: {
@@ -23,7 +23,7 @@ Tables.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        merchnat_id: {
+        merchant_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'merchant',

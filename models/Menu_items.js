@@ -41,10 +41,10 @@ Menu_items.init(
     image: {
       type: DataTypes.STRING,
     },
-    merchnat_id: {
+    merchant_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'merchnat',
+        model: 'merchant',
         key: 'id',
       },
     },

@@ -4,7 +4,7 @@ const sequelize = require('../config/connection.js');
 
 class Merchnat extends Model {}
 
-Category.init(
+Merchnat.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -30,7 +30,7 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'merchnat',
+    modelName: 'merchant',
   }
 );
 

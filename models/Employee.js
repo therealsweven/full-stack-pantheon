@@ -28,7 +28,7 @@ Employee.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        merchnat_id: {
+        merchant_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'merchant',
