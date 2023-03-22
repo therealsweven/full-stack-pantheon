@@ -65,11 +65,7 @@ req.body should be:
       return;
     }
 
-    // const validPassword = await dbMerchantData.checkPassword(req.body.password);
-    const validPassword = await bcrypt.compareSync(
-      req.body.password,
-      dbMerchantData.password
-    );
+    const validPassword = await dbMerchantData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
