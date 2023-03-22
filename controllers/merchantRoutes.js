@@ -26,8 +26,10 @@ password: STRING
 
 */
   try {
+    // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
-    await sendWelcomeEmail().catch(console.error);
+    // send welcome email
+    await sendWelcomeEmail(newMerchant.email).catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {
