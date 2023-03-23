@@ -28,5 +28,4 @@ Paul Gibes: https://github.com/PaulGibes <br>
 
 ## License
 
-MIT
-Please refer to the LICENSE in the repo.
+MIT - Please refer to the LICENSE in the repo.
