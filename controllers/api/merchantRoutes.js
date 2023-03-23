@@ -1,8 +1,11 @@
 const router = require("express").Router();
-const { Merchant } = require("../models/merchant");
-const sendmail = require("sendmail")();
+const { Merchant } = require("../../models");
+const helpers = require("../../helpers/helpers");
+const bcrypt = require("bcrypt");
+/* 
+URL route:    /api/merchant
+*/
 
-// id, location_name, username, password
 // Send Create Account Page
 router.get("/new", (req, res) => {
   try {
@@ -18,28 +21,18 @@ router.post("/new", async (req, res) => {
 req.body should be:
 
 {
-email: STRING,
-location_name: STRING,
-username: STRING,
-password: STRING
+  location_name: STRING,
+  email: STRING,
+  username: STRING,
+  password: STRING
 }
 
 */
   try {
+    // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
-
-    // sendmail(
-    //   {
-    //     from: "no-reply@mercurypos.com",
-    //     to: req.body.email,
-    //     subject: "test sendmail",
-    //     html: `Welcome ${newMerchant.username} to Mercury POS!  Your account has been successfully created.`,
-    //   },
-    //   function (err, reply) {
-    //     console.log(err && err.stack);
-    //     console.dir(reply);
-    //   }
-    // );
+    // send welcome email
+    await helpers.sendWelcomeEmail(newMerchant.email).catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {
@@ -47,8 +40,17 @@ password: STRING
   }
 });
 
-// Login
+// Merchant Login
 router.post("/login", async (req, res) => {
+  /* 
+req.body should be:
+
+{
+  username: STRING,
+  password: STRING
+}
+
+*/
   try {
     const dbMerchantData = await Merchant.findOne({
       where: {
@@ -63,17 +65,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    // class Merchant extends Model {
-    //   checkPassword(loginPw) {
-    //     return bcrypt.compareSync(loginPw, this.password);
-    //   }
-    // }
-
-    // const validPassword = await dbMerchantData.checkPassword(req.body.password);
-    const validPassword = await bcrypt.compareSync(
-      req.body.password,
-      dbMerchantData.password
-    );
+    const validPassword = await dbMerchantData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -94,7 +86,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Logout
+// Merchant Logout
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
