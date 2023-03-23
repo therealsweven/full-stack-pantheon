@@ -1,10 +1,15 @@
 const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require("../config/connection");
+const sequelize = require("../config/connection.js");
+const bcrypt = require("bcrypt");
 
-class Employee extends Model {}
+class Merchant extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
-Employee.init(
+Merchant.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,44 +17,39 @@ Employee.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    location_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       validate: {
         isEmail: true,
       },
     },
-    role: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    login_id: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    is_manager: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    merchant_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "merchant",
-        key: "id",
-      },
     },
   },
   {
+    hooks: {
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "employee",
+    modelName: "merchant",
   }
 );
 
-module.exports = Employee;
+module.exports = Merchant;
