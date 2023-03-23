@@ -27,8 +27,8 @@ const seedAll = async () => {
     await seedMenu();
     console.log('\n----- MENU ITEMS SEEDED -----\n');
 
-   // await seedMenuAllergens();
-    //console.log('\n----- ITEM ALLERGENS SEEDED -----\n');
+    await seedMenuAllergens();
+    console.log('\n----- ITEM ALLERGENS SEEDED -----\n');
 
     process.exit(0);
 };

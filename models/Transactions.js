@@ -60,7 +60,7 @@ Ticket.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'ticket',
+        modelName: 'transactions',
     }
 );
 

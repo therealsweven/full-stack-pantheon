@@ -1,4 +1,4 @@
-const { Menu_item_allergens } = require('../models/Menu_item_allergens');
+const { Menu_item_allergens } = require('../models');
 
 
 const items = [

@@ -45,5 +45,6 @@ module.exports = {
   Employee,
   Allergens,
   Ticket_items,
-  Transactions
+  Transactions,
+  Menu_item_allergens
 };
