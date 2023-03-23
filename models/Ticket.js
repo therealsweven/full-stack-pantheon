@@ -15,6 +15,7 @@ Ticket.init(
     },
     paid: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     tip_amount: {
       type: DataTypes.DECIMAL,

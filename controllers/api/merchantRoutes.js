@@ -6,17 +6,8 @@ const emails = require("../../helpers/emails");
 URL route:    /api/merchant
 */
 
-// Send Create Account Page
-router.get("/new", (req, res) => {
-  try {
-    res.status(200).json("Send Login Page"); //add hb
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Create new merchant account
-router.post("/new", async (req, res) => {
+router.post("/signup", async (req, res) => {
   /*
 req.body should be:
 
