@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Merchant } = require("../../models");
-const helpers = require("../../helpers/helpers");
-const bcrypt = require("bcrypt");
+const emails = require("../../helpers/emails");
+
 /* 
 URL route:    /api/merchant
 */
@@ -32,7 +32,7 @@ req.body should be:
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
     // send welcome email
-    await helpers.sendWelcomeEmail(newMerchant.email).catch(console.error);
+    await emails.sendWelcomeEmail(newMerchant.email).catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {
@@ -76,6 +76,8 @@ req.body should be:
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      // add merchant id to session
+      req.session.currentMerchant = dbMerchantData.id;
       res
         .status(200)
         .json({ user: dbMerchantData, message: "You are now logged in!" });

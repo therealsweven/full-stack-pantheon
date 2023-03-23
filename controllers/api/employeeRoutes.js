@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const { Employee } = require("../../models");
-const helpers = require("../../helpers/helpers");
+const emails = require("../../helpers/emails");
 /* 
-URL route:    /api/employees
+URL route:    /api/employee
 */
 
 // GET all employee data
@@ -39,14 +39,14 @@ Request Body should be as follows:
   role:  STRING,
   login_id: STRING,
   is_manager: BOOLEAN,
-  merchant_id: INT
 }
 
 */
   try {
+    // assign merchant_id from session variable
+    req.body.merchant_id = req.session.currentMerchant;
     const employeeData = await Employee.create(req.body);
-    employeeData.merchant_id = 1;
-    await helpers.sendNewEmployeeEmail(employeeData, "Choctaw");
+    await emails.sendNewEmployeeEmail(employeeData, "Choctaw");
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -132,6 +132,9 @@ req.body should be:
 
     req.session.save(() => {
       req.session.employeeLoggedIn = true;
+      // create session object keys for current employee logged in
+      req.session.currentEmployee = dbEmployeeData.name;
+      req.session.currentEmployeeID = dbEmployeeData.id;
       res
         .status(200)
         .json({ user: dbEmployeeData, message: "You are now logged in!" });
@@ -144,14 +147,17 @@ req.body should be:
 
 // Employee Logout
 router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
+  if (req.session.employeeLoggedIn) {
+    // log employee out and null the currentEmployee info in session object
+    req.session.currentEmployee = null;
+    req.session.currentEmployeeID = null;
+    req.session.employeeLoggedIn = false;
+    // send to employee login page
+    res.status(204); //.render()
+    console.log("logged out");
   } else {
-    res.status(404).end();
+    res.status(404);
   }
-  console.log("logged out");
 });
 
 module.exports = router;
