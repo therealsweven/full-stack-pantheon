@@ -1,0 +1,30 @@
+/* text so hopefully this file doesnt get randomly deleted */
+.current-server-table {
+  font-size: 1.5rem;
+}
+
+.logo {
+  max-width: 100px;
+  max-height: auto;
+  border-radius: 8px;
+}
+
+.settings-item {
+  font-size: 1.5rem;
+}
+
+.sample-img-container {
+  align-self: center;
+}
+
+.signup-submit {
+  align-items: baseline;
+}
+
+#offcanvasDarkNavbar {
+  max-width: 20%;
+}
+
+#offcanvasDarkNavbarLabel {
+  font-size: 2.5rem;
+}
