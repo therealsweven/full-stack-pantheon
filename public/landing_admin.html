@@ -13,39 +13,36 @@
     />
   </head>
   <body>
-    <main
-      class="container-fluid text-center"
-      style="background-color: lightslategray; height: 100vh"
-    >
-      <nav class="row">
-        <div class="col-2 btn small-btn btn-secondary">Back</div>
-        <h1 class="col text-center">Administrator Settings</h1>
-        <div class="col-2 btn small-btn btn-secondary">Customize</div>
-      </nav>
-      <section class="row g-2">
-        <div class="col">
-          <div id="viewOrders" type="button" class="btn big-btn btn-light">
+    <main class="container-fluid text-center">
+      <div id="header_nav" class="row">
+        <div class="col-2 btn nav-btn btn-secondary">Back</div>
+        <h1 class="col text-center">Settings</h1>
+        <div class="col-2 btn nav-btn btn-secondary">Customize</div>
+      </div>
+      <div id="contentWrap" class="row">
+        <div id="sidebar" class="col-4">
+          <div id="viewOrders" type="button" class="btn action-btn btn-light">
             View Orders
           </div>
-        </div>
-        <div class="col">
-          <div id="viewOrders" type="button" class="btn big-btn btn-danger">
+          <div id="viewOrders" type="button" class="btn action-btn btn-danger">
             Delete Current Order
           </div>
-        </div>
-      </section>
-      <section class="row g-2">
-        <div class="col">
-          <div id="editEmployees" type="button" class="btn big-btn btn-light">
+          <div
+            id="editEmployees"
+            type="button"
+            class="btn action-btn btn-light"
+          >
             Edit Employees
           </div>
-        </div>
-        <div class="col">
-          <div id="editMenu" type="button" class="btn big-btn btn-light">
+          <div id="editMenu" type="button" class="btn action-btn btn-light">
             Edit Menu
           </div>
         </div>
-      </section>
+        <div id="sidebarDisplay" class="col-8"></div>
+      </div>
+      <nav id="footer_nav" class="row">
+        <div class="col">MERCURY POS</div>
+      </nav>
     </main>
     <!-- BOOTSTRAP  -->
     <script
@@ -56,22 +53,44 @@
 
     <!-- Temporary CSS Code to be Transported to CSS when its time -->
     <style>
-      nav {
-        background-color: whitesmoke;
-        margin-bottom: 100px;
+      main {
+        background-color: #6c757d;
+        height: 100vh;
       }
 
-      .small-btn {
+      #header_nav {
+        background-color: whitesmoke;
+        margin-bottom: 30px;
+      }
+
+      #contentWrap {
+        width: 100%;
+      }
+
+      #sidebarDisplay {
+        background-color: lightgray;
+        border: 2px solid whitesmoke;
+      }
+
+      .nav-btn {
         margin: 5px;
       }
 
-      .big-btn {
-        justify-content: center;
-        margin: 10px;
-        height: 200px;
-        line-height: 200px;
+      .action-btn {
+        height: 100px;
         width: 200px;
-        border-radius: 20px;
+        line-height: 85px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      #footer_nav {
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        background-color: whitesmoke;
+        padding: 10px;
       }
     </style>
   </body>
