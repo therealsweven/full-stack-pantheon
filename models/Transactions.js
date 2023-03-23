@@ -43,7 +43,7 @@ Ticket.init(
         merchnat_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'merchnat',
+                model: 'merchant',
                 key: 'id',
             },
         },
