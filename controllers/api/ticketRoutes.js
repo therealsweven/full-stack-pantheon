@@ -8,7 +8,7 @@ URL route:    /api/tickets
 // GET all open tickets
 router.get("/open", async (req, res) => {
   try {
-    const ticketsData = await Employee.findAll({
+    const ticketsData = await Ticket.findAll({
       where: {
         paid: false,
       },
@@ -39,9 +39,10 @@ router.post("/", async (req, res) => {
 Request Body should be as follows:
 
 {
-  order_number: LINESTRING
-  paid:  BOOLEAN,
-  role:  STRING,
+  order_number: LINESTRING,
+  table_id: INTEGER,
+  tab_id: INTEGER,
+  employee_id:
 }
 
 */
