@@ -14,9 +14,10 @@
 {{#if needsHeader}}
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            {{!-- need image. upload image to assets folder and link // may not need class="navbar-brand" --}}
-            <img src="../../assets/images/LOGO" alt="Mercury Logo" class="navbar-brand">
+            {{!-- may not need class="navbar-brand" --}}
+            <img src="../../public/images/Logo.png" alt="Mercury Logo" class="navbar-brand">
             {{!-- need variables. insert server name/ table name here--}}
+            <p>Server Name | Table Name</p>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                 aria-controls="offcanvasDarkNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -33,7 +34,7 @@
     
                         <li class="nav-item">
                             <a class="nav-link" href="#">Take Lunch</a>
-                            {{!-- takeLunch() could logout and start timer. Cant login until 30 min later. --}}
+                            {{!-- takeLunch() could logout and start timer. Cant login until 30 min later because labor laws --}}
                         </li>
                         {{!-- need variables. edit if to see if logged in as manager --}}
                         {{#if }}
@@ -54,7 +55,7 @@
     <main>
         {{{body}}}
     </main>
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
