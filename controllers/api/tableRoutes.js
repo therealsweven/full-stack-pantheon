@@ -4,6 +4,7 @@ const { Tables } = require("../../models");
 /* 
 URL route:    /api/tables
 */
+
 // Get all table data
 router.get("/", async (req, res) => {
   try {
@@ -23,5 +24,10 @@ router.put("/", async (req, res) => {
         id: req.body.id,
       },
     });
-  } catch {}
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
+
+module.exports = router;
