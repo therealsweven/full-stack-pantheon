@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Employee } = require("../../models");
-
+const helpers = require("../../helpers/helpers");
 /* 
 URL route:    /api/employees
 */
@@ -9,7 +9,6 @@ URL route:    /api/employees
 router.get("/", async (req, res) => {
   try {
     const employeeData = await Employee.findAll();
-
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -35,14 +34,19 @@ router.post("/", async (req, res) => {
 Request Body should be as follows:
 
 {
-  id:  INT,
   name:  STRING,
+  email: STRING,
   role:  STRING,
+  login_id: STRING,
+  is_manager: BOOLEAN,
+  merchant_id: INT
 }
 
 */
   try {
     const employeeData = await Employee.create(req.body);
+    employeeData.merchant_id = 1;
+    await helpers.sendNewEmployeeEmail(employeeData, "Choctaw");
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -58,7 +62,10 @@ Request Body should be as follows:
 {
   id:  INT,
   name:  STRING,
+  email: STRING,
   role:  STRING,
+  login_id: STRING,
+  is_manager: BOOLEAN,
 }
 
 */
@@ -110,13 +117,13 @@ req.body should be:
 
 */
   try {
-    const dbMerchantData = await Merchant.findOne({
+    const dbEmployeeData = await Employee.findOne({
       where: {
-        id: req.body.id,
+        login_id: req.body.login_id,
       },
     });
 
-    if (!dbMerchantData) {
+    if (!dbEmployeeData) {
       res
         .status(400)
         .json({ message: "No employee found.  Please try again!" });
@@ -127,7 +134,7 @@ req.body should be:
       req.session.employeeLoggedIn = true;
       res
         .status(200)
-        .json({ user: dbMerchantData, message: "You are now logged in!" });
+        .json({ user: dbEmployeeData, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
@@ -144,6 +151,7 @@ router.post("/logout", (req, res) => {
   } else {
     res.status(404).end();
   }
+  console.log("logged out");
 });
 
 module.exports = router;

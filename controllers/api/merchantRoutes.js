@@ -9,7 +9,7 @@ URL route:    /api/merchant
 // Send Create Account Page
 router.get("/new", (req, res) => {
   try {
-    res.status(200).sendFile("MERCHANT LOGIN"); //change file name
+    res.status(200).json("Send Login Page"); //add hb
   } catch (err) {
     res.status(500).json(err);
   }
@@ -21,7 +21,7 @@ router.post("/new", async (req, res) => {
 req.body should be:
 
 {
-  location_name: STRING,
+  business_name: STRING,
   email: STRING,
   username: STRING,
   password: STRING
@@ -90,11 +90,12 @@ req.body should be:
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).json("message: You have been logged out").end();
     });
   } else {
     res.status(404).end();
   }
+  console.log("logged out");
 });
 
 module.exports = router;
