@@ -56,7 +56,6 @@ router.post("/", async (req, res) => {
 Request Body should be as follows:
 
 {
-  order_number: LINESTRING,
 
 }
 
