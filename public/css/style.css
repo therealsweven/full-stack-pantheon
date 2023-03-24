@@ -50,6 +50,14 @@
 /* End of login CSS */
 
 /* START Admin Page CSS*/
+.hide {
+  display: none;
+}
+
+.select {
+  border: 10px dashed red !important;
+}
+
 .main {
   background-color: #6c757d;
   height: 100vh;
@@ -90,4 +98,8 @@
   justify-content: center;
 }
 
+.employeeList {
+  width: 100%;
+  margin: 5px 0 5px 0;
+}
 /* END Admin Page CSS */
