@@ -1,6 +1,5 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
-  console.log("hello");
   var login_id = $("#employeeLogin").val();
 
   if (login_id) {
