@@ -44,17 +44,32 @@ Request Body should be as follows:
   price: DECIMAL,
   available: BOOLEAN,
   type: STRING,
+  subtype: STRING
   image_filename: STRING
+  allergen_ids: ARRAY of INT
 }
-
 */
-  try {
-    const menuItem = await Menu_items.create(req.body);
-    res.status(200).json(menuItem);
-  } catch (err) {
+Menu_items.create(req.body)
+  .then((menuData) => {
+    // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+    if (req.body.allergen_ids.length) {
+      const allergenArray = req.body.allergen_ids.map((allergen_id) => {
+        return {
+          menu_item_id: menuData.id,
+          allergen_id,
+        };
+      });
+      return Menu_item_allergens.bulkCreate(allergenArray);
+    }
+    // if no product tags, just respond
+    res.status(200).json(menuData);
+  })
+  .then((allergenIds) => res.status(200).json(allergenIds))
+  .catch((err) => {
     console.log(err);
-    res.status(500).json(err);
-  }
+    res.status(400).json(err);
+  });
+
 });
 
 // Update Menu Item
@@ -70,6 +85,7 @@ Request Body should be as follows:
   available: BOOLEAN,
   type: STRING,
   image_filename: STRING
+   allergen_ids: ARRAY of INT
 }
 
 */
