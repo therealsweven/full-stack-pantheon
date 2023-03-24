@@ -1,0 +1,39 @@
+.main {
+  background-color: #6c757d;
+  height: 100vh;
+}
+
+#header_nav {
+  background-color: whitesmoke;
+  margin-bottom: 30px;
+}
+
+#contentWrap {
+  width: 100%;
+}
+
+#sidebarDisplay {
+  background-color: lightgray;
+  border: 2px solid whitesmoke;
+}
+
+#footer_nav {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+.nav-btn {
+  margin: 5px;
+}
+
+.action-btn {
+  height: 100px;
+  width: 200px;
+  line-height: 85px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
