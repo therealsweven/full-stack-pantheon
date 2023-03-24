@@ -31,4 +31,12 @@ router.get("/login", (req, res) => {
   }
 });
 
+router.get("/forgotPassword", (req, res) => {
+  try {
+    res.status(200).render("forgotPassword");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

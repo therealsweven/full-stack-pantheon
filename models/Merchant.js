@@ -24,13 +24,16 @@ Merchant.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+
       validate: {
+        unique: true,
         isEmail: true,
       },
     },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
