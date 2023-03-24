@@ -1,22 +1,13 @@
 const router = require("express").Router();
-const { Merchant } = require("../../models");
+const { Merchant, Employee } = require("../../models");
 const emails = require("../../helpers/emails");
 
 /* 
 URL route:    /api/merchant
 */
 
-// Send Create Account Page
-router.get("/new", (req, res) => {
-  try {
-    res.status(200).json("Send Login Page"); //add hb
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Create new merchant account
-router.post("/new", async (req, res) => {
+router.post("/signup", async (req, res) => {
   /*
 req.body should be:
 
@@ -31,8 +22,17 @@ req.body should be:
   try {
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
+
+    await Employee.create({
+      name: "admin",
+      email: newMerchant.email,
+      role: "admin",
+      login_id: "admin",
+      is_manager: true,
+      merchant_id: newMerchant.id,
+    });
     // send welcome email
-    await emails.sendWelcomeEmail(newMerchant.email).catch(console.error);
+    await emails.sendWelcomeEmail(newMerchant).catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {

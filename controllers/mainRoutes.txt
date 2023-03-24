@@ -1,0 +1,15 @@
+
+HOME
+
+home  /
+merchant login   /login
+merchant signup  /signup
+
+
+
+POS
+
+employee login  /pos/login
+tables   /pos/tables
+main  /pos/main
+admin /pos/admin

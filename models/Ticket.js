@@ -13,12 +13,9 @@ Ticket.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    order_number: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     paid: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     tip_amount: {
       type: DataTypes.DECIMAL,

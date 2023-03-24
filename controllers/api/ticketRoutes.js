@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Ticket } = require("../../models");
+const { Ticket, Ticket_items } = require("../../models");
 
 /* 
 URL route:    /api/tickets
@@ -40,13 +40,15 @@ Request Body should be as follows:
 
 {
   order_number: LINESTRING,
-  table_id: INTEGER,
-  tab_id: INTEGER,
-  employee_id:
 }
 
 */
   try {
+    req.body.employee_id = req.session.currentEmployeeID;
+    req.body.merchant_id = req.session.currentMerchant;
+    req.body.table_id = req.session.currentTableID;
+    req.body.tab_id = req.session.currentTabID;
+
     const ticketData = await Ticket.create(req.body);
     res.status(200).json(ticketData);
   } catch (err) {
@@ -56,25 +58,22 @@ Request Body should be as follows:
 });
 
 // Update Ticket
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   /*
 Request Body should be as follows:
 
 {
-  id:  INT,
-  name:  STRING,
-  role:  STRING,
+  paid: BOOLEAN,
+  tip_amount: DECIMAL,
   discount: DECIMAL,
   notes: MULTILINE STRING,
-  table_id: INT,
-  tab_id: INT,
 }
 
 */
   try {
-    const ticketData = await Employee.update(req.body, {
+    const ticketData = await Ticket.update(req.body, {
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(ticketData);
@@ -85,23 +84,60 @@ Request Body should be as follows:
 });
 
 // Remove Ticket
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
+  try {
+    await Ticket.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json("message: Ticket has been deleted.");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Link menu item to a ticket
+router.post("/item", async (req, res) => {
   /*
 Request Body should be as follows:
 
 {
-  id:  INT
+  "ticket_id": INT
+  "item_id": INT
+  "notes": STRING (optional)
 }
 
 */
-
   try {
-    await Ticket.destroy({
+    const ticketData = await Ticket_items.create(req.body);
+    res.status(200).json(ticketData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Remove item from a ticket
+router.delete("/item", async (req, res) => {
+  /*
+Request Body should be as follows:
+
+{
+  "ticket_id": INT
+  "item_id": INT
+}
+
+*/
+  try {
+    await Ticket_items.destroy({
       where: {
-        id: req.body.id,
+        ticket_id: req.body.ticket_id,
+        item_id: req.body.item_id
       },
     });
-    res.status(200).json("message: Ticket has been deleted.");
+    res.status(200).json("message: Item has been removed.");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -112,7 +112,7 @@ router.post("/login", async (req, res) => {
 req.body should be:
 
 {
-  id: INT
+  login_id: INT
 }
 
 */
