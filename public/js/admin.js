@@ -70,3 +70,6 @@ function showEmployees() {
 //
 
 editEmployeesButton.addEventListener("click", showEmployees);
+deleteOrderButton.addEventListener("click", () => {
+  alert("DELETED!");
+});

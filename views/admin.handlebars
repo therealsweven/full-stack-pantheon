@@ -1,27 +1,41 @@
 <section class="main container-fluid text-center">
-  <div id="header_nav" class="row">
-    <div class="col-2 btn nav-btn btn-secondary">Back</div>
-    <h1 class="col text-center">Settings</h1>
-    <div class="col-2 btn nav-btn btn-secondary">Customize</div>
-  </div>
-  <div id="contentWrap" class="row">
-    <div id="sidebar" class="col-4">
-      <div id="viewOrders" type="button" class="btn action-btn btn-light">
-        View Orders
-      </div>
-      <div id="viewOrders" type="button" class="btn action-btn btn-danger">
-        Delete Current Order
-      </div>
-      <div id="editEmployees" type="button" class="btn action-btn btn-light">
-        Edit Employees
-      </div>
-      <div id="editMenu" type="button" class="btn action-btn btn-light">
-        Edit Menu
-      </div>
-    </div>
-    <div id="sidebarDisplay" class="col-8"></div>
-  </div>
-  <nav id="footer_nav" class="row">
-    <div class="col">MERCURY POS</div>
-  </nav>
-</section>
+        <div id="header_nav" class="row">
+          <div class="col-2 btn nav-btn btn-secondary">Back</div>
+          <h1 class="col text-center">Settings</h1>
+          <div class="col-2 btn nav-btn btn-secondary">Customize</div>
+        </div>
+        <div id="contentWrap" class="row">
+          <div id="sidebar" class="col-4">
+            <div id="viewOrders" type="button" class="btn action-btn btn-light">
+              View Orders
+            </div>
+            <div
+              id="deleteOrder"
+              type="button"
+              class="btn action-btn btn-danger"
+            >
+              Delete Current Order
+            </div>
+            <div
+              id="editEmployees"
+              type="button"
+              class="btn action-btn btn-light"
+            >
+              Edit Employees
+            </div>
+            <div id="editMenu" type="button" class="btn action-btn btn-light">
+              Edit Menu
+            </div>
+          </div>
+          <div
+            id="sidebarDisplay"
+            class="col-8"
+            style="overflow-y: scroll; height: 500px"
+          ></div>
+        </div>
+        <nav id="footer_nav" class="row">
+          <div class="col">MERCURY POS</div>
+        </nav>
+      </section>
+    </main>
+    <script src="/js/admin.js"></script>
