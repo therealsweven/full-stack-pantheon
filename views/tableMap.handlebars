@@ -24,10 +24,11 @@
     <div class="container">
       <div class="row1 d-flex justify-content-evenly">
         <ul id="bar" class="justify-content-center list-unstyled">
-          <li>TEST</li>
-          <li>TEST</li>
-          <li>TEST</li>
-          <li>TEST</li>
+          {{#each tabs as |tab|}}
+
+            <li id="">{{tab.tab_name}}</li>
+
+          {{/each}}
         </ul>
       </div>
     </div>
