@@ -1,3 +1,4 @@
+console.log("checkout js loaded");
 const insertReceipts = $("#insertReceipts");
 const menuItems = {};
 
