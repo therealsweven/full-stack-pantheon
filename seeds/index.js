@@ -4,8 +4,12 @@ const seedTables = require('./seed-tables');
 const seedEmployee = require('./seed-employee');
 const seedAllergens = require('./seed-allergens');
 const seedMenuAllergens = require('./seed-item-allergens');
+const seedTicket = require('./seed-tickets');
+const seedTicketItems = require('./seed-ticket-items');
+const seedBar = require('./seed-bar-tab');
 
 const sequelize = require('../config/connection');
+
 
 
 const seedAll = async () => {
@@ -21,6 +25,9 @@ const seedAll = async () => {
     await seedTables();
     console.log('\n----- TABLES SEEDED -----\n');
 
+    await seedBar();
+    console.log('\n----- BAR TAB SEEDED -----\n');
+
     await seedAllergens();
     console.log('\n----- ALLERGENS SEEDED -----\n');
 
@@ -29,6 +36,12 @@ const seedAll = async () => {
 
     await seedMenuAllergens();
     console.log('\n----- ITEM ALLERGENS SEEDED -----\n');
+
+    await seedTicket();
+    console.log('\n----- TICKETS SEEDED -----\n');
+
+    await seedTicketItems();
+    console.log('\n----- TICKET ITEMS SEEDED -----\n');
 
     process.exit(0);
 };
