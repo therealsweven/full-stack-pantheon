@@ -7,6 +7,7 @@ admin /pos/admin
 
 const router = require("express").Router();
 
+// employee login page
 router.get("/login", (req, res) => {
   try {
     res.status(200).render("userLogin");
@@ -15,6 +16,7 @@ router.get("/login", (req, res) => {
   }
 });
 
+// table/tab select page
 router.get("/tables", (req, res) => {
   try {
     res.status(200).render("tableMap");
@@ -23,6 +25,7 @@ router.get("/tables", (req, res) => {
   }
 });
 
+// main pos landing page for putting in orders
 router.get("/main", (req, res) => {
   try {
     res.status(200).render("landingPage");
@@ -31,6 +34,7 @@ router.get("/main", (req, res) => {
   }
 });
 
+// checkout page
 router.get("/checkout", (req, res) => {
   try {
     res.status(200).render("checkout");
@@ -39,14 +43,7 @@ router.get("/checkout", (req, res) => {
   }
 });
 
-/*
-
-/pos/admin/employees
-/pos/admin/menu
-/pos/admin/orders
-/pos/admin/editOrder
-/pos/admin/customize
-*/
+// admin page
 router.get("/admin", (req, res) => {
   try {
     res.status(200).render("landingAdmin");

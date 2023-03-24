@@ -78,7 +78,6 @@ module.exports = {
 
     console.log("Message sent: %s", info.messageId);
   },
-
   //                            {    }   merchant.name
   sendNewEmployeeEmail: async (employee, merchant) => {
     // create reusable transporter object using the default SMTP transport
@@ -101,6 +100,29 @@ module.exports = {
       
       -Mercury POS
       </b>`,
+    });
+
+    console.log("Message sent: %s", info.messageId);
+  },
+  sendPWResetEmail: async (merchant, tempPW) => {
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: `"Mercury POS 👻" <'${process.env.EMAIL_USER}'>`,
+      to: merchant.email,
+      subject: `Password Reset`,
+      html: `<p>Here is a temporary password to get you into your merchant account. We recommend changing this ASAP.</p></br></br>
+      <b>${tempPW}</b>`,
     });
 
     console.log("Message sent: %s", info.messageId);

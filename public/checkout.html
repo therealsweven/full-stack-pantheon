@@ -1,0 +1,166 @@
+<!-- *******PAUL****** -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercury POS</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css//checkout.css" />
+  </head>
+  <!-- template -->
+  <body>
+    <main>
+      <div id="receipts-page">
+        <section
+          class="receipts d-flex justify-content-center bg-dark"
+          id="insertReceipts"
+        >
+          <div class="card receipt">
+            <div class="card-body">
+              <h5 class="card-title receipt-title">Hydrargyrum Inc.</h5>
+              <div class="container">
+                <div class="row receipt-header">
+                  <div class="col-4 receipt-header-left">
+                    <p class="card-text">1234 Fifth St.</p>
+                    <p class="card-text">Denver, CO 80014</p>
+                    <p class="card-text">P: (123) 456-7890</p>
+                  </div>
+                  <div class="col-4 receipt-header-right">
+                    <p class="card-text">03/28/23</p>
+                    <p class="card-text">Server: AWS</p>
+                    <p class="card-text">Receipt #: 1</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th>QTY</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-md-9">
+                          <em>Baked Rodopa Sheep Feta</em>
+                        </td>
+                        <td class="col-md-1" style="text-align: center">2</td>
+                        <td class="col-md-1 text-center">$13</td>
+                        <td class="col-md-1 text-center">$26</td>
+                      </tr>
+                      <tr>
+                        <td class="col-md-9">
+                          <em>Lebanese Cabbage Salad</em>
+                        </td>
+                        <td class="col-md-1" style="text-align: center">1</td>
+                        <td class="col-md-1 text-center">$8</td>
+                        <td class="col-md-1 text-center">$8</td>
+                      </tr>
+                      <tr>
+                        <td class="col-md-9">
+                          <em>Baked Tart with Thyme and Garlic</em>
+                        </td>
+                        <td class="col-md-1" style="text-align: center">3</td>
+                        <td class="col-md-1 text-center">$16</td>
+                        <td class="col-md-1 text-center">$48</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right">
+                          <p>
+                            <strong>Subtotal:</strong>
+                          </p>
+                          <p>
+                            <strong>Tip:</strong>
+                          </p>
+                          <p>
+                            <strong>Tax:</strong>
+                          </p>
+                        </td>
+                        <td class="text-center">
+                          <p>
+                            <strong>$6.93</strong>
+                          </p>
+                          <p>
+                            <strong>$6.94</strong>
+                          </p>
+                          <p>
+                            <strong>$6.95</strong>
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right">
+                          <h4><strong>Total:</strong></h4>
+                        </td>
+                        <td class="text-center text-danger">
+                          <h4><strong>$31.53</strong></h4>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="row justify-content-center">
+                  <div class="pay-button-container">
+                    <button
+                      type="button"
+                      class="btn btn-success btn-lg split-button"
+                    >
+                      Split Bill
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success btn-lg discount-button"
+                    >
+                      Discount
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success btn-lg pay-button"
+                    >
+                      Pay Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- <script src="./js/checkout.js"></script> -->
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/checkout.js"></script>
+  </body>
+</html>

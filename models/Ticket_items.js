@@ -19,7 +19,7 @@ Ticket_items.init(
                 key: 'id',
             },
         },
-        item_id: {
+        menu_item_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'menu_items',

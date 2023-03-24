@@ -1,10 +1,41 @@
 const router = require("express").Router();
 const { Merchant, Employee } = require("../../models");
 const emails = require("../../helpers/emails");
+const { v4: uuidv4 } = require("uuid");
 
 /* 
 URL route:    /api/merchant
 */
+
+//get merchat by session
+router.get("/", async (req, res) => {
+  try {
+    const merchantData = await Merchant.findAll({
+      where: {
+        id: req.session.currentMerchant,
+      },
+    });
+    res.status(200).json(merchantData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//get merchnat by id
+router.get("/:id", async (req, res) => {
+  try {
+    const merchantData = await Merchant.findAll({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(merchantData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Create new merchant account
 router.post("/signup", async (req, res) => {
@@ -15,11 +46,17 @@ req.body should be:
   business_name: STRING,
   email: STRING,
   username: STRING,
-  password: STRING
+  password: STRING,
+  address: STRING,
+  city: STRING,
+  state: STRING,
+  zip: STRING,
+  phone: STRING,
 }
 
 */
   try {
+    console.log(req.body);
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
 
@@ -98,6 +135,36 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
   console.log("logged out");
+});
+
+// forgot password
+router.post("/forgotPassword", async (req, res) => {
+  console.log(req.body);
+  try {
+    const merchantData = await Merchant.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!merchantData) {
+      res.status(400).json("No account found");
+      return;
+    }
+    const merchant = merchantData.get({ plain: true });
+    const tempPW = uuidv4();
+
+    await Merchant.update(
+      { password: tempPW },
+      { where: { id: merchant.id }, individualHooks: true }
+    );
+    //send email
+    emails.sendPWResetEmail(merchantData, tempPW);
+
+    res.status(200).json("Password Reset Email Sent");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
