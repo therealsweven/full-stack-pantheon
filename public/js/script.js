@@ -1,20 +1,49 @@
-<div id="receipts-page">
-    <section class="receipts d-flex justify-content-center bg-dark" id="insertReceipts">
-        <!-- template -->
-        <!-- <div class="card receipt">
+const insertReceipts = $("#insertReceipts");
+const menuItems = {};
+
+const itemName = "a";
+const quantity = "a";
+const price = "a";
+const itemTotal = "a";
+
+const companyName = "a";
+const address = "a";
+const cityState = "a";
+const phone = "a";
+const date = "a";
+const serverName = "a";
+const receiptID = "a";
+const subtotal = "a";
+const tax = "a";
+const tip = "a";
+const total = "a";
+
+const menuItemsFormat = `
+                      <tr>
+                        <td class="col-md-9">
+                          <em>${itemName}</em>
+                        </td>
+                        <td class="col-md-1" style="text-align: center">${quantity}</td>
+                        <td class="col-md-1 text-center">$${price}</td>
+                        <td class="col-md-1 text-center">$${itemTotal}</td>
+                      </tr>
+`;
+
+insertReceipts.append(`
+<div class="card receipt">
             <div class="card-body">
-              <h5 class="card-title receipt-title">Hydrargyrum Inc.</h5>
+              <h5 class="card-title receipt-title">${companyName}</h5>
               <div class="container">
                 <div class="row receipt-header">
                   <div class="col-4 receipt-header-left">
-                    <p class="card-text">1234 Fifth St.</p>
-                    <p class="card-text">Denver, CO 80014</p>
-                    <p class="card-text">P: (123) 456-7890</p>
+                    <p class="card-text">${address}</p>
+                    <p class="card-text">${cityState}</p>
+                    <p class="card-text">P: ${phone}</p>
                   </div>
                   <div class="col-4 receipt-header-right">
-                    <p class="card-text">03/28/23</p>
-                    <p class="card-text">Server: AWS</p>
-                    <p class="card-text">Receipt #: 1</p>
+                    <p class="card-text">${date}</p>
+                    <p class="card-text">Server: ${serverName}</p>
+                    <p class="card-text">Receipt #: ${receiptID}</p>
                   </div>
                 </div>
 
@@ -29,30 +58,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="col-md-9">
-                          <em>Baked Rodopa Sheep Feta</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">2</td>
-                        <td class="col-md-1 text-center">$13</td>
-                        <td class="col-md-1 text-center">$26</td>
-                      </tr>
-                      <tr>
-                        <td class="col-md-9">
-                          <em>Lebanese Cabbage Salad</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">1</td>
-                        <td class="col-md-1 text-center">$8</td>
-                        <td class="col-md-1 text-center">$8</td>
-                      </tr>
-                      <tr>
-                        <td class="col-md-9">
-                          <em>Baked Tart with Thyme and Garlic</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">3</td>
-                        <td class="col-md-1 text-center">$16</td>
-                        <td class="col-md-1 text-center">$48</td>
-                      </tr>
+
+                      ${menuItems}
+
                       <tr>
                         <td></td>
                         <td></td>
@@ -70,13 +78,13 @@
                         </td>
                         <td class="text-center">
                           <p>
-                            <strong>$6.93</strong>
+                            <strong>$${subtotal}</strong>
                           </p>
                           <p>
-                            <strong>$6.94</strong>
+                            <strong>$${tip}</strong>
                           </p>
                           <p>
-                            <strong>$6.95</strong>
+                            <strong>$${tax}</strong>
                           </p>
                         </td>
                       </tr>
@@ -87,7 +95,7 @@
                           <h4><strong>Total:</strong></h4>
                         </td>
                         <td class="text-center text-danger">
-                          <h4><strong>$31.53</strong></h4>
+                          <h4><strong>$${total}</strong></h4>
                         </td>
                       </tr>
                     </tbody>
@@ -118,8 +126,5 @@
                 </div>
               </div>
             </div>
-          </div> -->
-    </section>
-</div>
-
-<script src="./js/script.js"></script>
+          </div>
+`);
