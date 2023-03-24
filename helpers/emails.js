@@ -17,9 +17,41 @@ module.exports = {
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: `"Mercury POS 👻" <'${process.env.EMAIL_USER}'>`,
-      to: recipient,
+      to: recipient.email,
       subject: "Welcome to Mercury POS ✔",
-      html: "<b>We just wanted to welcome you to the Mercury POS community!  We really hope that you enjoy using our POS system.  If you ever have any questions or issues when using the product, feel free to send your concerns to the email address this came from.  Thank you for your business, and have a wonderful day!    -Mercury POS </b>",
+      html: `<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+        </head>
+        <body
+          style="font-size: larger"
+          style="
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+              'Lucida Sans', Arial, sans-serif;
+          "
+        >
+          <h2>Dear <b>${recipient.business_name},</b></h2>
+          <p>
+            We would like to welcome you to the Mercury POS community! We really hope
+            that you enjoy using our POS system. When setting up your business in the
+            POS, use the login id <b>'admin'</b> to log in. This will give you access
+            to all admin settings. We strongly recommend changing or deleting the
+            admin profile after you have added at least one other employee with
+            manager privileges.
+            <br /><br />
+            If you ever have any questions or issues when using the product, feel free
+            to send your concerns to this email address. Thank you for your business,
+            and have a wonderful day!
+            <br /><br />
+            -Mercury POS
+          </p>
+        </body>
+      </html>
+      `,
     });
 
     console.log("Message sent: %s", info.messageId);

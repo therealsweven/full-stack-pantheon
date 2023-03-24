@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/pos/tables");
+      document.location.replace("/pos/login");
     } else {
       alert("Failed to log in.");
     }
