@@ -33,8 +33,9 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 // Look for open ticket at tableid
-router.get("/:tableid/open", async (req, res) => {
+router.get("/table/:tableid", async (req, res) => {
   try {
     const ticketData = await Ticket.findOne({
       where: { table_id: req.params.tableid, paid: false },

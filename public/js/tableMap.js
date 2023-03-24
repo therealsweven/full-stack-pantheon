@@ -6,11 +6,14 @@ var barTabs = [];
 
 // populate open bar tabs
 const openTabsCreate = async () => {
-  const openTabData = await fetch("/api/tabs/open", {
+  const response = await fetch("/api/tabs/open", {
     method: "GET",
-    body: {},
     headers: { "Content-Type": "application/json" },
   });
+  await console.log(JSON.parse(response));
+  // response.then((data) => {
+  //   console.log(data);
+  // });
 };
 
 // Add new bar tab
@@ -69,6 +72,8 @@ const selectTable = async (event) => {
     }
   }
 };
+
+openTabsCreate();
 
 tableContainer.click(selectTable);
 
