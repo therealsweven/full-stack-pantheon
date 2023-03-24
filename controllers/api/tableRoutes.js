@@ -5,23 +5,6 @@ const { Tables } = require("../../models");
 URL route:    /api/tables
 */
 
-// Select a table
-router.post("/select", async (req, res) => {
-  /*
-
-req.body :   {table_id: INT}
-
-*/
-
-  try {
-    req.session.currentTableID = req.body.table_id;
-    res.status(200).json("Table Selected");
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 // Get all table data
 router.get("/", async (req, res) => {
   try {

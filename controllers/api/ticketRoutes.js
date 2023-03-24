@@ -40,6 +40,7 @@ Request Body should be as follows:
 
 {
   order_number: LINESTRING,
+
 }
 
 */
@@ -134,7 +135,7 @@ Request Body should be as follows:
     await Ticket_items.destroy({
       where: {
         ticket_id: req.body.ticket_id,
-        item_id: req.body.item_id
+        item_id: req.body.item_id,
       },
     });
     res.status(200).json("message: Item has been removed.");
