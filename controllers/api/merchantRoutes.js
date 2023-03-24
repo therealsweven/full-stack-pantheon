@@ -47,7 +47,12 @@ req.body should be:
   business_name: STRING,
   email: STRING,
   username: STRING,
-  password: STRING
+  password: STRING,
+  address: STRING,
+  city: STRING,
+  state: STRING,
+  zip: STRING,
+  phone: STRING,
 }
 
 */
