@@ -33,6 +33,22 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+// Look for open ticket at tableid
+router.get("/:tableid/open", async (req, res) => {
+  try {
+    const ticketData = await Ticket.findOne({
+      where: { table_id: req.params.tableid, paid: false },
+    });
+    if (!ticketData) {
+      res.status(400).json("No open tickets");
+    }
+    req.session.ticket_id = ticketData.id;
+    res.status(200).json(ticketData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Add new ticket
 router.post("/", async (req, res) => {
@@ -41,6 +57,7 @@ Request Body should be as follows:
 
 {
   order_number: LINESTRING,
+
 }
 
 */
@@ -135,7 +152,7 @@ Request Body should be as follows:
     await Ticket_items.destroy({
       where: {
         ticket_id: req.body.ticket_id,
-        item_id: req.body.item_id
+        item_id: req.body.item_id,
       },
     });
     res.status(200).json("message: Item has been removed.");
