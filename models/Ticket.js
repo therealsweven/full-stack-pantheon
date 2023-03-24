@@ -39,7 +39,7 @@ Ticket.init(
         key: "id",
       },
     },
-    tab_id: {
+    bar_tab_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "bar_tabs",

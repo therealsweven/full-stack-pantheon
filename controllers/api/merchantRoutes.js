@@ -8,6 +8,36 @@ const bcrypt = require("bcrypt");
 URL route:    /api/merchant
 */
 
+//get merchat by session
+router.get("/", async (req, res) => {
+  try {
+    const merchantData = await Merchant.findAll({
+      where: {
+        id: req.session.currentMerchant,
+      },
+    });
+    res.status(200).json(merchantData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//get merchnat by id
+router.get("/:id", async (req, res) => {
+  try {
+    const merchantData = await Merchant.findAll({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(merchantData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Create new merchant account
 router.post("/signup", async (req, res) => {
   /*

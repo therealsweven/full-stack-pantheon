@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Tables } = require("../../models");
+const { Tables, Ticket } = require("../../models");
 
 /* 
 URL route:    /api/tables
@@ -25,7 +25,9 @@ req.body :   {table_id: INT}
 // Get all table data
 router.get("/", async (req, res) => {
   try {
-    const tablesData = await Tables.findAll();
+    const tablesData = await Tables.findAll({
+      include: [{model: Ticket}],
+    });
     res.status(200).json(tablesData);
   } catch (err) {
     console.log(err);
