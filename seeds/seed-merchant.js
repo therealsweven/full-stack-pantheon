@@ -4,13 +4,13 @@ const items = [
   {
     business_name: "Aldos's Sports Bar",
     email: "borntobebobby@gmail.com",
-    username: "merchnat1",
+    username: "merchant1",
     password: "abc123",
   },
   {
     business_name: "Brewery",
     email: "borntobebobby@gmail.com",
-    username: "merchnat2",
+    username: "merchant2",
     password: "abc123",
   },
   // {
