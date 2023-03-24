@@ -49,7 +49,7 @@ router.get("/checkout", (req, res) => {
 */
 router.get("/admin", (req, res) => {
   try {
-    res.status(200).render("adminSettings");
+    res.status(200).render("landing_admin");
   } catch (err) {
     res.status(500).json(err);
   }
