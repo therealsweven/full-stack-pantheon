@@ -16,8 +16,9 @@ Bar_tabs.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    max_size: {
-      type: DataTypes.INTEGER,
+    paid: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
     card_authorized: {
       type: DataTypes.BOOLEAN,

@@ -33,6 +33,7 @@ Ticket.belongsTo(Employee);
 Menu_items.belongsToMany(Allergens, {through: Menu_item_allergens});
 Allergens.belongsToMany(Menu_items, {through: Menu_item_allergens});
 
+
 //Transactions
 Transactions.belongsTo(Ticket);
 

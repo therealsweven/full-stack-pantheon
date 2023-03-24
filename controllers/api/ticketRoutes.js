@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Ticket, Ticket_items } = require("../../models");
+const { Ticket, Ticket_items, Menu_items } = require("../../models");
 
 /* 
 URL route:    /api/tickets
@@ -9,6 +9,7 @@ URL route:    /api/tickets
 router.get("/open", async (req, res) => {
   try {
     const ticketsData = await Ticket.findAll({
+      include: [{ model: Menu_items }],
       where: {
         paid: false,
       },

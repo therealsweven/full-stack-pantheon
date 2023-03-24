@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Menu } = require("../../models");
+const { Menu_items, Allergens, Menu_item_allergens } = require("../../models");
 
 /* 
 URL route:    /api/menu
@@ -8,7 +8,9 @@ URL route:    /api/menu
 // GET full menu
 router.get("/", async (req, res) => {
   try {
-    const menuData = await Menu.findAll();
+    const menuData = await Menu_items.findAll({
+        include: [{ model: Allergens }],
+    });
 
     res.status(200).json(menuData);
   } catch (err) {
@@ -20,7 +22,9 @@ router.get("/", async (req, res) => {
 // GET one item's data by ID in request url
 router.get("/:id", async (req, res) => {
   try {
-    const menuData = await Menu.findByPk(req.params.id);
+    const menuData = await Menu_items.findByPk(req.params.id, {
+      include: [{ model: Allergens }],
+  });
 
     res.status(200).json(menuData);
   } catch (err) {
@@ -45,7 +49,7 @@ Request Body should be as follows:
 
 */
   try {
-    const menuItem = await Menu.create(req.body);
+    const menuItem = await Menu_items.create(req.body);
     res.status(200).json(menuItem);
   } catch (err) {
     console.log(err);
@@ -70,7 +74,7 @@ Request Body should be as follows:
 
 */
   try {
-    const menuItem = await Menu.update(req.body, {
+    const menuItem = await Menu_items.update(req.body, {
       where: {
         id: req.body.id,
       },
@@ -94,7 +98,7 @@ Request Body should be as follows:
 */
 
   try {
-    await Menu.destroy({
+    await Menu_items.destroy({
       where: {
         id: req.body.id,
       },
