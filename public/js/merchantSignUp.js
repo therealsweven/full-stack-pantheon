@@ -19,7 +19,9 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/login");
     } else {
-      alert("Failed to sign up.");
+      alert(
+        "Something went wrong...that email or username may already be attached to a merchant account. Please enter a different email and try again."
+      );
     }
   }
 };

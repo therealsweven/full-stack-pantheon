@@ -1,3 +1,5 @@
+
+
 .header {
     text-align: center;
     margin-top: 10px;
@@ -26,4 +28,21 @@ margin-top: 4rem;
 .container {
 margin-top: 10rem;
 
+}
+
+.allBtns {
+    margin-top: 13rem;
+
+}
+
+/* .customBtn, .payBtn, .applyBtn {
+    padding: px;
+} */
+
+.payBtn {
+    margin-top: 21px;
+}
+
+.applyBtn {
+    margin-top: 21px;
 }
