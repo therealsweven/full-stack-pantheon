@@ -15,6 +15,6 @@ $("#submitBtn").click(async () => {
     formEl.hide();
     sentMessageEl.show();
   } else {
-    alert("Sorry! No account with tha email was found. Please try again.");
+    alert("Sorry! No account with that email was found. Please try again.");
   }
 });

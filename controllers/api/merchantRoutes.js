@@ -119,10 +119,9 @@ router.post("/forgotPassword", async (req, res) => {
     const merchant = merchantData.get({ plain: true });
     const tempPW = uuidv4();
 
-    const tempPWEncrypted = await bcrypt.hash(tempPW, 10);
     await Merchant.update(
-      { password: tempPWEncrypted },
-      { where: { id: merchant.id } }
+      { password: tempPW },
+      { where: { id: merchant.id }, individualHooks: true }
     );
     //send email
     emails.sendPWResetEmail(merchantData, tempPW);
