@@ -2,20 +2,18 @@ console.log("checkout js loaded");
 const insertReceipts = $("#insertReceipts");
 const menuItems = {};
 
-// const getVar = async () => {
-//   // business_name
-//   const companyName = await fetch("/api/merchant", {
-//     method: "GET",
-//     headers: { "Content-Type": "idk" },
-//   });
-// };
+// business_name
+const companyName = await fetch("/api/merchant/1", {
+  method: "GET",
+  headers: { "Content-Type": "idk" },
+});
 
 const itemName = "a";
 const quantity = "a";
 const price = "a";
 const itemTotal = "a";
 
-const companyName = "a";
+// const companyName = "a";
 const address = "a";
 const cityState = "a";
 const phone = "a";

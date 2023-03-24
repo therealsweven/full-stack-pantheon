@@ -105,6 +105,18 @@ html {
     rgba(249, 171, 140, 1)
   );
 }
+
+.mLogin-bg,
+.uLogin-bg {
+  flex-grow: 1;
+}
+
+#mLogin-page,
+#uLogin-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
 /* End of login CSS */
 
 /* START Admin Page CSS*/
