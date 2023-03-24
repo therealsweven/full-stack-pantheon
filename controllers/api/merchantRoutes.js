@@ -1,27 +1,18 @@
 const router = require("express").Router();
-const { Merchant } = require("../../models");
-const helpers = require("../../helpers/helpers");
-const bcrypt = require("bcrypt");
+const { Merchant, Employee } = require("../../models");
+const emails = require("../../helpers/emails");
+
 /* 
 URL route:    /api/merchant
 */
 
-// Send Create Account Page
-router.get("/new", (req, res) => {
-  try {
-    res.status(200).sendFile("MERCHANT LOGIN"); //change file name
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Create new merchant account
-router.post("/new", async (req, res) => {
+router.post("/signup", async (req, res) => {
   /*
 req.body should be:
 
 {
-  location_name: STRING,
+  business_name: STRING,
   email: STRING,
   username: STRING,
   password: STRING
@@ -31,8 +22,17 @@ req.body should be:
   try {
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
+
+    await Employee.create({
+      name: "admin",
+      email: newMerchant.email,
+      role: "admin",
+      login_id: "admin",
+      is_manager: true,
+      merchant_id: newMerchant.id,
+    });
     // send welcome email
-    await helpers.sendWelcomeEmail(newMerchant.email).catch(console.error);
+    await emails.sendWelcomeEmail(newMerchant).catch(console.error);
 
     res.status(200).json(newMerchant);
   } catch (err) {
@@ -76,6 +76,8 @@ req.body should be:
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      // add merchant id to session
+      req.session.currentMerchant = dbMerchantData.id;
       res
         .status(200)
         .json({ user: dbMerchantData, message: "You are now logged in!" });
@@ -90,11 +92,12 @@ req.body should be:
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).json("message: You have been logged out").end();
     });
   } else {
     res.status(404).end();
   }
+  console.log("logged out");
 });
 
 module.exports = router;

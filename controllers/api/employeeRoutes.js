@@ -1,15 +1,14 @@
 const router = require("express").Router();
 const { Employee } = require("../../models");
-
+const emails = require("../../helpers/emails");
 /* 
-URL route:    /api/employees
+URL route:    /api/employee
 */
 
 // GET all employee data
 router.get("/", async (req, res) => {
   try {
     const employeeData = await Employee.findAll();
-
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -35,14 +34,19 @@ router.post("/", async (req, res) => {
 Request Body should be as follows:
 
 {
-  id:  INT,
   name:  STRING,
+  email: STRING,
   role:  STRING,
+  login_id: STRING,
+  is_manager: BOOLEAN,
 }
 
 */
   try {
+    // assign merchant_id from session variable
+    req.body.merchant_id = req.session.currentMerchant;
     const employeeData = await Employee.create(req.body);
+    await emails.sendNewEmployeeEmail(employeeData, "Choctaw");
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -58,7 +62,10 @@ Request Body should be as follows:
 {
   id:  INT,
   name:  STRING,
+  email: STRING,
   role:  STRING,
+  login_id: STRING,
+  is_manager: BOOLEAN,
 }
 
 */
@@ -105,18 +112,18 @@ router.post("/login", async (req, res) => {
 req.body should be:
 
 {
-  id: INT
+  login_id: INT
 }
 
 */
   try {
-    const dbMerchantData = await Merchant.findOne({
+    const dbEmployeeData = await Employee.findOne({
       where: {
-        id: req.body.id,
+        login_id: req.body.login_id,
       },
     });
 
-    if (!dbMerchantData) {
+    if (!dbEmployeeData) {
       res
         .status(400)
         .json({ message: "No employee found.  Please try again!" });
@@ -125,9 +132,12 @@ req.body should be:
 
     req.session.save(() => {
       req.session.employeeLoggedIn = true;
+      // create session object keys for current employee logged in
+      req.session.currentEmployee = dbEmployeeData.name;
+      req.session.currentEmployeeID = dbEmployeeData.id;
       res
         .status(200)
-        .json({ user: dbMerchantData, message: "You are now logged in!" });
+        .json({ user: dbEmployeeData, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
@@ -137,12 +147,16 @@ req.body should be:
 
 // Employee Logout
 router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
+  if (req.session.employeeLoggedIn) {
+    // log employee out and null the currentEmployee info in session object
+    req.session.currentEmployee = null;
+    req.session.currentEmployeeID = null;
+    req.session.employeeLoggedIn = false;
+    // send to employee login page
+    res.status(204); //.render()
+    console.log("logged out");
   } else {
-    res.status(404).end();
+    res.status(404);
   }
 });
 

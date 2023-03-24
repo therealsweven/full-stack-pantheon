@@ -17,7 +17,7 @@ Merchant.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    location_name: {
+    business_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
