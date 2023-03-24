@@ -1,10 +1,10 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
-
+  console.log("hello");
   var login_id = $("#employeeLogin").val();
 
   if (login_id) {
-    const response = await fetch("/api/employee/login", {
+    const response = await fetch("../api/employee/login", {
       method: "POST",
       body: JSON.stringify({ login_id }),
       headers: { "Content-Type": "application/json" },
@@ -18,4 +18,4 @@ const loginFormHandler = async (event) => {
   }
 };
 
-$("#submitBtn").click(loginFormHandler);
+$("#login").click(loginFormHandler);
