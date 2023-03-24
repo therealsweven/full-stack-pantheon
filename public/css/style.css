@@ -1,3 +1,13 @@
+.reg-form {
+  flex-grow: 1;
+}
+
+.reg-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
+
 .current-server-table {
   font-size: 1.5rem;
 }
