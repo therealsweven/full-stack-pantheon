@@ -1,5 +1,3 @@
-const { v4: uuidv4 } = require("uuid");
-
 var tableContainer = $("#tables");
 var barContainer = $("#bar");
 var barAddBtn = $("#barAdd");
@@ -56,15 +54,19 @@ const selectTable = async (event) => {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
-
+  console.log(response);
   if (response.ok) {
-    document.location.replace("/pos/main");
+    document.location.replace(`/pos/main/${event.target.id}`);
   } else {
-    const response = await fetch("/api/tickets/", {
+    await fetch("/api/tickets/", {
       method: "POST",
-      body: JSON.stringify({ order_number: 4 }), //////////
+      body: JSON.stringify({}),
       headers: { "Content-Type": "application/json" },
     });
+    if (response.ok) {
+      document.location.replace(`/pos/main/${event.target.id}`);
+    } else {
+    }
   }
 };
 
