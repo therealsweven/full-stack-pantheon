@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { Merchant, Employee } = require("../../models");
 const emails = require("../../helpers/emails");
+const { v4: uuidv4 } = require("uuid");
+const bcrypt = require("bcrypt");
 
 /* 
 URL route:    /api/merchant
@@ -98,6 +100,36 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
   console.log("logged out");
+});
+
+// forgot password
+router.post("/forgotPassword", async (req, res) => {
+  console.log(req.body);
+  try {
+    const merchantData = await Merchant.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!merchantData) {
+      res.status(400).json("No account found");
+      return;
+    }
+    const merchant = merchantData.get({ plain: true });
+    const tempPW = uuidv4();
+
+    await Merchant.update(
+      { password: tempPW },
+      { where: { id: merchant.id }, individualHooks: true }
+    );
+    //send email
+    emails.sendPWResetEmail(merchantData, tempPW);
+
+    res.status(200).json("Password Reset Email Sent");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

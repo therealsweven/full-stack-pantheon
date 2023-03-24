@@ -55,12 +55,11 @@ Request Body should be as follows:
 });
 
 // Update Employee
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   /*
 Request Body should be as follows:
 
 {
-  id:  INT,
   name:  STRING,
   email: STRING,
   role:  STRING,
@@ -72,7 +71,7 @@ Request Body should be as follows:
   try {
     const employeeData = await Employee.update(req.body, {
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(employeeData);
@@ -83,7 +82,7 @@ Request Body should be as follows:
 });
 
 // Remove Employee
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   /*
 Request Body should be as follows:
 
@@ -96,7 +95,7 @@ Request Body should be as follows:
   try {
     const employeeData = await Employee.destroy({
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(employeeData);
