@@ -101,6 +101,67 @@ const items = [
         image: "",
         merchant_id:1
     },
+ {
+        item_name: ' Long Island Iced Tea',
+        price: 8.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "",
+        merchant_id: 1
+    }, 
+    {
+        item_name: ' Bloody Mary',
+        price: 9.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Mojito',
+        price: 9.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Margarita',
+        price: 9.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Mai Tai',
+        price: 8.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Moscow Mule ',
+        price: 8.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "",
+        merchant_id: 1
+    },
+
 ];
 
 const seedMenu = () => Menu_items.bulkCreate(items);
