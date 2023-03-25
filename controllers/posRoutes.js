@@ -4,7 +4,7 @@ tables   /pos/tables
 main  /pos/main
 admin /pos/admin
 */
-
+const { Bar_tabs, Ticket } = require("../models");
 const router = require("express").Router();
 
 // employee login page
@@ -17,9 +17,17 @@ router.get("/login", (req, res) => {
 });
 
 // table/tab select page
-router.get("/tables", (req, res) => {
+router.get("/tables", async (req, res) => {
   try {
-    res.status(200).render("tableMap");
+    const tabData = await Bar_tabs.findAll({
+      where: {
+        paid: false,
+      },
+      // include: [{ model: Ticket }],
+    });
+    const tabs = tabData.map((element) => element.get({ plain: true }));
+    console.log(tabs);
+    res.status(200).render("tableMap", { tabs });
   } catch (err) {
     res.status(500).json(err);
   }

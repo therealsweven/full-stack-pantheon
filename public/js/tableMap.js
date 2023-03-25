@@ -1,32 +1,35 @@
 var tableContainer = $("#tables");
 var barContainer = $("#bar");
 var barAddBtn = $("#barAdd");
-console.log(barContainer);
-var barTabs = [];
+var createTabBtn = $("#createTab");
 
-// populate open bar tabs
-const openTabsCreate = async () => {
-  const openTabData = await fetch("/api/tabs/open", {
-    method: "GET",
-    body: {},
-    headers: { "Content-Type": "application/json" },
-  });
-};
+var tabName = $("#tabName");
+var addTabForm = $("#newBarTabForm");
+var tab_name;
 
-// Add new bar tab
-const addBar = async (event) => {
-  event.preventDefault();
+const createTabDB = async () => {
   const response = await fetch("/api/barTabs/", {
     method: "POST",
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ tab_name }),
     headers: { "Content-Type": "application/json" },
   });
 
   if (response.ok) {
     document.location.replace("/pos/main");
   } else {
-    alert("Failed to log in.");
+    alert("Failed to create tab");
   }
+};
+// Add new bar tab
+const addBar = async () => {
+  console.log("gello");
+  addTabForm.show();
+  barAddBtn.hide();
+  await createTabBtn.click(async (event) => {
+    event.preventDefault();
+    tab_name = await tabName.val().trim();
+    await createTabDB();
+  });
 };
 
 // Select a bar tab
@@ -75,3 +78,18 @@ tableContainer.click(selectTable);
 barContainer.click(selectTab);
 
 barAddBtn.click(addBar);
+
+const car = {};
+
+fetch("/api/employee")
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    // console.log(data);
+    car.data = data;
+    car.key = ["gsdfgsdfgsd"];
+  });
+
+console.log(car);
+console.log(car.getPrototypeOf());

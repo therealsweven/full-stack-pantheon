@@ -4,12 +4,14 @@ const items = [
     {
         ticket_id: 1,
         menu_item_id: 3,
-        notes: "test"
+        notes: "test",
+        quantity:3,
     },
     {
         ticket_id: 1,
         menu_item_id: 4,
-        notes: "test"
+        notes: "test",
+        quantity: 1,
     }
 ];
 
