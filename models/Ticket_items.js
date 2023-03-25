@@ -14,6 +14,7 @@ Ticket_items.init(
         },
         ticket_id: {
             type: DataTypes.INTEGER,
+            unique: false,
             references: {
                 model: 'ticket',
                 key: 'id',
@@ -21,6 +22,7 @@ Ticket_items.init(
         },
         menu_item_id: {
             type: DataTypes.INTEGER,
+            unique: false,
             references: {
                 model: 'menu_items',
                 key: 'id',
@@ -29,6 +31,10 @@ Ticket_items.init(
         notes: {
             type: DataTypes.STRING,
         },
+        quantity: {
+            type: DataTypes.INTEGER,
+            defaultValue: 1
+        }
     },
     {
         sequelize,
