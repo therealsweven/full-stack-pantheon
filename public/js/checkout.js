@@ -1,19 +1,37 @@
 console.log("checkout js loaded");
 const insertReceipts = $("#insertReceipts");
 const menuItems = {};
+let companyName = "";
+
+// function getCompanyName() {
+fetch("/api/merchant")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    companyName = data[0].business_name;
+    console.log(companyName); // returns correct value
+    // return data[0].business_name;
+  });
+// }
+// companyName = getCompanyName();
+
+console.log(companyName); // does not return correct value
 
 // business_name
-const companyName = await fetch("/api/merchant/1", {
-  method: "GET",
-  headers: { "Content-Type": "idk" },
-});
+// const companyName = fetch("/api/merchant", {
+//   method: "GET",
+//   headers: { "Content-Type": "idk" },
+// });
+
+// console.log(companyName);
 
 const itemName = "a";
 const quantity = "a";
 const price = "a";
 const itemTotal = "a";
 
-// const companyName = "a";
 const address = "a";
 const cityState = "a";
 const phone = "a";
