@@ -40,6 +40,13 @@ Ticket.belongsToMany(Menu_items, {
   foreignKey: "ticket_id",
 });
 
+Ticket_items.hasMany(Ticket,{
+  foreignKey: "ticket_id",
+});
+Ticket_items.hasMany(Menu_items,{
+  foreignKey: "menu_item_id",
+});
+
 //Tables - Tabs
 Ticket.belongsTo(Tables, {
   foreignKey: "table_id",
@@ -50,9 +57,13 @@ Ticket.belongsTo(Bar_tabs, {
 Ticket.belongsTo(Employee, {
   foreignKey: "employee_id",
 });
-Bar_tabs.hasMany(Ticket);
-Tables.hasMany(Ticket);
-//Employee tickets
+
+Bar_tabs.hasMany(Ticket, {
+  foreignKey: "bar_tab_id",
+});
+Tables.hasMany(Ticket, {
+  foreignKey: "table_id",
+});
 
 //Allergens
 Menu_items.belongsToMany(Allergens, {

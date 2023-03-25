@@ -109,16 +109,12 @@ html {
 
 /* START Admin Page CSS*/
 .hide {
-  display: none;
-}
-
-.select {
-  border: 10px dashed red !important;
+  display: none !important;
 }
 
 .main {
   background-color: #6c757d;
-  height: 100vh;
+  height: 150vh;
 }
 
 #header_nav {
@@ -131,6 +127,9 @@ html {
 }
 
 #sidebarDisplay {
+  overflow-y: scroll;
+  height: 500px;
+  width: 700px;
   background-color: lightgray;
   border: 2px solid whitesmoke;
 }
@@ -148,6 +147,7 @@ html {
 }
 
 .action-btn {
+  display: block;
   height: 100px;
   width: 200px;
   line-height: 85px;
@@ -159,6 +159,7 @@ html {
 .employeeList {
   width: 100%;
   margin: 5px 0 5px 0;
+  text-align: start;
 }
 /* END Admin Page CSS */
 
@@ -288,7 +289,6 @@ header {
 .item-12 {
   margin-left: 10px;
 }
-
 
 img {
   width: 180px;
