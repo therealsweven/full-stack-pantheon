@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Merchant, Employee } = require("../../models");
 const emails = require("../../helpers/emails");
 const { v4: uuidv4 } = require("uuid");
-const bcrypt = require("bcrypt");
 
 /* 
 URL route:    /api/merchant
@@ -57,6 +56,7 @@ req.body should be:
 
 */
   try {
+    console.log(req.body);
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
 

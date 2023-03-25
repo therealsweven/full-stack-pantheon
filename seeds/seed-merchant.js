@@ -1,5 +1,9 @@
 const { Merchant } = require("../models");
-
+const bcrypt = require("bcrypt");
+const password = async () => {
+  bcrypt.hash("abc123", 10);
+};
+console.log(password);
 const items = [
   {
     business_name: "Aldos's Sports Bar",
@@ -15,8 +19,8 @@ const items = [
   {
     business_name: "Brewery",
     email: "borntobebobby@gmail.com",
-    username: "merchant2",
-    password: "abc123",
+    username: "merchnat2",
+    password: password,
     address: "4321 Whom Blvd",
     city: "Faraway",
     state: "New Yawk",

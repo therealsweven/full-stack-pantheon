@@ -24,9 +24,8 @@ Merchant.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-
+      unique: true,
       validate: {
-        unique: true,
         isEmail: true,
       },
     },
@@ -57,6 +56,7 @@ Merchant.init(
     },
     phone: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
