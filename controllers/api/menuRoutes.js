@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Menu } = require("../../models");
+const { Menu_items, Allergens, Menu_item_allergens } = require("../../models");
 
 /* 
 URL route:    /api/menu
@@ -8,7 +8,9 @@ URL route:    /api/menu
 // GET full menu
 router.get("/", async (req, res) => {
   try {
-    const menuData = await Menu.findAll();
+    const menuData = await Menu_items.findAll({
+        include: [{ model: Allergens }],
+    });
 
     res.status(200).json(menuData);
   } catch (err) {
@@ -20,7 +22,9 @@ router.get("/", async (req, res) => {
 // GET one item's data by ID in request url
 router.get("/:id", async (req, res) => {
   try {
-    const menuData = await Menu.findByPk(req.params.id);
+    const menuData = await Menu_items.findByPk(req.params.id, {
+      include: [{ model: Allergens }],
+  });
 
     res.status(200).json(menuData);
   } catch (err) {
@@ -40,17 +44,32 @@ Request Body should be as follows:
   price: DECIMAL,
   available: BOOLEAN,
   type: STRING,
+  subtype: STRING
   image_filename: STRING
+  allergen_ids: ARRAY of INT
 }
-
 */
-  try {
-    const menuItem = await Menu.create(req.body);
-    res.status(200).json(menuItem);
-  } catch (err) {
+Menu_items.create(req.body)
+  .then((menuData) => {
+    // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+    if (req.body.allergen_ids.length) {
+      const allergenArray = req.body.allergen_ids.map((allergen_id) => {
+        return {
+          menu_item_id: menuData.id,
+          allergen_id,
+        };
+      });
+      return Menu_item_allergens.bulkCreate(allergenArray);
+    }
+    // if no product tags, just respond
+    res.status(200).json(menuData);
+  })
+  .then((allergenIds) => res.status(200).json(allergenIds))
+  .catch((err) => {
     console.log(err);
-    res.status(500).json(err);
-  }
+    res.status(400).json(err);
+  });
+
 });
 
 // Update Menu Item
@@ -66,11 +85,12 @@ Request Body should be as follows:
   available: BOOLEAN,
   type: STRING,
   image_filename: STRING
+   allergen_ids: ARRAY of INT
 }
 
 */
   try {
-    const menuItem = await Menu.update(req.body, {
+    const menuItem = await Menu_items.update(req.body, {
       where: {
         id: req.body.id,
       },
@@ -94,7 +114,7 @@ Request Body should be as follows:
 */
 
   try {
-    await Menu.destroy({
+    await Menu_items.destroy({
       where: {
         id: req.body.id,
       },

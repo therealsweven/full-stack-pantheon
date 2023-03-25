@@ -2,11 +2,40 @@ const router = require("express").Router();
 const { Merchant, Employee } = require("../../models");
 const emails = require("../../helpers/emails");
 const { v4: uuidv4 } = require("uuid");
-const bcrypt = require("bcrypt");
 
 /* 
 URL route:    /api/merchant
 */
+
+//get merchat by session
+router.get("/", async (req, res) => {
+  try {
+    const merchantData = await Merchant.findAll({
+      where: {
+        id: req.session.currentMerchant,
+      },
+    });
+    res.status(200).json(merchantData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+//get merchnat by id
+router.get("/:id", async (req, res) => {
+  try {
+    const merchantData = await Merchant.findAll({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(merchantData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Create new merchant account
 router.post("/signup", async (req, res) => {
@@ -17,11 +46,17 @@ req.body should be:
   business_name: STRING,
   email: STRING,
   username: STRING,
-  password: STRING
+  password: STRING,
+  address: STRING,
+  city: STRING,
+  state: STRING,
+  zip: STRING,
+  phone: STRING,
 }
 
 */
   try {
+    console.log(req.body);
     // create merchant in Db
     const newMerchant = await Merchant.create(req.body);
 

@@ -1,3 +1,68 @@
+html {
+  overflow-x: hidden;
+}
+
+/* Checkout CSS */
+.pay-button,
+.split-button,
+.discount-button {
+  margin: 0 10px;
+}
+
+.pay-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.receipt {
+  margin: 20px;
+  max-width: 30rem;
+  height: fit-content;
+}
+
+.receipts {
+  flex-wrap: wrap;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#receipts-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.receipt-title {
+  text-align: center;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+}
+/* end of Checkout CSS */
+
+/* signUp CSS */
+.reg-form {
+  flex-grow: 1;
+}
+
+.reg-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.sample-img-container {
+  align-self: center;
+}
+
+.signup-submit {
+  align-items: baseline;
+}
+/* end of signUp CSS */
+
+/* Main + Header CSS */
 .current-server-table {
   font-size: 1.5rem;
 }
@@ -12,14 +77,6 @@
   font-size: 1.5rem;
 }
 
-.sample-img-container {
-  align-self: center;
-}
-
-.signup-submit {
-  align-items: baseline;
-}
-
 #offcanvasDarkNavbar {
   max-width: 20%;
 }
@@ -27,6 +84,7 @@
 #offcanvasDarkNavbarLabel {
   font-size: 2.5rem;
 }
+/* end of Main + Header CSS */
 
 /* Merchant + User login CSS */
 .gradient-custom {
@@ -50,6 +108,14 @@
 /* End of login CSS */
 
 /* START Admin Page CSS*/
+.hide {
+  display: none;
+}
+
+.select {
+  border: 10px dashed red !important;
+}
+
 .main {
   background-color: #6c757d;
   height: 100vh;
@@ -90,6 +156,10 @@
   justify-content: center;
 }
 
+.employeeList {
+  width: 100%;
+  margin: 5px 0 5px 0;
+}
 /* END Admin Page CSS */
 
 /* Start of tables css*/

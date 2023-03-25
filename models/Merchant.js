@@ -24,9 +24,8 @@ Merchant.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-
+      unique: true,
       validate: {
-        unique: true,
         isEmail: true,
       },
     },
@@ -36,6 +35,26 @@ Merchant.init(
       unique: true,
     },
     password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    zip: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone: {
       type: DataTypes.STRING,
       allowNull: false,
     },
