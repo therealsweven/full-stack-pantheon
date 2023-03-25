@@ -46,6 +46,10 @@ router.get("/:id", async (req, res) => {
           model: Merchant,
             attributes: ['business_name','email','address','city','state','zip','phone'],
         },
+        {
+          model: Employee,
+            attributes: ['name','role','is_manager'],
+        }
       ],
     });
 
