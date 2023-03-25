@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Ticket, Ticket_items, Menu_items } = require("../../models");
+const { Ticket, Ticket_items, Menu_items, Merchant, Employee } = require("../../models");
 
 /* 
 URL route:    /api/tickets
@@ -9,7 +9,19 @@ URL route:    /api/tickets
 router.get("/open", async (req, res) => {
   try {
     const ticketsData = await Ticket.findAll({
-      include: [{ model: Menu_items }],
+      include: [
+        {
+          model: Menu_items
+        }, 
+        {
+          model: Merchant,
+            attributes: ['business_name','email','address','city','state','zip','phone'],
+        },
+        {
+          model: Employee,
+            attributes: ['name','role','is_manager'],
+        }
+      ],
       where: {
         paid: false,
       },
@@ -25,8 +37,16 @@ router.get("/open", async (req, res) => {
 // GET one ticket's data by ID in request url
 router.get("/:id", async (req, res) => {
   try {
-    const ticketData = await Ticket.findByPk(req.params.id,{
-      include: [{ model: Menu_items }, ],
+    const ticketData = await Ticket.findByPk(req.params.id, {
+      include: [
+        {
+          model: Menu_items
+        }, 
+        {
+          model: Merchant,
+            attributes: ['business_name','email','address','city','state','zip','phone'],
+        },
+      ],
     });
 
     res.status(200).json(ticketData);
@@ -37,7 +57,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Look for open ticket at tableid
-router.get("/table/:tableid", async (req, res) => {
+router.get("/:tableid/open", async (req, res) => {
   try {
     const ticketData = await Ticket.findOne({
       where: { table_id: req.params.tableid, paid: false },
@@ -131,7 +151,7 @@ Request Body should be as follows:
 */
   try {
     const [ticket_item, created] = await Ticket_items.findOrCreate({
-      where: { 
+      where: {
         ticket_id: req.body.ticket_id,
         menu_item_id: req.body.menu_item_id,
       },
@@ -143,15 +163,16 @@ Request Body should be as follows:
     });
     if (created) {
       res.status(200).json(ticket_item);
-    }else{
-      const increaseQuantity = await Ticket_items.update({ quantity: ticket_item.quantity + 1}, {
+    } else {
+      const increaseQuantity = await Ticket_items.update({ quantity: ticket_item.quantity + 1 }, {
         where: {
           id: ticket_item.id
-        }});
-        res.status(200).json({message: "Quantity increased"});
+        }
+      });
+      res.status(200).json({ message: "Quantity increased" });
     }
     //return response
-    
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -159,42 +180,43 @@ Request Body should be as follows:
 });
 
 // Remove item from a ticket
-router.put("/item", async (req, res) => {
+router.post("/removeitem/:id", async (req, res) => {
   /*
 Request Body should be as follows:
-
 {
   "ticket_id": INT
   "item_id": INT
 }
-
 */
+console.log(req.body)
   try {
     //locate record
-    const ticket_itemData = await Ticket_items.findAll({
-      where: {
-        ticket_id: req.body.ticket_id,
-        menu_item_id: req.body.menu_item_id
-      },
-    });
-    console.log(ticket_itemData.quantity);
-    if(ticket_itemData.quantity - 1 <= 0){
-      const decreaseQuantity = await Ticket_items.update({ quantity: ticket_itemData.quantity - 1}, {
-        where: {
-          id: ticket_itemData.id,
-        },
+    const ticket_itemData = await Ticket_items.findByPk(req.params.id
+    //   {
+    //   where: {
+    //     ticket_id: req.body.ticket_id,
+    //     menu_item_id: req.body.menu_item_id
+    //   },
+    // }
+    );
+
+      console.log(ticket_itemData.quantity);
+      if (ticket_itemData.quantity < 0) {
+      
+        const decreaseQuantity = await Ticket_items.update({ quantity: ticket_itemData.quantity - 1 }, {
+          where: {
+            id: ticket_itemData.id,
+          },
         });
-        console.log(decreaseQuantity.quantity);
-        res.status(200).json({message: "Quantity decreased"});
-    }else{
-      await Ticket_items.destroy({
-        where: {
-          id: ticket_itemData.id
-        },
-      });
-       res.status(200).json("message: Item has been removed.");
-    }
-   
+        res.status(200).json({ message: "Quantity decreased" });
+      } else {
+         await Ticket_items.destroy({
+          where: {
+            id: ticket_itemData.id
+          },
+        });
+        res.status(200).json("message: Item has been removed.");
+      }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
