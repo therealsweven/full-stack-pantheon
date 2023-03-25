@@ -53,7 +53,7 @@ function createReceipt(data) {
                 <div class="row receipt-header">
                   <div class="col-4 receipt-header-left">
                     <p class="card-text">${address}</p>
-                    <p class="card-text">${cityState}</p>
+                    <p class="card-text">${city}, ${state}</p>
                     <p class="card-text">P: ${phone}</p>
                   </div>
                   <div class="col-4 receipt-header-right">
