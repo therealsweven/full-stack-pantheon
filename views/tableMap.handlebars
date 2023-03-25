@@ -25,11 +25,34 @@
       <div class="row1 d-flex justify-content-evenly">
         <ul id="bar" class="justify-content-center list-unstyled">
           {{#each tabs as |tab|}}
-
             <li id="">{{tab.tab_name}}</li>
-
           {{/each}}
         </ul>
+      </div>
+      <div class="row1 d-flex justify-content-evenly">
+        <div id="barAdd" class="justify-content-center">
+
+          <div id="newBarTabForm" style="display:none;">
+            <form>
+              <div class="form-outline form-white mb-4">
+                <input
+                  type="text"
+                  id="tabName"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="tabName">Name</label>
+              </div>
+              <button
+                id="createTab"
+                class="btn btn-outline-light btn-lg px-5"
+                type="submit"
+              >
+                Create
+              </button>
+            </form>
+          </div>
+          <button id="barAddBtn">Add Bar Tab</button>
+        </div>
       </div>
     </div>
   </div>
