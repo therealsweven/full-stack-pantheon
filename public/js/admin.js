@@ -11,11 +11,6 @@ const employeesWrap = document.getElementById("employeesWrap");
 const menuButtonsWrap = document.getElementById("menuButtonsWrap");
 const ordersWrap = document.getElementById("ordersWrap");
 
-// --------------------- Useful code DURING development
-
-// -- highilghts the selected element with a think red border
-// {Element}.classList.add("select");
-
 // Simple Static Array
 let employeeArray = [
   {
@@ -109,21 +104,37 @@ let employeeArray = [
     is_manager: false,
   },
 ];
+// API array
+let apiEmployeeArray = [];
+
+window.onload = function () {
+  fetch("../api/employee/")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => apiEmployeeArray.push(element));
+    });
+  console.log(apiEmployeeArray);
+};
+
+// --------------------- Useful code DURING development
+
+// -- highilghts the selected element with a think red border
+// {Element}.classList.add("select");
 
 // populates DISPLAY with employee list
 function showEmployees() {
   document.getElementById("employeesWrap").style.color = "";
-  employeeArray.forEach((employee) => {
+  apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
     div.classList.add("btn");
     div.classList.add("btn-outline-secondary");
     div.classList.add("employeeList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
-      <td style="width: 25%">${employee.id}</td>
+      <td style="width: 25%">${employee.login_id}</td>
       <td style="width: 25%">${employee.name}</td>
       <td style="width: 25%">${employee.role}</td>
-      <td style="width: 25%">${employee.is_manager}</td>
+      <td style="width: 25%">${employee.email}</td>
     </tr>
   </table>`;
     employeesWrap.append(div);
@@ -133,19 +144,20 @@ function showEmployees() {
 // [EDIT EMPLOYEES] click listener
 editEmployeesButton.addEventListener("click", () => {
   deleteOrderButton.classList.add("hide");
+  menuButtonsWrap.classList.add("hide");
+  employeesWrap.classList.remove("hide");
   function tableHeaders() {
     employeesWrap.innerHTML = `<table style="width:100%; text-align:start">
         <tr>
         <th style="width: 25%">Employee ID</th>
         <th style="width: 25%">Name</th>
         <th style="width: 25%">Role</th>
-        <th style="width: 25%">Is Manager</th>
+        <th style="width: 25%">e-mail</th>
       </tr>
       </table>`;
   }
   tableHeaders();
   showEmployees();
-  employeesWrap.classList.remove("hide");
 });
 // [EDIT MENU] click listener
 editMenuButton.addEventListener("click", () => {
@@ -162,5 +174,7 @@ viewOrdersButton.addEventListener("click", () => {
 
 // [DELETE ORDER] click listener
 deleteOrderButton.addEventListener("click", () => {
-  alert("DELETED!");
+  apiEmployeeArray.forEach((member) => {
+    console.log(member);
+  });
 });

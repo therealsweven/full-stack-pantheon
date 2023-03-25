@@ -112,10 +112,6 @@ html {
   display: none !important;
 }
 
-.select {
-  border: 10px dashed red !important;
-}
-
 .main {
   background-color: #6c757d;
   height: 150vh;
@@ -293,7 +289,6 @@ header {
 .item-12 {
   margin-left: 10px;
 }
-
 
 img {
   width: 180px;
