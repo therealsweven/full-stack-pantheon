@@ -1,38 +1,65 @@
 var tableContainer = $("#tables");
 var barContainer = $("#bar");
 var barAddBtn = $("#barAdd");
-console.log(barContainer);
-var barTabs = [];
+var createTabBtn = $("#createTab");
 
-// populate open bar tabs
-const openTabsCreate = async () => {
-  const openTabData = await fetch("/api/tabs/open", {
-    method: "GET",
-    body: {},
+var tabName = $("#tabName");
+var addTabForm = $("#newBarTabForm");
+
+// create new bar tab and linked ticket
+const createTabDB = async function (tab_name) {
+  //create bar tab
+  const response = await fetch("/api/tabs/", {
+    method: "POST",
+    body: JSON.stringify({ tab_name, paid: false, card_autorized: false }),
     headers: { "Content-Type": "application/json" },
-  });
+  })
+    .then(function (response) {
+      if (response.ok) {
+        const data = response.body;
+        console.log(response);
+      } else {
+        alert("Failed to create tab");
+      }
+      return response.json();
+    })
+    // create new ticket
+    .then(async function (data) {
+      console.log(data);
+      const response = await fetch("/api/tickets/", {
+        method: "POST",
+        body: JSON.stringify({ bar_tab_id: data.id }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(async function (data) {
+          if (data.id !== null) {
+            document.location.replace(`/pos/main/${data.id}`);
+          } else {
+            alert("Failed to create ticket");
+          }
+        });
+    });
 };
 
 // Add new bar tab
-const addBar = async (event) => {
-  event.preventDefault();
-  const response = await fetch("/api/barTabs/", {
-    method: "POST",
-    body: JSON.stringify({ username, password }),
-    headers: { "Content-Type": "application/json" },
-  });
+const addBar = async function () {
+  addTabForm.show();
 
-  if (response.ok) {
-    document.location.replace("/pos/main");
-  } else {
-    alert("Failed to log in.");
-  }
+  await createTabBtn.click(async (event) => {
+    event.preventDefault();
+    const tab_name = await tabName.val().trim();
+    console.log(tab_name);
+    await createTabDB(tab_name);
+  });
 };
 
 // Select a bar tab
 const selectTab = async (event) => {
-  console.log("hello");
   console.log(event.target);
+
   //   const response = await fetch("/api/tickets", {
   //     method: "POST",
   //     body: JSON.stringify({ username, password }),
@@ -75,3 +102,18 @@ tableContainer.click(selectTable);
 barContainer.click(selectTab);
 
 barAddBtn.click(addBar);
+
+// const car = {};
+
+// fetch("/api/employee")
+//   .then((res) => {
+//     return res.json();
+//   })
+//   .then((data) => {
+//     // console.log(data);
+//     car.data = data;
+//     car.key = ["gsdfgsdfgsd"];
+//   });
+
+// console.log(car);
+// console.log(car.getPrototypeOf());

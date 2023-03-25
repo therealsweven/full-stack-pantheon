@@ -23,16 +23,7 @@
         </div>
         <div id="contentWrap" class="row">
           <div id="sidebar" class="col-4">
-            <div id="viewOrders" type="button" class="btn action-btn btn-light">
-              View Orders
-            </div>
-            <div
-              id="deleteOrder"
-              type="button"
-              class="btn action-btn btn-danger"
-            >
-              Delete Current Order
-            </div>
+            <!-- EDIT EMPLOYEES button -->
             <div
               id="editEmployees"
               type="button"
@@ -40,15 +31,34 @@
             >
               Edit Employees
             </div>
+            <!-- EDIT MENU button -->
             <div id="editMenu" type="button" class="btn action-btn btn-light">
               Edit Menu
             </div>
+            <!-- VIEW ORDERS button -->
+            <div id="viewOrders" type="button" class="btn action-btn btn-light">
+              View Orders
+            </div>
+            <!-- DELETE ORDER button -->
+            <div
+              id="deleteOrder"
+              type="button"
+              class="btn action-btn btn-danger hide"
+            >
+              Delete Order
+            </div>
           </div>
-          <div
-            id="sidebarDisplay"
-            class="col-8"
-            style="overflow-y: scroll; height: 500px"
-          ></div>
+
+          <!-- DISPLAY -->
+          <div id="sidebarDisplay" class="col">
+            <div id="employeesWrap" class="hide"></div>
+            <div id="menuButtonsWrap" class="hide">
+              <div type="button" class="btn btn-success">Add New Item</div>
+              <div type="button" class="btn btn-primary">Update an Item</div>
+              <div type="button" class="btn btn-danger">Remove an Item</div>
+            </div>
+            <div id="ordersWrap" class="hide"></div>
+          </div>
         </div>
         <nav id="footer_nav" class="row">
           <div class="col">MERCURY POS</div>

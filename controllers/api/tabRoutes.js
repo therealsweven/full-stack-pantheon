@@ -2,17 +2,35 @@ const router = require("express").Router();
 const { Bar_tabs, Ticket } = require("../../models");
 
 /* 
-URL route:    /api/tab/
+URL route:    /api/tab
 */
-
 
 // Get all tab data
 router.get("/", async (req, res) => {
   try {
     const tabData = await Bar_tabs.findAll({
-      include: [{model: Ticket}]
+      include: [{ model: Ticket }],
     });
     res.status(200).json(tabData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Get all open tab data
+router.get("/open", async (req, res) => {
+  try {
+    const tabData = await Bar_tabs.findAll({
+      where: {
+        paid: false,
+      },
+      // include: [{ model: Ticket }],
+    });
+    console.log(tabData);
+    // const tabs = tabData.map((element) => element.get({ plain: true }));
+    // console.log(tabs);
+    res.json(tabData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -70,7 +88,6 @@ req.body fields:
 
 // Delete Bar Tab
 router.delete("/:id", async (req, res) => {
-
   try {
     await Bar_tabs.destroy({
       where: {
