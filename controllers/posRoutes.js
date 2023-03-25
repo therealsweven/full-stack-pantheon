@@ -46,7 +46,7 @@ router.get("/checkout", (req, res) => {
 // admin page
 router.get("/admin", (req, res) => {
   try {
-    res.status(200).render("landingAdmin");
+    res.status(200).render("admin");
   } catch (err) {
     res.status(500).json(err);
   }
