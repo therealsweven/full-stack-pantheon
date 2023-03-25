@@ -6,6 +6,7 @@ admin /pos/admin
 */
 const { Bar_tabs, Ticket } = require("../models");
 const router = require("express").Router();
+const Op = require("sequelize").Op;
 
 // employee login page
 router.get("/login", (req, res) => {
@@ -19,15 +20,17 @@ router.get("/login", (req, res) => {
 // table/tab select page
 router.get("/tables", async (req, res) => {
   try {
-    const tabData = await Bar_tabs.findAll({
+    const tabData = await Ticket.findAll({
       where: {
         paid: false,
+        bar_tab_id: { [Op.ne]: null },
       },
-      // include: [{ model: Ticket }],
+      include: [{ model: Bar_tabs }],
     });
-    const tabs = tabData.map((element) => element.get({ plain: true }));
-    console.log(tabs);
-    res.status(200).render("tableMap", { tabs });
+    const tickets = tabData.map((element) => element.get({ plain: true }));
+    console.log(tickets[0].bar_tab.tab_name);
+    console.log(tickets);
+    res.status(200).render("tableMap", { tickets });
   } catch (err) {
     res.status(500).json(err);
   }

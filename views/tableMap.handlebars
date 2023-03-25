@@ -24,8 +24,8 @@
     <div class="container">
       <div class="row1 d-flex justify-content-evenly">
         <ul id="bar" class="justify-content-center list-unstyled">
-          {{#each tabs as |tab|}}
-            <li id="">{{tab.tab_name}}</li>
+          {{#each tickets as |ticket|}}
+            <button id="{{ticket.id}}">{{ticket.bar_tab.tab_name}}</button>
           {{/each}}
         </ul>
       </div>
