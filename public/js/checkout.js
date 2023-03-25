@@ -12,34 +12,20 @@ fetch("/api/tickets/1")
     createReceipt(data);
   });
 
-const itemName = "a";
-const quantity = "a";
-const price = "a";
-const itemTotal = "a";
-
-const companyName = "a";
-const address = "a";
-const city = "a";
-const state = "a";
-const phone = "a";
-const date = "a";
-const serverName = "a";
-const receiptID = "a";
-const subtotal = "a";
-const tax = "a";
-const tip = "a";
-const total = "a";
-
 function createMenuItem(data) {
   console.log(data);
   return `
   <tr>
   <td class="col-md-9">
-  <em>${itemName}</em>
+  <em>${data.item_name}</em>
   </td>
-  <td class="col-md-1" style="text-align: center">${quantity}</td>
-  <td class="col-md-1 text-center">$${price}</td>
-  <td class="col-md-1 text-center">$${itemTotal}</td>
+  <td class="col-md-1" style="text-align: center">${
+    data.ticket_items.quantity
+  }</td>
+  <td class="col-md-1 text-center">$${data.price}</td>
+  <td class="col-md-1 text-center">$${
+    data.ticket_items.quantity * data.price
+  }</td>
   </tr>
   `;
 }
@@ -52,14 +38,14 @@ function createReceipt(data) {
               <div class="container">
                 <div class="row receipt-header">
                   <div class="col-4 receipt-header-left">
-                    <p class="card-text">${address}</p>
-                    <p class="card-text">${city}, ${state}</p>
-                    <p class="card-text">P: ${phone}</p>
+                    <p class="card-text">${data.address}</p>
+                    <p class="card-text">${data.city}, ${data.state}</p>
+                    <p class="card-text">P: ${data.phone}</p>
                   </div>
                   <div class="col-4 receipt-header-right">
-                    <p class="card-text">${date}</p>
-                    <p class="card-text">Server: ${serverName}</p>
-                    <p class="card-text">Receipt #: ${receiptID}</p>
+                    <p class="card-text">${data.createdAt}</p>
+                    <p class="card-text">Server: ${data.employee_id}</p>
+                    <p class="card-text">Receipt #: ${data.id}</p>
                   </div>
                 </div>
 
