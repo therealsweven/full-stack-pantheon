@@ -6,7 +6,7 @@ URL route:    /api/tab/
 */
 
 
-// Get all table data
+// Get all tab data
 router.get("/", async (req, res) => {
   try {
     const tabData = await Bar_tabs.findAll({

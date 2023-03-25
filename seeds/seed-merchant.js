@@ -8,8 +8,8 @@ const items = [
   {
     business_name: "Aldos's Sports Bar",
     email: "borntobebobby@gmail.com",
-    username: "merchnat1",
-    password: password,
+    username: "merchant1",
+    password: "abc123",
     address: "1234 Who St",
     city: "Faraway",
     state: "Tejas",
@@ -18,9 +18,9 @@ const items = [
   },
   {
     business_name: "Brewery",
-    email: "borntobebobby@gmail.com",
+    email: "borntobebobby1@gmail.com",
     username: "merchnat2",
-    password: password,
+    password: "password",
     address: "4321 Whom Blvd",
     city: "Faraway",
     state: "New Yawk",
