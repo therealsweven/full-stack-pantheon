@@ -1,39 +1,26 @@
 console.log("checkout js loaded");
 const insertReceipts = $("#insertReceipts");
 const menuItems = {};
-let companyName = "";
 
-// function getCompanyName() {
-fetch("/api/merchant")
-  .then(function (response) {
-    return response.json();
+const ticket = {};
+fetch("/api/tickets/1")
+  .then(function (res) {
+    return res.json();
   })
   .then(function (data) {
     console.log(data);
-    let companyName = data[0].business_name;
-    console.log(companyName); // returns correct value
-    // return companyName;
+    createReceipt(data);
   });
-// }
-// getCompanyName();
-
-console.log(companyName); // does not return correct value
-
-// business_name
-// const companyName = fetch("/api/merchant", {
-//   method: "GET",
-//   headers: { "Content-Type": "idk" },
-// });
-
-// console.log(companyName);
 
 const itemName = "a";
 const quantity = "a";
 const price = "a";
 const itemTotal = "a";
 
+const companyName = "a";
 const address = "a";
-const cityState = "a";
+const city = "a";
+const state = "a";
 const phone = "a";
 const date = "a";
 const serverName = "a";
@@ -43,21 +30,25 @@ const tax = "a";
 const tip = "a";
 const total = "a";
 
-const menuItemsFormat = `
-                      <tr>
-                        <td class="col-md-9">
-                          <em>${itemName}</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">${quantity}</td>
-                        <td class="col-md-1 text-center">$${price}</td>
-                        <td class="col-md-1 text-center">$${itemTotal}</td>
-                      </tr>
-`;
+function createMenuItem(data) {
+  console.log(data);
+  return `
+  <tr>
+  <td class="col-md-9">
+  <em>${itemName}</em>
+  </td>
+  <td class="col-md-1" style="text-align: center">${quantity}</td>
+  <td class="col-md-1 text-center">$${price}</td>
+  <td class="col-md-1 text-center">$${itemTotal}</td>
+  </tr>
+  `;
+}
 
-insertReceipts.append(`
+function createReceipt(data) {
+  insertReceipts.append(`
 <div class="card receipt">
             <div class="card-body">
-              <h5 class="card-title receipt-title">${companyName}</h5>
+              <h5 class="card-title receipt-title">${data.merchant_id}</h5>
               <div class="container">
                 <div class="row receipt-header">
                   <div class="col-4 receipt-header-left">
@@ -84,7 +75,9 @@ insertReceipts.append(`
                     </thead>
                     <tbody>
 
-                      ${menuItems}
+                    {{#each data.menu_items}}
+                      ${createMenuItem(this)}
+                    {{/each}}
 
                       <tr>
                         <td></td>
@@ -106,7 +99,7 @@ insertReceipts.append(`
                             <strong>$${subtotal}</strong>
                           </p>
                           <p>
-                            <strong>$${tip}</strong>
+                            <strong>$${data.tip_amount}</strong>
                           </p>
                           <p>
                             <strong>$${tax}</strong>
@@ -153,3 +146,4 @@ insertReceipts.append(`
             </div>
           </div>
 `);
+}
