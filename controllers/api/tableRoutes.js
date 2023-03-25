@@ -18,6 +18,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get all table data by id
+router.get("/:id", async (req, res) => {
+  try {
+    const tablesData = await Tables.findAll({
+      include: [{model: Ticket}],
+      where: {
+        id: req.params.id,
+      } 
+    });
+    res.status(200).json(tablesData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Add new Table
 router.post("/", async (req, res) => {
   /* 
