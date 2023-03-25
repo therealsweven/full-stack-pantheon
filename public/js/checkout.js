@@ -10,12 +10,12 @@ fetch("/api/merchant")
   })
   .then(function (data) {
     console.log(data);
-    companyName = data[0].business_name;
+    let companyName = data[0].business_name;
     console.log(companyName); // returns correct value
-    // return data[0].business_name;
+    // return companyName;
   });
 // }
-// companyName = getCompanyName();
+// getCompanyName();
 
 console.log(companyName); // does not return correct value
 
