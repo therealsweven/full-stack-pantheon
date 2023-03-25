@@ -37,7 +37,7 @@ Bar_tabs.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "bar_tabs",
