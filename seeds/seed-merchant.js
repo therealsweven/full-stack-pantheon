@@ -18,9 +18,9 @@ const items = [
   },
   {
     business_name: "Brewery",
-    email: "borntobebobby@gmail.com",
+    email: "borntobebobby1@gmail.com",
     username: "merchnat2",
-    password: password,
+    password: "password",
     address: "4321 Whom Blvd",
     city: "Faraway",
     state: "New Yawk",

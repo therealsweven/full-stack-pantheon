@@ -27,9 +27,6 @@ router.get("/:id", async (req, res) => {
   try {
     const ticketData = await Ticket.findByPk(req.params.id,{
       include: [{ model: Menu_items }, ],
-      where: {
-        paid: false,
-      },
     });
 
     res.status(200).json(ticketData);
@@ -151,7 +148,6 @@ Request Body should be as follows:
         where: {
           id: ticket_item.id
         }});
-        console.log(increaseQuantity.quantity);
         res.status(200).json({message: "Quantity increased"});
     }
     //return response
@@ -163,7 +159,7 @@ Request Body should be as follows:
 });
 
 // Remove item from a ticket
-router.delete("/item", async (req, res) => {
+router.put("/item", async (req, res) => {
   /*
 Request Body should be as follows:
 
@@ -174,13 +170,31 @@ Request Body should be as follows:
 
 */
   try {
-    await Ticket_items.destroy({
+    //locate record
+    const ticket_itemData = await Ticket_items.findAll({
       where: {
         ticket_id: req.body.ticket_id,
-        item_id: req.body.item_id,
+        menu_item_id: req.body.menu_item_id
       },
     });
-    res.status(200).json("message: Item has been removed.");
+    console.log(ticket_itemData.quantity);
+    if(ticket_itemData.quantity - 1 <= 0){
+      const decreaseQuantity = await Ticket_items.update({ quantity: ticket_itemData.quantity - 1}, {
+        where: {
+          id: ticket_itemData.id,
+        },
+        });
+        console.log(decreaseQuantity.quantity);
+        res.status(200).json({message: "Quantity decreased"});
+    }else{
+      await Ticket_items.destroy({
+        where: {
+          id: ticket_itemData.id
+        },
+      });
+       res.status(200).json("message: Item has been removed.");
+    }
+   
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
