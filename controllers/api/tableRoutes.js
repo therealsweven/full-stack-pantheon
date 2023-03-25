@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Tables, Ticket } = require("../../models");
+const { Tables, Ticket, Merchant, Employee } = require("../../models");
 
 /* 
 URL route:    /api/tables
@@ -9,7 +9,15 @@ URL route:    /api/tables
 router.get("/", async (req, res) => {
   try {
     const tablesData = await Tables.findAll({
-      include: [{model: Ticket}],
+      include: [
+        {
+          model: Ticket
+        }, 
+        {
+          model: Merchant,
+            attributes: ['business_name','email','address','city','state','zip','phone'],
+        }
+      ],
     });
     res.status(200).json(tablesData);
   } catch (err) {
@@ -22,7 +30,15 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const tablesData = await Tables.findAll({
-      include: [{model: Ticket}],
+      include: [
+        {
+          model: Ticket
+        }, 
+        {
+          model: Merchant,
+            attributes: ['business_name','email','address','city','state','zip','phone'],
+        },
+      ],
       where: {
         id: req.params.id,
       } 

@@ -10,7 +10,7 @@ const seedMerchant = async () => {
     {
       business_name: "Aldos's Sports Bar",
       email: "borntobebobby@gmail.com",
-      username: "merchnat1",
+      username: "merchant1",
       password: password,
       address: "1234 Who St",
       city: "Faraway",
@@ -21,7 +21,7 @@ const seedMerchant = async () => {
     {
       business_name: "Brewery",
       email: "robssimpson11@gmail.com",
-      username: "merchnat2",
+      username: "merchant2",
       password: password,
       address: "4321 Whom Blvd",
       city: "Faraway",
