@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require('../config/connection.js');
+const sequelize = require("../config/connection.js");
 
 class Allergens extends Model {}
 
@@ -12,7 +12,7 @@ Allergens.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    type:{
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -22,8 +22,7 @@ Allergens.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'allergens',
+    modelName: "allergens",
   }
 );
-
 module.exports = Allergens;
