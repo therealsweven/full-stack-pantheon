@@ -8,8 +8,9 @@ var addTabForm = $("#newBarTabForm");
 
 // create new bar tab and linked ticket
 const createTabDB = async function (tab_name) {
+  // console.log("hello");
   //create bar tab
-  const response = await fetch("/api/tabs/", {
+  await fetch("/api/tabs/", {
     method: "POST",
     body: JSON.stringify({ tab_name, paid: false, card_autorized: false }),
     headers: { "Content-Type": "application/json" },
@@ -45,15 +46,10 @@ const createTabDB = async function (tab_name) {
 };
 
 // Add new bar tab
-const addBar = async function () {
+const addBar = function (event) {
+  event.preventDefault();
+  event.stopPropagation();
   addTabForm.show();
-
-  await createTabBtn.click(async (event) => {
-    event.preventDefault();
-    const tab_name = await tabName.val().trim();
-    console.log(tab_name);
-    await createTabDB(tab_name);
-  });
 };
 
 // Select a bar tab
@@ -77,6 +73,9 @@ const selectTab = async (event) => {
 const selectTable = async (event) => {
   // look for open ticket
   //table id
+
+  fetch("/api/tickets/open");
+
   const response = await fetch(`/api/tickets/${event.target.id}/open`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
@@ -103,17 +102,10 @@ barContainer.click(selectTab);
 
 barAddBtn.click(addBar);
 
-// const car = {};
-
-// fetch("/api/employee")
-//   .then((res) => {
-//     return res.json();
-//   })
-//   .then((data) => {
-//     // console.log(data);
-//     car.data = data;
-//     car.key = ["gsdfgsdfgsd"];
-//   });
-
-// console.log(car);
-// console.log(car.getPrototypeOf());
+createTabBtn.click((event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  const tab_name = tabName.val().trim();
+  console.log(tab_name);
+  createTabDB(tab_name);
+});
