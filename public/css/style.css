@@ -156,6 +156,17 @@ html {
   justify-content: center;
 }
 
+.display-btn {
+  margin: 10px;
+}
+
+.menu-btn {
+  height: 70px;
+  width: 200px;
+  line-height: 55px;
+  margin-top: 10px;
+}
+
 .employeeList {
   width: 100%;
   margin: 5px 0 5px 0;

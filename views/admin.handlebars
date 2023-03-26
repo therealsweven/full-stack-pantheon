@@ -1,49 +1,72 @@
 <section class="main container-fluid text-center">
-        <div id="header_nav" class="row">
-          <div class="col-2 btn nav-btn btn-secondary">Back</div>
-          <h1 class="col text-center">Settings</h1>
-          <div class="col-2 btn nav-btn btn-secondary">Customize</div>
-        </div>
-        <div id="contentWrap" class="row">
-          <div id="sidebar" class="col-4">
-            <!-- EDIT EMPLOYEES button -->
-            <div
-              id="editEmployees"
-              type="button"
-              class="btn action-btn btn-light"
-            >
-              Edit Employees
-            </div>
-            <!-- EDIT MENU button -->
-            <div id="editMenu" type="button" class="btn action-btn btn-light">
-              Edit Menu
-            </div>
-            <!-- VIEW ORDERS button -->
-            <div id="viewOrders" type="button" class="btn action-btn btn-light">
-              View Orders
-            </div>
-            <!-- DELETE ORDER button -->
-            <div
-              id="deleteOrder"
-              type="button"
-              class="btn action-btn btn-danger hide"
-            >
-              Delete Order
-            </div>
+  <div id="header_nav" class="row">
+    <div class="col-2 btn nav-btn btn-secondary">Back</div>
+    <h1 class="col text-center">Settings</h1>
+    <div class="col-2 btn nav-btn btn-secondary">Customize</div>
+  </div>
+  <div id="contentWrap" class="row">
+    <!-- SIDEBAR BUTTONS -->
+    <div id="sidebar" class="col-4">
+      <!-- EDIT EMPLOYEES button -->
+      <div id="editEmployees" type="button" class="btn action-btn btn-light">
+        Edit Employees
+      </div>
+      <!-- EDIT MENU button -->
+      <div id="editMenu" type="button" class="btn action-btn btn-light">
+        Edit Menu
+      </div>
+      <!-- VIEW ORDERS button -->
+      <div id="viewOrders" type="button" class="btn action-btn btn-light">
+        View Orders
+      </div>
+      <!-- DELETE ORDER button -->
+      <div
+        id="deleteOrder"
+        type="button"
+        class="btn action-btn btn-danger hide"
+      >
+        Delete Order
+      </div>
+    </div>
+    <!-- DISPLAY -->
+    <div id="sidebarDisplay" class="col">
+      <!-- EMPLOYEES wrap -->
+      <div id="employeesWrap" class="hide">
+        <div id="employeeButtonsWrap">
+          <div type="button" class="btn btn-success">
+            Add a New Employee
           </div>
-          <div id="sidebarDisplay" class="col">
-            <div id="employeesWrap" class="hide"></div>
-            <div id="menuButtonsWrap" class="hide">
-              <div type="button" class="btn btn-success">Add New Item</div>
-              <div type="button" class="btn btn-primary">Update an Item</div>
-              <div type="button" class="btn btn-danger">Remove an Item</div>
-            </div>
-            <div id="ordersWrap" class="hide"></div>
+          <div type="button" class="btn btn-primary">
+            Update an Employee
+          </div>
+          <div type="button" class="btn btn-danger">
+            Remove an Employee
           </div>
         </div>
-        <nav id="footer_nav" class="row">
-          <div class="col">MERCURY POS</div>
-        </nav>
-      </section>
-    </main>
+        <div id="employeeTableWrap"></div>
+      </div>
+      <!-- MENU wrap -->
+      <div id="menuWrap" class="hide">
+        <div id="menuButtonsWrap">
+          <div type="button" class="btn btn-success">Add a New Item</div>
+          <div type="button" class="btn btn-primary">Update an Item</div>
+          <div type="button" class="btn btn-danger">Remove an Item</div>
+        </div>
+        <div id="menuTableWrap"></div>
+      </div>
+      <!-- ORDERS wrap -->
+      <div id="ordersWrap" class="hide">
+        <div id="ordersButtonsWrap">
+          <div type="button" class="btn btn-success">Add a New Order</div>
+          <div type="button" class="btn btn-primary">Update an Order</div>
+          <div type="button" class="btn btn-danger">Remove an Order</div>
+        </div>
+        <div id="ordersTableWrap"></div>
+      </div>
+    </div>
+  </div>
+  <nav id="footer_nav" class="row">
+    <div class="col">MERCURY POS</div>
+  </nav>
+</section>
 <script src="/js/admin.js"></script>
