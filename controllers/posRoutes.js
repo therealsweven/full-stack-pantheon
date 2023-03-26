@@ -68,7 +68,6 @@ router.get("/main/:id", async (req, res) => {
     // console.log(ticket);
 
     // pull menu items
-    console.log(req.session.currentMerchant);
     const menuItemsData = await Menu_items.findAll({
       where: {
         merchant_id: req.session.currentMerchant,
@@ -80,7 +79,6 @@ router.get("/main/:id", async (req, res) => {
         },
       ],
     });
-    console.log(menuItemsData[15]);
     // create empty array for menu items
     const menuItems = [];
     // serialize menu item data

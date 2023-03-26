@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require("uuid");
 URL route:    /api/merchant
 */
 
-//get merchat by session
+//get merchant by session
 router.get("/", async (req, res) => {
   try {
     const merchantData = await Merchant.findAll({
@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//get merchnat by id
+//get merchant by id
 router.get("/:id", async (req, res) => {
   try {
     const merchantData = await Merchant.findAll({
@@ -162,6 +162,52 @@ router.post("/forgotPassword", async (req, res) => {
     emails.sendPWResetEmail(merchantData, tempPW);
 
     res.status(200).json("Password Reset Email Sent");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Merchant Settings Login
+router.post("/settings/login", async (req, res) => {
+  /* 
+req.body should be:
+{
+  password: STRING
+}
+*/
+  try {
+    const dbMerchantData = await Merchant.findOne({
+      where: {
+        id: req.session.currentMerchant,
+      },
+    });
+
+    const validPassword = await dbMerchantData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect password. Please try again!" });
+      return;
+    }
+
+    res.status(200).json({ message: "Password Correct" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// update merchant account info
+router.put("/", async (req, res) => {
+  console.log(req.body);
+  try {
+    await Merchant.update(req.body, {
+      where: { id: req.session.currentMerchant },
+      individualHooks: true,
+    });
+
+    res.status(200).json("Account Successfully Updated");
   } catch (err) {
     res.status(500).json(err);
   }
