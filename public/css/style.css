@@ -307,9 +307,16 @@ header {
   margin-left: 10px;
 }
 
-img {
+.images {
   width: 180px;
   height: 110px;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+}
+
+.images:hover {
+  -webkit-transform: scale(1);
+  transform: scale(1.1);
 }
 
 #menu-items {
@@ -353,6 +360,7 @@ img {
 
 .btn-subtract:hover {
   color: red;
+  color: red;
 }
 
 .btn-add:hover {
@@ -383,3 +391,45 @@ img {
 }
 
 /* END OF LANDING PAGE CSS */
+
+/* START OF HOMEPAGE CSS  */
+.homepage-body {
+  background-color: black;
+}
+
+#main-logo1 {
+  /* margin-top: 20px; */
+  width: 100%;
+  height: 40%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.8s ease;
+}
+
+#main-logo1:hover {
+  filter: saturate(2);
+}
+
+#lower-btns {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.merchant-login-btn {
+  width: 200px;
+  height: 120px;
+  font-size: 2rem;
+  background-color: rgb(41, 35, 35);
+  color: black;
+  margin-left: 14rem;
+}
+
+.settings-btn {
+  /* margin-bottom: 6px; */
+  background-color: rgb(39, 37, 37);
+  color: black;
+  float: right;
+  margin-right: 80px;
+  margin-top: 80px;
+}
+
+/* END OF HOMEPAGE CSS */

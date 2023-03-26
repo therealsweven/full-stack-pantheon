@@ -4,12 +4,12 @@ merchant login   /login
 merchant signup  /signup
 
 */
-
+const path = require("path");
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
   try {
-    res.status(200).render("homepage");
+    res.status(200).sendFile(path.join(__dirname, "../public/index.html"));
   } catch (err) {
     res.status(500).json(err);
   }

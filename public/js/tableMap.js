@@ -74,7 +74,7 @@ const selectTable = async (event) => {
   // look for open ticket
   //table id
 
-  fetch("/api/tickets/open");
+  // fetch("/api/tickets/open");
 
   const response = await fetch(`/api/tickets/${event.target.id}/open`, {
     method: "GET",
