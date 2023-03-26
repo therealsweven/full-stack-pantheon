@@ -293,6 +293,13 @@ header {
 img {
   width: 180px;
   height: 110px;
+  -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+img:hover {
+  -webkit-transform: scale(1.0);
+    transform: scale(1.1);
 }
 
 #menu-items {
@@ -367,3 +374,12 @@ color: red;
 
 /* END OF LANDING PAGE CSS */
 
+/* START OF HOMEPAGE CSS  */
+
+.homepage-body {
+  background-image: url(/public/images/Logo.png);
+background-repeat: no-repeat;
+text-align: center;
+}
+
+/* END OF HOMEPAGE CSS */
