@@ -7,11 +7,21 @@ const editMenuButton = document.getElementById("editMenu");
 // Content Display
 const display = document.getElementById("sidebarDisplay");
 // wraps are empty divs who are direct children of display
+// EMPLOYEE wraps
 const employeesWrap = document.getElementById("employeesWrap");
+const employeeButtonsWrap = document.getElementById("employeeButtonsWrap");
+const employeeTableWrap = document.getElementById("employeeTableWrap");
+// MENU wraps
+const menuWrap = document.getElementById("menuWrap");
 const menuButtonsWrap = document.getElementById("menuButtonsWrap");
+const menuTableWrap = document.getElementById("menuTableWrap");
+//ORDERS wraps
 const ordersWrap = document.getElementById("ordersWrap");
+const ordersButtonsWrap = document.getElementById("ordersButtonsWrap");
+const ordersTableWrap = document.getElementById("ordersTableWrap");
 
-// Simple Static Array
+// EMPLOYEES
+// Static Array for testing
 let employeeArray = [
   {
     id: "0001",
@@ -107,13 +117,15 @@ let employeeArray = [
 // API array
 let apiEmployeeArray = [];
 
+// MENU ITEMS
+let menuItemsArray = [];
+
 window.onload = function () {
   fetch("../api/employee/")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((element) => apiEmployeeArray.push(element));
     });
-  console.log(apiEmployeeArray);
 };
 
 // --------------------- Useful code DURING development
@@ -137,17 +149,17 @@ function showEmployees() {
       <td style="width: 25%">${employee.email}</td>
     </tr>
   </table>`;
-    employeesWrap.append(div);
+    employeeTableWrap.append(div);
   });
 }
 
 // [EDIT EMPLOYEES] click listener
 editEmployeesButton.addEventListener("click", () => {
-  deleteOrderButton.classList.add("hide");
-  menuButtonsWrap.classList.add("hide");
+  menuWrap.classList.add("hide");
+  ordersWrap.classList.add("hide");
   employeesWrap.classList.remove("hide");
   function tableHeaders() {
-    employeesWrap.innerHTML = `<table style="width:100%; text-align:start">
+    employeeTableWrap.innerHTML = `<table style="width:100%; text-align:start">
         <tr>
         <th style="width: 25%">Employee ID</th>
         <th style="width: 25%">Name</th>
@@ -162,19 +174,19 @@ editEmployeesButton.addEventListener("click", () => {
 // [EDIT MENU] click listener
 editMenuButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
-  deleteOrderButton.classList.add("hide");
-  menuButtonsWrap.classList.remove("hide");
+  ordersWrap.classList.add("hide");
+  menuWrap.classList.remove("hide");
 });
-// [VIEW ORDERS] click listener
+// [EDIT ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
-  menuButtonsWrap.classList.add("hide");
-  deleteOrderButton.classList.remove("hide");
+  menuWrap.classList.add("hide");
+  ordersWrap.classList.remove("hide");
 });
 
 // [DELETE ORDER] click listener
-deleteOrderButton.addEventListener("click", () => {
-  apiEmployeeArray.forEach((member) => {
-    console.log(member);
-  });
-});
+// deleteOrderButton.addEventListener("click", () => {
+//   apiEmployeeArray.forEach((member) => {
+//     console.log(member);
+//   });
+// });
