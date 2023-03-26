@@ -4,7 +4,7 @@ html {
 
 /* Checkout CSS */
 .pay-button,
-.split-button,
+.tip-button,
 .discount-button {
   margin: 0 10px;
 }
@@ -352,7 +352,7 @@ img {
 }
 
 .btn-subtract:hover {
-color: red;
+  color: red;
 }
 
 .btn-add:hover {
@@ -383,4 +383,3 @@ color: red;
 }
 
 /* END OF LANDING PAGE CSS */
-

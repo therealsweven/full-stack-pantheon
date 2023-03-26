@@ -96,7 +96,7 @@ router.get("/checkout/:id", async (req, res) => {
     console.log(ticket);
 
     //res.status(200).json(ticket);
-    res.status(200).json(ticket).render("checkout", ticket);
+    res.status(200).render("checkout", ticket);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -4,18 +4,18 @@
         {{!-- <!-- template --> --}}
         <div class="card receipt">
             <div class="card-body">
-              <h5 class="card-title receipt-title">Hydrargyrum Inc.</h5>
+              <h5 class="card-title receipt-title">{{merchant.business_name}}</h5>
               <div class="container">
                 <div class="row receipt-header">
-                  <div class="col-4 receipt-header-left">
-                    <p class="card-text">1234 Fifth St.</p>
-                    <p class="card-text">Denver, CO 80014</p>
-                    <p class="card-text">P: (123) 456-7890</p>
+                  <div class="col-5 receipt-header-left">
+                    <p class="card-text">{{merchant.address}}</p>
+                    <p class="card-text">{{merchant.city}}, {{merchant.state}}</p>
+                    <p class="card-text">P: {{merchant.phone}}</p>
                   </div>
-                  <div class="col-4 receipt-header-right">
-                    <p class="card-text">03/28/23</p>
-                    <p class="card-text">Server: AWS</p>
-                    <p class="card-text">Receipt #: 1</p>
+                  <div class="col-5 receipt-header-right">
+                    <p class="card-text">{{updatedAt}}</p>
+                    <p class="card-text">Server: {{employee.name}}</p>
+                    <p class="card-text">Receipt #: {{id}}</p>
                   </div>
                 </div>
 
@@ -29,33 +29,31 @@
                         <th class="text-center">Total</th>
                       </tr>
                     </thead>
+
                     <tbody>
+                      <div id="menuItems"></div>
+
+                      {{#each menu_items}}
+                        <tr>
+                          <td class="col-md-6">
+                            <em>{{this.item_name}}</em>
+                          </td>
+                          <td class="col-md-2 text-center">{{this.ticket_items.quantity}}</td>
+                          <td class="col-md-2 text-center">${{this.price}}</td>
+                          <td class="col-md-2 text-center" id="itemTotal">$</td>
+                        </tr>
+                        {{else}}
+                        <tr>
+                          <td class="col-md-6">
+                            <em>no item selected</em>
+                          </td>
+                          <td class="col-md-2" style="text-align: center">0</td>
+                          <td class="col-md-2 text-center">0</td>
+                          <td class="col-md-2 text-center">0</td>
+                        </tr>
+                      {{/each}}
+                    
                       <tr>
-                        <td class="col-md-9">
-                          <em>Baked Rodopa Sheep Feta</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">2</td>
-                        <td class="col-md-1 text-center">$13</td>
-                        <td class="col-md-1 text-center">$26</td>
-                      </tr>
-                      <tr>
-                        <td class="col-md-9">
-                          <em>Lebanese Cabbage Salad</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">1</td>
-                        <td class="col-md-1 text-center">$8</td>
-                        <td class="col-md-1 text-center">$8</td>
-                      </tr>
-                      <tr>
-                        <td class="col-md-9">
-                          <em>Baked Tart with Thyme and Garlic</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">3</td>
-                        <td class="col-md-1 text-center">$16</td>
-                        <td class="col-md-1 text-center">$48</td>
-                      </tr>
-                      <tr>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td class="text-right">
@@ -71,13 +69,13 @@
                         </td>
                         <td class="text-center">
                           <p>
-                            <strong>$6.93</strong>
+                            <strong>$subtotalAmount</strong>
                           </p>
                           <p>
-                            <strong>$6.94</strong>
+                            <strong>$tipAmount</strong>
                           </p>
                           <p>
-                            <strong>$6.95</strong>
+                            <strong>$taxAmount</strong>
                           </p>
                         </td>
                       </tr>
@@ -88,21 +86,22 @@
                           <h4><strong>Total:</strong></h4>
                         </td>
                         <td class="text-center text-danger">
-                          <h4><strong>$31.53</strong></h4>
+                          <h4><strong>$totalAmount</strong></h4>
                         </td>
                       </tr>
                     </tbody>
+
                   </table>
                 </div>
 
                 <div class="row justify-content-center">
                   <div class="pay-button-container">
-                    {{!-- <button
+                    <button
                       type="button"
-                      class="btn btn-success btn-lg split-button"
+                      class="btn btn-success btn-lg tip-button"
                     >
-                      Split Bill
-                    </button> --}}
+                      Tip
+                    </button>
                     <button
                       type="button"
                       class="btn btn-success btn-lg discount-button"
@@ -123,4 +122,4 @@
   </section>
 </div>
 
-{{!-- <script src="/js/checkout.js"></script> --}}
+<script src="/js/checkout.js"></script>
