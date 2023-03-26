@@ -6,15 +6,22 @@ const editMenuButton = document.getElementById("editMenu");
 
 // Content Display
 const display = document.getElementById("sidebarDisplay");
+
 // wraps are empty divs who are direct children of display
 // EMPLOYEE wraps
 const employeesWrap = document.getElementById("employeesWrap");
 const employeeButtonsWrap = document.getElementById("employeeButtonsWrap");
 const employeeTableWrap = document.getElementById("employeeTableWrap");
+
 // MENU wraps
 const menuWrap = document.getElementById("menuWrap");
 const menuButtonsWrap = document.getElementById("menuButtonsWrap");
 const menuTableWrap = document.getElementById("menuTableWrap");
+// ----add new item button
+const addNewItemBtn = document.getElementById("addNewItemBtn");
+// ----new item form
+const newItemForm = document.getElementById("newItemForm");
+
 //ORDERS wraps
 const ordersWrap = document.getElementById("ordersWrap");
 const ordersButtonsWrap = document.getElementById("ordersButtonsWrap");
@@ -128,11 +135,6 @@ window.onload = function () {
     });
 };
 
-// --------------------- Useful code DURING development
-
-// -- highilghts the selected element with a think red border
-// {Element}.classList.add("select");
-
 // populates DISPLAY with employee list
 function showEmployees() {
   document.getElementById("employeesWrap").style.color = "";
@@ -158,6 +160,8 @@ editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   employeesWrap.classList.remove("hide");
+
+  // Table logic
   function tableHeaders() {
     employeeTableWrap.innerHTML = `<table style="width:100%; text-align:start">
         <tr>
@@ -171,22 +175,21 @@ editEmployeesButton.addEventListener("click", () => {
   tableHeaders();
   showEmployees();
 });
+
 // [EDIT MENU] click listener
 editMenuButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   menuWrap.classList.remove("hide");
 });
+// ---- [ADD NEW ITEM] click listener
+addNewItemBtn.addEventListener("click", () => {
+  newItemForm.classList.remove("hide");
+});
+
 // [EDIT ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
   menuWrap.classList.add("hide");
   ordersWrap.classList.remove("hide");
 });
-
-// [DELETE ORDER] click listener
-// deleteOrderButton.addEventListener("click", () => {
-//   apiEmployeeArray.forEach((member) => {
-//     console.log(member);
-//   });
-// });
