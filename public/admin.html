@@ -22,6 +22,7 @@
           <div class="col-2 btn nav-btn btn-secondary">Customize</div>
         </div>
         <div id="contentWrap" class="row">
+          <!-- SIDEBAR BUTTONS -->
           <div id="sidebar" class="col-4">
             <!-- EDIT EMPLOYEES button -->
             <div
@@ -48,16 +49,41 @@
               Delete Order
             </div>
           </div>
-
           <!-- DISPLAY -->
           <div id="sidebarDisplay" class="col">
-            <div id="employeesWrap" class="hide"></div>
-            <div id="menuButtonsWrap" class="hide">
-              <div type="button" class="btn btn-success">Add New Item</div>
-              <div type="button" class="btn btn-primary">Update an Item</div>
-              <div type="button" class="btn btn-danger">Remove an Item</div>
+            <!-- EMPLOYEES wrap -->
+            <div id="employeesWrap" class="hide">
+              <div id="employeeButtonsWrap">
+                <div type="button" class="btn btn-success">
+                  Add a New Employee
+                </div>
+                <div type="button" class="btn btn-primary">
+                  Update an Employee
+                </div>
+                <div type="button" class="btn btn-danger">
+                  Remove an Employee
+                </div>
+              </div>
+              <div id="employeeTableWrap"></div>
             </div>
-            <div id="ordersWrap" class="hide"></div>
+            <!-- MENU wrap -->
+            <div id="menuWrap" class="hide">
+              <div id="menuButtonsWrap">
+                <div type="button" class="btn btn-success">Add a New Item</div>
+                <div type="button" class="btn btn-primary">Update an Item</div>
+                <div type="button" class="btn btn-danger">Remove an Item</div>
+              </div>
+              <div id="menuTableWrap"></div>
+            </div>
+            <!-- ORDERS wrap -->
+            <div id="ordersWrap" class="hide">
+              <div id="ordersButtonsWrap">
+                <div type="button" class="btn btn-success">Add a New Order</div>
+                <div type="button" class="btn btn-primary">Update an Order</div>
+                <div type="button" class="btn btn-danger">Remove an Order</div>
+              </div>
+              <div id="ordersTableWrap"></div>
+            </div>
           </div>
         </div>
         <nav id="footer_nav" class="row">
