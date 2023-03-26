@@ -4,7 +4,15 @@ tables   /pos/tables
 main  /pos/main
 admin /pos/admin
 */
-const { Bar_tabs, Ticket } = require("../models");
+const {
+  Bar_tabs,
+  Ticket,
+  Menu_items,
+  Employee,
+  Merchant,
+  Ticket_items,
+  Allergens,
+} = require("../models");
 const router = require("express").Router();
 const Op = require("sequelize").Op;
 
@@ -37,18 +45,95 @@ router.get("/tables", async (req, res) => {
 });
 
 // main pos landing page for putting in orders
-router.get("/main", (req, res) => {
+router.get("/main/:id", async (req, res) => {
   try {
-    res.status(200).render("landingPage");
+    // pull ticket info
+    const ticketData = await Ticket.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: Menu_items,
+          attributes: ["item_name", "price"],
+        },
+        {
+          model: Employee,
+          attributes: ["name"],
+        },
+      ],
+    });
+    // console.log(ticketData);
+    const ticket = ticketData.get({ plain: true });
+    // console.log(ticket);
+
+    // pull menu items
+    console.log(req.session.currentMerchant);
+    const menuItemsData = await Menu_items.findAll({
+      where: {
+        merchant_id: req.session.currentMerchant,
+      },
+      include: [
+        {
+          model: Allergens,
+          attributes: ["type"],
+        },
+      ],
+    });
+    console.log(menuItemsData[15]);
+    // create empty array for menu items
+    const menuItems = [];
+    // serialize menu item data
+    for (i = 0; i < menuItemsData.length; i++) {
+      menuItems[i] = menuItemsData[i].get({ plain: true });
+    }
+    console.log(menuItems);
+    //res.status(200).render("landingPage", { ticket, menuItems });
+    res.status(200).json({ ticket, menuItems });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // checkout page
-router.get("/checkout", (req, res) => {
+router.get("/checkout/:id", async (req, res) => {
   try {
-    res.status(200).render("checkout");
+    const ticketData = await Ticket.findOne({
+      where: {
+        id: req.params.id,
+      },
+      // attributes:[
+      //   ""
+      // ],
+      include: [
+        {
+          model: Menu_items,
+          attributes: ["item_name", "price"],
+        },
+        {
+          model: Employee,
+          attributes: ["name"],
+        },
+        {
+          model: Merchant,
+          attributes: [
+            "business_name",
+            "email",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "phone",
+          ],
+        },
+      ],
+    });
+    console.log(ticketData);
+    const ticket = ticketData.get({ plain: true });
+    console.log(ticket);
+
+    //res.status(200).json(ticket);
+    res.status(200).render("checkout", ticket);
   } catch (err) {
     res.status(500).json(err);
   }

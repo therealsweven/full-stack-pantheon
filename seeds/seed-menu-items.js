@@ -52,7 +52,7 @@ const items = [
         merchant_id:1
     },
     {
-        item_name: 'Parmesan Chicken',
+        item_name: 'Chicken Parmesan',
         price: 9.95,
         description: "lorem",
         available: true,

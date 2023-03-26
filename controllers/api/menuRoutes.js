@@ -69,7 +69,6 @@ Menu_items.create(req.body)
     console.log(err);
     res.status(400).json(err);
   });
-
 });
 
 // Update Menu Item
