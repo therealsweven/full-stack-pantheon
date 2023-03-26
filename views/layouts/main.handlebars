@@ -10,7 +10,6 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
@@ -24,7 +23,6 @@
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
           <img
-            {{! src="../../public/images/MercuryLogo.png" }}
             src="/images/MercuryLogo.png"
             alt="Mercury Logo"
             class="navbar-brand logo"
@@ -67,10 +65,13 @@
                   <a class="nav-link" href="#"><p class="settings-item">Take
                       Lunch</p></a>
                 </li>
+                {{!-- check to see if user isAdmin = true --}}
+                {{#if isAdmin}}
                 <li class="nav-item">
                   <a class="nav-link" href="#"><p class="settings-item">Admin
                       Settings</p></a>
                 </li>
+                {{/if}}
                 <li class="nav-item">
                   <a class="nav-link" href="#"><p
                       class="settings-item"
