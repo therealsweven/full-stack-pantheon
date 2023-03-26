@@ -4,7 +4,14 @@ tables   /pos/tables
 main  /pos/main
 admin /pos/admin
 */
-const { Bar_tabs, Ticket } = require("../models");
+const {
+  Bar_tabs,
+  Ticket,
+  Menu_items,
+  Employee,
+  Merchant,
+  Ticket_items,
+} = require("../models");
 const router = require("express").Router();
 const Op = require("sequelize").Op;
 
@@ -37,14 +44,14 @@ router.get("/tables", async (req, res) => {
 });
 
 // main pos landing page for putting in orders
-router.get("/main/:id", (req, res) => {
+router.get("/main/:id", async (req, res) => {
   try {
-    ticketData = Ticket.findOne({
+    const ticketData = await Ticket.findOne({
       where: {
         id: req.params.id,
       },
     });
-    ticket = ticketData.get({ plain: true });
+    const ticket = ticketData.get({ plain: true });
     res.status(200).render("landingPage", ticket);
   } catch (err) {
     res.status(500).json(err);
@@ -52,16 +59,44 @@ router.get("/main/:id", (req, res) => {
 });
 
 // checkout page
-router.get("/checkout/:id", (req, res) => {
+router.get("/checkout/:id", async (req, res) => {
   try {
-    ticketData = Ticket.findOne({
+    const ticketData = await Ticket.findOne({
       where: {
         id: req.params.id,
       },
+      // attributes:[
+      //   ""
+      // ],
+      include: [
+        {
+          model: Menu_items,
+          attributes: ["item_name", "price"],
+        },
+        {
+          model: Employee,
+          attributes: ["name"],
+        },
+        {
+          model: Merchant,
+          attributes: [
+            "business_name",
+            "email",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "phone",
+          ],
+        },
+      ],
     });
-    ticket = ticketData.get({ plain: true });
+    console.log(ticketData);
+    const ticket = ticketData.get({ plain: true });
+    console.log(ticket);
 
-    res.status(200).render("checkout", ticket);
+    //res.status(200).json(ticket);
+    res.status(200).json(ticket).render("checkout", ticket);
   } catch (err) {
     res.status(500).json(err);
   }
