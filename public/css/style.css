@@ -4,7 +4,7 @@ html {
 
 /* Checkout CSS */
 .pay-button,
-.split-button,
+.tip-button,
 .discount-button {
   margin: 0 10px;
 }
@@ -40,6 +40,11 @@ html {
   display: flex;
   justify-content: space-between;
 }
+
+/* .test {
+  display: flex;
+  justify-content: space-between;
+} */
 /* end of Checkout CSS */
 
 /* signUp CSS */
@@ -104,6 +109,18 @@ html {
     rgba(217, 104, 109, 1),
     rgba(249, 171, 140, 1)
   );
+}
+
+.mLogin-bg,
+.uLogin-bg {
+  flex-grow: 1;
+}
+
+#mLogin-page,
+#uLogin-page {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
 }
 /* End of login CSS */
 
@@ -243,7 +260,7 @@ header {
   background-color: #bec5bf;
 }
 
-.container {
+.landingPageContainer {
   margin: 40px;
   /* border: 4px solid; */
 }
@@ -343,6 +360,7 @@ header {
 
 .btn-subtract:hover {
   color: red;
+  color: red;
 }
 
 .btn-add:hover {
@@ -383,21 +401,20 @@ header {
   /* margin-top: 20px; */
   width: 100%;
   height: 40%;
--webkit-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
   transition: all 0.8s ease;
-  
 }
 
 #main-logo1:hover {
-filter: saturate(2);
+  filter: saturate(2);
 }
 
 #lower-btns {
-margin-bottom: 50px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
-.merchant-login-btn{
+.merchant-login-btn {
   width: 200px;
   height: 120px;
   font-size: 2rem;
@@ -409,10 +426,10 @@ margin-bottom: 50px;
 .settings-btn {
   /* margin-bottom: 6px; */
   background-color: rgb(39, 37, 37);
-    color: black;
-    float: right;
-    margin-right: 80px;
-    margin-top: 80px;
+  color: black;
+  float: right;
+  margin-right: 80px;
+  margin-top: 80px;
 }
 
 /* END OF HOMEPAGE CSS */

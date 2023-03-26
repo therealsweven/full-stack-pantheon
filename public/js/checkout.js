@@ -1,131 +1,139 @@
-console.log("checkout js loaded");
-const insertReceipts = $("#insertReceipts");
-const menuItems = {};
+// console.log("checkout js loaded");
+// const insertReceipts = $("#insertReceipts");
+const url = "url_to_correct_ticket";
+// const itemTotal = $("#itemTotal");
 
-const itemName = "a";
-const quantity = "a";
-const price = "a";
-const itemTotal = "a";
+fetch("/api/tickets/1")
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    // itemTotal.append(
+    //   data.menu_items[0].price * data.menu_items[0].ticket_items.quantity
+    // );
+    // createReceipt(data);
+    createMenuItem(data);
+  });
 
-const companyName = "a";
-const address = "a";
-const cityState = "a";
-const phone = "a";
-const date = "a";
-const serverName = "a";
-const receiptID = "a";
-const subtotal = "a";
-const tax = "a";
-const tip = "a";
-const total = "a";
+function createMenuItem(data) {
+  // console.log(data);
+  const menuItems = "";
 
-const menuItemsFormat = `
-                      <tr>
-                        <td class="col-md-9">
-                          <em>${itemName}</em>
-                        </td>
-                        <td class="col-md-1" style="text-align: center">${quantity}</td>
-                        <td class="col-md-1 text-center">$${price}</td>
-                        <td class="col-md-1 text-center">$${itemTotal}</td>
-                      </tr>
-`;
+  data.forEach((element) =>
+    menuItems.concat(
+      `
+  <tr>
+  <td class="col-md-9">
+  <em>${element.item_name}</em>
+  </td>
+  <td class="col-md-1" style="text-align: center">${
+    element.ticket_items.quantity
+  }</td>
+  <td class="col-md-1 text-center">$${element.price}</td>
+  <td class="col-md-1 text-center">$${
+    element.ticket_items.quantity * element.price
+  }</td>
+  </tr>
+  `
+    )
+  );
+}
 
-insertReceipts.append(`
-<div class="card receipt">
-            <div class="card-body">
-              <h5 class="card-title receipt-title">${companyName}</h5>
-              <div class="container">
-                <div class="row receipt-header">
-                  <div class="col-4 receipt-header-left">
-                    <p class="card-text">${address}</p>
-                    <p class="card-text">${cityState}</p>
-                    <p class="card-text">P: ${phone}</p>
-                  </div>
-                  <div class="col-4 receipt-header-right">
-                    <p class="card-text">${date}</p>
-                    <p class="card-text">Server: ${serverName}</p>
-                    <p class="card-text">Receipt #: ${receiptID}</p>
-                  </div>
-                </div>
+// function createReceipt(data) {
+//   const subtotal = 1;
+//   const taxAmount = 1;
 
-                <div class="row">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>Product</th>
-                        <th>QTY</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+//   insertReceipts.append(`
+// <div class="card receipt">
+//   <div class="card-body">
+//     <h5 class="card-title receipt-title">${data.merchant.business_name}</h5>
+//     <div class="container">
+//       <div class="row receipt-header">
+//         <div class="col-6 receipt-header-left">
+//           <p class="card-text">${data.merchant.address}</p>
+//           <p class="card-text">${data.merchant.city},
+//           ${data.merchant.state}</p>
+//           <p class="card-text">P: ${data.merchant.phone}</p>
+//         </div>
+//         <div class="col-6 receipt-header-right">
+//           <p class="card-text">${data.createdAt}</p>
+//           <p class="card-text">Server: ${data.employee.name}</p>
+//           <p class="card-text">Receipt #: ${data.id}</p>
+//         </div>
+//       </div>
 
-                      ${menuItems}
+//         <table class="table table-hover row pt-4">
+//           <thead>
+//             <tr class="d-flex justify-content-between">
+//               <th>Product</th>
+//               <th>QTY</th>
+//               <th text-center">Price</th>
+//               <th text-center">Total</th>
+//             </tr>
+//           </thead>
 
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="text-right">
-                          <p>
-                            <strong>Subtotal:</strong>
-                          </p>
-                          <p>
-                            <strong>Tip:</strong>
-                          </p>
-                          <p>
-                            <strong>Tax:</strong>
-                          </p>
-                        </td>
-                        <td class="text-center">
-                          <p>
-                            <strong>$${subtotal}</strong>
-                          </p>
-                          <p>
-                            <strong>$${tip}</strong>
-                          </p>
-                          <p>
-                            <strong>$${tax}</strong>
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td class="text-right">
-                          <h4><strong>Total:</strong></h4>
-                        </td>
-                        <td class="text-center text-danger">
-                          <h4><strong>$${total}</strong></h4>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+//           <tbody>
+//             ${createMenuItem(data.menu_items)}
 
-                <div class="row justify-content-center">
-                  <div class="pay-button-container">
-                    <button
-                      type="button"
-                      class="btn btn-success btn-lg split-button"
-                    >
-                      Split Bill
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-success btn-lg discount-button"
-                    >
-                      Discount
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-success btn-lg pay-button"
-                    >
-                      Pay Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-`);
+//             <tr class="d-flex justify-content-end">
+//               <td>
+//                 <p>
+//                   <strong>Subtotal:</strong>
+//                 </p>
+//                 <p>
+//                   <strong>Tip:</strong>
+//                 </p>
+//                 <p>
+//                   <strong>Tax:</strong>
+//                 </p>
+//               </td>
+//               <td class="text-center">
+//                 <p>
+//                   <strong>$${"subtotal"}</strong>
+//                 </p>
+//                 <p>
+//                   <strong>$${data.tip_amount}</strong>
+//                 </p>
+//                 <p>
+//                   <strong>$${"taxAmount"}</strong>
+//                 </p>
+//               </td>
+//             </tr>
+
+//             <tr class="d-flex justify-content-end">
+//               <td class="text-right">
+//                 <h4><strong>Total:</strong></h4>
+//               </td>
+//               <td class="text-center text-danger">
+//                 <h4><strong>$${"subtotal + data.tip_amount + taxAmount"}</strong></h4>
+//               </td>
+//             </tr>
+
+//           </tbody>
+//         </table>
+
+//       <div class="row justify-content-center">
+//         <div class="pay-button-container">
+//           <button type="button" class="btn btn-success btn-lg split-button">
+//             Split Bill
+//           </button>
+//           <button
+//             type="button"
+//             class="btn btn-success btn-lg discount-button"
+//           >
+//             Discount
+//           </button>
+//           <button
+//             type="button"
+//             class="btn btn-success btn-lg pay-button"
+//           >
+//             Pay Now
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+// `);
+// }
