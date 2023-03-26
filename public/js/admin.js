@@ -20,6 +20,7 @@ const menuTableWrap = document.getElementById("menuTableWrap");
 // ----add new item button
 const addNewItemBtn = document.getElementById("addNewItemBtn");
 // ----new item form
+const newItemFormWrap = document.getElementById("newItemFormWrap");
 const newItemForm = document.getElementById("newItemForm");
 
 //ORDERS wraps
@@ -121,10 +122,10 @@ let employeeArray = [
     is_manager: false,
   },
 ];
-// API array
+// API arrays
+// ----employees
 let apiEmployeeArray = [];
-
-// MENU ITEMS
+// ----menu Items
 let menuItemsArray = [];
 
 window.onload = function () {
@@ -133,11 +134,16 @@ window.onload = function () {
     .then((data) => {
       data.forEach((element) => apiEmployeeArray.push(element));
     });
+  fetch("../api/menu")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => menuItemsArray.push(element));
+      console.log(menuItemsArray);
+    });
 };
 
 // populates DISPLAY with employee list
 function showEmployees() {
-  document.getElementById("employeesWrap").style.color = "";
   apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
     div.classList.add("btn");
@@ -145,13 +151,31 @@ function showEmployees() {
     div.classList.add("employeeList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
-      <td style="width: 25%">${employee.login_id}</td>
-      <td style="width: 25%">${employee.name}</td>
+      <td style="width: 10%">${employee.login_id}</td>
+      <td style="width: 40%">${employee.name}</td>
       <td style="width: 25%">${employee.role}</td>
       <td style="width: 25%">${employee.email}</td>
     </tr>
   </table>`;
     employeeTableWrap.append(div);
+  });
+}
+
+function showItems() {
+  menuItemsArray.forEach((item) => {
+    let div = document.createElement("div");
+    div.classList.add("btn");
+    div.classList.add("btn-outline-secondary");
+    div.classList.add("itemList");
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 10%">${item.id}</td>
+      <td style="width: 40%">${item.item_name}</td>
+      <td style="width: 25%">${item.type}</td>
+      <td style="width: 25%">${item.available}</td>
+    </tr>
+  </table>`;
+    menuTableWrap.append(div);
   });
 }
 
@@ -165,8 +189,8 @@ editEmployeesButton.addEventListener("click", () => {
   function tableHeaders() {
     employeeTableWrap.innerHTML = `<table style="width:100%; text-align:start">
         <tr>
-        <th style="width: 25%">Employee ID</th>
-        <th style="width: 25%">Name</th>
+        <th style="width: 10%">ID</th>
+        <th style="width: 40%">Name</th>
         <th style="width: 25%">Role</th>
         <th style="width: 25%">e-mail</th>
       </tr>
@@ -180,13 +204,31 @@ editEmployeesButton.addEventListener("click", () => {
 editMenuButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
+  ordersWrap.classList.add("hide");
+  newItemFormWrap.classList.add("hide");
   menuWrap.classList.remove("hide");
+
+  function tableHeaders() {
+    menuTableWrap.innerHTML = `<table style="width:100%; text-align:start">
+        <tr>
+        <th style="width: 10%">ID</th>
+        <th style="width: 40%">Name</th>
+        <th style="width: 25%">Type</th>
+        <th style="width: 25%">Available</th>
+      </tr>
+      </table>`;
+  }
+  tableHeaders();
+  showItems();
 });
 // ---- [ADD NEW ITEM] click listener
 addNewItemBtn.addEventListener("click", () => {
-  newItemForm.classList.remove("hide");
+  newItemFormWrap.classList.remove("hide");
 });
-
+// ---- [ADD NEW ITEM] form SUBMIT listener
+newItemForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
 // [EDIT ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");

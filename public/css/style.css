@@ -174,7 +174,7 @@ html {
   justify-content: center;
 }
 
-.display-btn {
+.display-action-btn {
   margin: 10px;
 }
 
@@ -190,8 +190,13 @@ html {
   margin: 5px 0 5px 0;
   text-align: start;
 }
+.itemList {
+  width: 100%;
+  margin: 5px 0 5px 0;
+  text-align: start;
+}
 
-.newItem {
+.formStyle {
   border: 2px solid gray;
   padding: 10px;
   margin-top: 10px;

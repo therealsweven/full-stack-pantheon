@@ -33,53 +33,35 @@
       <!-- EMPLOYEES wrap -->
       <div id="employeesWrap" class="hide">
         <div id="employeeButtonsWrap">
-          <div type="button" class="btn btn-success">
+          <div type="button" class="btn btn-success display-action-btn">
             Add a New Employee
           </div>
-          <div type="button" class="btn btn-primary">
+          <div type="button" class="btn btn-primary display-action-btn">
             Update an Employee
           </div>
-          <div type="button" class="btn btn-danger">
+          <div type="button" class="btn btn-danger display-action-btn">
             Remove an Employee
           </div>
         </div>
         <div id="employeeTableWrap"></div>
       </div>
       <!-- MENU wrap -->
-      <div id="menuWrap" class="hidee!!!!!!!!!!!!!">
+      <div id="menuWrap" class="hide">
         <div id="menuButtonsWrap">
-          <div id="addNewItemBtn" type="button" class="btn btn-success">Add a
-            New Item</div>
-          <div type="button" class="btn btn-primary">Update an Item</div>
-          <div type="button" class="btn btn-danger">Remove an Item</div>
+          <div
+            id="addNewItemBtn"
+            type="button"
+            class="btn btn-success display-action-btn"
+          >Add a New Item</div>
+          <div type="button" class="btn btn-primary display-action-btn">Update
+            an Item</div>
+          <div type="button" class="btn btn-danger display-action-btn">Remove an
+            Item</div>
         </div>
         <div id="menuTableWrap">
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
           {{! [NEW ITEM] form START }}
-          <div id="newItemForm" class="hide">
-            <form class="newItem text-start">
+          <div id="newItemFormWrap" class="hide">
+            <form id="newItemForm" class="formStyle text-start">
               {{! [NEW ITEM] name }}
               <label for="itemNameInput">Name:</label><br />
               <input type="text" id="itemNameInput" name="itemNameInput" />
@@ -98,7 +80,6 @@
                 name="itemDescriptionInput"
               />
               <br />
-
               {{! [NEW ITEM] Availability }}
               <br />
               <div>Available:
@@ -160,40 +141,21 @@
               {{! [NEW ITEM] Submit Button }}
               <br />
               <br />
-              <input type="submit" value="Create New Item" />
+              <input type="submit" value="Create a New Item" />
             </form>
           </div>
           {{! [NEW ITEM] form END }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
-          {{! **************** }}
         </div>
       </div>
       <!-- ORDERS wrap -->
       <div id="ordersWrap" class="hide">
         <div id="ordersButtonsWrap">
-          <div type="button" class="btn btn-success">Add a New Order</div>
-          <div type="button" class="btn btn-primary">Update an Order</div>
-          <div type="button" class="btn btn-danger">Remove an Order</div>
+          <div type="button" class="btn btn-success display-action-btn">Add a
+            New Order</div>
+          <div type="button" class="btn btn-primary display-action-btn">Update
+            an Order</div>
+          <div type="button" class="btn btn-danger display-action-btn">Remove an
+            Order</div>
         </div>
         <div id="ordersTableWrap"></div>
       </div>
