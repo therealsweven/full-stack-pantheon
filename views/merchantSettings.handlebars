@@ -1,0 +1,146 @@
+<div id="pwCheck">
+  <div class="form-outline form-white mb-4">
+    <p>Please enter the password for your merchant account:</p>
+    <input
+      type="password"
+      id="merchantPassword"
+      class="form-control form-control-lg"
+    />
+    <label class="form-label" for="merchantPassword">Password</label>
+    </br>
+    <button id="pwSubmitBtn">
+      Login
+    </button>
+  </div>
+</div>
+
+<div id="accountInfo" style="display:none;">
+  <div>
+    <h2>Account Info:</h2>
+    <h5>Merchant ID:</h5>
+    <p id="merchantID"> {{id}}</p>
+    <h5>Company Name: </h5>
+    <p id="name"> {{business_name}}</p>
+    <h5>Username: </h5>
+    <p id="username"> {{username}}</p>
+    <h5>Address: </h5>
+    <p id="address"> {{address}}, {{city}}, {{state}} {{zip}}</p>
+    <h5>Phone: </h5>
+    <p id="phone"> {{phone}}</p>
+  </div>
+  <div>
+    <button id="addressUpdate">Update Address</button>
+    <button id="phoneUpdate">Update Phone</button>
+    <button id="emailUpdate">Update Email</button>
+    <button id="passwordUpdate">Update Password</button>
+  </div>
+  <div>
+    <div id="addressForm" class="form-outline mb-4" style="display:none;">
+      <label class="form-label" for="adressInput">Street address</label>
+      <input
+        type="text"
+        id="addressInput"
+        class="form-control form-control-lg"
+      />
+      <label class="form-label" for="cityInput">City</label>
+      <input type="text" id="cityInput" class="form-control form-control-lg" />
+      <label class="form-label" for="cityInput">State</label>
+      <div class="col-md-6 mb-4">
+        {{! <p>State</p> }}
+        <select id="stateInput" class="select">
+          <option value="Alabama">Alabama</option>
+          <option value="Alaska">Alaska</option>
+          <option value="Arizona">Arizona</option>
+          <option value="Arkansas">Arkansas</option>
+          <option value="California">California</option>
+          <option value="Colorado">Colorado</option>
+          <option value="Connecticut">Connecticut</option>
+          <option value="Delaware">Delaware</option>
+          <option value="Florida">Florida</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Hawaii">Hawaii</option>
+          <option value="Idaho">Idaho</option>
+          <option value="Illinois">Illinois</option>
+          <option value="Indiana">Indiana</option>
+          <option value="Iowa">Iowa</option>
+          <option value="Kansas">Kansas</option>
+          <option value="Kentucky">Kentucky</option>
+          <option value="Louisiana">Louisiana</option>
+          <option value="Maine">Maine</option>
+          <option value="Maryland">Maryland</option>
+          <option value="Massachusetts">Massachusetts</option>
+          <option value="Michigan">Michigan</option>
+          <option value="Minnesota">Minnesota</option>
+          <option value="Mississippi">Mississippi</option>
+          <option value="Missouri">Missouri</option>
+          <option value="Montana">Montana</option>
+          <option value="Nebraska">Nebraska</option>
+          <option value="Nevada">Nevada</option>
+          <option value="New Hampshire">New Hampshire</option>
+          <option value="New Jersey">New Jersey</option>
+          <option value="New Mexico">New Mexico</option>
+          <option value="New York">New York</option>
+          <option value="North Carolina">North Carolina</option>
+          <option value="North Dakota">North Dakota</option>
+          <option value="Ohio">Ohio</option>
+          <option value="Oklahoma">Oklahoma</option>
+          <option value="Oregon">Oregon</option>
+          <option value="Pennsylvania">Pennsylvania</option>
+          <option value="Rhode Island">Rhode Island</option>
+          <option value="South Carolina">South Carolina</option>
+          <option value="South Dakota">South Dakota</option>
+          <option value="Tennessee">Tennessee</option>
+          <option value="Texas">Texas</option>
+          <option value="Utah">Utah</option>
+          <option value="Vermont">Vermont</option>
+          <option value="Virginia">Virginia</option>
+          <option value="Washington">Washington</option>
+          <option value="West Virginia">West Virginia</option>
+          <option value="Wisconsin">Wisconsin</option>
+          <option value="Wyoming">Wyoming</option>
+        </select>
+      </div>
+      <label class="form-label" for="zipInput">Zipcode</label>
+      <input type="text" id="zipInput" class="form-control form-control-lg" />
+      <button id="addressFormSubmit">Submit</button>
+    </div>
+    <div id="phoneForm" class="form-outline mb-4" style="display:none;">
+      <label class="form-label" for="phoneInput">Enter new phone number</label>
+      <input type="tel" id="phoneInput" class="form-control form-control-lg" />
+      <button id="phoneFormSubmit">Submit</button>
+    </div>
+    <div id="emailForm" class="form-outline mb-4" style="display:none;">
+      <label class="form-label" for="emailInput">Enter new email</label>
+      <input type="text" id="emailInput" class="form-control form-control-lg" />
+      <label class="form-label" for="emailInput2">Re-enter new email</label>
+      <input
+        type="text"
+        id="emailInput2"
+        class="form-control form-control-lg"
+      />
+      <button id="emailFormSubmit">Submit</button>
+    </div>
+    <div id="passwordForm" class="form-outline mb-4" style="display:none;">
+      <label class="form-label" for="passwordInput">Enter new password</label>
+      <input
+        type="password"
+        id="passwordInput"
+        class="form-control form-control-lg"
+      />
+      <label class="form-label" for="passwordInput2">Re-enter new password</label>
+      <input
+        type="password"
+        id="passwordInput2"
+        class="form-control form-control-lg"
+      />
+      <button id="passwordFormSubmit">Submit</button>
+    </div>
+  </div>
+</div>
+<a href="/pos/login">
+  <button id="returnBtn">
+    Return to Employee Login
+  </button>
+</a>
+
+<script src="/js/merchantSettings.js"></script>
