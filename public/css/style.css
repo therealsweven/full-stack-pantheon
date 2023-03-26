@@ -268,7 +268,7 @@ header {
 .left-row {
   margin-top: 10px;
 
-  background-color: #a76449;
+  background-color: #9b9da5;
 }
 
 .right-row-btns {
@@ -347,8 +347,16 @@ img {
 
 .nqp-table {
   margin-top: 30px;
-  width: 100%;
-  margin-left: 35px;
+  width: 90%;
+  margin-left: 45px;
+}
+
+.btn-subtract:hover {
+color: red;
+}
+
+.btn-add:hover {
+  color: green;
 }
 
 .send-kitchen {
@@ -375,3 +383,4 @@ img {
 }
 
 /* END OF LANDING PAGE CSS */
+

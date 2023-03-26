@@ -37,18 +37,31 @@ router.get("/tables", async (req, res) => {
 });
 
 // main pos landing page for putting in orders
-router.get("/main", (req, res) => {
+router.get("/main/:id", (req, res) => {
   try {
-    res.status(200).render("landingPage");
+    ticketData = Ticket.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    ticket = ticketData.get({ plain: true });
+    res.status(200).render("landingPage", ticket);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // checkout page
-router.get("/checkout", (req, res) => {
+router.get("/checkout/:id", (req, res) => {
   try {
-    res.status(200).render("checkout");
+    ticketData = Ticket.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    ticket = ticketData.get({ plain: true });
+
+    res.status(200).render("checkout", ticket);
   } catch (err) {
     res.status(500).json(err);
   }
