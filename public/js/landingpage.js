@@ -43,7 +43,6 @@ function renderMenuItems(data){
     }
 }
 
-
 function renderTicketItems(data){
     for (let index = 1; index < 3; index++) {
         var tableRow = document.createElement('tr');
