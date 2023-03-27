@@ -64,6 +64,12 @@ router.get("/main/:id", async (req, res) => {
           attributes: ["item_name", "price"],
         },
         {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
+        },
+        {
           model: Employee,
           attributes: ["name"],
         },
@@ -113,6 +119,12 @@ router.get("/checkout/:id", async (req, res) => {
         {
           model: Menu_items,
           attributes: ["item_name", "price"],
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Employee,
