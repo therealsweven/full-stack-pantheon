@@ -230,15 +230,14 @@ header {
   flex-wrap: wrap;
 }
 .tablesChild {
-  flex: 1 0 21%;
-  margin: 0px;
+  flex: 1 0 21%; /* explanation below */
+  margin: 50px;
   height: 100px;
 }
 .tabsChild {
-  margin: 30px;
+  margin: 5px;
   height: 50px;
   padding-bottom: 3px;
-  align-content: center;
 }
 
 .button:hover {
