@@ -167,6 +167,30 @@ router.post("/forgotPassword", async (req, res) => {
   }
 });
 
+// forgot username
+router.post("/forgotUsername", async (req, res) => {
+  console.log(req.body);
+  try {
+    const merchantData = await Merchant.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!merchantData) {
+      res.status(400).json("No account found");
+      return;
+    }
+    const merchant = merchantData.get({ plain: true });
+    //send email
+    emails.sendUsernameEmail(merchantData);
+
+    res.status(200).json("Email Sent. Check your inbox.");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Merchant Settings Login
 router.post("/settings/login", async (req, res) => {
   /* 
