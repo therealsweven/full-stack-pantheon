@@ -8,7 +8,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "pizza",
-        image: "https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80",
+        image: "https://media.giphy.com/media/3osxYoufeOGOA7xiX6/giphy.gif",
         merchant_id:1
     },
     {
@@ -18,7 +18,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "dandheld",
-        image: "https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
         merchant_id:1
     },
     {
@@ -28,7 +28,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "appertizer",
-        image: "https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80",
+        image: "https://media.giphy.com/media/3o6ZtkmiFtpBvii6uQ/giphy.gif",
         merchant_id:1
     },
     {
@@ -38,7 +38,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "handheld",
-        image: "",
+        image: "https://media.giphy.com/media/UrXTGJE68Oumn5v7t5/giphy.gif",
         merchant_id:1
     },
     {
@@ -48,7 +48,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "handheld",
-        image: "",
+        image: "https://media.giphy.com/media/3osxYoufeOGOA7xiX6/giphy.gif",
         merchant_id:1
     },
     {
@@ -58,7 +58,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "main",
-        image: "",
+        image: "https://media.giphy.com/media/3o6ZtkmiFtpBvii6uQ/giphy.gif",
         merchant_id:1
     },
     {
@@ -68,7 +68,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "apptizer",
-        image: "",
+        image: "https://media.giphy.com/media/3osxYoufeOGOA7xiX6/giphy.gif",
         merchant_id:1
     },
     {
@@ -78,7 +78,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "main",
-        image: "",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
         merchant_id:1
     },
     {
@@ -88,7 +88,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "handheld",
-        image: "",
+        image: "https://media.giphy.com/media/UrXTGJE68Oumn5v7t5/giphy.gif",
         merchant_id:1
     },
     {
@@ -98,7 +98,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "handheld",
-        image: "",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
         merchant_id:1
     },
  {
@@ -107,8 +107,8 @@ const items = [
         description: "lorem",
         available: true,
         type: "drinks",
-        subtype: "handheld",
-        image: "",
+        subtype: "alcoholic",
+        image: "https://media.giphy.com/media/3osxYoufeOGOA7xiX6/giphy.gif",
         merchant_id: 1
     }, 
     {
@@ -117,8 +117,8 @@ const items = [
         description: "lorem",
         available: true,
         type: "drinks",
-        subtype: "handheld",
-        image: "",
+        subtype: "alcoholic",
+        image: "https://media.giphy.com/media/3o6ZtkmiFtpBvii6uQ/giphy.gif",
         merchant_id: 1
     },
     {
@@ -127,8 +127,8 @@ const items = [
         description: "lorem",
         available: true,
         type: "drinks",
-        subtype: "handheld",
-        image: "",
+        subtype: "alcoholic",
+        image: "https://media.giphy.com/media/UrXTGJE68Oumn5v7t5/giphy.gif",
         merchant_id: 1
     },
     {
@@ -137,8 +137,8 @@ const items = [
         description: "lorem",
         available: true,
         type: "drinks",
-        subtype: "handheld",
-        image: "",
+        subtype: "alcoholic",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
         merchant_id: 1
     },
     {
@@ -147,8 +147,8 @@ const items = [
         description: "lorem",
         available: true,
         type: "drinks",
-        subtype: "handheld",
-        image: "",
+        subtype: "alcoholic",
+        image: "https://media.giphy.com/media/3o6ZtkmiFtpBvii6uQ/giphy.gif",
         merchant_id: 1
     },
     {
@@ -157,11 +157,30 @@ const items = [
         description: "lorem",
         available: true,
         type: "drinks",
-        subtype: "handheld",
-        image: "",
+        subtype: "alcoholic",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
         merchant_id: 1
     },
-
+    {
+        item_name: 'Gift Card',
+        price: 25.00,
+        description: "lorem",
+        available: true,
+        type: "other",
+        subtype: "gift",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
+        merchant_id: 1
+    },
+    {
+        item_name: 'T-shirt',
+        price: 8.99,
+        description: "lorem",
+        available: true,
+        type: "other",
+        subtype: "wear",
+        image: "https://media.giphy.com/media/ov84XDR9DQ6cv5ZgCR/giphy.gif",
+        merchant_id: 1
+    },
 ];
 
 const seedMenu = () => Menu_items.bulkCreate(items);
