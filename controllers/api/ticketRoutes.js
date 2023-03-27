@@ -232,7 +232,7 @@ Request Body should be as follows:
 });
 
 // Remove item from a ticket
-router.post("/removeitem/:id", async (req, res) => {
+router.get("/removeitem/:id", async (req, res) => {
   /*
 Request Body should be as follows:
 {
@@ -254,7 +254,8 @@ Request Body should be as follows:
     );
 
     console.log(ticket_itemData.quantity);
-    if (ticket_itemData.quantity < 0) {
+    console.log(ticket_itemData.quantity - 1 < 0);
+    if (!(ticket_itemData.quantity -1 <= 0)) {
       const decreaseQuantity = await Ticket_items.update(
         { quantity: ticket_itemData.quantity - 1 },
         {

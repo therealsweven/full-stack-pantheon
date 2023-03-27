@@ -1,10 +1,35 @@
 var ticket_items;
 var menuDisplay;
+var ticket_id;
+var tableMap;
+var tabMap;
+var checkout;
+var kitchen;
 
 $(function(){
     menuDisplay = document.getElementById('menuDisplay');
     ticket_items = document.getElementById('ticket-items');
-    retrieveMenuData();
+    tableMap = document.getElementById('table-map');
+    tabMap = document.getElementById('bar-tab');
+    checkout = document.getElementById('checkout');
+    kitchen = document.getElementById('kitchen');
+
+    var url = document.URL;
+    ticket_id = url.substring(url.lastIndexOf('/')+1, url.length);
+
+    retrieveMenuData('food');
+
+    tableMap.addEventListener('click', () =>{
+      document.location.replace(`/pos/tables`);
+    });
+    
+    tableMap.addEventListener('click', () =>{
+      document.location.replace(`/pos/tables`);
+    });
+    
+    checkout.addEventListener('click', ()=>{
+      document.location.replace(`/pos/checkout/${ticket_id}`);
+    })
 })
 
 function renderMenuRow(data){
@@ -22,14 +47,24 @@ function renderMenuRow(data){
         var img = document.createElement('img');
         img.setAttribute('src',data[index].image);
         img.setAttribute('class','images');
+        //add button
+        var addButton = document.createElement('button');
+        addButton.setAttribute('class', 'btn btn-default border border-danger-subtle btn-add');
+        addButton.setAttribute('onclick','increaseQuantity(' + data[index].id + ',' + ticket_id + ')');
+        addButton.textContent='Add';
         //create name paragraph
         var name = document.createElement('p');
         name.textContent = data[index].item_name;
+        name.setAttribute('class','fw-semibold')
         //create price paragraph
         var price = document.createElement('p');
         price.textContent = '$' + data[index].price;
+        //create allergen paragraph
+        var allergens = document.createElement('p');
+        allergens.textContent = 'Allergens: ' + data[index].allergens.map(allergen => allergen.type.charAt(0));
         //append
-        item.append(img, name, price);
+        price.append(addButton);
+        item.append(img, name, price, allergens);
         row.append(item);
     }
     menuDisplay.append(row);
@@ -43,22 +78,7 @@ function renderMenuItems(data){
     }
 }
 
-function renderTicketItems(data){
-    for (let index = 1; index < 3; index++) {
-        var tableRow = document.createElement('tr');
-        tableRow.innerHTML = `
-        <td>Item 1</td>
-        <td>
-            <button class="btn btn-default btn-subtract" type="button">-</button>
-         x 1
-            <button class="btn btn-default btn-add" type="button">+</button>
-        </td>
-        <td>$4.99</td>`;
-        ticket_items.append(tableRow);
-    }
-}
-
-async function retrieveMenuData(){
+async function retrieveMenuData(type){
     await fetch("http://localhost:3001/api/menu", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -68,6 +88,39 @@ async function retrieveMenuData(){
       })
       .then((data) => {
         console.log(data);
-        renderMenuItems(data);
+        renderMenuItems(data.filter(item => item.type == type));
       })
 }
+
+async function increaseQuantity(menu_item_id, ticket_id){
+    await fetch("http://localhost:3001/api/tickets/item", {
+        method: "POST",
+        body: JSON.stringify({
+            ticket_id: ticket_id,
+            menu_item_id: menu_item_id
+        }),
+        headers: { "Content-Type": "application/json"},
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) =>{
+        console.log(data);
+        document.location.reload();
+      })
+}
+
+async function decreaseQuantity(id){
+    await fetch("http://localhost:3001/api/tickets/removeitem/" + id, {
+        method: "GET",
+        headers: { "Content-Type": "application/json"},
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) =>{
+        console.log(data);
+        document.location.reload();
+      })
+}
+
