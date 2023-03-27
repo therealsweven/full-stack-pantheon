@@ -9,13 +9,22 @@ URL route:    /api/tab
 router.get("/", async (req, res) => {
   try {
     const tabData = await Bar_tabs.findAll({
+      where: { merchant_id: req.session.currentMerchant },
       include: [
         {
           model: Ticket,
-        }, 
+        },
         {
           model: Merchant,
-            attributes: ['business_name','email','address','city','state','zip','phone'],
+          attributes: [
+            "business_name",
+            "email",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "phone",
+          ],
         },
       ],
       where: {
@@ -35,16 +44,24 @@ router.get("/open", async (req, res) => {
     const tabData = await Bar_tabs.findAll({
       include: [
         {
-          model: Ticket
-        }, 
+          model: Ticket,
+        },
         {
           model: Merchant,
-            attributes: ['business_name','email','address','city','state','zip','phone'],
+          attributes: [
+            "business_name",
+            "email",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "phone",
+          ],
         },
         {
           model: Employee,
-            attributes: ['id','name','role','is_manager'],
-        }
+          attributes: ["id", "name", "role", "is_manager"],
+        },
       ],
       where: {
         paid: false,

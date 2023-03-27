@@ -17,6 +17,7 @@ URL route:    /api/tickets
 router.get("/open", async (req, res) => {
   try {
     const ticketsData = await Ticket.findAll({
+      where: { merchant_id: req.session.currentMerchant },
       include: [
         {
           model: Menu_items,
@@ -98,6 +99,7 @@ router.get("/:id", async (req, res) => {
 
 // Look for open ticket at tableid
 router.get("/:tableid/open", async (req, res) => {
+  req.session.tableID = req.params.tableid;
   try {
     const ticketData = await Ticket.findOne({
       where: {
@@ -105,6 +107,7 @@ router.get("/:tableid/open", async (req, res) => {
         paid: false,
         merchant_id: req.session.currentMerchant,
       },
+      include: [{ model: Bar_tabs, Tables }],
     });
     console.log(ticketData);
     if (!ticketData) {
@@ -275,4 +278,11 @@ Request Body should be as follows:
   }
 });
 
+// set tabletab name in session
+router.post("/setTableTab", async (req, res) => {
+  console.log(req.body);
+  req.session.setTableTab = req.body.setTableTab;
+  req.session.tableSelected = true;
+  res.json("message: setTableTab set");
+});
 module.exports = router;

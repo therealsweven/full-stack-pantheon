@@ -44,6 +44,7 @@ router.get("/logout", (req, res) => {
 // table/tab select page
 router.get("/tables", async (req, res) => {
   try {
+    req.session.tableSelected = false;
     const tablesData = await Tables.findAll({
       where: { merchant_id: req.session.currentMerchant },
     });
@@ -114,7 +115,8 @@ router.get("/main/:id", async (req, res) => {
       menuItems[i] = menuItemsData[i].get({ plain: true });
     }
     console.log(menuItems);
-    res.status(200).render("landingPage", { ticket, menuItems });
+    const sesh = req.session;
+    res.status(200).render("landingPage", { ticket, menuItems, sesh });
     // res.status(200).json({ ticket, menuItems });
   } catch (err) {
     res.status(500).json(err);
