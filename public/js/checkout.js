@@ -1,46 +1,126 @@
+// JS for Subtotal
+const itemTotal = $(".itemTotal");
+const subTotal = $("#subTotal");
+const itemTotals = [];
+
+for (var i = 0; i < itemTotal.length; i++) {
+  const anItem = itemTotal[i];
+  itemTotals.push(Number(anItem.firstChild.data));
+}
+// console.log(itemTotals); // array of item totals
+
+const subTotalSum = itemTotals.reduce((total, num) => total + num);
+// console.log(subTotalSum);
+subTotal.append(subTotalSum);
+
+////////////////////////////////////////////////////////////
+// JS for Tip
+const ticketID = $("#ticketID").text();
+const tip = $("#tip");
+const tipAmount = $("#tipAmount");
+// console.log(ticketID);
+
+const tipHandler = async (event) => {
+  event.preventDefault();
+  var tipAmountInput = $("#tipAmountInput").val();
+
+  if (!isNaN(tipAmountInput)) {
+    const response = await fetch(`/api/tickets/${ticketID}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        tip_amount: tipAmountInput,
+      }),
+      headers: { "Content-Type": "application/JSON" },
+    });
+
+    if (response.ok) {
+      tip.append(`<strong>Tip:</strong>`);
+      tipAmount.append(`<strong>$${tipAmountInput}</strong>`);
+    }
+  } else {
+    alert("Make sure the tip amount is a number!");
+  }
+};
+
+$("#tipSubmit").click(tipHandler);
+
+////////////////////////////////////////////////////////////
+// JS for Tax
+const taxAmount = $("#taxAmount");
+
+const calculateTax = subTotalSum * 0.029;
+
+taxAmount.append(calculateTax.toFixed(2));
+
+////////////////////////////////////////////////////////////
+// JS for Discount
+const discount = $("#discount");
+const discountAmount = $("#discountAmount");
+
+const discountHandler = async (event) => {
+  event.preventDefault();
+  var discountAmountInput = $("#discountAmountInput").val();
+
+  if (!isNaN(discountAmountInput)) {
+    const response = await fetch(`/api/tickets/${ticketID}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        discount: discountAmountInput,
+      }),
+      headers: { "Content-Type": "application/JSON" },
+    });
+
+    if (response.ok) {
+      discount.append(`<strong>Discount:</strong>`);
+      discountAmount.append(`<strong>$${discountAmountInput}</strong>`);
+    }
+  } else {
+    alert("Make sure the discount amount is a number!");
+  }
+};
+
+$("#discountSubmit").click(discountHandler);
+////////////////////////////////////////////////////////////
+// Icebox JS for split button
 // console.log("checkout js loaded");
 // const insertReceipts = $("#insertReceipts");
-const url = "url_to_correct_ticket";
-// const itemTotal = $("#itemTotal");
+// const url = "url_to_correct_ticket";
 
-fetch("/api/tickets/1")
-  .then(function (res) {
-    return res.json();
-  })
-  .then(function (data) {
-    console.log(data);
-    // itemTotal.append(
-    //   data.menu_items[0].price * data.menu_items[0].ticket_items.quantity
-    // );
-    // createReceipt(data);
-    createMenuItem(data);
-  });
+// fetch("/api/tickets/1")
+//   .then(function (res) {
+//     return res.json();
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//     createReceipt(data);
+// });
 
-function createMenuItem(data) {
-  // console.log(data);
-  const menuItems = "";
+// function createMenuItem(data) {
+//   console.log(data);
+//   const menuItems = "";
 
-  data.forEach((element) =>
-    menuItems.concat(
-      `
-  <tr>
-  <td class="col-md-9">
-  <em>${element.item_name}</em>
-  </td>
-  <td class="col-md-1" style="text-align: center">${
-    element.ticket_items.quantity
-  }</td>
-  <td class="col-md-1 text-center">$${element.price}</td>
-  <td class="col-md-1 text-center">$${
-    element.ticket_items.quantity * element.price
-  }</td>
-  </tr>
-  `
-    )
-  );
-}
+//   data.forEach((element) =>
+//     menuItems.concat(
+//       `
+//   <tr>
+//   <td class="col-md-9">
+//   <em>${element.item_name}</em>
+//   </td>
+//   <td class="col-md-1" style="text-align: center">${
+//     element.ticket_items.quantity
+//   }</td>
+//   <td class="col-md-1 text-center">$${element.price}</td>
+//   <td class="col-md-1 text-center">$${
+//     element.ticket_items.quantity * element.price
+//   }</td>
+//   </tr>
+//   `
+//     )
+//   );
+// }
 
 // function createReceipt(data) {
+//   //temp
 //   const subtotal = 1;
 //   const taxAmount = 1;
 
