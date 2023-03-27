@@ -2,20 +2,13 @@
   <div class="col-9">
     <header>Tables</header>
     <div id="tables" class="container">
-      <div class="row1 d-flex justify-content-evenly">
-        <button id="1" class="button">Table 1</button>
-        <button id="2" class="button">Table 2</button>
-        <button id="3" class="button">Table 3</button>
-      </div>
-      <div class="row2 d-flex justify-content-evenly">
-        <button id="4" class="button">Table 4</button>
-        <button id="5" class="button">Table 5</button>
-        <button id="6" class="button">Table 6</button>
-      </div>
-      <div class="row3 d-flex justify-content-evenly">
-        <button id="7" class="button">Table 7</button>
-        <button id="8" class="button">Table 8</button>
-        <button id="9" class="button">Table 9</button>
+      <div class="row1 d-flex justify-content-evenly tablesParent">
+        {{#each tables as |table|}}
+          <button
+            id="{{table.id}}"
+            class="button tablesChild"
+          >{{table.table_name}}</button>
+        {{/each}}
       </div>
     </div>
   </div>
@@ -23,9 +16,12 @@
     <header>Bar</header>
     <div class="container">
       <div class="row1 d-flex justify-content-evenly">
-        <ul id="bar" class="justify-content-center list-unstyled">
+        <ul id="bar" class="justify-content-center list-unstyled text-center">
           {{#each tickets as |ticket|}}
-            <button id="{{ticket.id}}">{{ticket.bar_tab.tab_name}}</button>
+            <li><button
+                id="{{ticket.id}}"
+                class="button tabsChild"
+              >{{ticket.bar_tab.tab_name}}</button></li>
           {{/each}}
 
         </ul>

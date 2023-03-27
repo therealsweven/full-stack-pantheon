@@ -12,6 +12,7 @@ const {
   Merchant,
   Ticket_items,
   Allergens,
+  Tables,
 } = require("../models");
 const router = require("express").Router();
 const Op = require("sequelize").Op;
@@ -28,6 +29,11 @@ router.get("/login", (req, res) => {
 // table/tab select page
 router.get("/tables", async (req, res) => {
   try {
+    const tablesData = await Tables.findAll({
+      where: { merchant_id: req.session.currentMerchant },
+    });
+    const tables = tablesData.map((element) => element.get({ plain: true }));
+    console.log(tables);
     const tabData = await Ticket.findAll({
       where: {
         paid: false,
@@ -38,7 +44,7 @@ router.get("/tables", async (req, res) => {
     const tickets = tabData.map((element) => element.get({ plain: true }));
     console.log(tickets[0].bar_tab.tab_name);
     console.log(tickets);
-    res.status(200).render("tableMap", { tickets });
+    res.status(200).render("tableMap", { tickets, tables });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -68,7 +74,6 @@ router.get("/main/:id", async (req, res) => {
     // console.log(ticket);
 
     // pull menu items
-    console.log(req.session.currentMerchant);
     const menuItemsData = await Menu_items.findAll({
       where: {
         merchant_id: req.session.currentMerchant,
@@ -80,7 +85,6 @@ router.get("/main/:id", async (req, res) => {
         },
       ],
     });
-    console.log(menuItemsData[15]);
     // create empty array for menu items
     const menuItems = [];
     // serialize menu item data
