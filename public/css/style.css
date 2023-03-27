@@ -16,6 +16,7 @@ html {
 
 .receipt {
   margin: 20px;
+  margin-top: 120px;
   max-width: 30rem;
   height: fit-content;
 }
@@ -28,7 +29,6 @@ html {
 
 #receipts-page {
   display: flex;
-  margin-top: 80px;
   width: 100vw;
   min-height: 100vh;
 }
@@ -314,8 +314,11 @@ html {
 /* signUp CSS */
 .reg-form {
   flex-grow: 1;
-  background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
-      rgba(249, 171, 140, 1));
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
 
 .reg-page {
@@ -331,8 +334,6 @@ html {
 .signup-submit {
   align-items: baseline;
 }
-
-
 
 /* end of signUp CSS */
 
@@ -532,24 +533,24 @@ html {
 
 .signup-btn {
   width: 100px;
-    height: 50px;
-margin-left: -4rem;
+  height: 50px;
+  margin-left: -4rem;
   font-size: 1rem;
   background-color: rgb(39, 37, 37);
   color: #6c757d;
- 
-  margin-right: 20px;
 
+  margin-right: 20px;
 }
 
-.login-btn:hover, .signup-btn:hover {
-  background-color:#d9686c;
+.login-btn:hover,
+.signup-btn:hover {
+  background-color: #d9686c;
 }
 
 .or {
   margin-top: 10px;
- margin-left: -5rem;
- color: #6c757d;
+  margin-left: -5rem;
+  color: #6c757d;
 }
 
 /* END OF HOMEPAGE CSS */
@@ -559,14 +560,17 @@ margin-left: -4rem;
 /* Start of tables css*/
 
 .table-linear {
-  background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
-    rgba(249, 171, 140, 1));
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
 
 header {
   font-size: 3rem;
   text-align: center;
-  background-color:#000000;
+  background-color: #000000;
   padding: 10px;
   margin-left: 100px;
   margin-right: 100px;
@@ -611,7 +615,7 @@ header {
 }
 
 .button:hover {
-  background:#e87b72;
+  background: #e87b72;
   text-decoration: none;
 }
 
@@ -639,12 +643,14 @@ header {
   padding-right: 30px;
 }
 
-#adminBtn, #barAddBtn {
+#adminBtn,
+#barAddBtn {
   margin-bottom: 100px;
   background-color: #000000;
 }
 
-#adminBtn:hover, #barAddBtn:hover {
+#adminBtn:hover,
+#barAddBtn:hover {
   background-color: #2f2c2c;
 }
 /* --------------------------------------------------------------- */
@@ -653,8 +659,11 @@ header {
 
 .landing-page {
   margin-top: 80px;
-  background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
-        rgba(249, 171, 140, 1));
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
 
 .landingPageContainer {
@@ -678,13 +687,13 @@ header {
   width: 250px;
   height: 160px;
   margin-left: 16px;
-  background-color:#000000;
+  background-color: #000000;
   font-size: 2rem;
 }
 .drinks:hover,
 .food:hover,
 .merch:hover {
-  background-color: #d9686c
+  background-color: #d9686c;
 }
 
 .item-1,
@@ -714,13 +723,11 @@ header {
   overflow: scroll;
 }
 
-
-
 .images {
   width: 185px;
   height: 140px;
   -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
 
 .images:hover {
@@ -744,11 +751,9 @@ header {
   width: 80%;
   height: 80px;
   margin-left: 40px;
-  background-color:#e87b72;
-  border-color:#e87b72;
+  background-color: #e87b72;
+  border-color: #e87b72;
 }
-
-
 
 .server-name {
   margin-top: 30px;
@@ -764,14 +769,13 @@ header {
   color: white;
 }
 
-
-.btn-subtract, .btn-add {
+.btn-subtract,
+.btn-add {
   color: white;
 }
 
 .btn-subtract:hover {
   color: red;
- 
 }
 
 .btn-add:hover {
@@ -783,11 +787,12 @@ header {
   width: 80%;
   height: 80px;
   margin-left: 40px;
-background-color: #e87b72;
+  background-color: #e87b72;
   border-color: #e87b72;
 }
 
-.send-kitchen:hover, .table-map:hover {
+.send-kitchen:hover,
+.table-map:hover {
   background-color: #e39c7f;
 }
 
@@ -815,13 +820,19 @@ background-color: #e87b72;
 /* START OF SETTING PAGE CSS  */
 
 .body {
-  background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
-        rgba(249, 171, 140, 1));
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
 
 #accountInfo {
-    background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
-          rgba(249, 171, 140, 1));
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
 
 .enter-text {
@@ -833,7 +844,6 @@ background-color: #e87b72;
   margin-left: 20px;
   margin-top: 30rem;
 }
-
 
 .login-settings-btn {
   width: 150px;
@@ -852,13 +862,13 @@ background-color: #e87b72;
 
 .mercury-logo-header {
   -webkit-transition: all 0.7s ease;
-    transition: all 0.7s ease;
-    width: 15%;
+  transition: all 0.7s ease;
+  width: 15%;
 }
 
 .mercury-logo-header:hover {
   -webkit-transform: scale(1.3);
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
 .current-server-table {
