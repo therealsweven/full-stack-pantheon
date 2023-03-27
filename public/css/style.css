@@ -124,6 +124,7 @@ html {
 }
 /* End of login CSS */
 
+/* --------------------------------------------------------------- */
 /* START Admin Page CSS*/
 .hide {
   display: none !important;
@@ -173,12 +174,37 @@ html {
   justify-content: center;
 }
 
+.display-action-btn {
+  margin: 10px;
+}
+
+.menu-btn {
+  height: 70px;
+  width: 200px;
+  line-height: 55px;
+  margin-top: 10px;
+}
+
 .employeeList {
   width: 100%;
   margin: 5px 0 5px 0;
   text-align: start;
 }
+.itemList {
+  width: 100%;
+  margin: 5px 0 5px 0;
+  text-align: start;
+}
+
+.formStyle {
+  border: 2px solid gray;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 /* END Admin Page CSS */
+
+/* --------------------------------------------------------------- */
 
 /* Start of tables css*/
 header {
@@ -212,21 +238,23 @@ header {
   text-decoration: none;
 }
 
+.tablesParent {
+  flex-wrap: wrap;
+}
+.tablesChild {
+  flex: 1 0 21%; /* explanation below */
+  margin: 50px;
+  height: 100px;
+}
+.tabsChild {
+  margin: 5px;
+  height: 50px;
+  padding-bottom: 3px;
+}
+
 .button:hover {
   background: #ed0c6a;
   text-decoration: none;
-}
-
-.row1 {
-  margin-top: 40px;
-}
-
-.row2 {
-  margin-top: 80px;
-}
-
-.row3 {
-  margin-top: 80px;
 }
 
 #adminBtn {
@@ -257,18 +285,16 @@ header {
 
 .landing-page {
   margin: 0px;
-  background-color: #bec5bf;
+  background-color: #2f2c2c;
 }
 
 .landingPageContainer {
   margin: 40px;
-  /* border: 4px solid; */
 }
 
 .left-row {
   margin-top: 10px;
-
-  background-color: #9b9da5;
+  background-color: #e87b72;
 }
 
 .right-row-btns {
@@ -280,8 +306,15 @@ header {
 .food,
 .merch {
   width: 250px;
-  height: 130px;
+  height: 160px;
   margin-left: 16px;
+  background-color: #e87b72;
+  font-size: 2rem;
+}
+.drinks:hover,
+.food:hover,
+.merch:hover {
+  background-color: #000000;
 }
 
 .item-1,
@@ -308,10 +341,11 @@ header {
 }
 
 .images {
-  width: 180px;
-  height: 110px;
+  width: 185px;
+  height: 140px;
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
+  border-radius: 10px;
 }
 
 .images:hover {
@@ -320,10 +354,11 @@ header {
 }
 
 #menu-items {
-  border: outset;
-  background-color: #149d78;
+  border: outset #e87b72;
+  background-color: #e39c7f;
   margin-top: 10px;
   text-align: center;
+  border-radius: 10px;
 }
 
 .menu-row {
@@ -335,6 +370,8 @@ header {
   width: 80%;
   height: 50px;
   margin-left: 40px;
+  background-color: #000000;
+  border-color: #e39c7f;
 }
 
 .tab-name {
@@ -343,6 +380,7 @@ header {
   width: 80%;
   height: 50px;
   align-items: center;
+  background-color: #000000;
 }
 
 .server-name {
@@ -372,6 +410,7 @@ header {
   width: 80%;
   height: 50px;
   margin-left: 40px;
+  background-color: #000000;
 }
 
 .sales-tax {
@@ -392,13 +431,15 @@ header {
 
 /* END OF LANDING PAGE CSS */
 
+/* --------------------------------------------------------------- */
+
 /* START OF HOMEPAGE CSS  */
 .homepage-body {
   background-color: black;
 }
 
 #main-logo1 {
-  /* margin-top: 20px; */
+  margin-top: 45px;
   width: 100%;
   height: 40%;
   -webkit-transition: all 0.5s ease;
@@ -410,6 +451,7 @@ header {
 }
 
 #lower-btns {
+  margin-top: 25px;
   margin-bottom: 50px;
   text-align: center;
 }
@@ -433,3 +475,5 @@ header {
 }
 
 /* END OF HOMEPAGE CSS */
+
+/* --------------------------------------------------------------- */
