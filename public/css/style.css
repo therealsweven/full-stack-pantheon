@@ -308,6 +308,7 @@ html {
   margin: 10px 0;
 }
 /* end pay button CSS */
+/* --------------------------------------------------------- */
 
 /* end of Checkout CSS */
 
@@ -335,6 +336,8 @@ html {
 
 
 /* end of signUp CSS */
+
+/* --------------------------------------------------------- */
 
 /* Main + Header CSS */
 .current-server-table {
@@ -403,7 +406,9 @@ html {
 }
 
 .main {
-  background-color: #6c757d;
+  background: linear-gradient(to right,
+        rgba(217, 104, 109, 1),
+        rgba(249, 171, 140, 1));
   height: 150vh;
 }
 
@@ -493,6 +498,21 @@ html {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+
+.edit-employees, .edit-menu, .view-orders {
+  background-color: black;
+  color: white;
+  border-color: black;
+  margin-left: 100px;
+}
+
+.edit-employees:hover,
+.edit-menu:hover,
+.view-orders:hover {
+  background-color: #d9686c;
+}
+
 /* END Admin Page CSS */
 
 /* --------------------------------------------------------------- */
@@ -676,7 +696,7 @@ header {
 .food,
 .merch {
   width: 250px;
-  height: 160px;
+  height: 130px;
   margin-left: 16px;
   background-color:#000000;
   font-size: 2rem;
@@ -710,15 +730,11 @@ header {
   margin-left: 10px;
 }
 
-.scroll {
-  overflow: scroll;
-}
-
 
 
 .images {
   width: 185px;
-  height: 140px;
+  height: 120px;
   -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
 }
@@ -780,7 +796,7 @@ header {
 }
 
 .send-kitchen {
-  margin-top: 30px;
+  margin-top: 9rem;
   width: 80%;
   height: 80px;
   margin-left: 40px;
@@ -802,12 +818,13 @@ background-color: #e87b72;
 }
 
 .checkout {
-  margin-top: 25px;
+  margin-top: 100px;
   width: 80%;
-  height: 80px;
+  height: 100px;
   margin-left: 40px;
   margin-bottom: 10px;
   font-size: 2rem;
+
 }
 
 /* END OF LANDING PAGE CSS */
