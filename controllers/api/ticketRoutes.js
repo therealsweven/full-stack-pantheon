@@ -86,14 +86,20 @@ router.get("/:id", async (req, res) => {
 router.get("/:tableid/open", async (req, res) => {
   try {
     const ticketData = await Ticket.findOne({
-      where: { table_id: req.params.tableid, paid: false },
+      where: {
+        table_id: req.params.tableid,
+        paid: false,
+        merchant_id: req.session.currentMerchant,
+      },
     });
     console.log(ticketData);
-    if ((ticketData = null)) {
+    if (!ticketData) {
       res.status(400).json("No open tickets");
+      return;
     }
-    req.session.ticket_id = ticketData.id;
-    res.status(200).json(ticketData);
+    const ticket = ticketData.get({ plain: true });
+    //req.session.ticket_id = ticketData.id;
+    res.status(200).json(ticket);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -113,8 +119,8 @@ Request Body should be as follows:
   try {
     req.body.employee_id = req.session.currentEmployeeID;
     req.body.merchant_id = req.session.currentMerchant;
-    req.body.table_id = req.session.currentTableID;
-    req.body.tab_id = req.session.currentTabID;
+    //req.body.table_id = req.session.currentTableID;
+    //req.body.tab_id = req.session.currentTabID;
 
     const ticketData = await Ticket.create(req.body);
     res.status(200).json(ticketData);

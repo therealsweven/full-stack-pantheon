@@ -78,19 +78,39 @@ const selectTable = async (event) => {
 
   const response = await fetch(`/api/tickets/${event.target.id}/open`, {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
   });
   console.log(response);
   if (response.ok) {
-    document.location.replace(`/pos/main/${event.target.id}`);
+    console.log(event.target.id);
+    // fetch that ticket id and navigate to main page for that ticket
+    fetch(`/api/tickets/${event.target.id}/open`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((ticket) => {
+        //console.log(ticket);
+        document.location.replace(`/pos/main/${ticket.id}`);
+      });
   } else {
-    await fetch("/api/tickets/", {
+    console.log(event.target.id);
+    const tableID = Number(event.target.id);
+    console.log(tableID);
+    const response2 = await fetch("/api/tickets/", {
       method: "POST",
-      body: JSON.stringify({}),
+      body: JSON.stringify({ table_id: tableID }),
       headers: { "Content-Type": "application/json" },
     });
-    if (response.ok) {
-      document.location.replace(`/pos/main/${event.target.id}`);
+
+    if (response2.ok) {
+      //get ticket id for new open ticket
+      fetch(`/api/tickets/${event.target.id}/open`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((ticket) => {
+          console.log(ticket);
+          document.location.replace(`/pos/main/${ticket.id}`);
+        });
     } else {
     }
   }
