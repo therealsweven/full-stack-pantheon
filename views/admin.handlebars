@@ -20,29 +20,125 @@
       <div id="viewOrders" type="button" class="btn action-btn btn-light">
         View Orders
       </div>
-      <!-- DELETE ORDER button -->
-      <div
-        id="deleteOrder"
-        type="button"
-        class="btn action-btn btn-danger hide"
-      >
-        Delete Order
-      </div>
     </div>
     <!-- DISPLAY -->
-    <div id="sidebarDisplay" class="col">
+    <div id="sidebarDisplay" class="col-8">
+
       <!-- EMPLOYEES wrap -->
       <div id="employeesWrap" class="hide">
         <div id="employeeButtonsWrap">
-          <div type="button" class="btn btn-success display-action-btn">
+          <div
+            id="addNewEmployeeBtn"
+            type="button"
+            class="btn btn-success display-action-btn"
+          >
             Add a New Employee
           </div>
           <div type="button" class="btn btn-primary display-action-btn">
             Update an Employee
           </div>
-          <div type="button" class="btn btn-danger display-action-btn">
+          <div
+            id="removeEmployeeBtn"
+            type="button"
+            class="btn btn-danger display-action-btn"
+          >
             Remove an Employee
           </div>
+        </div>
+        {{! [NEW EMPLOYEE] form}}
+        <div id="newEmployeeFormWrap" class="hide">
+          <form id="newEmployeeForm" class="formStyle text-start">
+            <div id="hideEmployeeFormsButton" class="btn btn-warning">Hide Form</div>
+            {{! [NEW EMPLOYEE] name }}
+            <label for="employeeNameInput">Name:</label><br />
+            <input
+              type="text"
+              id="employeeNameInput"
+              name="employeeNameInput"
+            />
+            <br />
+            {{! [NEW EMPLOYEE] email }}
+            <label for="employeeEmailInput">e-mail:</label><br />
+            <input
+              type="email"
+              id="employeeEmailInput"
+              name="employeeEmailInput"
+            />
+            <br />
+            {{! [NEW EMPLOYEE] ID }}
+            <br />
+            <label for="employeeIdInput">Employee ID:</label><br />
+            <input type="number" id="employeeIdInput" name="employeeIdInput" />
+            <br />
+            {{! [NEW EMPLOYEE] Manager ? }}
+            <br />
+            <div>Manager:
+              {{! YES }}
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="employeeYesAnswer"
+                />
+                <label class="form-check-label" for="employeeYesAnswer">
+                  Yes
+                </label>
+              </div>
+              {{! NO }}
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="employeeNoAnswer"
+                />
+                <label class="form-check-label" for="employeeNoAnswer">
+                  No
+                </label>
+              </div>
+            </div>
+            {{! [NEW EMPLOYEE] Role }}
+            <br />
+            <select class="form-select" aria-label="type">
+              <option selected>Role</option>
+              <option value="1">Team Lead</option>
+              <option value="2">Host</option>
+              <option value="3">Waiter</option>
+              <option value="4">Stove Master</option>
+              <option value="5">Salad Juggler</option>
+              <option value="6">Frying Oil Dipper</option>
+              <option value="7">Janitor</option>
+            </select>
+
+            {{! [NEW EMPLOYEE] Submit Button }}
+            <br />
+            <br />
+            <input
+              type="submit"
+              class="btn btn-success"
+              value="Add a New Employee"
+            />
+          </form>
+        </div>
+        {{! [REMOVE EMPLOYEE] form }}
+        <div id="removeEmployeeFormWrap" class="hide">
+          <form id="removeEmployeeForm" class="formStyle text-start">
+            {{! ----[REMOVE] input }}
+            <label for="removeEmployeeIdInput">Enter Employee ID to remove them
+              from the Database</label>
+            <br />
+            <br />
+            <input
+              type="number"
+              id="removeEmployeeIdInput"
+              name="removeEmployeeIdInput"
+            />
+            <input type="submit" class="btn btn-danger" value="Remove" />
+            <br />
+            <div id="hideRemoveEmployeeFormButton" class="btn btn-warning">Hide
+              Form</div>
+          </form>
         </div>
         {{! form headers }}
         <table style="width:100%; text-align:start">
@@ -55,6 +151,7 @@
         </table>
         <div id="employeeTableWrap"></div>
       </div>
+
       <!-- MENU wrap -->
       <div id="menuWrap" class="hide">
         <div id="menuButtonsWrap">
@@ -68,9 +165,11 @@
           <div type="button" class="btn btn-danger display-action-btn">Remove an
             Item</div>
         </div>
+
         {{! [NEW ITEM] form}}
         <div id="newItemFormWrap" class="hide">
           <form id="newItemForm" class="formStyle text-start">
+            <div id="hideMenuFormsButton" class="btn btn-warning">Hide Form</div>
             {{! [NEW ITEM] name }}
             <label for="itemNameInput">Name:</label><br />
             <input type="text" id="itemNameInput" name="itemNameInput" />
@@ -150,7 +249,11 @@
             {{! [NEW ITEM] Submit Button }}
             <br />
             <br />
-            <input type="submit" value="Create a New Item" />
+            <input
+              type="submit"
+              class="btn btn-success"
+              value="Create a New Item"
+            />
           </form>
         </div>
         {{! table headers }}
@@ -165,7 +268,6 @@
         <div id="menuTableWrap">
         </div>
       </div>
-
       <!-- ORDERS wrap -->
       <div id="ordersWrap" class="hide">
         <div id="ordersButtonsWrap">

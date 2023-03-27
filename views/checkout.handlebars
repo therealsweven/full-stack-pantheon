@@ -173,6 +173,7 @@
                                                       id="customerCash" autocomplete="off" onkeyup="updateText(this.value)">
                                                   </div>
                                                   <h6 class="mt-4 pt-3 payBtn-h4">Change Due: <span id="changeDue"></span></h6>
+                                                  <h6 class="pt-3 payBtn-h4 errorMessage" id="cashMessage"></h6>
                                                 </div>
                                               </div>
                                             </div>
@@ -182,18 +183,19 @@
                                                   <h4 class="mb-4 pb-3 payBtn-h4">Total: <span class="receiptTotal"></span></h4>
                                                   <div class="payBtn-form-group form-group">
                                                     <input type="text" class="payBtn-form-style form-style"
-                                                      placeholder="Card Number" autocomplete="off">
+                                                      placeholder="Card Number" id="cardNumber" autocomplete="off">
                                                   </div>
                                                   <div class="payBtn-form-group form-group d-flex justify-content-between">
-                                                    <input type="text" class="payBtn-form-style form-style exp-cvv"
+                                                    <input type="text" class="payBtn-form-style form-style exp-cvv" id="expDate"
                                                       placeholder="Exp 03/23" autocomplete="off">
-                                                    <input type="text" class="payBtn-form-style form-style exp-cvv"
+                                                    <input type="text" class="payBtn-form-style form-style exp-cvv" id="cvv"
                                                       placeholder="CVV" autocomplete="off">
                                                   </div>
                                                   <div class="payBtn-form-group form-group">
                                                     <input type="text" class="payBtn-form-style form-style"
-                                                      placeholder="Cardholder Name" autocomplete="off">
+                                                      placeholder="Cardholder Name" autocomplete="off" id="cardholderName">
                                                   </div>
+                                                  <h6 class="pt-3 payBtn-h4 errorMessage" id="cardMessage"></h6>
                                                 </div>
                                               </div>
                                             </div>
@@ -207,7 +209,7 @@
 
                             </div>
                             <div class="modal-footer">
-                              <button id="paySubmit" type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-lg">
+                              <button id="paySubmit" type="submit" class="btn btn-primary btn-lg">
                                 Submit
                               </button>
                             </div>
