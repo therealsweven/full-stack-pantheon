@@ -80,6 +80,12 @@ router.get("/main/:id", async (req, res) => {
           attributes: ["item_name", "price"],
         },
         {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
+        },
+        {
           model: Employee,
           attributes: ["name"],
         },
@@ -109,7 +115,7 @@ router.get("/main/:id", async (req, res) => {
     }
     console.log(menuItems);
     res.status(200).render("landingPage", { ticket, menuItems });
-    //res.status(200).json({ ticket, menuItems });
+    // res.status(200).json({ ticket, menuItems });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -129,6 +135,12 @@ router.get("/checkout/:id", async (req, res) => {
         {
           model: Menu_items,
           attributes: ["item_name", "price"],
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Employee,

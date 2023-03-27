@@ -43,6 +43,15 @@
             Remove an Employee
           </div>
         </div>
+        {{! form headers }}
+        <table style="width:100%; text-align:start">
+          <tr>
+            <th style="width: 10%">ID</th>
+            <th style="width: 40%">Name</th>
+            <th style="width: 25%">Role</th>
+            <th style="width: 25%">e-mail</th>
+          </tr>
+        </table>
         <div id="employeeTableWrap"></div>
       </div>
       <!-- MENU wrap -->
@@ -59,7 +68,7 @@
             Item</div>
         </div>
         <div id="menuTableWrap">
-          {{! [NEW ITEM] form START }}
+          {{! [NEW ITEM] form}}
           <div id="newItemFormWrap" class="hide">
             <form id="newItemForm" class="formStyle text-start">
               {{! [NEW ITEM] name }}
@@ -144,9 +153,18 @@
               <input type="submit" value="Create a New Item" />
             </form>
           </div>
-          {{! [NEW ITEM] form END }}
+          {{! form headers }}
+          <table style="width:100%; text-align:start">
+            <tr>
+              <th style="width: 10%">ID</th>
+              <th style="width: 40%">Name</th>
+              <th style="width: 25%">Type</th>
+              <th style="width: 25%">Available</th>
+            </tr>
+          </table>
         </div>
       </div>
+
       <!-- ORDERS wrap -->
       <div id="ordersWrap" class="hide">
         <div id="ordersButtonsWrap">

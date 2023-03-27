@@ -5,6 +5,8 @@ const {
   Menu_items,
   Merchant,
   Employee,
+  Tables,
+  Bar_tabs,
 } = require("../../models");
 
 /* 
@@ -18,6 +20,12 @@ router.get("/open", async (req, res) => {
       include: [
         {
           model: Menu_items,
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Merchant,
@@ -55,6 +63,12 @@ router.get("/:id", async (req, res) => {
       include: [
         {
           model: Menu_items,
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Merchant,

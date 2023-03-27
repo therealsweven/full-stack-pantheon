@@ -18,13 +18,13 @@ Ticket.init(
       defaultValue: false,
     },
     tip_amount: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(5,2),
       validate: {
         isDecimal: true,
       },
     },
     discount: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(5,2),
       validate: {
         isDecimal: true,
       },
