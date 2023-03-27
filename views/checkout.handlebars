@@ -15,7 +15,7 @@
                   <div class="col-5 receipt-header-right">
                     <p class="card-text">{{updatedAt}}</p>
                     <p class="card-text">Server: {{employee.name}}</p>
-                    <p class="card-text">Receipt #: {{id}}</p>
+                    <p class="card-text">Receipt #: <span id=ticketID>{{id}}</span></p>
                   </div>
                 </div>
 
@@ -40,7 +40,7 @@
                           </td>
                           <td class="col-md-2 text-center">{{this.ticket_items.quantity}}</td>
                           <td class="col-md-2 text-center">${{this.price}}</td>
-                          <td class="col-md-2 text-center" id="itemTotal">$</td>
+                          <td class="col-md-2 text-center">$<span class="itemTotal">{{multiply this.ticket_items.quantity this.price}}</span></td>
                         </tr>
                         {{else}}
                         <tr>
@@ -60,22 +60,20 @@
                           <p>
                             <strong>Subtotal:</strong>
                           </p>
-                          <p>
-                            <strong>Tip:</strong>
-                          </p>
+                          <p id="tip"></p>
+                          <p id="discount"></p>
                           <p>
                             <strong>Tax:</strong>
                           </p>
                         </td>
                         <td class="text-center">
                           <p>
-                            <strong>$subtotalAmount</strong>
+                            <strong id="subTotal">$</strong>
                           </p>
+                          <p id="tipAmount"></p>
+                          <p id="discountAmount"></p>
                           <p>
-                            <strong>$tipAmount</strong>
-                          </p>
-                          <p>
-                            <strong>$taxAmount</strong>
+                            <strong id="taxAmount">$</strong>
                           </p>
                         </td>
                       </tr>
@@ -98,16 +96,51 @@
                   <div class="pay-button-container">
                     <button
                       type="button"
-                      class="btn btn-success btn-lg tip-button"
+                      class="btn btn-success btn-lg tip-button" data-bs-toggle="modal" data-bs-target="#tipModal"
                     >
-                      Tip
+                      Add Tip
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-success btn-lg discount-button"
-                    >
+                      <div class="modal" id="tipModal" tabindex="-1" aria-labelledby="tipModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="tipModalLabel">Tip Amount</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <span>$</span>
+                              <input type="text" id="tipAmountInput" placeholder="Enter the tip amount" class="w-75"><br>
+                            </div>
+                            <div class="modal-footer">
+                              <button id="tipSubmit" type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-lg">
+                                Submit
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <button type="button" class="btn btn-success btn-lg tip-button" data-bs-toggle="modal" data-bs-target="#discountModal">
                       Discount
                     </button>
+                      <div class="modal" id="discountModal" tabindex="-1" aria-labelledby="discountModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="tipModalLabel">Discount Amount</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <span>$</span>
+                              <input type="text" id="discountAmountInput" placeholder="Enter the discount amount" class="w-75"><br>
+                            </div>
+                            <div class="modal-footer">
+                              <button id="discountSubmit" type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-lg">
+                              Submit
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     <button
                       type="button"
                       class="btn btn-success btn-lg pay-button"
