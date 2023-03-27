@@ -100,7 +100,7 @@ function renderMenuItems(data) {
 }
 
 async function retrieveMenuData(type) {
-  await fetch("http://localhost:3001/api/menu", {
+  await fetch("/api/menu", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })
@@ -113,7 +113,7 @@ async function retrieveMenuData(type) {
 }
 
 async function increaseQuantity(menu_item_id, ticket_id) {
-  await fetch("http://localhost:3001/api/tickets/item", {
+  await fetch("/api/tickets/item", {
     method: "POST",
     body: JSON.stringify({
       ticket_id: ticket_id,
@@ -130,7 +130,7 @@ async function increaseQuantity(menu_item_id, ticket_id) {
 }
 
 async function decreaseQuantity(id) {
-  await fetch("http://localhost:3001/api/tickets/removeitem/" + id, {
+  await fetch("/api/tickets/removeitem/" + id, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })
