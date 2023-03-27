@@ -75,11 +75,6 @@ Allergens.belongsToMany(Menu_items, {
   foreignKey: "allergen_id",
 });
 
-//Transactions
-Transactions.belongsTo(Ticket, {
-  foreignKey: "ticket_id",
-});
-
 module.exports = {
   Menu_items,
   Ticket,

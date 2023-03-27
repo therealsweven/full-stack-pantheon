@@ -184,19 +184,6 @@ editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   employeesWrap.classList.remove("hide");
-
-  // Table logic
-  function tableHeaders() {
-    employeeTableWrap.innerHTML = `<table style="width:100%; text-align:start">
-        <tr>
-        <th style="width: 10%">ID</th>
-        <th style="width: 40%">Name</th>
-        <th style="width: 25%">Role</th>
-        <th style="width: 25%">e-mail</th>
-      </tr>
-      </table>`;
-  }
-  tableHeaders();
   showEmployees();
 });
 
@@ -207,18 +194,6 @@ editMenuButton.addEventListener("click", () => {
   ordersWrap.classList.add("hide");
   newItemFormWrap.classList.add("hide");
   menuWrap.classList.remove("hide");
-
-  function tableHeaders() {
-    menuTableWrap.innerHTML = `<table style="width:100%; text-align:start">
-        <tr>
-        <th style="width: 10%">ID</th>
-        <th style="width: 40%">Name</th>
-        <th style="width: 25%">Type</th>
-        <th style="width: 25%">Available</th>
-      </tr>
-      </table>`;
-  }
-  tableHeaders();
   showItems();
 });
 // ---- [ADD NEW ITEM] click listener
