@@ -5,6 +5,7 @@ const exphbs = require("express-handlebars");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 require("dotenv").config();
 const helpers = require("./helpers/handlebarsHelpers");
+const cookieParser = require("cookie-parser");
 
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
@@ -25,6 +26,7 @@ const sess = {
 };
 
 app.use(session(sess));
+app.use(cookieParser());
 
 const hbs = exphbs.create({ helpers });
 
