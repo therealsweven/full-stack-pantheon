@@ -1,13 +1,36 @@
 var ticket_items;
 var menuDisplay;
 var ticket_id;
+var tableMap;
+var tabMap;
+var checkout;
+var kitchen;
 
 $(function(){
     menuDisplay = document.getElementById('menuDisplay');
     ticket_items = document.getElementById('ticket-items');
+    tableMap = document.getElementById('table-map');
+    tabMap = document.getElementById('bar-tab');
+    checkout = document.getElementById('checkout');
+    kitchen = document.getElementById('kitchen');
+    console.log(tableMap);
+
     var url = document.URL;
     ticket_id = url.substring(url.lastIndexOf('/')+1, url.length);
+
     retrieveMenuData('food');
+
+    tableMap.addEventListener('click', () =>{
+      document.location.replace(`/pos/tables`);
+    });
+    
+    tableMap.addEventListener('click', () =>{
+      document.location.replace(`/pos/tables`);
+    });
+    
+    checkout.addEventListener('click', ()=>{
+      document.location.replace(`/pos/checkout/${ticket_id}`);
+    })
 })
 
 function renderMenuRow(data){
@@ -56,21 +79,6 @@ function renderMenuItems(data){
     }
 }
 
-function renderTicketItems(data){
-    for (let index = 1; index < 3; index++) {
-        var tableRow = document.createElement('tr');
-        tableRow.innerHTML = `
-        <td>${data}</td>
-        <td>
-            <button class="btn btn-default border border-danger-subtle btn-subtract" type="button">-</button>
-        ${data}
-            <button class="btn btn-default border border-danger-subtle btn-add" type="button">+</button>
-        </td>
-        <td>${data}</td>`;
-        ticket_items.append(tableRow);
-    }
-}
-
 async function retrieveMenuData(type){
     await fetch("http://localhost:3001/api/menu", {
         method: "GET",
@@ -116,3 +124,4 @@ async function decreaseQuantity(id){
         document.location.reload();
       })
 }
+

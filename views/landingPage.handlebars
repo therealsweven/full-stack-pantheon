@@ -5,11 +5,11 @@
             <div class="column col-md-4 left-row">
                 <div class="row">
                     <!-- <div class=""> -->
-                    <button type="button" class="btn btn-dark table-map">
-                        Table Map
+                    <button type="button" id="table-map" class="btn btn-dark table-map">
+                        {{ticket.table.table_name}}
                     </button>
 
-                    <button type="button" class="btn btn-dark tab-name">
+                    <button type="button" id="bar-tab" class="btn btn-dark tab-name">
                         {{ticket.bar_tab.tab_name}}
                     </button>
                 </div>
@@ -34,13 +34,13 @@
                                 class="btn btn-default border border-danger-subtle btn-add"
                                 onclick="increaseQuantity({{this.ticket_items.menu_item_id}}, {{../ticket.id}})"
                                 type="button">+</button></td>
-                        <td>{{this.price}}</td>
+                        <td>${{multiply this.ticket_items.quantity this.price}}</td>
                     </tr>
                     {{/each}}
                 </table>
 
                 <div>
-                    <button type="button" class="btn btn-dark send-kitchen">
+                    <button type="button" id="kitchen" class="btn btn-dark send-kitchen">
                         <i class="fa-thin fa-paper-plane-top"></i>
                         Send to Kitchen
                     </button>
@@ -58,7 +58,7 @@
                     </table>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-success checkout">
+                    <button type="button" id="checkout" class="btn btn-success checkout">
                         <i class="fa-sharp fa-regular fa-credit-card"></i>
                         Checkout
                     </button>
