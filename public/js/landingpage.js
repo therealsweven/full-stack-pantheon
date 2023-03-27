@@ -1,9 +1,12 @@
 var ticket_items;
 var menuDisplay;
+var ticket_id;
 
 $(function(){
     menuDisplay = document.getElementById('menuDisplay');
     ticket_items = document.getElementById('ticket-items');
+    var url = document.URL;
+    ticket_id = url.substring(url.lastIndexOf('/')+1, url.length);
     retrieveMenuData('food');
 })
 
@@ -22,6 +25,11 @@ function renderMenuRow(data){
         var img = document.createElement('img');
         img.setAttribute('src',data[index].image);
         img.setAttribute('class','images');
+        //add button
+        var addButton = document.createElement('button');
+        addButton.setAttribute('class', 'btn btn-default border border-danger-subtle btn-add');
+        addButton.setAttribute('onclick','increaseQuantity(' + data[index].id + ',' + ticket_id + ')');
+        addButton.textContent='Add';
         //create name paragraph
         var name = document.createElement('p');
         name.textContent = data[index].item_name;
@@ -33,6 +41,7 @@ function renderMenuRow(data){
         var allergens = document.createElement('p');
         allergens.textContent = 'Allergens: ' + data[index].allergens.map(allergen => allergen.type.charAt(0));
         //append
+        price.append(addButton);
         item.append(img, name, price, allergens);
         row.append(item);
     }
@@ -90,6 +99,7 @@ async function increaseQuantity(menu_item_id, ticket_id){
       })
       .then((data) =>{
         console.log(data);
+        document.location.reload();
       })
 }
 
@@ -103,5 +113,6 @@ async function decreaseQuantity(id){
       })
       .then((data) =>{
         console.log(data);
+        document.location.reload();
       })
 }
