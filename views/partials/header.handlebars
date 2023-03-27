@@ -1,15 +1,22 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <img
-      src="/images/MercuryLogo.png"
-      alt="Mercury Logo"
-      class="navbar-brand logo"
-    />
+    <a href="/pos/login"><img
+        src="/images/MercuryLogo.png"
+        alt="Mercury Logo"
+        class="navbar-brand logo"
+      /></a>
     {{! need variables. insert server name/ table name here}}
     <div class="d-flex">
-      <p class="current-server-table navbar-text">
-        Server Name | Table Name &emsp;
-      </p>
+
+      {{#if sesh.employeeLoggedIn}}
+        <p class="current-server-table navbar-text">
+          {{sesh.currentEmployee}}
+          |{{#if sesh.tableSelected}}
+            {{sesh.setTableTab}}
+          {{/if}}&emsp;
+        </p>
+
+      {{/if}}
       <button
         class="navbar-toggler"
         type="button"
