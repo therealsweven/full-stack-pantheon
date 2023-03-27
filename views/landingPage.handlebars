@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/5c22034e45.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
 
 <body class="landing-page">
     <div class="container">
@@ -23,11 +10,11 @@
                     </button>
 
                     <button type="button" class="btn btn-dark tab-name">
-                        Tab Name
+                        {{tab-name}}
                     </button>
                 </div>
 
-                <p class="server-name">Server Name</p>
+                <p class="server-name">{{employee.name}}</p>
 
                 <table class="nqp-table">
                     <tr>
@@ -35,49 +22,14 @@
                         <th>Quantity</th>
                         <th>Price</th>
                     </tr>
-
+                    {{#each menu-items}}
                     <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
+                        <td>{{this.item_name}}</td>
+                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x {{this.available}}<button
                                 class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
+                        <td>{{this.price}}</td>
                     </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
-                    </tr>
-                    <tr>
-                        <td>Item 1</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x 1<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
-                        <td>$24.99</td>
-                    </tr>
+                  {{/each}}
                 </table>
 
                 <div>
@@ -90,11 +42,11 @@
                     <table class="sales-tax">
                         <tr>
                             <th>Sales Tax:</th>
-                            <td>x 5%</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th>Total:</th>
-                            <td>$1000.00</td>
+                            <td></td>
                         </tr>
                     </table>
                 </div>
@@ -121,86 +73,78 @@
                     </div>
                 </div>
 
+              
                 <div class="d-flex justify-content-evenly col-md-12 menu-row-1">
                     <div id="menu-items" class="item-1">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
+                        <img src=""
                             alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
+                        <p></p>
+                        <p></p>
                     </div>
 
                     <div id="menu-items" class="item-2">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                        <img src="" alt="" class="images" />
+                        <p></p>
+                        <p></p>
+                        </div>
 
                     <div id="menu-items" class="item-3">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
+
                     <div id="menu-items" class="item-4">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
-                </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
 
                 <div class="d-flex justify-content-evenly col-md-12">
-                    <div id="menu-items" class="item-5">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p class="item-desc">BLT</p>
-                        <p class="item-price">$6.99</p>
-                    </div>
+                        <img src="" alt="" class="images" />
+                        <p></p>
+                        <p></p>
+                        </div>
+
                     <div id="menu-items" class="item-6">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
+
                     <div id="menu-items" class="item-7">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
+
                     <div id="menu-items" class="item-8">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
-                </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
+
                 <div class="d-flex justify-content-evenly col-md-12">
-                    <div id="menu-items" class="item-9">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                        <img src="" alt="" class="images" />
+                        <p></p>
+                        <p></p>
+                        </div>
                     <div id="menu-items" class="item-10">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
                     <div id="menu-items" class="item-11">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
+
                     <div id="menu-items" class="item-12">
-                        <img src="https://images.unsplash.com/photo-1619096252214-ef06c45683e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80"
-                            alt="" class="images" />
-                        <p>BLT</p>
-                        <p>$6.99</p>
-                    </div>
+                            <img src="" alt="" class="images" />
+                            <p></p>
+                            <p></p>
+                            </div>
                 </div>
             </div>
         </div>
