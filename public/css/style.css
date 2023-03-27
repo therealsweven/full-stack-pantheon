@@ -186,14 +186,33 @@ html {
 }
 
 .employeeList {
+  padding-left: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 50px;
   width: 100%;
   margin: 5px 0 5px 0;
   text-align: start;
 }
+
+.employeeList:hover {
+  background-color: lemonchiffon;
+}
+
 .itemList {
+  padding-left: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 50px;
   width: 100%;
   margin: 5px 0 5px 0;
   text-align: start;
+}
+
+.itemList:hover {
+  background-color: lemonchiffon;
 }
 
 .formStyle {
