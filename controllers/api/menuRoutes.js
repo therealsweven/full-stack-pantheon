@@ -9,7 +9,10 @@ URL route:    /api/menu
 router.get("/", async (req, res) => {
   try {
     const menuData = await Menu_items.findAll({
-        include: [{ model: Allergens }],
+      where: {
+        merchant_id: req.session.currentMerchant,
+      },
+      include: [{ model: Allergens }],
     });
 
     res.status(200).json(menuData);
@@ -24,7 +27,7 @@ router.get("/:id", async (req, res) => {
   try {
     const menuData = await Menu_items.findByPk(req.params.id, {
       include: [{ model: Allergens }],
-  });
+    });
 
     res.status(200).json(menuData);
   } catch (err) {
@@ -49,26 +52,27 @@ Request Body should be as follows:
   allergen_ids: ARRAY of INT
 }
 */
-Menu_items.create(req.body)
-  .then((menuData) => {
-    // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-    if (req.body.allergen_ids.length) {
-      const allergenArray = req.body.allergen_ids.map((allergen_id) => {
-        return {
-          menu_item_id: menuData.id,
-          allergen_id,
-        };
-      });
-      return Menu_item_allergens.bulkCreate(allergenArray);
-    }
-    // if no product tags, just respond
-    res.status(200).json(menuData);
-  })
-  .then((allergenIds) => res.status(200).json(allergenIds))
-  .catch((err) => {
-    console.log(err);
-    res.status(400).json(err);
-  });
+  req.body.merchant_id = req.session.currentMerchant;
+  Menu_items.create(req.body)
+    .then((menuData) => {
+      // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+      if (req.body.allergen_ids.length) {
+        const allergenArray = req.body.allergen_ids.map((allergen_id) => {
+          return {
+            menu_item_id: menuData.id,
+            allergen_id,
+          };
+        });
+        return Menu_item_allergens.bulkCreate(allergenArray);
+      }
+      // if no product tags, just respond
+      res.status(200).json(menuData);
+    })
+    .then((allergenIds) => res.status(200).json(allergenIds))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 // Update Menu Item

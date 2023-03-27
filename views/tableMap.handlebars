@@ -1,5 +1,5 @@
 {{> header}}
-<div class="row">
+<div class="row table-linear">
   <div class="col-9">
     <header>Tables</header>
     <div id="tables" class="container">
@@ -8,6 +8,7 @@
           <button
             id="{{table.id}}"
             class="button tablesChild"
+            value="{{table.table_name}}"
           >{{table.table_name}}</button>
         {{/each}}
       </div>
@@ -49,13 +50,12 @@
               </button>
             </form>
           </div>
-          <button id="barAddBtn">Add Bar Tab</button>
+          <button id="barAddBtn" class="btn btn-dark">Add Bar Tab</button>
         </div>
       </div>
     </div>
   </div>
 
-</div>
 {{! <div class="barRow d-flex justify-content-evenly">
   <button id="1001" class="button">Seat 1</button>
   <button id="1002" class="button">Seat 2</button>
@@ -67,9 +67,10 @@
 <div class="adminBtn">
   <a
     id="adminBtn"
-    class="btn btn-primary justify-content-end"
+    class="btn btn-dark justify-content-end"
     href="/pos/admin"
   >Admin Settings</a>
 
+</div>
 </div>
 <script src="/js/tableMap.js"></script>

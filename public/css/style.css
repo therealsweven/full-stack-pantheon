@@ -355,6 +355,8 @@ html {
 }
 /* end of Main + Header CSS */
 
+/* --------------------------------------------------------------- */
+
 /* Merchant + User login CSS */
 .gradient-custom {
   /* fallback for old browsers */
@@ -389,6 +391,7 @@ html {
 /* End of login CSS */
 
 /* --------------------------------------------------------------- */
+
 /* START Admin Page CSS*/
 .hide {
   display: none !important;
@@ -489,24 +492,91 @@ html {
 
 /* --------------------------------------------------------------- */
 
+/* START OF HOMEPAGE CSS  */
+.homepage-body {
+  background-color: black;
+}
+
+#main-logo1 {
+  margin-top: 45px;
+  margin-left: 80px;
+  width: 80%;
+  height: 40%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.8s ease;
+}
+
+#main-logo1:hover {
+  filter: saturate(2);
+}
+
+#lower-btns {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.login-btn {
+  width: 100px;
+  height: 50px;
+  font-size: 1rem;
+  background-color: rgb(41, 35, 35);
+  color: #6c757d;
+  margin-left: -5rem;
+}
+
+.signup-btn {
+  width: 100px;
+    height: 50px;
+margin-left: -4rem;
+  font-size: 1rem;
+  background-color: rgb(39, 37, 37);
+  color: #6c757d;
+ 
+  margin-right: 20px;
+
+}
+
+.login-btn:hover, .signup-btn:hover {
+  background-color: #e39c7f;
+}
+
+.or {
+  margin-top: 10px;
+ margin-left: -5rem;
+ color: #6c757d;
+}
+
+/* END OF HOMEPAGE CSS */
+
+/* --------------------------------------------------------------- */
+
 /* Start of tables css*/
+
+.table-linear {
+  background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1));
+}
+
 header {
   font-size: 3rem;
   text-align: center;
-  background-color: rgb(4, 133, 165);
+  background-color:#000000;
   padding: 10px;
   margin-left: 100px;
   margin-right: 100px;
-  margin-top: 10px;
+  margin-top: 100px;
+  color: white;
+  border-radius: 5px;
 }
 
 .button {
-  background: #0f78ba;
-  background-image: -webkit-linear-gradient(top, #0f78ba, #0f78ba);
-  background-image: -moz-linear-gradient(top, #0f78ba, #0f78ba);
-  background-image: -ms-linear-gradient(top, #0f78ba, #0f78ba);
-  background-image: -o-linear-gradient(top, #0f78ba, #0f78ba);
-  background-image: linear-gradient(to bottom, #0f78ba, #0f78ba);
+  background: #000000;
+  background-image: -webkit-linear-gradient(top, #000000, #000000);
+  background-image: -moz-linear-gradient(top, #000000, #000000);
+  background-image: -ms-linear-gradient(top, #000000, #000000);
+  background-image: -o-linear-gradient(top, #000000, #000000);
+  background-image: linear-gradient(to bottom, #000000, #000000);
   -webkit-border-radius: 38;
   -moz-border-radius: 38;
   border-radius: 38px;
@@ -517,7 +587,7 @@ header {
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
-  border: solid #0f78ba 10px;
+  border: solid #000000 10px;
   text-decoration: none;
 }
 
@@ -531,12 +601,12 @@ header {
 }
 .tabsChild {
   margin: 5px;
-  height: 50px;
+  height: 80px;
   padding-bottom: 3px;
 }
 
 .button:hover {
-  background: #ed0c6a;
+  background:#e87b72;
   text-decoration: none;
 }
 
@@ -564,11 +634,22 @@ header {
   padding-right: 30px;
 }
 
+#adminBtn, #barAddBtn {
+  margin-bottom: 100px;
+  background-color: #000000;
+}
+
+#adminBtn:hover, #barAddBtn:hover {
+  background-color: #2f2c2c;
+}
+/* --------------------------------------------------------------- */
+
 /* START OF LANDING PAGE CSS*/
 
 .landing-page {
-  margin: 0px;
-  background-color: #2f2c2c;
+  margin-top: 80px;
+  background-image: linear-gradient(to right, rgba(217, 104, 109, 1),
+        rgba(249, 171, 140, 1));
 }
 
 .landingPageContainer {
@@ -577,7 +658,8 @@ header {
 
 .left-row {
   margin-top: 10px;
-  background-color: #e87b72;
+  background-color: #000000;
+  color: white;
 }
 
 .right-row-btns {
@@ -591,13 +673,13 @@ header {
   width: 250px;
   height: 160px;
   margin-left: 16px;
-  background-color: #e87b72;
+  background-color:#000000;
   font-size: 2rem;
 }
 .drinks:hover,
 .food:hover,
 .merch:hover {
-  background-color: #000000;
+  background-color:#e87b72
 }
 
 .item-1,
@@ -653,8 +735,8 @@ header {
   width: 80%;
   height: 50px;
   margin-left: 40px;
-  background-color: #000000;
-  border-color: #e39c7f;
+  background-color:#e87b72;
+  border-color:#e87b72;
 }
 
 .tab-name {
@@ -677,6 +759,7 @@ header {
   margin-top: 30px;
   width: 90%;
   margin-left: 45px;
+  color: white;
 }
 
 .btn-subtract:hover {
@@ -693,7 +776,8 @@ header {
   width: 80%;
   height: 50px;
   margin-left: 40px;
-  background-color: #000000;
+background-color: #e87b72;
+  border-color: #e87b72;
 }
 
 .sales-tax {
@@ -701,6 +785,7 @@ header {
   height: 80px;
   width: 100%;
   margin-left: 50px;
+  color: white;
 }
 
 .checkout {
@@ -713,50 +798,5 @@ header {
 }
 
 /* END OF LANDING PAGE CSS */
-
-/* --------------------------------------------------------------- */
-
-/* START OF HOMEPAGE CSS  */
-.homepage-body {
-  background-color: black;
-}
-
-#main-logo1 {
-  margin-top: 45px;
-  width: 100%;
-  height: 40%;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.8s ease;
-}
-
-#main-logo1:hover {
-  filter: saturate(2);
-}
-
-#lower-btns {
-  margin-top: 25px;
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.merchant-login-btn {
-  width: 200px;
-  height: 120px;
-  font-size: 2rem;
-  background-color: rgb(41, 35, 35);
-  color: black;
-  margin-left: 14rem;
-}
-
-.settings-btn {
-  /* margin-bottom: 6px; */
-  background-color: rgb(39, 37, 37);
-  color: black;
-  float: right;
-  margin-right: 80px;
-  margin-top: 80px;
-}
-
-/* END OF HOMEPAGE CSS */
 
 /* --------------------------------------------------------------- */
