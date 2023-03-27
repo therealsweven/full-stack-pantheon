@@ -408,9 +408,11 @@ html {
 }
 
 .main {
-  background: linear-gradient(to right,
-        rgba(217, 104, 109, 1),
-        rgba(249, 171, 140, 1));
+  background: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
   height: 150vh;
 }
 
@@ -528,8 +530,9 @@ html {
   margin-bottom: 10px;
 }
 
-
-.edit-employees, .edit-menu, .view-orders {
+.edit-employees,
+.edit-menu,
+.view-orders {
   background-color: black;
   color: white;
   border-color: black;
@@ -539,7 +542,7 @@ html {
 .edit-employees:hover,
 .edit-menu:hover,
 .view-orders:hover {
-  background-color:#e39c7f;
+  background-color: #e39c7f;
   border-color: #e39c7f;
   color: white;
 }
@@ -550,14 +553,14 @@ html {
 
 /* START OF HOMEPAGE CSS  */
 .homepage-body {
+  text-align: center;
   background-color: black;
 }
 
 #main-logo1 {
   margin-top: 45px;
-  margin-left: 80px;
-  width: 80%;
-  height: 40%;
+  width: 75%;
+  height: auto;
   -webkit-transition: all 0.5s ease;
   transition: all 0.8s ease;
 }
@@ -567,29 +570,19 @@ html {
 }
 
 #lower-btns {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
   margin-top: 25px;
-  margin-bottom: 50px;
-  text-align: center;
 }
 
-.login-btn {
+.login-btn,
+.signup-btn {
   width: 100px;
   height: 50px;
   font-size: 1rem;
   background-color: rgb(41, 35, 35);
   color: #6c757d;
-  margin-left: -5rem;
-}
-
-.signup-btn {
-  width: 100px;
-  height: 50px;
-  margin-left: -4rem;
-  font-size: 1rem;
-  background-color: rgb(39, 37, 37);
-  color: #6c757d;
-
-  margin-right: 20px;
 }
 
 .login-btn:hover,
@@ -599,7 +592,6 @@ html {
 
 .or {
   margin-top: 10px;
-  margin-left: -5rem;
   color: #6c757d;
 }
 
@@ -769,7 +761,6 @@ header {
   margin-left: 10px;
 }
 
-
 .images {
   width: 185px;
   height: 120px;
@@ -798,8 +789,8 @@ header {
   width: 80%;
   height: 80px;
   margin-left: 40px;
-  background-color:#e87b72;
-  border-color:#e87b72;
+  background-color: #e87b72;
+  border-color: #e87b72;
   font-size: 1.5rem;
 }
 
@@ -825,7 +816,8 @@ header {
   margin-top: 40px;
 }
 
-.btn-subtract, .btn-add {
+.btn-subtract,
+.btn-add {
   color: white;
   margin-right: 5px;
 }
@@ -834,9 +826,9 @@ header {
   color: red;
 }
 
-.quantity-table{
+.quantity-table {
   background-color: #000000;
-padding-left: 20px;
+  padding-left: 20px;
 }
 
 .btn-add:hover {
@@ -873,20 +865,18 @@ padding-left: 20px;
   margin-left: 40px;
   margin-bottom: 10px;
   font-size: 2rem;
-
 }
 .btn-add-menu-item {
   margin-left: 10px;
-float: right;
-margin-right: 10px;
-padding: 0 10px;
-font-size: 20px;
-
+  float: right;
+  margin-right: 10px;
+  padding: 0 10px;
+  font-size: 20px;
 }
 
 .btn-add-menu-item:hover {
-color: green;
-background-color: #e39c7f;
+  color: green;
+  background-color: #e39c7f;
 }
 
 /* END OF LANDING PAGE CSS */
