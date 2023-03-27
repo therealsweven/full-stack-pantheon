@@ -238,21 +238,23 @@ header {
   text-decoration: none;
 }
 
+.tablesParent {
+  flex-wrap: wrap;
+}
+.tablesChild {
+  flex: 1 0 21%; /* explanation below */
+  margin: 50px;
+  height: 100px;
+}
+.tabsChild {
+  margin: 5px;
+  height: 50px;
+  padding-bottom: 3px;
+}
+
 .button:hover {
   background: #ed0c6a;
   text-decoration: none;
-}
-
-.row1 {
-  margin-top: 40px;
-}
-
-.row2 {
-  margin-top: 80px;
-}
-
-.row3 {
-  margin-top: 80px;
 }
 
 #adminBtn {
