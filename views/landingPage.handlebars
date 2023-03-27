@@ -1,20 +1,20 @@
 
-<body class="landing-page">
+<section class="landing-page">
     <div class="container">
         <div class="row d-flex">
             <div class="column col-md-4 left-row">
                 <div class="row">
                     <!-- <div class=""> -->
                     <button type="button" class="btn btn-dark table-map">
-                        Table Map
+                        {{ticket.table.table_name}}
                     </button>
 
                     <button type="button" class="btn btn-dark tab-name">
-                        {{tab-name}}
+                        {{ticket.bar_tab.tab_name}}
                     </button>
                 </div>
 
-                <p class="server-name">{{employee.name}}</p>
+                <p class="server-name">{{ticket.employee.name}}</p>
 
                 <table class="nqp-table">
                     <tr>
@@ -22,7 +22,7 @@
                         <th>Quantity</th>
                         <th>Price</th>
                     </tr>
-                    {{#each menu-items}}
+                    {{#each ticket.menu_items}}
                     <tr>
                         <td>{{this.item_name}}</td>
                         <td><button class="btn btn-default btn-subtract" type="button">-</button>x {{this.available}}<button
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div id="menuDisplay" class="col-md-8">
                 <div class="row justify-content-between">
                     <div class="col-lg-4 right-row-btns">
                         <button class="btn btn-lg btn-dark drinks">Drinks</button>
@@ -72,83 +72,7 @@
                         </button>
                     </div>
                 </div>
-
-              
-                <div class="d-flex justify-content-evenly col-md-12 menu-row-1">
-                    <div id="menu-items" class="item-1">
-                        <img src=""
-                            alt="" class="images" />
-                        <p></p>
-                        <p></p>
-                    </div>
-
-                    <div id="menu-items" class="item-2">
-                        <img src="" alt="" class="images" />
-                        <p></p>
-                        <p></p>
-                        </div>
-
-                    <div id="menu-items" class="item-3">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-
-                    <div id="menu-items" class="item-4">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-
-                <div class="d-flex justify-content-evenly col-md-12">
-                        <img src="" alt="" class="images" />
-                        <p></p>
-                        <p></p>
-                        </div>
-
-                    <div id="menu-items" class="item-6">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-
-                    <div id="menu-items" class="item-7">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-
-                    <div id="menu-items" class="item-8">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-
-                <div class="d-flex justify-content-evenly col-md-12">
-                        <img src="" alt="" class="images" />
-                        <p></p>
-                        <p></p>
-                        </div>
-                    <div id="menu-items" class="item-10">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-                    <div id="menu-items" class="item-11">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-
-                    <div id="menu-items" class="item-12">
-                            <img src="" alt="" class="images" />
-                            <p></p>
-                            <p></p>
-                            </div>
-                </div>
-            </div>
         </div>
     </div>
-</body>
-
-</html>
+    <script src="/js/landingpage.js"></script>
+</section>
