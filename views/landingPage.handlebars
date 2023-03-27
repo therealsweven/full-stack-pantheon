@@ -25,8 +25,8 @@
                     {{#each ticket.menu_items}}
                     <tr>
                         <td>{{this.item_name}}</td>
-                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x {{this.available}}<button
-                                class="btn btn-default btn-add" type="button">+</button></td>
+                        <td class="fw-semibold"><button class="btn btn-default border border-danger-subtle btn-subtract " onclick="decreaseQuantity({{this.ticket_items.id}})" type="button">-</button> x {{this.ticket_items.quantity}} <button
+                                class="btn btn-default border border-danger-subtle btn-add" onclick="increaseQuantity({{this.ticket_items.menu_item_id}}, {{../ticket.id}})" type="button">+</button></td>
                         <td>{{this.price}}</td>
                     </tr>
                   {{/each}}
