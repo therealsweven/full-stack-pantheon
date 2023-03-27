@@ -1,0 +1,78 @@
+{{> header}}
+<section class="landing-page">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="column col-md-4 left-row">
+                <div class="row">
+                    <!-- <div class=""> -->
+                    <button type="button" class="btn btn-dark table-map">
+                        {{ticket.table.table_name}}
+                    </button>
+
+                    <button type="button" class="btn btn-dark tab-name">
+                        {{ticket.bar_tab.tab_name}}
+                    </button>
+                </div>
+
+                <p class="server-name">{{ticket.employee.name}}</p>
+
+                <table class="nqp-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    {{#each ticket.menu_items}}
+                    <tr>
+                        <td>{{this.item_name}}</td>
+                        <td><button class="btn btn-default btn-subtract" type="button">-</button>x {{this.available}}<button
+                                class="btn btn-default btn-add" type="button">+</button></td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                  {{/each}}
+                </table>
+
+                <div>
+                    <button type="button" class="btn btn-dark send-kitchen">
+                        <i class="fa-thin fa-paper-plane-top"></i>
+                        Send to Kitchen
+                    </button>
+                </div>
+                <div id="sales-tax">
+                    <table class="sales-tax">
+                        <tr>
+                            <th>Sales Tax:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Total:</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-success checkout">
+                        <i class="fa-sharp fa-regular fa-credit-card"></i>
+                        Checkout
+                    </button>
+                </div>
+            </div>
+
+            <div id="menuDisplay" class="col-md-8">
+                <div class="row justify-content-between">
+                    <div class="col-lg-4 right-row-btns">
+                        <button class="btn btn-lg btn-dark drinks">Drinks</button>
+                    </div>
+                    <div class="col-lg-4 right-row-btns">
+                        <button class="btn btn-lg btn-dark food">Food</button>
+                    </div>
+                    <div class="col-lg-4 right-row-btns">
+                        <button class="btn btn-lg btn-dark merch">
+                            Merch <br />Giftcards
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="/js/landingpage.js"></script>
+</section>

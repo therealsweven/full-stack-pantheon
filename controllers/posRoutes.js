@@ -26,6 +26,21 @@ router.get("/login", (req, res) => {
   }
 });
 
+// Employee Logout
+router.get("/logout", (req, res) => {
+  if (req.session.employeeLoggedIn) {
+    // log employee out and null the currentEmployee info in session object
+    req.session.currentEmployee = null;
+    req.session.currentEmployeeID = null;
+    req.session.employeeLoggedIn = false;
+    // send to employee login page
+    res.status(204).redirect("/pos/login");
+    //console.log("logged out");
+  } else {
+    res.status(404);
+  }
+});
+
 // table/tab select page
 router.get("/tables", async (req, res) => {
   try {
@@ -44,7 +59,8 @@ router.get("/tables", async (req, res) => {
     const tickets = tabData.map((element) => element.get({ plain: true }));
     console.log(tickets[0].bar_tab.tab_name);
     console.log(tickets);
-    res.status(200).render("tableMap", { tickets, tables });
+    const sesh = req.session;
+    res.status(200).render("tableMap", { tickets, tables, sesh });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -62,6 +78,12 @@ router.get("/main/:id", async (req, res) => {
         {
           model: Menu_items,
           attributes: ["item_name", "price"],
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Employee,
@@ -92,8 +114,8 @@ router.get("/main/:id", async (req, res) => {
       menuItems[i] = menuItemsData[i].get({ plain: true });
     }
     console.log(menuItems);
-    //res.status(200).render("landingPage", { ticket, menuItems });
-    res.status(200).json({ ticket, menuItems });
+    res.status(200).render("landingPage", { ticket, menuItems });
+    // res.status(200).json({ ticket, menuItems });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -113,6 +135,12 @@ router.get("/checkout/:id", async (req, res) => {
         {
           model: Menu_items,
           attributes: ["item_name", "price"],
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Employee,

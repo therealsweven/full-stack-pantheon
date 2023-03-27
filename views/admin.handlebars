@@ -1,3 +1,4 @@
+{{> header}}
 <section class="main container-fluid text-center">
   <div id="header_nav" class="row">
     <div class="col-2 btn nav-btn btn-secondary">Back</div>
@@ -43,6 +44,15 @@
             Remove an Employee
           </div>
         </div>
+        {{! form headers }}
+        <table style="width:100%; text-align:start">
+          <tr>
+            <th style="width: 10%">ID</th>
+            <th style="width: 40%">Name</th>
+            <th style="width: 25%">Role</th>
+            <th style="width: 25%">e-mail</th>
+          </tr>
+        </table>
         <div id="employeeTableWrap"></div>
       </div>
       <!-- MENU wrap -->
@@ -58,95 +68,104 @@
           <div type="button" class="btn btn-danger display-action-btn">Remove an
             Item</div>
         </div>
-        <div id="menuTableWrap">
-          {{! [NEW ITEM] form START }}
-          <div id="newItemFormWrap" class="hide">
-            <form id="newItemForm" class="formStyle text-start">
-              {{! [NEW ITEM] name }}
-              <label for="itemNameInput">Name:</label><br />
-              <input type="text" id="itemNameInput" name="itemNameInput" />
-              <br />
-              {{! [NEW ITEM] price }}
-              <br />
-              <label for="itemPriceInput">Price:</label><br />
-              <input type="number" id="itemPriceInput" name="itemPriceInput" />
-              <br />
-              {{! [NEW ITEM] description }}
-              <br />
-              <label for="itemDescriptionInput">Description:</label><br />
-              <input
-                type="text"
-                id="itemDescriptionInput"
-                name="itemDescriptionInput"
-              />
-              <br />
-              {{! [NEW ITEM] Availability }}
-              <br />
-              <div>Available:
-                {{! YES }}
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="answer"
-                    id="yesAnswer"
-                  />
-                  <label class="form-check-label" for="yesAnswer">
-                    Yes
-                  </label>
-                </div>
-                {{! NO }}
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="answer"
-                    id="noAnswer"
-                  />
-                  <label class="form-check-label" for="noAnswer">
-                    No
-                  </label>
-                </div>
+        {{! [NEW ITEM] form}}
+        <div id="newItemFormWrap" class="hide">
+          <form id="newItemForm" class="formStyle text-start">
+            {{! [NEW ITEM] name }}
+            <label for="itemNameInput">Name:</label><br />
+            <input type="text" id="itemNameInput" name="itemNameInput" />
+            <br />
+            {{! [NEW ITEM] price }}
+            <br />
+            <label for="itemPriceInput">Price:</label><br />
+            <input type="number" id="itemPriceInput" name="itemPriceInput" />
+            <br />
+            {{! [NEW ITEM] description }}
+            <br />
+            <label for="itemDescriptionInput">Description:</label><br />
+            <input
+              type="text"
+              id="itemDescriptionInput"
+              name="itemDescriptionInput"
+            />
+            <br />
+            {{! [NEW ITEM] Availability }}
+            <br />
+            <div>Available:
+              {{! YES }}
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="yesAnswer"
+                />
+                <label class="form-check-label" for="yesAnswer">
+                  Yes
+                </label>
               </div>
+              {{! NO }}
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  id="noAnswer"
+                />
+                <label class="form-check-label" for="noAnswer">
+                  No
+                </label>
+              </div>
+            </div>
 
-              {{! [NEW ITEM] Type }}
-              <br />
-              <select class="form-select" aria-label="type">
-                <option selected>Type</option>
-                <option value="1">Food</option>
-                <option value="2">Drink</option>
-                <option value="3">Merchendise</option>
-                <option value="4">Gift</option>
-              </select>
+            {{! [NEW ITEM] Type }}
+            <br />
+            <select class="form-select" aria-label="type">
+              <option selected>Type</option>
+              <option value="1">Food</option>
+              <option value="2">Drink</option>
+              <option value="3">Merchendise</option>
+              <option value="4">Gift</option>
+            </select>
 
-              {{! [NEW ITEM] Sub-Type }}
-              <br />
-              <select class="form-select" aria-label="sub-type">
-                <option selected>Sub-Type</option>
-                <option value="1">Main Course</option>
-                <option value="2">Appetizer</option>
-                <option value="3">Alcoholic</option>
-                <option value="4">Non-Alcoholic</option>
-                <option value="5">Hat</option>
-                <option value="6">Shirt</option>
-                <option value="7">Card</option>
-                <option value="8">Certificate</option>
-              </select>
+            {{! [NEW ITEM] Sub-Type }}
+            <br />
+            <select class="form-select" aria-label="sub-type">
+              <option selected>Sub-Type</option>
+              <option value="1">Main Course</option>
+              <option value="2">Appetizer</option>
+              <option value="3">Alcoholic</option>
+              <option value="4">Non-Alcoholic</option>
+              <option value="5">Hat</option>
+              <option value="6">Shirt</option>
+              <option value="7">Card</option>
+              <option value="8">Certificate</option>
+            </select>
 
-              {{! [NEW ITEM] Image URL }}
-              <br />
-              <label for="imageURL">Image URL:</label><br />
-              <input type="url" id="imageURL" name="imageURL" />
+            {{! [NEW ITEM] Image URL }}
+            <br />
+            <label for="imageURL">Image URL:</label><br />
+            <input type="url" id="imageURL" name="imageURL" />
 
-              {{! [NEW ITEM] Submit Button }}
-              <br />
-              <br />
-              <input type="submit" value="Create a New Item" />
-            </form>
-          </div>
-          {{! [NEW ITEM] form END }}
+            {{! [NEW ITEM] Submit Button }}
+            <br />
+            <br />
+            <input type="submit" value="Create a New Item" />
+          </form>
+        </div>
+        {{! table headers }}
+        <table style="width:100%; text-align:start">
+          <tr>
+            <th style="width: 10%">ID</th>
+            <th style="width: 40%">Name</th>
+            <th style="width: 25%">Type</th>
+            <th style="width: 25%">Available</th>
+          </tr>
+        </table>
+        <div id="menuTableWrap">
         </div>
       </div>
+
       <!-- ORDERS wrap -->
       <div id="ordersWrap" class="hide">
         <div id="ordersButtonsWrap">

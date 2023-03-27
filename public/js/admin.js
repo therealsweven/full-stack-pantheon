@@ -144,10 +144,9 @@ window.onload = function () {
 
 // populates DISPLAY with employee list
 function showEmployees() {
+  employeeTableWrap.innerHTML = "";
   apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
-    div.classList.add("btn");
-    div.classList.add("btn-outline-secondary");
     div.classList.add("employeeList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
@@ -162,10 +161,9 @@ function showEmployees() {
 }
 
 function showItems() {
+  menuTableWrap.innerHTML = "";
   menuItemsArray.forEach((item) => {
     let div = document.createElement("div");
-    div.classList.add("btn");
-    div.classList.add("btn-outline-secondary");
     div.classList.add("itemList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
@@ -184,19 +182,6 @@ editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   employeesWrap.classList.remove("hide");
-
-  // Table logic
-  function tableHeaders() {
-    employeeTableWrap.innerHTML = `<table style="width:100%; text-align:start">
-        <tr>
-        <th style="width: 10%">ID</th>
-        <th style="width: 40%">Name</th>
-        <th style="width: 25%">Role</th>
-        <th style="width: 25%">e-mail</th>
-      </tr>
-      </table>`;
-  }
-  tableHeaders();
   showEmployees();
 });
 
@@ -207,18 +192,6 @@ editMenuButton.addEventListener("click", () => {
   ordersWrap.classList.add("hide");
   newItemFormWrap.classList.add("hide");
   menuWrap.classList.remove("hide");
-
-  function tableHeaders() {
-    menuTableWrap.innerHTML = `<table style="width:100%; text-align:start">
-        <tr>
-        <th style="width: 10%">ID</th>
-        <th style="width: 40%">Name</th>
-        <th style="width: 25%">Type</th>
-        <th style="width: 25%">Available</th>
-      </tr>
-      </table>`;
-  }
-  tableHeaders();
   showItems();
 });
 // ---- [ADD NEW ITEM] click listener
