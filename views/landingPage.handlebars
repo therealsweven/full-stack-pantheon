@@ -5,9 +5,16 @@
             <div class="column col-md-4 left-row">
                 <div class="row">
                     <!-- <div class=""> -->
-                    <button type="button" id="table-map" class="btn btn-dark table-map">
+                    {{#if ticket.table.table_name}}
+                        <button type="button" id="table-map" class="btn btn-dark table-map">
                         {{ticket.table.table_name}}
-                    </button>
+                        </button>
+                    {{else}}
+                            <button type="button" id="table-map" class="btn btn-dark table-map">
+                        Back to Table Map
+                        </button>
+                    {{/if}}
+                    
 
                 
                 </div>
@@ -47,11 +54,11 @@
                     <table class="sales-tax">
                         <tr>
                             <th>Sales Tax:</th>
-                            <td></td>
+                            <td>${{salesTax ticket.menu_items}} (2.9%)</td>
                         </tr>
                         <tr>
                             <th>Total:</th>
-                            <td></td>
+                            <td>${{totals ticket.menu_items}}</td>
                         </tr>
                     </table>
                 </div>
@@ -63,25 +70,25 @@
                 </div>
             </div>
 
-            <div id="menuDisplay" class="col-md-8">
+            <div class="col-md-8">
                 <div class="row justify-content-between">
                     <div class="col-lg-4 right-row-btns">
-                        <button class="btn btn-lg btn-dark drinks">Drinks</button>
+                        <button id="drink" class="btn btn-lg btn-dark drinks">Drinks</button>
                     </div>
-                    <div class="col-lg-4 right-row-btns">
+                    <div id="food" class="col-lg-4 right-row-btns">
                         <button class="btn btn-lg btn-dark food">Food</button>
                     </div>
-                    <div class="col-lg-4 right-row-btns">
+                    <div id="merch" class="col-lg-4 right-row-btns">
                         <button class="btn btn-lg btn-dark merch">
                             Merch <br />Giftcards
                         </button>
                     </div>
                 </div>
+                <div id="menuDisplay" class="scroll">   
+                </div>
             </div>
 
-            <div id="menuDisplay" class="scroll">
-                
-            </div>
+            
         </div>
     </div>
     </div>

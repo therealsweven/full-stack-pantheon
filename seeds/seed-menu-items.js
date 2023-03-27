@@ -161,6 +161,26 @@ const items = [
         image: "https://images.unsplash.com/photo-1633152685816-8cd4a7443c84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
         merchant_id: 1
     },
+    {
+        item_name: '$25 Gift Card',
+        price: 25.00,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "",
+        merchant_id: 1
+    },
+    {
+        item_name: 'T-Shirt',
+        price: 14.99,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "",
+        merchant_id: 1
+    },
 ];
 
 const seedMenu = () => Menu_items.bulkCreate(items);
