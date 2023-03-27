@@ -5,18 +5,27 @@ const { Tables, Ticket, Merchant, Employee } = require("../../models");
 URL route:    /api/tables
 */
 
-// Get all table data
+// Get all table data for that merchant
 router.get("/", async (req, res) => {
   try {
     const tablesData = await Tables.findAll({
+      where: { merchant_id: req.session.currentMerchant },
       include: [
         {
-          model: Ticket
-        }, 
+          model: Ticket,
+        },
         {
           model: Merchant,
-            attributes: ['business_name','email','address','city','state','zip','phone'],
-        }
+          attributes: [
+            "business_name",
+            "email",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "phone",
+          ],
+        },
       ],
     });
     res.status(200).json(tablesData);
@@ -32,16 +41,24 @@ router.get("/:id", async (req, res) => {
     const tablesData = await Tables.findAll({
       include: [
         {
-          model: Ticket
-        }, 
+          model: Ticket,
+        },
         {
           model: Merchant,
-            attributes: ['business_name','email','address','city','state','zip','phone'],
+          attributes: [
+            "business_name",
+            "email",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "phone",
+          ],
         },
       ],
       where: {
         id: req.params.id,
-      } 
+      },
     });
     res.status(200).json(tablesData);
   } catch (err) {

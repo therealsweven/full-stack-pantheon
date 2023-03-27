@@ -174,7 +174,7 @@ html {
   justify-content: center;
 }
 
-.display-btn {
+.display-action-btn {
   margin: 10px;
 }
 
@@ -189,6 +189,18 @@ html {
   width: 100%;
   margin: 5px 0 5px 0;
   text-align: start;
+}
+.itemList {
+  width: 100%;
+  margin: 5px 0 5px 0;
+  text-align: start;
+}
+
+.formStyle {
+  border: 2px solid gray;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /* END Admin Page CSS */
 
@@ -226,21 +238,23 @@ header {
   text-decoration: none;
 }
 
+.tablesParent {
+  flex-wrap: wrap;
+}
+.tablesChild {
+  flex: 1 0 21%; /* explanation below */
+  margin: 50px;
+  height: 100px;
+}
+.tabsChild {
+  margin: 5px;
+  height: 50px;
+  padding-bottom: 3px;
+}
+
 .button:hover {
   background: #ed0c6a;
   text-decoration: none;
-}
-
-.row1 {
-  margin-top: 40px;
-}
-
-.row2 {
-  margin-top: 80px;
-}
-
-.row3 {
-  margin-top: 80px;
 }
 
 #adminBtn {
@@ -280,7 +294,7 @@ header {
 
 .left-row {
   margin-top: 10px;
-  background-color:#e87b72
+  background-color: #e87b72;
 }
 
 .right-row-btns {
@@ -294,13 +308,13 @@ header {
   width: 250px;
   height: 160px;
   margin-left: 16px;
-  background-color:#e87b72;
+  background-color: #e87b72;
   font-size: 2rem;
 }
 .drinks:hover,
 .food:hover,
 .merch:hover {
-background-color: #000000;
+  background-color: #000000;
 }
 
 .item-1,
@@ -341,7 +355,7 @@ background-color: #000000;
 
 #menu-items {
   border: outset #e87b72;
-  background-color:#e39c7f;
+  background-color: #e39c7f;
   margin-top: 10px;
   text-align: center;
   border-radius: 10px;
@@ -358,8 +372,6 @@ background-color: #000000;
   margin-left: 40px;
   background-color: #000000;
   border-color: #e39c7f;
-
-  
 }
 
 .tab-name {
@@ -439,7 +451,7 @@ background-color: #000000;
 }
 
 #lower-btns {
-margin-top: 25px;
+  margin-top: 25px;
   margin-bottom: 50px;
   text-align: center;
 }
