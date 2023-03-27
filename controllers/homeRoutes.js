@@ -39,7 +39,7 @@ router.get("/login", (req, res) => {
       res.redirect("/pos/login");
       // return;
     } else {
-      res.status(200).render("merchantlogin");
+      res.status(200).render("merchantLogin");
     }
   } catch (err) {
     res.status(500).json(err);

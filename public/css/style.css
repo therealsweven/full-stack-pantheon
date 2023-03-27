@@ -406,7 +406,7 @@ html {
 
 .main {
   background-color: #6c757d;
-  height: 150vh;
+  height: 100vh;
 }
 
 #header_nav {
@@ -459,11 +459,38 @@ html {
   margin-top: 10px;
 }
 
+#removeEmployeeForm {
+  position: relative;
+}
+#hideRemoveEmployeeFormButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#newItemForm {
+  position: relative;
+}
+#hideMenuFormsButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#newEmployeeForm {
+  position: relative;
+}
+#hideEmployeeFormsButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .employeeList {
   padding-left: 5px;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: whitesmoke;
   height: 50px;
   width: 100%;
   margin: 5px 0 5px 0;
@@ -478,7 +505,7 @@ html {
   padding-left: 5px;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: whitesmoke;
   height: 50px;
   width: 100%;
   margin: 5px 0 5px 0;
