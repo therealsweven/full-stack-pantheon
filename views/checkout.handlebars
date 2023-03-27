@@ -14,7 +14,7 @@
                     <p class="card-text">P: {{merchant.phone}}</p>
                   </div>
                   <div class="col-5 receipt-header-right">
-                    <p class="card-text">{{updatedAt}}</p>
+                    <p class="card-text" id="time"></p>
                     <p class="card-text">Server: {{employee.name}}</p>
                     <p class="card-text">Receipt #: <span id=ticketID>{{id}}</span></p>
                   </div>
@@ -85,7 +85,7 @@
                           <h4><strong>Total:</strong></h4>
                         </td>
                         <td class="text-center text-danger">
-                          <h4><strong>$<span id="receiptTotal"></span></strong></h4>
+                          <h4><strong id="receiptTotal"></strong></h4>
                         </td>
                       </tr>
                     </tbody>
