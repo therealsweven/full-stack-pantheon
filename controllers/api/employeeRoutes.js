@@ -134,6 +134,7 @@ req.body should be:
       // create session object keys for current employee logged in
       req.session.currentEmployee = dbEmployeeData.name;
       req.session.currentEmployeeID = dbEmployeeData.id;
+      req.session.isAdmin = dbEmployeeData.is_manager;
       res
         .status(200)
         .json({ user: dbEmployeeData, message: "You are now logged in!" });
@@ -141,21 +142,6 @@ req.body should be:
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  }
-});
-
-// Employee Logout
-router.post("/logout", (req, res) => {
-  if (req.session.employeeLoggedIn) {
-    // log employee out and null the currentEmployee info in session object
-    req.session.currentEmployee = null;
-    req.session.currentEmployeeID = null;
-    req.session.employeeLoggedIn = false;
-    // send to employee login page
-    res.status(204); //.render()
-    console.log("logged out");
-  } else {
-    res.status(404);
   }
 });
 

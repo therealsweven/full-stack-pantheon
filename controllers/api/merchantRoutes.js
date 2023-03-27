@@ -110,11 +110,11 @@ req.body should be:
         .json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
-
     req.session.save(() => {
       req.session.loggedIn = true;
       // add merchant id to session
       req.session.currentMerchant = dbMerchantData.id;
+      res.cookie("loggedIn", true, { maxAge: 3000000, httpOnly: true });
       res
         .status(200)
         .json({ user: dbMerchantData, message: "You are now logged in!" });
