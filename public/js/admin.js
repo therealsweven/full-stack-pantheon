@@ -144,10 +144,9 @@ window.onload = function () {
 
 // populates DISPLAY with employee list
 function showEmployees() {
+  employeeTableWrap.innerHTML = "";
   apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
-    div.classList.add("btn");
-    div.classList.add("btn-outline-secondary");
     div.classList.add("employeeList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
@@ -162,10 +161,9 @@ function showEmployees() {
 }
 
 function showItems() {
+  menuTableWrap.innerHTML = "";
   menuItemsArray.forEach((item) => {
     let div = document.createElement("div");
-    div.classList.add("btn");
-    div.classList.add("btn-outline-secondary");
     div.classList.add("itemList");
     div.innerHTML = `<table style="width: 100%">
     <tr>

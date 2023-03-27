@@ -1,3 +1,7 @@
+// JS for Time
+const currentTime = moment().format("dddd MMM Do hh:mm a");
+$("#time").append(currentTime);
+////////////////////////////////////////////////////////////
 // JS for Subtotal
 const itemTotal = $(".itemTotal");
 const subTotal = $("#subTotal");
@@ -34,8 +38,11 @@ const tipHandler = async (event) => {
     });
 
     if (response.ok) {
+      tip.empty();
+      tipAmount.empty();
       tip.append(`<strong>Tip:</strong>`);
       tipAmount.append(`<strong>$${tipAmountInput}</strong>`);
+      totalHandler();
     }
   } else {
     alert("Make sure the tip amount is a number!");
@@ -71,8 +78,11 @@ const discountHandler = async (event) => {
     });
 
     if (response.ok) {
+      discount.empty();
+      discountAmount.empty();
       discount.append(`<strong>Discount:</strong>`);
       discountAmount.append(`<strong>$${discountAmountInput}</strong>`);
+      totalHandler();
     }
   } else {
     alert("Make sure the discount amount is a number!");
@@ -80,6 +90,33 @@ const discountHandler = async (event) => {
 };
 
 $("#discountSubmit").click(discountHandler);
+////////////////////////////////////////////////////////////
+// JS for Total
+const receiptTotal = $("#receiptTotal");
+
+const totalHandler = async () => {
+  try {
+    const response = await fetch(`/api/tickets/${ticketID}`);
+    const data = await response.json();
+    const tip = Number(data.tip_amount);
+    const discount = Number(data.discount);
+    const calculateTotal = subTotalSum + calculateTax + tip - discount;
+
+    await fetch(`/api/tickets/${ticketID}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        total: calculateTotal,
+      }),
+      headers: { "Content-Type": "application/JSON" },
+    });
+    receiptTotal.empty();
+    receiptTotal.append(`$${calculateTotal.toFixed(2)}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+totalHandler();
 ////////////////////////////////////////////////////////////
 // Icebox JS for split button
 // console.log("checkout js loaded");
