@@ -70,9 +70,9 @@ function renderMenuRow(data) {
     img.setAttribute('class', 'images');
     //add button
     var addButton = document.createElement('button');
-    addButton.setAttribute('class', 'btn btn-default border border-danger-subtle btn-add');
+    addButton.setAttribute('class', 'btn btn-default border border-danger-subtle btn-add-menu-item');
     addButton.setAttribute('onclick', 'increaseQuantity(' + data[index].id + ',' + ticket_id + ')');
-    addButton.textContent = 'Add';
+    addButton.textContent = '+';
     //create name paragraph
     var name = document.createElement('p');
     name.textContent = data[index].item_name;

@@ -22,21 +22,21 @@
                 <p class="server-name">Hello: {{sesh.currentEmployee}}</p>
 
                 <table class="nqp-table">
-                    <tr>
+                    <tr class="table-header">
                         <th>Name</th>
-                        <th>Quantity</th>
+                        <th class="quantity-table">Quantity</th>
                         <th>Price</th>
                     </tr>
                     {{#each ticket.menu_items}}
-                    <tr>
+                    <tr class="table-row">
                         <td>{{this.item_name}}</td>
                         <td class="fw-semibold">
                             <button
-                                class="btn btn-default border border-danger-subtle btn-subtract "
+                                class="btn btn-default  btn-subtract "
                                 onclick="decreaseQuantity({{this.ticket_items.id}})" type="button">-</button>
                             <span> x {{this.ticket_items.quantity}}  </span>
                             <button
-                                class="btn btn-default border border-danger-subtle btn-add"
+                                class="btn btn-default  btn-add"
                                 onclick="increaseQuantity({{this.ticket_items.menu_item_id}}, {{../ticket.id}})"
                                 type="button">+</button></td>
                         <td>${{multiply this.ticket_items.quantity this.price}}</td>
