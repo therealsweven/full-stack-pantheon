@@ -12,11 +12,34 @@ const display = document.getElementById("sidebarDisplay");
 const employeesWrap = document.getElementById("employeesWrap");
 const employeeButtonsWrap = document.getElementById("employeeButtonsWrap");
 const employeeTableWrap = document.getElementById("employeeTableWrap");
+// ----hide FORM
+const hideEmployeeFormsButton = document.getElementById(
+  "hideEmployeeFormsButton"
+);
+// ----add new employee button
+const addNewEmployeeBtn = document.getElementById("addNewEmployeeBtn");
+// ----new employee form
+const newEmployeeFormWrap = document.getElementById("newEmployeeFormWrap");
+const newEmployeeForm = document.getElementById("newEmployeeForm");
+// ---- removeEmployeeBtn
+const removeEmployeeBtn = document.getElementById("removeEmployeeBtn");
+// ---- remove employee form WRAP
+const removeEmployeeFormWrap = document.getElementById(
+  "removeEmployeeFormWrap"
+);
+// ----remove employee form
+const removeEmployeeForm = document.getElementById("removeEmployeeForm");
+// ----remove emploeye form HIDE button
+const hideRemoveEmployeeFormButton = document.getElementById(
+  "hideRemoveEmployeeFormButton"
+);
 
 // MENU wraps
 const menuWrap = document.getElementById("menuWrap");
 const menuButtonsWrap = document.getElementById("menuButtonsWrap");
 const menuTableWrap = document.getElementById("menuTableWrap");
+// ----hide FORM
+const hideMenuFormsButton = document.getElementById("hideMenuFormsButton");
 // ----add new item button
 const addNewItemBtn = document.getElementById("addNewItemBtn");
 // ----new item form
@@ -181,18 +204,48 @@ function showItems() {
 editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
+  newEmployeeFormWrap.classList.add("hide");
   employeesWrap.classList.remove("hide");
   showEmployees();
+});
+// ---- [ADD EMPLOYEE form HIDE BUTTON] click listener
+hideEmployeeFormsButton.addEventListener("click", () => {
+  newEmployeeFormWrap.classList.add("hide");
+});
+// ---- [ADD NEW Employee] click listener
+addNewEmployeeBtn.addEventListener("click", () => {
+  newEmployeeFormWrap.classList.remove("hide");
+  removeEmployeeFormWrap.classList.add("hide");
+});
+// ---- [ADD NEW Employee] form SUBMIT listener
+newEmployeeForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+// ---- [REMOVE EMPLOYEE form HIDE BUTTON] click listener
+hideRemoveEmployeeFormButton.addEventListener("click", () => {
+  removeEmployeeFormWrap.classList.add("hide");
+});
+// ---- [REMOVE EMPLOYEE BUTTON] click listener
+removeEmployeeBtn.addEventListener("click", () => {
+  removeEmployeeFormWrap.classList.remove("hide");
+  newEmployeeFormWrap.classList.add("hide");
+});
+// ---- [REMOVE EMPLOYEE] form SUBMIT listener
+removeEmployeeForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 });
 
 // [EDIT MENU] click listener
 editMenuButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
-  ordersWrap.classList.add("hide");
   newItemFormWrap.classList.add("hide");
   menuWrap.classList.remove("hide");
   showItems();
+});
+// ---- [HIDE BUTTON] click listener
+hideMenuFormsButton.addEventListener("click", () => {
+  newItemFormWrap.classList.add("hide");
 });
 // ---- [ADD NEW ITEM] click listener
 addNewItemBtn.addEventListener("click", () => {
