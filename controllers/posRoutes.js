@@ -21,6 +21,9 @@ const Op = require("sequelize").Op;
 router.get("/login", (req, res) => {
   try {
     //console.log(req.session);
+    req.session.setTableTab = null;
+    req.session.currentEmployee = null;
+    req.session.currentEmployeeID = null;
     const sesh = req.session;
     res.status(200).render("userLogin", { sesh });
   } catch (err) {
