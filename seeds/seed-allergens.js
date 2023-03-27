@@ -2,28 +2,28 @@ const { Allergens } = require("../models");
 
 const items = [
   {
-    type: "shellfish",
+    type: "Shellfish",
   },
   {
-    type: "fish",
+    type: "Fish",
   },
   {
-    type: "milk",
+    type: "Milk",
   },
   {
-    type: "eggs",
+    type: "Eggs",
   },
   {
-    type: "peanuts",
+    type: "Peanuts",
   },
   {
-    type: "tree nuts",
+    type: "Tree nuts",
   },
   {
-    type: "wheat",
+    type: "Wheat",
   },
   {
-    type: "soy",
+    type: "Soy",
   },
 ];
 
