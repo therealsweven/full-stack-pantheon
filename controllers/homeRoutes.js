@@ -11,7 +11,13 @@ const router = require("express").Router();
 // homepage
 router.get("/", (req, res) => {
   try {
-    res.status(200).sendFile(path.join(__dirname, "../public/index.html"));
+    //console.log(req.session);
+    if (req.session.loggedIn) {
+      res.redirect("/pos/login");
+      // return;
+    } else {
+      res.status(200).sendFile(path.join(__dirname, "../public/homepage.html"));
+    }
   } catch (err) {
     res.status(500).json(err);
   }
@@ -29,10 +35,28 @@ router.get("/signup", (req, res) => {
 // merchant login
 router.get("/login", (req, res) => {
   try {
-    res.status(200).render("merchantlogin");
+    if (req.session.loggedIn) {
+      res.redirect("/pos/login");
+      // return;
+    } else {
+      res.status(200).render("merchantlogin");
+    }
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// Merchant Logout
+router.get("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      // res.status(204).json("message: You have been logged out").end();
+      res.status(204).redirect("/");
+    });
+  } else {
+    res.status(404).end();
+  }
+  console.log("logged out");
 });
 
 // merchant forgot password

@@ -20,15 +20,33 @@ const Op = require("sequelize").Op;
 // employee login page
 router.get("/login", (req, res) => {
   try {
-    res.status(200).render("userLogin");
+    //console.log(req.session);
+    const sesh = req.session;
+    res.status(200).render("userLogin", { sesh });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// Employee Logout
+router.get("/logout", (req, res) => {
+  if (req.session.employeeLoggedIn) {
+    // log employee out and null the currentEmployee info in session object
+    req.session.currentEmployee = null;
+    req.session.currentEmployeeID = null;
+    req.session.employeeLoggedIn = false;
+    // send to employee login page
+    res.redirect("/pos/login");
+    //console.log("logged out");
+  } else {
+    res.status(404);
   }
 });
 
 // table/tab select page
 router.get("/tables", async (req, res) => {
   try {
+    req.session.tableSelected = false;
     const tablesData = await Tables.findAll({
       where: { merchant_id: req.session.currentMerchant },
     });
@@ -44,7 +62,8 @@ router.get("/tables", async (req, res) => {
     const tickets = tabData.map((element) => element.get({ plain: true }));
     console.log(tickets[0].bar_tab.tab_name);
     console.log(tickets);
-    res.status(200).render("tableMap", { tickets, tables });
+    const sesh = req.session;
+    res.status(200).render("tableMap", { tickets, tables, sesh });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -62,6 +81,12 @@ router.get("/main/:id", async (req, res) => {
         {
           model: Menu_items,
           attributes: ["item_name", "price"],
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Employee,
@@ -92,8 +117,9 @@ router.get("/main/:id", async (req, res) => {
       menuItems[i] = menuItemsData[i].get({ plain: true });
     }
     console.log(menuItems);
-    //res.status(200).render("landingPage", { ticket, menuItems });
-    res.status(200).json({ ticket, menuItems });
+    const sesh = req.session;
+    res.status(200).render("landingPage", { ticket, menuItems, sesh });
+    // res.status(200).json({ ticket, menuItems });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -113,6 +139,12 @@ router.get("/checkout/:id", async (req, res) => {
         {
           model: Menu_items,
           attributes: ["item_name", "price"],
+        },
+        {
+          model: Tables,
+        },
+        {
+          model: Bar_tabs,
         },
         {
           model: Employee,
@@ -135,9 +167,9 @@ router.get("/checkout/:id", async (req, res) => {
     console.log(ticketData);
     const ticket = ticketData.get({ plain: true });
     console.log(ticket);
-
+    const sesh = req.session;
     //res.status(200).json(ticket);
-    res.status(200).render("checkout", ticket);
+    res.status(200).render("checkout", { ticket, sesh });
   } catch (err) {
     res.status(500).json(err);
   }

@@ -1,14 +1,16 @@
-<div id="pwCheck">
+{{> header}}
+<div class="body">
+<div id="pwCheck" style="margin-top:65px;">
   <div class="form-outline form-white mb-4">
-    <p>Please enter the password for your merchant account:</p>
+    <p class="enter-text">Please enter the password for your merchant account:</p>
     <input
       type="password"
       id="merchantPassword"
       class="form-control form-control-lg"
     />
-    <label class="form-label" for="merchantPassword">Password</label>
+    <label class="form-label password-text" for="merchantPassword">Password</label>
     </br>
-    <button id="pwSubmitBtn">
+    <button id="pwSubmitBtn" class="btn btn-dark login-settings-btn">
       Login
     </button>
   </div>
@@ -29,10 +31,10 @@
     <p id="phone"> {{phone}}</p>
   </div>
   <div>
-    <button id="addressUpdate">Update Address</button>
-    <button id="phoneUpdate">Update Phone</button>
-    <button id="emailUpdate">Update Email</button>
-    <button id="passwordUpdate">Update Password</button>
+    <button id="addressUpdate" class="btn btn-dark">Update Address</button>
+    <button id="phoneUpdate" class="btn btn-dark">Update Phone</button>
+    <button id="emailUpdate" class="btn btn-dark">Update Email</button>
+    <button id="passwordUpdate" class="btn btn-dark">Update Password</button>
   </div>
   <div>
     <div id="addressForm" class="form-outline mb-4" style="display:none;">
@@ -102,12 +104,12 @@
       </div>
       <label class="form-label" for="zipInput">Zipcode</label>
       <input type="text" id="zipInput" class="form-control form-control-lg" />
-      <button id="addressFormSubmit">Submit</button>
+      <button id="addressFormSubmit" class="btn btn-dark">Submit</button>
     </div>
     <div id="phoneForm" class="form-outline mb-4" style="display:none;">
       <label class="form-label" for="phoneInput">Enter new phone number</label>
       <input type="tel" id="phoneInput" class="form-control form-control-lg" />
-      <button id="phoneFormSubmit">Submit</button>
+      <button id="phoneFormSubmit" class="btn btn-dark">Submit</button>
     </div>
     <div id="emailForm" class="form-outline mb-4" style="display:none;">
       <label class="form-label" for="emailInput">Enter new email</label>
@@ -118,7 +120,7 @@
         id="emailInput2"
         class="form-control form-control-lg"
       />
-      <button id="emailFormSubmit">Submit</button>
+      <button id="emailFormSubmit" class="btn btn-dark">Submit</button>
     </div>
     <div id="passwordForm" class="form-outline mb-4" style="display:none;">
       <label class="form-label" for="passwordInput">Enter new password</label>
@@ -133,14 +135,14 @@
         id="passwordInput2"
         class="form-control form-control-lg"
       />
-      <button id="passwordFormSubmit">Submit</button>
+      <button id="passwordFormSubmit" class="btn btn-dark" >Submit</button>
     </div>
   </div>
 </div>
 <a href="/pos/login">
-  <button id="returnBtn">
+  <button id="returnBtn" class="btn btn-dark">
     Return to Employee Login
   </button>
 </a>
-
+</div>
 <script src="/js/merchantSettings.js"></script>

@@ -127,4 +127,27 @@ module.exports = {
 
     console.log("Message sent: %s", info.messageId);
   },
+  sendUsernameEmail: async (merchant) => {
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: `"Mercury POS 👻" <'${process.env.EMAIL_USER}'>`,
+      to: merchant.email,
+      subject: `Password Reset`,
+      html: `<p>Your username is:</p></br></br>
+      <b>${merchant.username}</b>`,
+    });
+
+    console.log("Message sent: %s", info.messageId);
+  },
 };

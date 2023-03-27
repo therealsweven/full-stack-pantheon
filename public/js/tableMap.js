@@ -52,30 +52,17 @@ const addBar = function (event) {
   addTabForm.show();
 };
 
-// Select a bar tab
-const selectTab = async (event) => {
-  console.log(event.target);
-
-  //   const response = await fetch("/api/tickets", {
-  //     method: "POST",
-  //     body: JSON.stringify({ username, password }),
-  //     headers: { "Content-Type": "application/json" },
-  //   });
-
-  //   if (response.ok) {
-  //     document.location.replace("/pos/main");
-  //   } else {
-  //     alert("Failed to log in.");
-  //   }
-};
-
 // Select a table
 const selectTable = async (event) => {
   // look for open ticket
   //table id
 
   // fetch("/api/tickets/open");
-
+  await fetch(`/api/tickets/setTableTab`, {
+    method: "POST",
+    body: JSON.stringify({ setTableTab: event.target.textContent }),
+    headers: { "Content-Type": "application/json" },
+  });
   const response = await fetch(`/api/tickets/${event.target.id}/open`, {
     method: "GET",
   });
@@ -114,6 +101,16 @@ const selectTable = async (event) => {
     } else {
     }
   }
+};
+// Select a tab
+const selectTab = async (event) => {
+  await fetch(`/api/tickets/setTableTab`, {
+    method: "POST",
+    body: JSON.stringify({ setTableTab: event.target.textContent }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  document.location.replace(`/pos/main/${event.target.id}`);
 };
 
 tableContainer.click(selectTable);

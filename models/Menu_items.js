@@ -22,11 +22,8 @@ Menu_items.init(
       type: DataTypes.STRING,
     },
     price: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(5,2),
       allowNull: false,
-      validate: {
-        isDecimal: true,
-      }
     },
     available: {
       type: DataTypes.BOOLEAN,

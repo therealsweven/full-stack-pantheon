@@ -1,17 +1,23 @@
-let subTotal = 0;
 module.exports = {
   multiply: (num1, num2) => {
-    return num1 * num2;
+    return (num1 * num2).toFixed(2);
   },
-  subTotal: (num1, num2) => {
-    let itemTotal = num1 * num2;
-    subTotal = subTotal + itemTotal;
-    return subTotal;
+  salesTax: (data) =>{
+    return (calculateTotals(data) * 0.029).toFixed(2);
   },
-  tipAmount: () => {
-    return subTotal * 0.2;
-  },
-  taxAmount: () => {
-    return subTotal * 0.029;
-  },
+  totals: (data) => {
+    let total = calculateTotals(data);
+    return (total + total* 0.029).toFixed(2);
+  }
 };
+
+function calculateTotals(data){
+  var total = 0.00;
+
+  data.forEach(item => {
+    let subtotal = item.price * item.ticket_items.quantity;
+    total += subtotal;
+  });
+
+  return total;
+}

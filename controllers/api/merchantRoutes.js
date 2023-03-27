@@ -110,14 +110,12 @@ req.body should be:
         .json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
-
     req.session.save(() => {
       req.session.loggedIn = true;
       // add merchant id to session
       req.session.currentMerchant = dbMerchantData.id;
-      res
-        .status(200)
-        .json({ user: dbMerchantData, message: "You are now logged in!" });
+      res.cookie("loggedIn", true, { maxAge: 3000000, httpOnly: true });
+      res.redirect("/pos/login");
     });
   } catch (err) {
     console.log(err);
@@ -162,6 +160,30 @@ router.post("/forgotPassword", async (req, res) => {
     emails.sendPWResetEmail(merchantData, tempPW);
 
     res.status(200).json("Password Reset Email Sent");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// forgot username
+router.post("/forgotUsername", async (req, res) => {
+  console.log(req.body);
+  try {
+    const merchantData = await Merchant.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!merchantData) {
+      res.status(400).json("No account found");
+      return;
+    }
+    const merchant = merchantData.get({ plain: true });
+    //send email
+    emails.sendUsernameEmail(merchantData);
+
+    res.status(200).json("Email Sent. Check your inbox.");
   } catch (err) {
     res.status(500).json(err);
   }

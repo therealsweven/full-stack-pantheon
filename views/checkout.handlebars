@@ -1,21 +1,22 @@
+{{> header}}
 <div id="receipts-page">
-    <section class="receipts d-flex justify-content-center bg-dark" id="insertReceipts">
+    <section class="receipts d-flex justify-content-center gradient-custom" id="insertReceipts">
 
         {{!-- <!-- template --> --}}
         <div class="card receipt">
             <div class="card-body">
-              <h5 class="card-title receipt-title">{{merchant.business_name}}</h5>
+              <h5 class="card-title receipt-title">{{ticket.merchant.business_name}}</h5>
               <div class="container">
                 <div class="row receipt-header">
                   <div class="col-5 receipt-header-left">
-                    <p class="card-text">{{merchant.address}}</p>
-                    <p class="card-text">{{merchant.city}}, {{merchant.state}}</p>
-                    <p class="card-text">P: {{merchant.phone}}</p>
+                    <p class="card-text">{{ticket.merchant.address}}</p>
+                    <p class="card-text">{{ticket.merchant.city}}, {{ticket.merchant.state}}</p>
+                    <p class="card-text">P: {{ticket.merchant.phone}}</p>
                   </div>
                   <div class="col-5 receipt-header-right">
-                    <p class="card-text">{{updatedAt}}</p>
-                    <p class="card-text">Server: {{employee.name}}</p>
-                    <p class="card-text">Receipt #: <span id=ticketID>{{id}}</span></p>
+                    <p class="card-text" id="time"></p>
+                    <p class="card-text">Server: {{ticket.employee.name}}</p>
+                    <p class="card-text">Receipt #: <span id=ticketID>{{ticket.id}}</span></p>
                   </div>
                 </div>
 
@@ -33,7 +34,7 @@
                     <tbody>
                       <div id="menuItems"></div>
 
-                      {{#each menu_items}}
+                      {{#each ticket.menu_items}}
                         <tr>
                           <td class="col-md-6">
                             <em>{{this.item_name}}</em>
@@ -84,7 +85,7 @@
                           <h4><strong>Total:</strong></h4>
                         </td>
                         <td class="text-center text-danger">
-                          <h4><strong>$<span id="receiptTotal"></span></strong></h4>
+                          <h4><strong class="receiptTotal"></strong></h4>
                         </td>
                       </tr>
                     </tbody>
@@ -141,12 +142,78 @@
                           </div>
                         </div>
                       </div>
-                    <button
-                      type="button"
-                      class="btn btn-success btn-lg pay-button"
-                    >
+                    <button type="button" class="btn btn-success btn-lg pay-button" data-bs-toggle="modal" data-bs-target="#payModal">
                       Pay Now
                     </button>
+                      <div class="modal" id="payModal" tabindex="-1" aria-labelledby="payModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="tipModalLabel">Pay Bill</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              
+                              <div class="payBtn-section section">
+                                <div class="payBtn-container container">
+                                  <div class="row payBtn-full-height full-height justify-content-center">
+                                    <div class="col-12 text-center align-self-center">
+                                      <div class="payBtn-section section pb-5 pt-5 pt-sm-2 text-center">
+                                        <h6 class="mb-0 pb-3 payBtn-h6"><span>Cash </span><span>Card</span></h6>
+                                        <input class="payBtn-checkbox checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                                        <label for="reg-log"></label>
+                                        <div class="payBtn-card-3d-wrap card-3d-wrap mx-auto">
+                                          <div class="payBtn-card-3d-wrapper card-3d-wrapper">
+                                            <div class="payBtn-card-front card-front">
+                                              <div class="payBtn-center-wrap center-wrap">
+                                                <div class="payBtn-section section text-center">
+                                                  <h4 class="mb-4 pb-3 payBtn-h4">Total: <span class="receiptTotal"></span></h4>
+                                                  <div class="payBtn-form-group form-group">
+                                                    <input type="text" name="customerCash" class="payBtn-form-style form-style" placeholder="Customer Paid:"
+                                                      id="customerCash" autocomplete="off" onkeyup="updateText(this.value)">
+                                                  </div>
+                                                  <h6 class="mt-4 pt-3 payBtn-h4">Change Due: <span id="changeDue"></span></h6>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="payBtn-card-back card-back">
+                                              <div class="payBtn-center-wrap center-wrap">
+                                                <div class="payBtn-section section text-center">
+                                                  <h4 class="mb-4 pb-3 payBtn-h4">Total: <span class="receiptTotal"></span></h4>
+                                                  <div class="payBtn-form-group form-group">
+                                                    <input type="text" class="payBtn-form-style form-style"
+                                                      placeholder="Card Number" autocomplete="off">
+                                                  </div>
+                                                  <div class="payBtn-form-group form-group d-flex justify-content-between">
+                                                    <input type="text" class="payBtn-form-style form-style exp-cvv"
+                                                      placeholder="Exp 03/23" autocomplete="off">
+                                                    <input type="text" class="payBtn-form-style form-style exp-cvv"
+                                                      placeholder="CVV" autocomplete="off">
+                                                  </div>
+                                                  <div class="payBtn-form-group form-group">
+                                                    <input type="text" class="payBtn-form-style form-style"
+                                                      placeholder="Cardholder Name" autocomplete="off">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button id="paySubmit" type="submit" data-bs-dismiss="modal" class="btn btn-primary btn-lg">
+                                Submit
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>
