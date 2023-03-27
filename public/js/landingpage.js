@@ -13,7 +13,6 @@ $(function(){
     tabMap = document.getElementById('bar-tab');
     checkout = document.getElementById('checkout');
     kitchen = document.getElementById('kitchen');
-    console.log(tableMap);
 
     var url = document.URL;
     ticket_id = url.substring(url.lastIndexOf('/')+1, url.length);
