@@ -746,6 +746,7 @@ header {
   margin-left: 40px;
   background-color:#e87b72;
   border-color:#e87b72;
+  font-size: 1.5rem;
 }
 
 
@@ -785,6 +786,7 @@ header {
   margin-left: 40px;
 background-color: #e87b72;
   border-color: #e87b72;
+  font-size: 1.5rem;
 }
 
 .send-kitchen:hover, .table-map:hover {
