@@ -20,7 +20,9 @@ const Op = require("sequelize").Op;
 // employee login page
 router.get("/login", (req, res) => {
   try {
-    res.status(200).render("userLogin");
+    //console.log(req.session);
+    const sesh = req.session;
+    res.status(200).render("userLogin", { sesh });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -34,7 +36,7 @@ router.get("/logout", (req, res) => {
     req.session.currentEmployeeID = null;
     req.session.employeeLoggedIn = false;
     // send to employee login page
-    res.status(204).redirect("/pos/login");
+    res.redirect("/pos/login");
     //console.log("logged out");
   } else {
     res.status(404);
@@ -165,9 +167,9 @@ router.get("/checkout/:id", async (req, res) => {
     console.log(ticketData);
     const ticket = ticketData.get({ plain: true });
     console.log(ticket);
-
+    const sesh = req.session;
     //res.status(200).json(ticket);
-    res.status(200).render("checkout", ticket);
+    res.status(200).render("checkout", { ticket, sesh });
   } catch (err) {
     res.status(500).json(err);
   }

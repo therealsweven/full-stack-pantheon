@@ -145,4 +145,27 @@ req.body should be:
   }
 });
 
+// Employee Logout
+router.get("/logout", async (req, res) => {
+  /* 
+req.body should be:
+
+{
+  login_id: INT
+}
+
+*/
+  try {
+    req.session.employeeLoggedIn = false;
+    // update session keys
+    req.session.currentEmployee = null;
+    req.session.currentEmployeeID = null;
+    req.session.isAdmin = null;
+    res.send("/pos/login");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

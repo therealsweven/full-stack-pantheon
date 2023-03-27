@@ -25,6 +25,7 @@ const sess = {
   }),
 };
 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(session(sess));
 app.use(cookieParser());
 
@@ -35,9 +36,12 @@ app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
-
 app.use(routes);
+
+app.get("/*", (req, res) => {
+  res.render("404");
+  //res.send("hello world testing");
+});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));

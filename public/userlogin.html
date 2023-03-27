@@ -15,44 +15,93 @@
   </head>
   <body>
     <main>
-      <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-          <div
-            class="row d-flex justify-content-center align-items-center h-100"
-          >
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div class="card bg-dark text-white" style="border-radius: 1rem">
-                <div class="card-body p-5 text-center">
-                  <div class="mt-md-4 pb-5">
-                    <h2 class="fw-bold mb-2 text-uppercase">Employee Login</h2>
-                    <p class="text-white-50 mb-5">
-                      Please enter your login information
-                    </p>
-
-                    <div class="form-outline form-white mb-4">
-                      <input
-                        type="text"
-                        id="employeeLogin"
-                        class="form-control form-control-lg"
-                      />
-                      <label class="form-label" for="employeeLogin"
-                        >Login ID</label
-                      >
-                    </div>
-
-                    <button
-                      class="btn btn-outline-light btn-lg px-5"
-                      type="submit"
-                    >
-                      Login
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <script src="https://hosted.epxuap.com/post.js"></script>
+      <script>
+        function epxSuccessCallback(msg) {
+          alert("Success: " + msg);
+          console.log(msg);
+        }
+        function epxFailureCallback(msg) {
+          alert("Failure: " + msg);
+          console.log(msg);
+        }
+      </script>
+      <form id="EpxCheckoutForm" name="EpxCheckoutForm">
+        <div>
+          <label for="PAN">Card Number:</label
+          ><input type="text" id="PAN" name="PAN" value="4111111111111111" />
         </div>
-      </section>
+
+        <div>
+          <label for="Expire">Expire:</label
+          ><input type="text" id="Expire" name="Expire" value="0822" />
+        </div>
+
+        <div>
+          <label for="CVV">CVV:</label
+          ><input type="text" id="CVV" name="CVV" value="123" />
+        </div>
+
+        <div>
+          <label for="Amount">Amount:</label
+          ><input type="amount" id="Amount" name="Amount" value="1.00" />
+        </div>
+        <div>
+          <label for="Email">Email:</label
+          ><input type="email" id="Email" name="Email" value="john@aol.com" />
+        </div>
+
+        <div>
+          <label for="Billing Name">Billing Name:</label
+          ><input
+            type="text"
+            id="Billing Name"
+            name="Billing Name"
+            value="John Doe"
+          />
+        </div>
+        <div>
+          <label for="Billing Postal Code">Billing Postal Code:</label
+          ><input
+            type="zip"
+            id="Billing Postal Code"
+            name="Billing Postal Code"
+            value="80206"
+          />
+        </div>
+
+        <div>
+          <input
+            type="hidden"
+            name="FailureCallback"
+            value="epxFailureCallback"
+          /><input
+            type="hidden"
+            name="SuccessCallback"
+            value="epxSuccessCallback"
+          /><input
+            type="hidden"
+            name="PublicKey"
+            value="eyAidGVybWluYWxQcm9maWxlSWQiOiAiMWRiNWExMDQtZTJjYy00ZjAzLWExZTctNjZhNTFjMWQxZmE2IiB9"
+          />
+          <input type="hidden" name="Captcha" value="bypass" />
+        </div>
+
+        <div>
+          <button onclick="Epx.sendPost()" type="button">Send Payment</button>
+        </div>
+      </form>
+
+      <style>
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
     </main>
 
     <script

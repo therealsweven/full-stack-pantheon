@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a href="/pos/login"><img
+    <a href="/login"><img
         src="/images/MercuryLogo.png"
         alt="Mercury Logo"
         class="navbar-brand mercury-logo-header"
@@ -15,8 +15,8 @@
             {{sesh.setTableTab}}
           {{/if}}&emsp;
         </p>
-
-      {{/if}}
+        {{/if}}
+{{#if sesh.loggedIn}}
       <button
         class="navbar-toggler"
         type="button"
@@ -27,7 +27,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-
+{{/if}}
     <div
       class="offcanvas offcanvas-end text-bg-dark"
       tabindex="-1"
@@ -49,18 +49,21 @@
             <a class="nav-link" href="#"><p class="settings-item">Take Lunch</p></a>
           </li> }}
           {{! check to see if user isAdmin = true }}
+          
           <li class="nav-item">
             <a class="nav-link" href="/settings"><p
                 class="settings-item"
               >Account Settings</p></a>
           </li>
+          {{#if sesh.employeeLoggedIn}}
           {{#if sesh.isAdmin}}
             <li class="nav-item">
               <a class="nav-link" href="/pos/admin"><p class="settings-item">POS
                   Admin</p></a>
             </li>
+            {{/if}}
           {{/if}}
-          {{#if sesh.currentEmployee}}
+          {{#if sesh.employeeLoggedIn}}
             <li class="nav-item">
               <a class="nav-link" href="/pos/logout"><p
                   class="settings-item"
