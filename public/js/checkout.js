@@ -28,7 +28,7 @@ const tipHandler = async (event) => {
   event.preventDefault();
   var tipAmountInput = $("#tipAmountInput").val();
 
-  if (!isNaN(tipAmountInput)) {
+  if (!isNaN(tipAmountInput) && tipAmountInput > 0) {
     const response = await fetch(`/api/tickets/${ticketID}`, {
       method: "PUT",
       body: JSON.stringify({
@@ -45,7 +45,7 @@ const tipHandler = async (event) => {
       totalHandler();
     }
   } else {
-    alert("Make sure the tip amount is a number!");
+    alert("Make sure the tip amount is a number greater than 0!");
   }
 };
 
@@ -68,7 +68,7 @@ const discountHandler = async (event) => {
   event.preventDefault();
   var discountAmountInput = $("#discountAmountInput").val();
 
-  if (!isNaN(discountAmountInput)) {
+  if (!isNaN(discountAmountInput) && discountAmountInput > 0) {
     const response = await fetch(`/api/tickets/${ticketID}`, {
       method: "PUT",
       body: JSON.stringify({
@@ -125,8 +125,52 @@ function updateText(text) {
   document.getElementById("changeDue").innerHTML = test.toFixed(2);
 }
 
-// does nothing yet, but what should it do?
-// $("#paySubmit").click();
+const paymentHandler = (event) => {
+  event.preventDefault();
+  const errorMessage = $(".errorMessage");
+  const cardMessage = $("#cardMessage");
+  const cashMessage = $("#cashMessage");
+
+  const customerCash = $("#customerCash");
+  const customerCashCheck = Number(customerCash.val()) >= calculateTotal.amount;
+
+  const cardNumber = $("#cardNumber");
+  const cardNumberCheck =
+    !isNaN(cardNumber.val()) && cardNumber.val().toString().length === 16;
+  const expDate = $("#expDate");
+  const expFormat = /^\d{1,2}\/\d{2}$/;
+  const expCheck = expFormat.test(expDate.val());
+  const cvv = $("#cvv");
+  const cvvFormat = /^\d{3}$/;
+  const cvvCheck = cvvFormat.test(cvv.val());
+  const cardholderName = $("#cardholderName");
+  const cardholderNameCheck =
+    /[a-zA-Z]/.test(cardholderName.val()) &&
+    cardholderName.val().toString().length > 0;
+
+  if (
+    customerCashCheck ||
+    (cardNumberCheck && expCheck && cvvCheck && cardholderNameCheck)
+  ) {
+    function paymentSuccess() {
+      errorMessage.empty();
+      cashMessage.append(`Payment processed successfully!`);
+      cardMessage.append(`Payment processed successfully!`);
+
+      setTimeout(function () {
+        document.location.replace("/pos/tables");
+      }, 3000);
+    }
+
+    paymentSuccess();
+  } else {
+    errorMessage.empty();
+    cashMessage.append(`Let's give the customer a cash discount! ;)`);
+    cardMessage.append(`Make sure all fields are in the correct format!`);
+  }
+};
+
+$("#paySubmit").click(paymentHandler);
 ////////////////////////////////////////////////////////////
 // Icebox JS for split button
 // console.log("checkout js loaded");
