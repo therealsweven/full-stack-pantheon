@@ -92,7 +92,8 @@ const discountHandler = async (event) => {
 $("#discountSubmit").click(discountHandler);
 ////////////////////////////////////////////////////////////
 // JS for Total
-const receiptTotal = $("#receiptTotal");
+const receiptTotal = $(".receiptTotal");
+var calculateTotal = {};
 
 const totalHandler = async () => {
   try {
@@ -100,23 +101,32 @@ const totalHandler = async () => {
     const data = await response.json();
     const tip = Number(data.tip_amount);
     const discount = Number(data.discount);
-    const calculateTotal = subTotalSum + calculateTax + tip - discount;
+    calculateTotal.amount = subTotalSum + calculateTax + tip - discount;
 
     await fetch(`/api/tickets/${ticketID}`, {
       method: "PUT",
       body: JSON.stringify({
-        total: calculateTotal,
+        total: calculateTotal.amount,
       }),
       headers: { "Content-Type": "application/JSON" },
     });
     receiptTotal.empty();
-    receiptTotal.append(`$${calculateTotal.toFixed(2)}`);
+    receiptTotal.append(`$${calculateTotal.amount.toFixed(2)}`);
   } catch (error) {
     console.error(error);
   }
 };
 
 totalHandler();
+////////////////////////////////////////////////////////////
+// JS for Pay Bill
+function updateText(text) {
+  const test = text - calculateTotal.amount;
+  document.getElementById("changeDue").innerHTML = test.toFixed(2);
+}
+
+// does nothing yet, but what should it do?
+// $("#paySubmit").click();
 ////////////////////////////////////////////////////////////
 // Icebox JS for split button
 // console.log("checkout js loaded");
