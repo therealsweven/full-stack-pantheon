@@ -5,18 +5,18 @@
         {{!-- <!-- template --> --}}
         <div class="card receipt">
             <div class="card-body">
-              <h5 class="card-title receipt-title">{{merchant.business_name}}</h5>
+              <h5 class="card-title receipt-title">{{ticket.merchant.business_name}}</h5>
               <div class="container">
                 <div class="row receipt-header">
                   <div class="col-5 receipt-header-left">
-                    <p class="card-text">{{merchant.address}}</p>
-                    <p class="card-text">{{merchant.city}}, {{merchant.state}}</p>
-                    <p class="card-text">P: {{merchant.phone}}</p>
+                    <p class="card-text">{{ticket.merchant.address}}</p>
+                    <p class="card-text">{{ticket.merchant.city}}, {{ticket.merchant.state}}</p>
+                    <p class="card-text">P: {{ticket.merchant.phone}}</p>
                   </div>
                   <div class="col-5 receipt-header-right">
                     <p class="card-text" id="time"></p>
-                    <p class="card-text">Server: {{employee.name}}</p>
-                    <p class="card-text">Receipt #: <span id=ticketID>{{id}}</span></p>
+                    <p class="card-text">Server: {{ticket.employee.name}}</p>
+                    <p class="card-text">Receipt #: <span id=ticketID>{{ticket.id}}</span></p>
                   </div>
                 </div>
 
@@ -34,7 +34,7 @@
                     <tbody>
                       <div id="menuItems"></div>
 
-                      {{#each menu_items}}
+                      {{#each ticket.menu_items}}
                         <tr>
                           <td class="col-md-6">
                             <em>{{this.item_name}}</em>

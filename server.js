@@ -38,6 +38,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
+app.get("/*", (req, res) => {
+  res.render("404");
+  //res.send("hello world testing");
+});
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });

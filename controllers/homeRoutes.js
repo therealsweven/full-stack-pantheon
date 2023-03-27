@@ -11,13 +11,12 @@ const router = require("express").Router();
 // homepage
 router.get("/", (req, res) => {
   try {
-    /////// cookie work
-    console.log(req.cookies);
-    if (req.cookies.loggedIn === true) {
+    //console.log(req.session);
+    if (req.session.loggedIn) {
       res.redirect("/pos/login");
-      return;
+      // return;
     } else {
-      res.status(200).sendFile(path.join(__dirname, "../public/index.html"));
+      res.status(200).sendFile(path.join(__dirname, "../public/homepage.html"));
     }
   } catch (err) {
     res.status(500).json(err);
@@ -36,7 +35,12 @@ router.get("/signup", (req, res) => {
 // merchant login
 router.get("/login", (req, res) => {
   try {
-    res.status(200).render("merchantlogin");
+    if (req.session.loggedIn) {
+      res.redirect("/pos/login");
+      // return;
+    } else {
+      res.status(200).render("merchantlogin");
+    }
   } catch (err) {
     res.status(500).json(err);
   }
