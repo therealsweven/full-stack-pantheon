@@ -128,8 +128,8 @@ function updateText(text) {
 const paymentHandler = (event) => {
   event.preventDefault();
   const errorMessage = $(".errorMessage");
-  const cardErrorMessage = $("#cardErrorMessage");
-  const cashErrorMessage = $("#cashErrorMessage");
+  const cardMessage = $("#cardMessage");
+  const cashMessage = $("#cashMessage");
 
   const customerCash = $("#customerCash");
   const customerCashCheck = Number(customerCash.val()) >= calculateTotal.amount;
@@ -152,11 +152,21 @@ const paymentHandler = (event) => {
     customerCashCheck ||
     (cardNumberCheck && expCheck && cvvCheck && cardholderNameCheck)
   ) {
-    document.location.replace("/pos/tables");
+    function paymentSuccess() {
+      errorMessage.empty();
+      cashMessage.append(`Payment processed successfully!`);
+      cardMessage.append(`Payment processed successfully!`);
+
+      setTimeout(function () {
+        document.location.replace("/pos/tables");
+      }, 3000);
+    }
+
+    paymentSuccess();
   } else {
     errorMessage.empty();
-    cashErrorMessage.append(`Let's give the customer a cash discount! ;)`);
-    cardErrorMessage.append(`Make sure all fields are in the correct format!`);
+    cashMessage.append(`Let's give the customer a cash discount! ;)`);
+    cardMessage.append(`Make sure all fields are in the correct format!`);
   }
 };
 

@@ -19,6 +19,7 @@ html {
   margin-top: 120px;
   max-width: 30rem;
   height: fit-content;
+  border: #000000;
 }
 
 .receipts {
