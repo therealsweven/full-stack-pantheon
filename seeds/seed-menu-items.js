@@ -2,7 +2,7 @@ const { Menu_items } = require('../models');
 
 const items = [
     {
-        item_name: 'Large Pepperoni Pizza',
+        item_name: 'Pepperoni Pizza',
         price: 15.99,
         description: "lorem",
         available: true,
@@ -68,7 +68,7 @@ const items = [
         available: true,
         type: "food",
         subtype: "apptizer",
-        image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmFjaG9zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        image: "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2022/03/Nachos-main-1.jpg",
         merchant_id:1
     },
     {
@@ -92,7 +92,7 @@ const items = [
         merchant_id:1
     },
     {
-        item_name: 'Peanut Butter Sandwich',
+        item_name: 'PB & J',
         price: 6.99,
         description: "lorem",
         available: true,
