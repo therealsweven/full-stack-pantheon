@@ -97,7 +97,12 @@ function renderMenuRow(data) {
     allergens.textContent = 'Allergens: ' + data[index].allergens.map(allergen => allergen.type.charAt(0));
     //append
     price.append(addButton);
-    item.append(img, name, price, allergens);
+    if(menuType == 'merch'){
+      item.append(img, name, price);
+    }else{
+      item.append(img, name, price, allergens);
+    }
+    
     row.append(item);
   }
   menuDisplay.append(row);
