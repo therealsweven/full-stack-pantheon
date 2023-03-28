@@ -37,8 +37,8 @@ module.exports = {
           <h2>Dear <b>${recipient.business_name},</b></h2>
           <p>
             We would like to welcome you to the Mercury POS community! We really hope
-            that you enjoy using our POS system. When setting up your business in the
-            POS, use the login id <b>'admin'</b> to log in. This will give you access
+            that you enjoy using our POS system. You can now login with your user name, ${recipient.username}, and password. When setting up your business in the
+            POS, use the user login id <b>'admin'</b> to log in. This will give you access
             to all admin settings. We strongly recommend changing or deleting the
             admin profile after you have added at least one other employee with
             manager privileges.
