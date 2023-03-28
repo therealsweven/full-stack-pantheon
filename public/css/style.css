@@ -458,6 +458,7 @@ html {
 #removeEmployeeForm,
 #newItemForm,
 #newEmployeeForm,
+#updateEmployeeForm,
 #newTableForm,
 #removeTableForm {
   position: relative;
@@ -465,6 +466,7 @@ html {
 #hideRemoveEmployeeFormButton,
 #hideMenuFormsButton,
 #hideEmployeeFormsButton,
+#hideUpdateEmployeeFormsButton,
 #hideTableFormsButton,
 #hideRemoveTableFormsButton {
   position: absolute;
@@ -937,17 +939,19 @@ header {
 /* START OF THE 404  */
 
 .error-page {
-margin-top: 30px;
-  background-image: linear-gradient(to right,
-        rgba(217, 104, 109, 1),
-        rgba(249, 171, 140, 1));
+  margin-top: 30px;
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
-.error{
+.error {
   margin-top: 150px;
 }
 
-.error, .error-text {
-
+.error,
+.error-text {
   text-align: center;
 }
 
@@ -956,7 +960,7 @@ margin-top: 30px;
   text-align: center;
 }
 
-.gif-image{
+.gif-image {
   width: 20%;
   height: 25%;
 }
@@ -968,6 +972,5 @@ margin-top: 30px;
 .gif-image-last {
   margin-bottom: 400px;
 }
-
 
 /* --------------------------------------------------------------- */
