@@ -47,12 +47,22 @@ const addNewItemBtn = document.getElementById("addNewItemBtn");
 const newItemFormWrap = document.getElementById("newItemFormWrap");
 const newItemForm = document.getElementById("newItemForm");
 
-//TABLES wraps
+// TABLES wraps
 const tablesWrap = document.getElementById("tablesWrap");
 const tablesButtonsWrap = document.getElementById("tablesButtonsWrap");
 const tablesTableWrap = document.getElementById("tablesTableWrap");
+const newTableFormWrap = document.getElementById("newTableFormWrap");
+const newTableForm = document.getElementById("newTableForm");
+const hideTableFormsButton = document.getElementById("hideTableFormsButton");
+const addNewTableBtn = document.getElementById("addNewTableBtn");
+const hideRemoveTableFormsButton = document.getElementById(
+  "hideRemoveTableFormsButton"
+);
+const removeTableFormWrap = document.getElementById("removeTableFormWrap");
+const removeTableForm = document.getElementById("removeTableForm");
+const removeTableBtn = document.getElementById("removeTableBtn");
 
-//ORDERS wraps
+// ORDERS wraps
 const ordersWrap = document.getElementById("ordersWrap");
 const ordersButtonsWrap = document.getElementById("ordersButtonsWrap");
 const ordersTableWrap = document.getElementById("ordersTableWrap");
@@ -211,6 +221,7 @@ editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   newEmployeeFormWrap.classList.add("hide");
+  tablesWrap.classList.add("hide");
   employeesWrap.classList.remove("hide");
   showEmployees();
 });
@@ -246,6 +257,7 @@ editMenuButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   newItemFormWrap.classList.add("hide");
+  tablesWrap.classList.add("hide");
   menuWrap.classList.remove("hide");
   showItems();
 });
@@ -267,6 +279,32 @@ viewTablesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   tablesWrap.classList.remove("hide");
+});
+// ---- [HIDE BUTTON] click listener
+hideTableFormsButton.addEventListener("click", () => {
+  newTableFormWrap.classList.add("hide");
+});
+// ---- [ADD NEW TABLE] click listener
+addNewTableBtn.addEventListener("click", () => {
+  removeTableFormWrap.classList.add("hide");
+  newTableFormWrap.classList.remove("hide");
+});
+// ---- [ADD NEW TABLE] form SUBMIT listener
+newTableForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+// ---- [HIDE BUTTON removeTable form] click listener
+hideRemoveTableFormsButton.addEventListener("click", () => {
+  removeTableFormWrap.classList.add("hide");
+});
+// ---- [REMOVE A TABLE] action button
+removeTableBtn.addEventListener("click", () => {
+  newTableFormWrap.classList.add("hide");
+  removeTableFormWrap.classList.remove("hide");
+});
+// ---- [REMOVE A TABLE] form SUBMIT listener
+removeTableForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 });
 // [VIEW ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {

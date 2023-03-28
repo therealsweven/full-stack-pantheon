@@ -166,7 +166,6 @@
         </table>
         <div id="employeeTableWrap"></div>
       </div>
-
       <!-- MENU wrap -->
       <div id="menuWrap" class="hide">
         <div id="menuButtonsWrap">
@@ -286,10 +285,56 @@
       <!-- TABLES wrap -->
       <div id="tablesWrap" class="hide">
         <div id="tablesButtonsWrap">
-          <div type="button" class="btn btn-success display-action-btn">Add a
+          <div id="addNewTableBtn" type="button" class="btn btn-success display-action-btn">Add a
             New Table</div>
-          <div type="button" class="btn btn-danger display-action-btn">Remove a
+          <div id="removeTableBtn" type="button" class="btn btn-danger display-action-btn">Remove a
             Table</div>
+        </div>
+        {{!-- [NEW TABLE] form --}}
+        <div id="newTableFormWrap" class="hide">
+          <form id="newTableForm" class="formStyle text-start">
+            <div id="hideTableFormsButton" class="btn btn-warning">Hide Form</div>
+            {{! [NEW TABLE] name }}
+            <label for="tableNameInput">Name:</label><br />
+            <input
+              type="text"
+              id="tableNameInput"
+              name="tableNameInput"
+            />
+            <br />
+            {{! [NEW TABLE] max-size }}
+            <br />
+            <label for="tableMaxSizeInput">Maximum Size:</label><br />
+            <input type="number" id="tableMaxSizeInput" name="tableMaxSizeInput" />
+            <br />
+            {{! [NEW TABLE] Submit Button }}
+            <br />
+            <br />
+            <input
+              type="submit"
+              class="btn btn-success"
+              value="Add a New Table"
+            />
+          </form>
+        </div>
+        {{!-- [REMOVE TABLE] form --}}
+        <div id="removeTableFormWrap" class="hide">
+          <form id="removeTableForm" class="formStyle text-start">
+            <div id="hideRemoveTableFormsButton" class="btn btn-warning">Hide Form</div>
+            {{! [REMOVE TABLE] max-size }}
+            <br />
+            <label for="removeTableIdInput">Enter Table ID:</label><br />
+            <input type="number" id="removeTableIdInput" name="removeTableIdInput" />
+            <br />
+            {{! [REMOVE TABLE] Submit Button }}
+            <br />
+            <br />
+            <input
+              type="submit"
+              class="btn btn-danger"
+              value="Remove the Table"
+            />
+          </form>
         </div>
         <div id="ordersTableWrap"></div>
       </div>
