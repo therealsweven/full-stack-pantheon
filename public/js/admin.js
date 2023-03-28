@@ -193,6 +193,7 @@ window.onload = function () {
     .then((response) => response.json())
     .then((data) => {
       data.forEach((element) => apiEmployeeArray.push(element));
+      console.log(apiEmployeeArray);
     });
   fetch("../api/menu")
     .then((response) => response.json())
@@ -214,6 +215,7 @@ window.onload = function () {
     });
 };
 
+// {{EMPLOYEE}}
 // add employee to database
 const addEmployee2DB = async () => {
   const employeeNameIn = $("#employeeNameInput").val().trim();
@@ -284,6 +286,7 @@ const deleteEmployeeInDB = async () => {
   });
 };
 
+// {{MENU}}
 // add menu item to database
 const addMenuItem2DB = async () => {
   const itemNameInput = $("#itemNameInput").val().trim();
@@ -360,7 +363,8 @@ const deleteMenuItemInDB = async () => {
   });
 };
 
-// add employee to database
+// {{TABLES}}
+// add table to database
 const addTable2DB = async () => {
   const tableNameIn = $("#tableNameInput").val().trim();
   const maxSizeIn = $("#tableMaxSizeInput").val().trim();
@@ -385,6 +389,7 @@ const deleteTableInDB = async () => {
   });
 };
 
+// {{TICKETS}}
 // delete ticket from database
 const deleteTicketInDB = async () => {
   const deleteTicketIdInput = Number($("#removeTicketIdInput").val().trim());
@@ -410,7 +415,7 @@ function showEmployees() {
         <td style="width: 25%">${employee.email}</td>
       </tr>
     </table>`;
-    tablesTableWrap.append(div);
+    employeeTableWrap.append(div);
   });
 }
 
@@ -434,6 +439,7 @@ function showItems() {
 
 // populates DISPLAY with table list
 function showTables() {
+  //console.log("hello");
   tablesWrap.innerHTML = "";
   tablesArray.forEach((table) => {
     let div = document.createElement("div");
@@ -547,6 +553,7 @@ addNewItemBtn.addEventListener("click", () => {
 // ---- [ADD NEW ITEM] form SUBMIT listener
 newItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  addMenuItem2DB();
 });
 // ---- [HIDE BUTTON] remove item
 hideRemoveItemFormButton.addEventListener("click", () => {
@@ -560,6 +567,7 @@ removeItemBtn.addEventListener("click", () => {
 // ---- [REMOVE ITEM] form SUBMIT listener
 removeItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  deleteMenuItemInDB();
 });
 
 // [VIEW TABLES] click listener
@@ -582,6 +590,7 @@ addNewTableBtn.addEventListener("click", () => {
 // ---- [ADD NEW TABLE] form SUBMIT listener
 newTableForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  addTable2DB();
 });
 // ---- [HIDE BUTTON removeTable form] click listener
 hideRemoveTableFormsButton.addEventListener("click", () => {
@@ -595,6 +604,7 @@ removeTableBtn.addEventListener("click", () => {
 // ---- [REMOVE A TABLE] form SUBMIT listener
 removeTableForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  deleteTableInDB();
 });
 // [VIEW ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
