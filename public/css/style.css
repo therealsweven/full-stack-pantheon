@@ -882,12 +882,25 @@ header {
 
 /* START OF SETTING PAGE CSS  */
 
-.body {
+#merchantSettings {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.merchantBody {
+  flex-grow: 1;
+  padding-top: 100px;
   background-image: linear-gradient(
     to right,
     rgba(217, 104, 109, 1),
     rgba(249, 171, 140, 1)
   );
+}
+
+#merchantPassword {
+  margin: auto;
 }
 
 #accountInfo {
@@ -905,14 +918,13 @@ header {
 
 #returnBtn {
   margin-left: 20px;
-  margin-top: 30rem;
+  margin-top: 20rem;
 }
 
 .login-settings-btn {
   width: 150px;
   height: 80px;
   margin-top: 50px;
-  margin-left: 30px;
 }
 
 .password-text {
