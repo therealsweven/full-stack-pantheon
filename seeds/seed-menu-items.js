@@ -101,7 +101,7 @@ const items = [
         image: "https://www.baycare.net/media/5194/pbj-baycare-clinic-blog.jpg",
         merchant_id:1
     },
- {
+    {
         item_name: ' Long Island Iced Tea',
         price: 8.99,
         description: "lorem",
@@ -162,6 +162,36 @@ const items = [
         merchant_id: 1
     },
     {
+        item_name: 'Berry Deadly',
+        price: 12.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "https://www.thecocktaildb.com/images/media/drink/zk74k21593351065.jpg",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Allegheny',
+        price: 12.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "https://www.thecocktaildb.com/images/media/drink/uwvyts1483387934.jpg",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Brave Bull Shoot',
+        price: 12.99,
+        description: "lorem",
+        available: true,
+        type: "drinks",
+        subtype: "handheld",
+        image: "https://www.thecocktaildb.com/images/media/drink/yrtypx1473344625.jpg",
+        merchant_id: 1
+    },
+    {
         item_name: '$25 Gift Card',
         price: 25.00,
         description: "lorem",
@@ -173,12 +203,32 @@ const items = [
     },
     {
         item_name: 'Two $25 Cards',
-        price: 49.99,
+        price: 47.99,
         description: "lorem",
         available: true,
         type: "merch",
         subtype: "",
         image: "https://pbs.twimg.com/media/FsR7CbEacAE3-s_?format=jpg&name=medium",
+        merchant_id: 1
+    },
+    {
+        item_name: 'Three $25 Cards',
+        price: 70.50,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "https://pbs.twimg.com/media/FsR7CbEacAE3-s_?format=jpg&name=medium",
+        merchant_id: 1
+    },
+    {
+        item_name: 'T-Shirt XLarge',
+        price: 15.99,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "https://pbs.twimg.com/media/FsR6DgkaAAAIo1t?format=jpg&name=large",
         merchant_id: 1
     },
     {

@@ -84,7 +84,7 @@ function renderMenuRow(data) {
     var addButton = document.createElement('button');
     addButton.setAttribute('class', 'btn btn-default border border-danger-subtle btn-add-menu-item');
     addButton.setAttribute('onclick', 'increaseQuantity(' + data[index].id + ',' + ticket_id + ')');
-    addButton.textContent = '+';
+    addButton.textContent = 'Add';
     //create name paragraph
     var name = document.createElement('p');
     name.textContent = data[index].item_name;
