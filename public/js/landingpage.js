@@ -65,6 +65,7 @@ $(function () {
   })
 })
 
+//render one row of menu items
 function renderMenuRow(data) {
   //create row container
   var row = document.createElement('div');
@@ -102,9 +103,14 @@ function renderMenuRow(data) {
   menuDisplay.append(row);
 }
 
+//split array into 4 records per row
 function renderMenuItems(data) {
+  var lastindex = 0;
   for (let index = 1; index <= data.length; index++) {
-    if (index % 4 == 0 || index == data.length) {
+    if (index == data.length) {
+      renderMenuRow(data.slice(lastindex, index));
+    }else if (index % 4 == 0){
+      lastindex = index;
       renderMenuRow(data.slice(index - 4, index));
     }
   }
