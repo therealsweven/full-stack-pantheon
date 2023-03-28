@@ -246,35 +246,18 @@
             {{! [NEW ITEM] Availability }}
             <br />
             <div>Available:
-              {{! YES }}
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="answer"
-                  id="yesAnswer"
-                />
-                <label class="form-check-label" for="yesAnswer">
-                  Yes
-                </label>
-              </div>
-              {{! NO }}
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="answer"
-                  id="noAnswer"
-                />
-                <label class="form-check-label" for="noAnswer">
-                  No
-                </label>
-              </div>
+                <select id = "itemAvailIn"class="form-select" aria-label="type">
+                  <option selected>Is Available?</option>
+                  <option value="true">yes</option>
+                  <option value="false">no</option>
+                </select>
+            <br />
+              
             </div>
 
             {{! [NEW ITEM] Type }}
             <br />
-            <select class="form-select" aria-label="type">
+            <select id="itemTypeIn"class="form-select" aria-label="type">
               <option selected>Type</option>
               <option value="1">Food</option>
               <option value="2">Drink</option>
@@ -284,7 +267,7 @@
 
             {{! [NEW ITEM] Sub-Type }}
             <br />
-            <select class="form-select" aria-label="sub-type">
+            <select id="itemSubtypeIn" class="form-select" aria-label="sub-type">
               <option selected>Sub-Type</option>
               <option value="1">Main Course</option>
               <option value="2">Appetizer</option>
