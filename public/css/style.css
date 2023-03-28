@@ -474,7 +474,9 @@ html {
   top: 0;
 }
 
-.employeeList {
+.employeeList,
+.itemList,
+.tableList {
   padding-left: 5px;
   display: flex;
   justify-content: center;
@@ -485,22 +487,9 @@ html {
   text-align: start;
 }
 
-.employeeList:hover {
-  background-color: lemonchiffon;
-}
-
-.itemList {
-  padding-left: 5px;
-  display: flex;
-  justify-content: center;
-  background-color: whitesmoke;
-  height: 50px;
-  width: 100%;
-  margin: 5px 0 5px 0;
-  text-align: start;
-}
-
-.itemList:hover {
+.employeeList:hover,
+.itemList:hover,
+.tableList:hover {
   background-color: lemonchiffon;
 }
 
@@ -747,13 +736,13 @@ header {
 .images {
   width: 150px;
   height: 90px;
--webkit-transition: all 0.7s ease;
- transition: all 0.7s ease;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
 
 .images:hover {
- -webkit-transform:scale(1.4);
-transform:scale(1.1);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.1);
 }
 
 #menu-items {
@@ -827,7 +816,6 @@ transform:scale(1.1);
 .btn-add:hover {
   color: green;
 }
-
 
 .send-kitchen:hover,
 .table-map:hover {

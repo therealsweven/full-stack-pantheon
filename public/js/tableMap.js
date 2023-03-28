@@ -96,7 +96,7 @@ const selectTable = async (event) => {
         })
         .then((ticket) => {
           console.log(ticket);
-          document.location.replace(`/pos/main/${ticket.id}`);
+          document.location.replace(`/pos/main/${ticket.id}?type=food`);
         });
     } else {
     }
@@ -110,7 +110,7 @@ const selectTab = async (event) => {
     headers: { "Content-Type": "application/json" },
   });
 
-  document.location.replace(`/pos/main/${event.target.id}`);
+  document.location.replace(`/pos/main/${event.target.id}?type=food`);
 };
 
 tableContainer.click(selectTable);
