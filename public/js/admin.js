@@ -194,7 +194,7 @@ function showEmployees() {
     div.classList.add("employeeList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
-    <td style="width: 7%">${employee.id}</td>
+      <td style="width: 7%">${employee.id}</td>
       <td style="width: 10%">${employee.login_id}</td>
       <td style="width: 33%">${employee.name}</td>
       <td style="width: 25%">${employee.role}</td>
@@ -204,6 +204,7 @@ function showEmployees() {
     employeeTableWrap.append(div);
   });
 }
+
 const addEmployee2DB = async () => {
   const employeeNameIn = $("#employeeNameInput").val().trim();
   const employeeEmailIn = $("#employeeEmailInput").val().trim();
@@ -232,11 +233,11 @@ const updateEmployeeInDB = async () => {
   const employeeEmailIn = $("#employeeEmailUpdateInput").val().trim();
   const employeeManagerIn = $("#employeeIsManagerUpdateIn").val();
   const employeeRoleIn = $("#employeeRoleUpdateIn").val();
-  console.log(updateEmployeeIdInput);
-  console.log(employeeNameIn);
-  console.log(employeeEmailIn);
-  console.log(employeeManagerIn);
-  console.log(employeeRoleIn);
+  // console.log(updateEmployeeIdInput);
+  // console.log(employeeNameIn);
+  // console.log(employeeEmailIn);
+  // console.log(employeeManagerIn);
+  // console.log(employeeRoleIn);
 
   const body = {};
   if (employeeNameIn !== "") {
