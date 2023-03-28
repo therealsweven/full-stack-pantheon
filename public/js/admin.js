@@ -193,6 +193,7 @@ window.onload = function () {
     .then((response) => response.json())
     .then((data) => {
       data.forEach((element) => apiEmployeeArray.push(element));
+      console.log(apiEmployeeArray);
     });
   fetch("../api/menu")
     .then((response) => response.json())
@@ -206,33 +207,15 @@ window.onload = function () {
       data.forEach((element) => tablesArray.push(element));
       console.log(tablesArray);
     });
-  // fetch("../api/tickets")
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     data.forEach((element) => ticketsArray.push(element));
-  //     console.log(ticketsArray);
-  //   });
+  fetch("../api/tickets/open")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((ticket) => ticketsArray.push(ticket));
+      console.log(ticketsArray);
+    });
 };
 
-// populates DISPLAY with employee list
-function showEmployees() {
-  employeeTableWrap.innerHTML = "";
-  apiEmployeeArray.forEach((employee) => {
-    let div = document.createElement("div");
-    div.classList.add("employeeList");
-    div.innerHTML = `<table style="width: 100%">
-    <tr>
-      <td style="width: 7%">${employee.id}</td>
-      <td style="width: 10%">${employee.login_id}</td>
-      <td style="width: 33%">${employee.name}</td>
-      <td style="width: 25%">${employee.role}</td>
-      <td style="width: 25%">${employee.email}</td>
-    </tr>
-  </table>`;
-    employeeTableWrap.append(div);
-  });
-}
-
+// {{EMPLOYEE}}
 // add employee to database
 const addEmployee2DB = async () => {
   const employeeNameIn = $("#employeeNameInput").val().trim();
@@ -291,23 +274,153 @@ const updateEmployeeInDB = async () => {
   });
 };
 
-// populates DISPLAY with table list
-function showTables() {
-  tablesTableWrap.innerHTML = "";
-  tablesArray.forEach((table) => {
+// delete employee from database
+const deleteEmployeeInDB = async () => {
+  const deleteEmployeeIdInput = Number(
+    $("#removeEmployeeIdInput").val().trim()
+  );
+  await fetch(`/api/employee/${deleteEmployeeIdInput}`, {
+    method: "DELETE",
+    body: JSON.stringify({}),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// {{MENU}}
+// add menu item to database
+const addMenuItem2DB = async () => {
+  const itemNameInput = $("#itemNameInput").val().trim();
+  const itemDescriptionIn = $("#employeeEmailInput").val().trim();
+  const itemImageIn = $("#employeeIsManagerIn").val();
+  const itemPriceIn = $("#employeeRoleIn").val();
+  const itemSubtypeIn = $("#employeeRoleIn").val();
+  const itemTypeIn = $("#employeeRoleIn").val();
+
+  await fetch("/api/menu", {
+    method: "POST",
+    body: JSON.stringify({
+      item_name: itemNameInput,
+      description: itemDescriptionIn,
+      image: itemImageIn,
+      price: itemPriceIn,
+      subtype: itemSubtypeIn,
+      type: itemTypeIn,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// update menu item in database
+const updateMenuItemInDB = async () => {
+  const itemIDInput = $("#itemIDInput").val().trim();
+  const itemNameInput = $("#itemNameInput").val().trim();
+  const itemDescriptionIn = $("#employeeEmailInput").val().trim();
+  const itemImageIn = $("#employeeIsManagerIn").val();
+  const itemPriceIn = $("#employeeRoleIn").val();
+  const itemSubtypeIn = $("#employeeRoleIn").val();
+  const itemTypeIn = $("#employeeRoleIn").val();
+  const itemAvail = $("#employeeRoleIn").val();
+
+  const body = {};
+  body.id = itemIDInput;
+  if (itemNameInput !== "") {
+    body.item_name = itemNameInput;
+  }
+  if (itemDescriptionIn !== "") {
+    body.description = itemDescriptionIn;
+  }
+  if (itemImageIn !== "") {
+    body.image = itemImageIn;
+  }
+  if (itemPriceIn !== "") {
+    body.subtype = itemPriceIn;
+  }
+  if (itemTypeIn !== "Type") {
+    body.type = itemTypeIn;
+  }
+  if (itemSubtypeIn !== "Sub-Type") {
+    body.type = itemSubtypeIn;
+  }
+  //**************** */
+  if (itemAvail !== "Sub-Type") {
+    body.available = itemAvail;
+  }
+  console.log(body);
+  await fetch(`/api/menu/`, {
+    method: "PUT",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// delete menu item from database
+const deleteMenuItemInDB = async () => {
+  const deleteItemIdInput = Number($("#removeItemIdInput").val().trim());
+  await fetch(`/api/menu/`, {
+    method: "DELETE",
+    body: JSON.stringify({ id: deleteEmployeeIdInput }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// {{TABLES}}
+// add table to database
+const addTable2DB = async () => {
+  const tableNameIn = $("#tableNameInput").val().trim();
+  const maxSizeIn = $("#tableMaxSizeInput").val().trim();
+
+  await fetch("/api/tables", {
+    method: "POST",
+    body: JSON.stringify({
+      table_name: tableNameIn,
+      max_size: maxSizeIn,
+      available: true,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// delete table from database
+const deleteTableInDB = async () => {
+  const deleteTableIdInput = Number($("#removeTableIdInput").val().trim());
+  await fetch(`/api/tables/`, {
+    method: "DELETE",
+    body: JSON.stringify({ id: deleteTableIdInput }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// {{TICKETS}}
+// delete ticket from database
+const deleteTicketInDB = async () => {
+  const deleteTicketIdInput = Number($("#removeTicketIdInput").val().trim());
+  await fetch(`/api/tickets/${deleteTicketIdInput}`, {
+    method: "DELETE",
+    body: JSON.stringify({}),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// populates DISPLAY with employee list
+function showEmployees() {
+  employeeTableWrap.innerHTML = "";
+  apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
     div.classList.add("tableList");
     div.innerHTML = `<table style="width: 100%">
-    <tr>
-      <td style="width: 7%">${table.id}</td>
-      <td style="width: 33%">${table.table_name}</td>
-      <td style="width: 25%">${table.max_size}</td>
-    </tr>
-  </table>`;
-    tablesTableWrap.append(div);
+      <tr>
+        <td style="width: 7%">${employee.id}</td>
+        <td style="width: 10%">${employee.login_id}</td>
+        <td style="width: 33%">${employee.name}</td>
+        <td style="width: 25%">${employee.role}</td>
+        <td style="width: 25%">${employee.email}</td>
+      </tr>
+    </table>`;
+    employeeTableWrap.append(div);
   });
 }
 
+//populates display with menu items for the merchant logged in
 function showItems() {
   menuTableWrap.innerHTML = "";
   menuItemsArray.forEach((item) => {
@@ -325,26 +438,46 @@ function showItems() {
   });
 }
 
-// function showTickets() {
-//   ordersTableWrap.innerHTML = "";
-//   ticketsArray.forEach((item) => {
-//     let div = document.createElement("div");
-//     div.classList.add("itemList");
-//     //     <td style="width: 40%">${item.item_name}</td>
-//     // <td style="width: 25%">${item.type}</td>
-//     // <td style="width: 25%">${item.available}</td>
-//     div.innerHTML = `<table style="width: 100%">
-//     <tr>
-//       <td style="width: 10%">${item.id}</td>
-//       <td style="width: 10%">${item.id}</td>
-//     </tr>
-//   </table>`;
-//     menuTableWrap.append(div);
-//   });
-// }
+// populates DISPLAY with table list
+function showTables() {
+  //console.log("hello");
+  tablesTableWrap.innerHTML = "";
+  tablesArray.forEach((table) => {
+    let div = document.createElement("div");
+    div.classList.add("tableList");
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 20%">${table.id}</td>
+      <td style="width: 40%">${table.table_name}</td>
+      <td style="width: 40%">${table.max_size}</td>
+    </tr>
+  </table>`;
+    tablesTableWrap.append(div);
+  });
+}
+
+// populates display with open tickets
+function showOpenTickets() {
+  ordersTableWrap.innerHTML = "";
+  ticketsArray.forEach((item) => {
+    let div = document.createElement("div");
+    div.classList.add("itemList");
+    // <td style="width: 40%">${item.item_name}</td>
+    // <td style="width: 25%">${item.type}</td>
+    // <td style="width: 25%">${item.available}</td>
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 7%">${ticket.id}</td>
+      <td style="width: 18%">${tableTab}</td>
+      <td style="width: 18%">${ticket.employee.name}</td>
+      <td style="width: 54%">${ticket.menu_items[0].item_name}</td>
+    </tr>
+  </table>`;
+    ordersTableWrap.append(div);
+  });
+}
 
 // [EDIT EMPLOYEES] click listener
-
 editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
@@ -397,6 +530,7 @@ removeEmployeeBtn.addEventListener("click", () => {
 // ---- [REMOVE EMPLOYEE] form SUBMIT listener
 removeEmployeeForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  deleteEmployeeInDB();
 });
 
 // [EDIT MENU] click listener
@@ -420,6 +554,7 @@ addNewItemBtn.addEventListener("click", () => {
 // ---- [ADD NEW ITEM] form SUBMIT listener
 newItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  addMenuItem2DB();
 });
 // ---- [HIDE BUTTON] remove item
 hideRemoveItemFormButton.addEventListener("click", () => {
@@ -433,6 +568,7 @@ removeItemBtn.addEventListener("click", () => {
 // ---- [REMOVE ITEM] form SUBMIT listener
 removeItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  deleteMenuItemInDB();
 });
 
 // [VIEW TABLES] click listener
@@ -455,6 +591,7 @@ addNewTableBtn.addEventListener("click", () => {
 // ---- [ADD NEW TABLE] form SUBMIT listener
 newTableForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  addTable2DB();
 });
 // ---- [HIDE BUTTON removeTable form] click listener
 hideRemoveTableFormsButton.addEventListener("click", () => {
@@ -468,6 +605,7 @@ removeTableBtn.addEventListener("click", () => {
 // ---- [REMOVE A TABLE] form SUBMIT listener
 removeTableForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  deleteTableInDB();
 });
 // [VIEW ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
