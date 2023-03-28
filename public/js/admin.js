@@ -430,6 +430,11 @@ removeItemBtn.addEventListener("click", () => {
   newItemFormWrap.classList.add("hide");
   removeItemFormWrap.classList.remove("hide");
 });
+// ---- [REMOVE ITEM] form SUBMIT listener
+removeItemForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
 // [VIEW TABLES] click listener
 viewTablesButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
