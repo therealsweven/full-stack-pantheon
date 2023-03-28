@@ -309,6 +309,7 @@ html {
   margin: 10px 0;
 }
 /* end pay button CSS */
+/* --------------------------------------------------------- */
 
 /* end of Checkout CSS */
 
@@ -337,6 +338,8 @@ html {
 }
 
 /* end of signUp CSS */
+
+/* --------------------------------------------------------- */
 
 /* Main + Header CSS */
 .current-server-table {
@@ -405,33 +408,26 @@ html {
 }
 
 .main {
-  background-color: #6c757d;
+  background: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
   height: 100vh;
 }
 
-#header_nav {
-  background-color: whitesmoke;
-  margin-bottom: 30px;
-}
-
 #contentWrap {
+  padding-top: 100px;
   width: 100%;
 }
 
 #sidebarDisplay {
+  position: relative;
   overflow-y: scroll;
   height: 500px;
   width: 700px;
   background-color: lightgray;
   border: 2px solid whitesmoke;
-}
-
-#footer_nav {
-  bottom: 0;
-  position: fixed;
-  width: 100%;
-  background-color: whitesmoke;
-  padding: 10px;
 }
 
 .nav-btn {
@@ -522,20 +518,40 @@ html {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.edit-employees,
+.edit-menu,
+.view-orders,
+.view-tables {
+  background-color: black;
+  color: white;
+  border-color: black;
+  margin-left: 100px;
+}
+
+.edit-employees:hover,
+.edit-menu:hover,
+.view-orders:hover,
+.view-tables:hover {
+  background-color: #e39c7f;
+  border-color: #e39c7f;
+  color: white;
+}
+
 /* END Admin Page CSS */
 
 /* --------------------------------------------------------------- */
 
 /* START OF HOMEPAGE CSS  */
 .homepage-body {
+  text-align: center;
   background-color: black;
 }
 
 #main-logo1 {
   margin-top: 45px;
-  margin-left: 80px;
-  width: 80%;
-  height: 40%;
+  width: 75%;
+  height: auto;
   -webkit-transition: all 0.5s ease;
   transition: all 0.8s ease;
 }
@@ -545,29 +561,19 @@ html {
 }
 
 #lower-btns {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
   margin-top: 25px;
-  margin-bottom: 50px;
-  text-align: center;
 }
 
-.login-btn {
+.login-btn,
+.signup-btn {
   width: 100px;
   height: 50px;
   font-size: 1rem;
   background-color: rgb(41, 35, 35);
   color: #6c757d;
-  margin-left: -5rem;
-}
-
-.signup-btn {
-  width: 100px;
-  height: 50px;
-  margin-left: -4rem;
-  font-size: 1rem;
-  background-color: rgb(39, 37, 37);
-  color: #6c757d;
-
-  margin-right: 20px;
 }
 
 .login-btn:hover,
@@ -577,7 +583,6 @@ html {
 
 .or {
   margin-top: 10px;
-  margin-left: -5rem;
   color: #6c757d;
 }
 
@@ -713,7 +718,7 @@ header {
 .food,
 .merch {
   width: 250px;
-  height: 160px;
+  height: 130px;
   margin-left: 16px;
   background-color: #000000;
   font-size: 2rem;
@@ -723,7 +728,7 @@ header {
 .merch:hover {
   background-color: #d9686c;
 }
-
+.item-0,
 .item-1,
 .item-2,
 .item-3,
@@ -747,13 +752,9 @@ header {
   margin-left: 10px;
 }
 
-.scroll {
-  overflow: scroll;
-}
-
 .images {
   width: 185px;
-  height: 140px;
+  height: 120px;
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
 }
@@ -781,6 +782,7 @@ header {
   margin-left: 40px;
   background-color: #e87b72;
   border-color: #e87b72;
+  font-size: 1.5rem;
 }
 
 .server-name {
@@ -793,17 +795,31 @@ header {
 .nqp-table {
   margin-top: 30px;
   width: 90%;
-  margin-left: 35px;
+  margin-left: 25px;
   color: white;
+}
+
+.table-header {
+  margin-bottom: 40px;
+}
+
+.table-row {
+  margin-top: 40px;
 }
 
 .btn-subtract,
 .btn-add {
   color: white;
+  margin-right: 5px;
 }
 
 .btn-subtract:hover {
   color: red;
+}
+
+.quantity-table {
+  background-color: #000000;
+  padding-left: 20px;
 }
 
 .btn-add:hover {
@@ -811,12 +827,13 @@ header {
 }
 
 .send-kitchen {
-  margin-top: 30px;
+  margin-top: 4rem;
   width: 80%;
   height: 80px;
   margin-left: 40px;
   background-color: #e87b72;
   border-color: #e87b72;
+  font-size: 1.5rem;
 }
 
 .send-kitchen:hover,
@@ -833,12 +850,24 @@ header {
 }
 
 .checkout {
-  margin-top: 25px;
+  margin-top: 100px;
   width: 80%;
-  height: 80px;
+  height: 100px;
   margin-left: 40px;
   margin-bottom: 10px;
   font-size: 2rem;
+}
+.btn-add-menu-item {
+  margin-left: 10px;
+  float: right;
+  margin-right: 10px;
+  padding: 0 10px;
+  font-size: 20px;
+}
+
+.btn-add-menu-item:hover {
+  color: green;
+  background-color: #e39c7f;
 }
 
 /* END OF LANDING PAGE CSS */
