@@ -51,11 +51,17 @@ const menuButtonsWrap = document.getElementById("menuButtonsWrap");
 const menuTableWrap = document.getElementById("menuTableWrap");
 // ----hide FORM
 const hideMenuFormsButton = document.getElementById("hideMenuFormsButton");
-// ----add new item button
+// ----new
 const addNewItemBtn = document.getElementById("addNewItemBtn");
-// ----new item form
 const newItemFormWrap = document.getElementById("newItemFormWrap");
 const newItemForm = document.getElementById("newItemForm");
+// ----remove
+const removeItemBtn = document.getElementById("removeItemBtn");
+const removeItemFormWrap = document.getElementById("removeItemFormWrap");
+const removeItemForm = document.getElementById("removeItemForm");
+const hideRemoveItemFormButton = document.getElementById(
+  "hideRemoveItemFormButton"
+);
 
 // TABLES wraps
 const tablesWrap = document.getElementById("tablesWrap");
@@ -408,12 +414,27 @@ hideMenuFormsButton.addEventListener("click", () => {
 });
 // ---- [ADD NEW ITEM] click listener
 addNewItemBtn.addEventListener("click", () => {
+  removeItemFormWrap.classList.add("hide");
   newItemFormWrap.classList.remove("hide");
 });
 // ---- [ADD NEW ITEM] form SUBMIT listener
 newItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
 });
+// ---- [HIDE BUTTON] remove item
+hideRemoveItemFormButton.addEventListener("click", () => {
+  removeItemFormWrap.classList.add("hide");
+});
+// ---- [REMOVE ITEM] click listener
+removeItemBtn.addEventListener("click", () => {
+  newItemFormWrap.classList.add("hide");
+  removeItemFormWrap.classList.remove("hide");
+});
+// ---- [REMOVE ITEM] form SUBMIT listener
+removeItemForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
 // [VIEW TABLES] click listener
 viewTablesButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");

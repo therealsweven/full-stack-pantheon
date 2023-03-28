@@ -218,7 +218,7 @@
           >Add a New Item</div>
           <div type="button" class="btn btn-primary display-action-btn">Update
             an Item</div>
-          <div type="button" class="btn btn-danger display-action-btn">Remove an
+          <div id="removeItemBtn" type="button" class="btn btn-danger display-action-btn">Remove an
             Item</div>
         </div>
         {{! [NEW ITEM] form}}
@@ -309,6 +309,25 @@
               class="btn btn-success"
               value="Create a New Item"
             />
+          </form>
+        </div>
+
+        {{!-- [REMOVE ITEM] form --}}
+        <div id="removeItemFormWrap" class="hide">
+          <form id="removeItemForm" class="formStyle text-start">
+            {{! ----[REMOVE] input }}
+            <label for="removeItemIdInput">Enter Item ID to remove it from the Database</label>
+            <br />
+            <br />
+            <input
+              type="number"
+              id="removeItemIdInput"
+              name="removeItemIdInput"
+            />
+            <input type="submit" class="btn btn-danger" value="Remove" />
+            <br />
+            <div id="hideRemoveItemFormButton" class="btn btn-warning">Hide
+              Form</div>
           </form>
         </div>
         {{! menu item table headers }}
