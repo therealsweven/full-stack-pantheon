@@ -114,6 +114,7 @@ req.body should be:
       req.session.loggedIn = true;
       // add merchant id to session
       req.session.currentMerchant = dbMerchantData.id;
+      req.session.currentMerchantName = dbMerchantData.business_name;
       res.cookie("loggedIn", true, { maxAge: 3000000, httpOnly: true });
       res.redirect("/pos/login");
     });
