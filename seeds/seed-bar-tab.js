@@ -2,7 +2,7 @@ const { Bar_tabs } = require("../models");
 
 const items = [
   {
-    tab_name: "Some Alcoholic",
+    tab_name: "Joe Doe",
     paid: false,
     card_autorized: true,
     card_last_four: "3345",
