@@ -374,6 +374,7 @@ const addTable2DB = async () => {
     body: JSON.stringify({
       table_name: tableNameIn,
       max_size: maxSizeIn,
+      available: true,
     }),
     headers: { "Content-Type": "application/json" },
   });
@@ -440,7 +441,7 @@ function showItems() {
 // populates DISPLAY with table list
 function showTables() {
   //console.log("hello");
-  tablesWrap.innerHTML = "";
+  tablesTableWrap.innerHTML = "";
   tablesArray.forEach((table) => {
     let div = document.createElement("div");
     div.classList.add("tableList");
