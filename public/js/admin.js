@@ -287,10 +287,10 @@ const updateEmployeeInDB = async () => {
 
 // populates DISPLAY with table list
 function showTables() {
-  tablesWrap.innerHTML = "";
+  tablesTableWrap.innerHTML = "";
   tablesArray.forEach((table) => {
     let div = document.createElement("div");
-    div.classList.add("employeeList");
+    div.classList.add("tableList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
       <td style="width: 7%">${table.id}</td>
@@ -298,7 +298,7 @@ function showTables() {
       <td style="width: 25%">${table.max_size}</td>
     </tr>
   </table>`;
-    employeeTableWrap.append(div);
+    tablesTableWrap.append(div);
   });
 }
 
@@ -420,6 +420,7 @@ viewTablesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   tablesWrap.classList.remove("hide");
+  showTables();
 });
 // ---- [HIDE BUTTON] click listener
 hideTableFormsButton.addEventListener("click", () => {
