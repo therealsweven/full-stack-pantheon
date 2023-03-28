@@ -200,32 +200,13 @@ window.onload = function () {
       data.forEach((element) => tablesArray.push(element));
       console.log(tablesArray);
     });
-  // fetch("../api/tickets")
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     data.forEach((element) => ticketsArray.push(element));
-  //     console.log(ticketsArray);
-  //   });
+  fetch("../api/tickets/open")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((ticket) => ticketsArray.push(ticket));
+      console.log(ticketsArray);
+    });
 };
-
-// populates DISPLAY with employee list
-function showEmployees() {
-  employeeTableWrap.innerHTML = "";
-  apiEmployeeArray.forEach((employee) => {
-    let div = document.createElement("div");
-    div.classList.add("employeeList");
-    div.innerHTML = `<table style="width: 100%">
-    <tr>
-      <td style="width: 7%">${employee.id}</td>
-      <td style="width: 10%">${employee.login_id}</td>
-      <td style="width: 33%">${employee.name}</td>
-      <td style="width: 25%">${employee.role}</td>
-      <td style="width: 25%">${employee.email}</td>
-    </tr>
-  </table>`;
-    employeeTableWrap.append(div);
-  });
-}
 
 // add employee to database
 const addEmployee2DB = async () => {
@@ -285,23 +266,59 @@ const updateEmployeeInDB = async () => {
   });
 };
 
-// populates DISPLAY with table list
-function showTables() {
-  tablesWrap.innerHTML = "";
-  tablesArray.forEach((table) => {
+// delete employee from database
+const deleteEmployeeInDB = async () => {
+  const deleteEmployeeIdInput = Number(
+    $("#removeEmployeeIdInput").val().trim()
+  );
+  await fetch(`/api/employee/${deleteEmployeeIdInput}`, {
+    method: "DELETE",
+    body: JSON.stringify({}),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+const addMenuItem2DB = async () => {
+  const itemNameInput = $("#itemNameInput").val().trim();
+  const employeeEmailIn = $("#employeeEmailInput").val().trim();
+  const employeeManagerIn = $("#employeeIsManagerIn").val();
+  const employeeRoleIn = $("#employeeRoleIn").val();
+
+  const employeeLoginIDin = Math.floor(100000 + Math.random() * 900000);
+
+  await fetch("/api/employee", {
+    method: "POST",
+    body: JSON.stringify({
+      name: employeeNameIn,
+      email: employeeEmailIn,
+      role: employeeRoleIn,
+      login_id: employeeLoginIDin,
+      is_manager: employeeManagerIn,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// populates DISPLAY with employee list
+function showEmployees() {
+  employeeTableWrap.innerHTML = "";
+  apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
     div.classList.add("employeeList");
     div.innerHTML = `<table style="width: 100%">
-    <tr>
-      <td style="width: 7%">${table.id}</td>
-      <td style="width: 33%">${table.table_name}</td>
-      <td style="width: 25%">${table.max_size}</td>
-    </tr>
-  </table>`;
+      <tr>
+        <td style="width: 7%">${employee.id}</td>
+        <td style="width: 10%">${employee.login_id}</td>
+        <td style="width: 33%">${employee.name}</td>
+        <td style="width: 25%">${employee.role}</td>
+        <td style="width: 25%">${employee.email}</td>
+      </tr>
+    </table>`;
     employeeTableWrap.append(div);
   });
 }
 
+//populates display with menu items for the merchant logged in
 function showItems() {
   menuTableWrap.innerHTML = "";
   menuItemsArray.forEach((item) => {
@@ -319,26 +336,45 @@ function showItems() {
   });
 }
 
-// function showTickets() {
-//   ordersTableWrap.innerHTML = "";
-//   ticketsArray.forEach((item) => {
-//     let div = document.createElement("div");
-//     div.classList.add("itemList");
-//     //     <td style="width: 40%">${item.item_name}</td>
-//     // <td style="width: 25%">${item.type}</td>
-//     // <td style="width: 25%">${item.available}</td>
-//     div.innerHTML = `<table style="width: 100%">
-//     <tr>
-//       <td style="width: 10%">${item.id}</td>
-//       <td style="width: 10%">${item.id}</td>
-//     </tr>
-//   </table>`;
-//     menuTableWrap.append(div);
-//   });
-// }
+// populates DISPLAY with table list
+function showTables() {
+  tablesWrap.innerHTML = "";
+  tablesArray.forEach((table) => {
+    let div = document.createElement("div");
+    div.classList.add("employeeList");
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 20%">${table.id}</td>
+      <td style="width: 40%">${table.table_name}</td>
+      <td style="width: 40%">${table.max_size}</td>
+    </tr>
+  </table>`;
+    tablesTableWrap.append(div);
+  });
+}
+
+// populates display with open tickets
+function showOpenTickets() {
+  ordersTableWrap.innerHTML = "";
+  ticketsArray.forEach((item) => {
+    let div = document.createElement("div");
+    div.classList.add("itemList");
+    // <td style="width: 40%">${item.item_name}</td>
+    // <td style="width: 25%">${item.type}</td>
+    // <td style="width: 25%">${item.available}</td>
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 7%">${ticket.id}</td>
+      <td style="width: 18%">${tableTab}</td>
+      <td style="width: 18%">${ticket.employee.name}</td>
+      <td style="width: 54%">${ticket.menu_items[0].item_name}</td>
+    </tr>
+  </table>`;
+    ordersTableWrap.append(div);
+  });
+}
 
 // [EDIT EMPLOYEES] click listener
-
 editEmployeesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
@@ -391,6 +427,7 @@ removeEmployeeBtn.addEventListener("click", () => {
 // ---- [REMOVE EMPLOYEE] form SUBMIT listener
 removeEmployeeForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  deleteEmployeeInDB();
 });
 
 // [EDIT MENU] click listener
