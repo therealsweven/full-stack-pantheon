@@ -178,7 +178,10 @@ let apiEmployeeArray = [];
 let menuItemsArray = [];
 // ----tickets
 let ticketsArray = [];
+// ----tickets
+let tablesArray = [];
 
+// fetch admin data from API
 window.onload = function () {
   fetch("../api/employee/")
     .then((response) => response.json())
@@ -190,6 +193,12 @@ window.onload = function () {
     .then((data) => {
       data.forEach((element) => menuItemsArray.push(element));
       console.log(menuItemsArray);
+    });
+  fetch("../api/tables")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => tablesArray.push(element));
+      console.log(tablesArray);
     });
   // fetch("../api/tickets")
   //   .then((response) => response.json())
@@ -218,6 +227,7 @@ function showEmployees() {
   });
 }
 
+// add employee to database
 const addEmployee2DB = async () => {
   const employeeNameIn = $("#employeeNameInput").val().trim();
   const employeeEmailIn = $("#employeeEmailInput").val().trim();
@@ -238,6 +248,8 @@ const addEmployee2DB = async () => {
     headers: { "Content-Type": "application/json" },
   });
 };
+
+// update employeee in database
 const updateEmployeeInDB = async () => {
   const updateEmployeeIdInput = Number(
     $("#updateEmployeeIdInput").val().trim()
@@ -272,6 +284,23 @@ const updateEmployeeInDB = async () => {
     headers: { "Content-Type": "application/json" },
   });
 };
+
+// populates DISPLAY with table list
+function showTables() {
+  tablesWrap.innerHTML = "";
+  tablesArray.forEach((table) => {
+    let div = document.createElement("div");
+    div.classList.add("employeeList");
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 7%">${table.id}</td>
+      <td style="width: 33%">${table.table_name}</td>
+      <td style="width: 25%">${table.max_size}</td>
+    </tr>
+  </table>`;
+    employeeTableWrap.append(div);
+  });
+}
 
 function showItems() {
   menuTableWrap.innerHTML = "";
