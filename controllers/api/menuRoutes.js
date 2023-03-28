@@ -48,7 +48,7 @@ Request Body should be as follows:
   available: BOOLEAN,
   type: STRING,
   subtype: STRING
-  image_filename: STRING
+  image: STRING
   allergen_ids: ARRAY of INT
 }
 */
@@ -88,7 +88,7 @@ Request Body should be as follows:
   available: BOOLEAN,
   type: STRING,
   image_filename: STRING
-   allergen_ids: ARRAY of INT
+  allergen_ids: ARRAY of INT
 }
 
 */

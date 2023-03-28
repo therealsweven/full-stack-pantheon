@@ -455,28 +455,18 @@ html {
   margin-top: 10px;
 }
 
-#removeEmployeeForm {
+#removeEmployeeForm,
+#newItemForm,
+#newEmployeeForm,
+#newTableForm,
+#removeTableForm {
   position: relative;
 }
-#hideRemoveEmployeeFormButton {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-#newItemForm {
-  position: relative;
-}
-#hideMenuFormsButton {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-#newEmployeeForm {
-  position: relative;
-}
-#hideEmployeeFormsButton {
+#hideRemoveEmployeeFormButton,
+#hideMenuFormsButton,
+#hideEmployeeFormsButton,
+#hideTableFormsButton,
+#hideRemoveTableFormsButton {
   position: absolute;
   right: 0;
   top: 0;
@@ -523,9 +513,9 @@ html {
 .edit-menu,
 .view-orders,
 .view-tables {
-  background-color: black;
+  background-color: #212529;
   color: white;
-  border-color: black;
+  border-color: #212529;
   margin-left: 100px;
 }
 
