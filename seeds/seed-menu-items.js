@@ -172,8 +172,38 @@ const items = [
         merchant_id: 1
     },
     {
-        item_name: 'T-Shirt',
+        item_name: 'Two $25 Cards',
+        price: 49.99,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "https://pbs.twimg.com/media/FsR7CbEacAE3-s_?format=jpg&name=medium",
+        merchant_id: 1
+    },
+    {
+        item_name: 'T-Shirt Large',
         price: 14.99,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "https://pbs.twimg.com/media/FsR6DgkaAAAIo1t?format=jpg&name=large",
+        merchant_id: 1
+    },
+    {
+        item_name: 'T-Shirt Medium',
+        price: 13.99,
+        description: "lorem",
+        available: true,
+        type: "merch",
+        subtype: "",
+        image: "https://pbs.twimg.com/media/FsR6DgkaAAAIo1t?format=jpg&name=large",
+        merchant_id: 1
+    },
+    {
+        item_name: 'T-Shirt Small',
+        price: 12.99,
         description: "lorem",
         available: true,
         type: "merch",

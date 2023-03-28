@@ -152,11 +152,11 @@ const paymentHandler = (event) => {
     customerCashCheck ||
     (cardNumberCheck && expCheck && cvvCheck && cardholderNameCheck)
   ) {
-    async function paymentSuccess() {
+    function paymentSuccess() {
       errorMessage.empty();
       cashMessage.append(`Payment processed successfully!`);
 
-      await fetch("/api/tickets/" + ticketID, {
+      fetch("/api/tickets/" + ticketID, {
         method: "PUT",
         body: JSON.stringify({
           paid: true
@@ -187,7 +187,7 @@ $("#paySubmit").click(paymentHandler);
 
 function epxSuccessCallback(msg) {
   var response = JSON.parse(msg);
-  $("#cardMessage").append(response.AUTH_RESP_TEXT + " \n \n  Transaction Id: " + response.AUTH_GUID);
+  $("#cardMessage").append(response.AUTH_RESP_TEXT);
   console.log(JSON.parse(msg));
 }
 function epxFailureCallback(msg) {
