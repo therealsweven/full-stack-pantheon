@@ -89,100 +89,6 @@ const ordersWrap = document.getElementById("ordersWrap");
 const ordersButtonsWrap = document.getElementById("ordersButtonsWrap");
 const ordersTableWrap = document.getElementById("ordersTableWrap");
 
-// EMPLOYEES
-// Static Array for testing
-let employeeArray = [
-  {
-    id: "0001",
-    name: "Zeus",
-    role: "Team Lead",
-    is_manager: true,
-  },
-  {
-    id: "0002",
-    name: "Bacchus",
-    role: "Bartender",
-    is_manager: false,
-  },
-  {
-    id: "0003",
-    name: "Hermes",
-    role: "Server",
-    is_manager: false,
-  },
-  {
-    id: "0004",
-    name: "Heimdallr",
-    role: "Host",
-    is_manager: false,
-  },
-  {
-    id: "0005",
-    name: "Zao Jun",
-    role: "Stove Master",
-    is_manager: false,
-  },
-  {
-    id: "0006",
-    name: "Zeus",
-    role: "Team Lead",
-    is_manager: true,
-  },
-  {
-    id: "0007",
-    name: "Bacchus",
-    role: "Bartender",
-    is_manager: false,
-  },
-  {
-    id: "0008",
-    name: "Hermes",
-    role: "Server",
-    is_manager: false,
-  },
-  {
-    id: "0009",
-    name: "Heimdallr",
-    role: "Host",
-    is_manager: false,
-  },
-  {
-    id: "0010",
-    name: "Zao Jun",
-    role: "Stove Master",
-    is_manager: false,
-  },
-  {
-    id: "0011",
-    name: "Zeus",
-    role: "Team Lead",
-    is_manager: true,
-  },
-  {
-    id: "0012",
-    name: "Bacchus",
-    role: "Bartender",
-    is_manager: false,
-  },
-  {
-    id: "0013",
-    name: "Hermes",
-    role: "Server",
-    is_manager: false,
-  },
-  {
-    id: "0014",
-    name: "Heimdallr",
-    role: "Host",
-    is_manager: false,
-  },
-  {
-    id: "0015",
-    name: "Zao Jun",
-    role: "Stove Master",
-    is_manager: false,
-  },
-];
 // API arrays
 // ----employees
 let apiEmployeeArray = [];
@@ -507,10 +413,11 @@ addNewEmployeeBtn.addEventListener("click", () => {
   updateEmployeeFormWrap.classList.add("hide");
 });
 // ---- [ADD NEW Employee] form SUBMIT listener
-newEmployeeForm.addEventListener("submit", (event) => {
+newEmployeeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   newEmployeeFormWrap.classList.add("hide");
-  addEmployee2DB();
+  await addEmployee2DB();
+  location.reload();
 });
 // ---- [UPDATE EMPLOYEE form HIDE BUTTON] click listener
 hideUpdateEmployeeFormsButton.addEventListener("click", () => {
@@ -523,10 +430,11 @@ updateEmployeeBtn.addEventListener("click", () => {
   removeEmployeeFormWrap.classList.add("hide");
 });
 // ---- [UPDATE Employee] form SUBMIT listener
-updateEmployeeForm.addEventListener("submit", (event) => {
+updateEmployeeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   updateEmployeeFormWrap.classList.add("hide");
-  updateEmployeeInDB();
+  await updateEmployeeInDB();
+  location.reload();
 });
 // ---- [REMOVE EMPLOYEE form HIDE BUTTON] click listener
 hideRemoveEmployeeFormButton.addEventListener("click", () => {
@@ -539,10 +447,11 @@ removeEmployeeBtn.addEventListener("click", () => {
   removeEmployeeFormWrap.classList.remove("hide");
 });
 // ---- [REMOVE EMPLOYEE] form SUBMIT listener
-removeEmployeeForm.addEventListener("submit", (event) => {
+removeEmployeeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   removeEmployeeFormWrap.classList.add("hide");
-  deleteEmployeeInDB();
+  await deleteEmployeeInDB();
+  location.reload();
 });
 
 // [EDIT MENU] click listener
@@ -565,10 +474,11 @@ addNewItemBtn.addEventListener("click", () => {
   newItemFormWrap.classList.remove("hide");
 });
 // ---- [ADD NEW ITEM] form SUBMIT listener
-newItemForm.addEventListener("submit", (event) => {
+newItemForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   newItemFormWrap.classList.add("hide");
-  addMenuItem2DB();
+  await addMenuItem2DB();
+  location.reload();
 });
 // ---- [HIDE BUTTON] update item
 hideUpdateItemFormButton.addEventListener("click", () => {
@@ -582,10 +492,11 @@ updateItemBtn.addEventListener("click", () => {
 });
 
 // ---- [UPDATE ITEM] form SUBMIT listener
-updateItemForm.addEventListener("submit", (event) => {
+updateItemForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  updateMenuItemInDB();
+  await updateMenuItemInDB();
   updateItemFormWrap.classList.add("hide");
+  location.reload();
 });
 
 // ---- [HIDE BUTTON] remove item
@@ -599,10 +510,11 @@ removeItemBtn.addEventListener("click", () => {
   removeItemFormWrap.classList.remove("hide");
 });
 // ---- [REMOVE ITEM] form SUBMIT listener
-removeItemForm.addEventListener("submit", (event) => {
+removeItemForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   removeItemFormWrap.classList.add("hide");
-  deleteMenuItemInDB();
+  await deleteMenuItemInDB();
+  location.reload();
 });
 
 // [VIEW TABLES] click listener
@@ -623,10 +535,11 @@ addNewTableBtn.addEventListener("click", () => {
   newTableFormWrap.classList.remove("hide");
 });
 // ---- [ADD NEW TABLE] form SUBMIT listener
-newTableForm.addEventListener("submit", (event) => {
+newTableForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   newTableFormWrap.classList.add("hide");
-  addTable2DB();
+  await addTable2DB();
+  location.reload();
 });
 // ---- [HIDE BUTTON removeTable form] click listener
 hideRemoveTableFormsButton.addEventListener("click", () => {
@@ -638,10 +551,11 @@ removeTableBtn.addEventListener("click", () => {
   removeTableFormWrap.classList.remove("hide");
 });
 // ---- [REMOVE A TABLE] form SUBMIT listener
-removeTableForm.addEventListener("submit", (event) => {
+removeTableForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   removeTableFormWrap.classList.add("hide");
-  deleteTableInDB();
+  await deleteTableInDB();
+  location.reload();
 });
 
 //ICE BOX BUTTON
