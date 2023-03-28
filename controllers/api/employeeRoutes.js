@@ -87,9 +87,6 @@ router.delete("/:id", async (req, res) => {
   /*
 Request Body should be as follows:
 
-{
-  id:  INT
-}
 
 */
 
