@@ -509,6 +509,7 @@ addNewEmployeeBtn.addEventListener("click", () => {
 // ---- [ADD NEW Employee] form SUBMIT listener
 newEmployeeForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  newEmployeeFormWrap.classList.add("hide");
   addEmployee2DB();
 });
 // ---- [UPDATE EMPLOYEE form HIDE BUTTON] click listener
@@ -524,6 +525,7 @@ updateEmployeeBtn.addEventListener("click", () => {
 // ---- [UPDATE Employee] form SUBMIT listener
 updateEmployeeForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  updateEmployeeFormWrap.classList.add("hide");
   updateEmployeeInDB();
 });
 // ---- [REMOVE EMPLOYEE form HIDE BUTTON] click listener
@@ -539,6 +541,7 @@ removeEmployeeBtn.addEventListener("click", () => {
 // ---- [REMOVE EMPLOYEE] form SUBMIT listener
 removeEmployeeForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  removeEmployeeFormWrap.classList.add("hide");
   deleteEmployeeInDB();
 });
 
@@ -564,6 +567,7 @@ addNewItemBtn.addEventListener("click", () => {
 // ---- [ADD NEW ITEM] form SUBMIT listener
 newItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  newItemFormWrap.classList.add("hide");
   addMenuItem2DB();
 });
 // ---- [HIDE BUTTON] update item
@@ -575,6 +579,13 @@ updateItemBtn.addEventListener("click", () => {
   newItemFormWrap.classList.add("hide");
   removeItemFormWrap.classList.add("hide");
   updateItemFormWrap.classList.remove("hide");
+});
+
+// ---- [UPDATE ITEM] form SUBMIT listener
+updateItemForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  updateItemFormWrap.classList.add("hide");
+  updateMenuItemInDB();
 });
 
 // ---- [HIDE BUTTON] remove item
@@ -590,6 +601,7 @@ removeItemBtn.addEventListener("click", () => {
 // ---- [REMOVE ITEM] form SUBMIT listener
 removeItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  removeItemFormWrap.classList.add("hide");
   deleteMenuItemInDB();
 });
 
@@ -613,6 +625,7 @@ addNewTableBtn.addEventListener("click", () => {
 // ---- [ADD NEW TABLE] form SUBMIT listener
 newTableForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  newTableFormWrap.classList.add("hide");
   addTable2DB();
 });
 // ---- [HIDE BUTTON removeTable form] click listener
@@ -627,8 +640,12 @@ removeTableBtn.addEventListener("click", () => {
 // ---- [REMOVE A TABLE] form SUBMIT listener
 removeTableForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  removeTableFormWrap.classList.add("hide");
   deleteTableInDB();
 });
+
+//ICE BOX BUTTON
+// ----------------------------
 // [VIEW ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
