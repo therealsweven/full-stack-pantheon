@@ -351,7 +351,7 @@ const updateMenuItemInDB = async () => {
     body.type = itemSubtypeIn;
   }
   //**************** */
-  if (itemAvail !== "Is Available?") {
+  if (itemAvail !== "Available?") {
     body.available = itemAvail;
   }
   console.log(body);
@@ -584,8 +584,8 @@ updateItemBtn.addEventListener("click", () => {
 // ---- [UPDATE ITEM] form SUBMIT listener
 updateItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  updateItemFormWrap.classList.add("hide");
   updateMenuItemInDB();
+  updateItemFormWrap.classList.add("hide");
 });
 
 // ---- [HIDE BUTTON] remove item
