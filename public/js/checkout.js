@@ -15,7 +15,7 @@ for (var i = 0; i < itemTotal.length; i++) {
 
 const subTotalSum = itemTotals.reduce((total, num) => total + num);
 // console.log(subTotalSum);
-subTotal.append(subTotalSum);
+subTotal.append(subTotalSum.toFixed(2));
 
 ////////////////////////////////////////////////////////////
 // JS for Tip
@@ -152,14 +152,27 @@ const paymentHandler = (event) => {
     customerCashCheck ||
     (cardNumberCheck && expCheck && cvvCheck && cardholderNameCheck)
   ) {
-    function paymentSuccess() {
+    async function paymentSuccess() {
       errorMessage.empty();
       cashMessage.append(`Payment processed successfully!`);
-      cardMessage.append(`Payment processed successfully!`);
+
+      await fetch("/api/tickets/" + ticketID, {
+        method: "PUT",
+        body: JSON.stringify({
+          paid: true
+        }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Ticket updated as paid");
+        })
 
       setTimeout(function () {
         document.location.replace("/pos/tables");
-      }, 3000);
+      }, 5000);
     }
 
     paymentSuccess();
@@ -171,6 +184,14 @@ const paymentHandler = (event) => {
 };
 
 $("#paySubmit").click(paymentHandler);
+
+function epxSuccessCallback(msg) {
+  var response = JSON.parse(msg);
+  $("#cardMessage").append(response.AUTH_RESP_TEXT + " \n \n  Transaction Id: " + response.AUTH_GUID);
+  console.log(JSON.parse(msg));
+}
+function epxFailureCallback(msg) {
+}
 ////////////////////////////////////////////////////////////
 // Icebox JS for split button
 // console.log("checkout js loaded");
