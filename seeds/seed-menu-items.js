@@ -168,7 +168,7 @@ const items = [
         available: true,
         type: "merch",
         subtype: "",
-        image: "",
+        image: "https://pbs.twimg.com/media/FsR7CbEacAE3-s_?format=jpg&name=medium",
         merchant_id: 1
     },
     {
@@ -178,7 +178,7 @@ const items = [
         available: true,
         type: "merch",
         subtype: "",
-        image: "",
+        image: "https://pbs.twimg.com/media/FsR6DgkaAAAIo1t?format=jpg&name=large",
         merchant_id: 1
     },
 ];
