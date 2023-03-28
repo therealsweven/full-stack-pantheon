@@ -4,17 +4,33 @@
 
 ## Description
 
+Mercury POS is a web application that enables you to take a customer's order, accepts payments, manage menu items, manage employees, and ultimately manage the entire operation. Mercury POS 
+
 ## Installation
 
-N/A
+Use "npm i" in the command line
 
 ## Usage
 
+To use the application you must install the packages: 
+
+run ```npm i``` in the command line. 
+
 ### Link:
+
+https://mercury-pos.herokuapp.com/
 
 ### Screenshot:
 
-![image]()
+
+|      Page       |     Image       |
+|:---------------:|:---------------:|
+| Home Page       | ![Screenshot 2023-03-27 193321](https://user-images.githubusercontent.com/120581801/228111488-60dd25f1-b82f-4bf5-9165-96a7cb8ee233.png)|
+| Merchant Login  | ![Screenshot 2023-03-27 193357](https://user-images.githubusercontent.com/120581801/228111546-2f076d4d-22c7-44e5-a20c-a973dab85391.png)|
+| Tables Map      |  ![Screenshot 2023-03-27 193516](https://user-images.githubusercontent.com/120581801/228111566-d8b46aef-9449-42ef-bfad-cf1134a27344.png)|
+
+
+
 
 ## Credits
 

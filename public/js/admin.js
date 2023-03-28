@@ -17,6 +17,9 @@ const employeeTableWrap = document.getElementById("employeeTableWrap");
 const hideEmployeeFormsButton = document.getElementById(
   "hideEmployeeFormsButton"
 );
+const hideUpdateEmployeeFormsButton = document.getElementById(
+  "hideUpdateEmployeeFormsButton"
+);
 // ----add new employee button
 const addNewEmployeeBtn = document.getElementById("addNewEmployeeBtn");
 // ----new employee form
@@ -175,7 +178,10 @@ let apiEmployeeArray = [];
 let menuItemsArray = [];
 // ----tickets
 let ticketsArray = [];
+// ----tickets
+let tablesArray = [];
 
+// fetch admin data from API
 window.onload = function () {
   fetch("../api/employee/")
     .then((response) => response.json())
@@ -187,6 +193,12 @@ window.onload = function () {
     .then((data) => {
       data.forEach((element) => menuItemsArray.push(element));
       console.log(menuItemsArray);
+    });
+  fetch("../api/tables")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => tablesArray.push(element));
+      console.log(tablesArray);
     });
   // fetch("../api/tickets")
   //   .then((response) => response.json())
@@ -215,6 +227,7 @@ function showEmployees() {
   });
 }
 
+// add employee to database
 const addEmployee2DB = async () => {
   const employeeNameIn = $("#employeeNameInput").val().trim();
   const employeeEmailIn = $("#employeeEmailInput").val().trim();
@@ -235,6 +248,8 @@ const addEmployee2DB = async () => {
     headers: { "Content-Type": "application/json" },
   });
 };
+
+// update employeee in database
 const updateEmployeeInDB = async () => {
   const updateEmployeeIdInput = Number(
     $("#updateEmployeeIdInput").val().trim()
@@ -269,6 +284,23 @@ const updateEmployeeInDB = async () => {
     headers: { "Content-Type": "application/json" },
   });
 };
+
+// populates DISPLAY with table list
+function showTables() {
+  tablesTableWrap.innerHTML = "";
+  tablesArray.forEach((table) => {
+    let div = document.createElement("div");
+    div.classList.add("tableList");
+    div.innerHTML = `<table style="width: 100%">
+    <tr>
+      <td style="width: 7%">${table.id}</td>
+      <td style="width: 33%">${table.table_name}</td>
+      <td style="width: 25%">${table.max_size}</td>
+    </tr>
+  </table>`;
+    tablesTableWrap.append(div);
+  });
+}
 
 function showItems() {
   menuTableWrap.innerHTML = "";
@@ -332,12 +364,11 @@ newEmployeeForm.addEventListener("submit", (event) => {
   addEmployee2DB();
 });
 // ---- [UPDATE EMPLOYEE form HIDE BUTTON] click listener
-hideEmployeeFormsButton.addEventListener("click", () => {
+hideUpdateEmployeeFormsButton.addEventListener("click", () => {
   updateEmployeeFormWrap.classList.add("hide");
 });
 // ---- [UPDATE Employee] click listener
 updateEmployeeBtn.addEventListener("click", () => {
-  console.log("hello");
   updateEmployeeFormWrap.classList.remove("hide");
   newEmployeeFormWrap.classList.add("hide");
   removeEmployeeFormWrap.classList.add("hide");
@@ -353,8 +384,9 @@ hideRemoveEmployeeFormButton.addEventListener("click", () => {
 });
 // ---- [REMOVE EMPLOYEE BUTTON] click listener
 removeEmployeeBtn.addEventListener("click", () => {
-  removeEmployeeFormWrap.classList.remove("hide");
   newEmployeeFormWrap.classList.add("hide");
+  updateEmployeeFormWrap.classList.add("hide");
+  removeEmployeeFormWrap.classList.remove("hide");
 });
 // ---- [REMOVE EMPLOYEE] form SUBMIT listener
 removeEmployeeForm.addEventListener("submit", (event) => {
@@ -388,6 +420,7 @@ viewTablesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   tablesWrap.classList.remove("hide");
+  showTables();
 });
 // ---- [HIDE BUTTON] click listener
 hideTableFormsButton.addEventListener("click", () => {

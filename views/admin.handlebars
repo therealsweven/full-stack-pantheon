@@ -114,7 +114,7 @@
         {{! [UPDATE EMPLOYEE] form}}
         <div id="updateEmployeeFormWrap" class="hide">
           <form id="updateEmployeeForm" class="formStyle text-start">
-            <div id="hideEmployeeFormsButton" class="btn btn-warning">Hide Form</div>
+            <div id="hideUpdateEmployeeFormsButton" class="btn btn-warning">Hide Form</div>
             <label for="updateEmployeeIdInput">Enter Employee ID you wish to update:</label>
             <br />
 
@@ -162,7 +162,7 @@
               <option value="Frying Oil Dipper">Frying Oil Dipper</option>
               <option value="Janitor">Janitor</option>
             </select>
-            {{! [NEW EMPLOYEE] Submit Button }}
+            {{! [UPDATE EMPLOYEE] Submit Button }}
             <br />
             <br />
             <input id="updateEmployeeSubmitBtn"
@@ -202,9 +202,11 @@
             <th style="width: 25%">E-mail</th>
           </tr>
         </table>
-<div id="employeeTableWrap">
+        {{! employees populate here }}
+        <div id="employeeTableWrap">
         </div>
       </div>
+
       <!-- MENU wrap -->
       <div id="menuWrap" class="hide">
         {{!-- Action Buttons for Menu Items --}}
@@ -219,7 +221,6 @@
           <div type="button" class="btn btn-danger display-action-btn">Remove an
             Item</div>
         </div>
-
         {{! [NEW ITEM] form}}
         <div id="newItemFormWrap" class="hide">
           <form id="newItemForm" class="formStyle text-start">
@@ -322,6 +323,7 @@
         <div id="menuTableWrap">
         </div>
       </div>
+      
       <!-- TABLES wrap -->
       <div id="tablesWrap" class="hide">
         <div id="tablesButtonsWrap">
@@ -375,9 +377,21 @@
               value="Remove the Table"
             />
           </form>
-        </div>
         <div id="ordersTableWrap"></div>
-      </div>
+        </div>
+
+        {{!-- tables dbTable headers --}}
+        <table style="width:100%; text-align:start">
+            <tr>
+              <th style="width: 20%">ID</th>
+              <th style="width: 40%">Name</th>
+              <th style="width: 40%">Max-Size</th>
+            </tr>
+        </table>
+        {{!-- tables populate here --}}
+        <div id="tablesTableWrap"></div>
+
+
       <!-- ORDERS wrap -->
       <div id="ordersWrap" class="hide">
         <div id="ordersButtonsWrap">
