@@ -146,8 +146,8 @@
             <div>Is Manager?:
                 <select id = "employeeIsManagerUpdateIn"class="form-select" aria-label="type">
                   <option selected>Is Manager?</option>
-                  <option value="true">yes</option>
-                  <option value="false">no</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
             <br />
             </div>Role:
@@ -167,7 +167,7 @@
             <br />
             <input id="updateEmployeeSubmitBtn"
               type="submit"
-              class="btn btn-success"
+              class="btn btn-primary"
               value="Update an Employee"
             />
           </form>
@@ -216,7 +216,7 @@
             type="button"
             class="btn btn-success display-action-btn"
           >Add a New Item</div>
-          <div type="button" class="btn btn-primary display-action-btn">Update
+          <div id="updateItemBtn" type="button" class="btn btn-primary display-action-btn">Update
             an Item</div>
           <div id="removeItemBtn" type="button" class="btn btn-danger display-action-btn">Remove an
             Item</div>
@@ -245,6 +245,13 @@
             <br />
             {{! [NEW ITEM] Availability }}
             <br />
+<<<<<<< HEAD
+            <select class="form-select" aria-label="type">
+              <option selected>Available?</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+=======
             <div>Available:
                 <select id = "itemAvailIn"class="form-select" aria-label="type">
                   <option selected>Is Available?</option>
@@ -254,29 +261,30 @@
             <br />
               
             </div>
+>>>>>>> main
 
             {{! [NEW ITEM] Type }}
             <br />
             <select id="itemTypeIn"class="form-select" aria-label="type">
               <option selected>Type</option>
-              <option value="1">Food</option>
-              <option value="2">Drink</option>
-              <option value="3">Merchendise</option>
-              <option value="4">Gift</option>
+              <option value="Food">Food</option>
+              <option value="Drink">Drink</option>
+              <option value="Merchendise">Merchendise</option>
+              <option value="Gift">Gift</option>
             </select>
 
             {{! [NEW ITEM] Sub-Type }}
             <br />
             <select id="itemSubtypeIn" class="form-select" aria-label="sub-type">
               <option selected>Sub-Type</option>
-              <option value="1">Main Course</option>
-              <option value="2">Appetizer</option>
-              <option value="3">Alcoholic</option>
-              <option value="4">Non-Alcoholic</option>
-              <option value="5">Hat</option>
-              <option value="6">Shirt</option>
-              <option value="7">Card</option>
-              <option value="8">Certificate</option>
+              <option value="Main Course">Main Course</option>
+              <option value="Appetizer">Appetizer</option>
+              <option value="Alcoholic">Alcoholic</option>
+              <option value="Non-Alcoholic">Non-Alcoholic</option>
+              <option value="Hat">Hat</option>
+              <option value="Shirt">Shirt</option>
+              <option value="Card">Card</option>
+              <option value="Certificate">Certificate</option>
             </select>
 
             {{! [NEW ITEM] Image URL }}
@@ -294,7 +302,85 @@
             />
           </form>
         </div>
+        {{!-- [UPDATE ITEM] form --}}
+        <div id="updateItemFormWrap" class="hide">
+          <form id="updateItemForm" class="formStyle text-start">
+            <div id="hideUpdateItemFormButton" class="btn btn-warning">Hide Form</div>
+            <label for="updateItemIdInput">Enter Item ID you wish to update:</label>
+            <br />
+          
+            <input 
+            type="number"
+            id="updateItemIdInput"
+            name="updateItemIdInput"
+            />
+            <br />
 
+            {{!-- [UPDATE ITEM] name--}}
+            <label for="updateItemNameInput">Name:</label><br />
+            <input type="text" id="updateItemNameInput" name="updateItemNameInput" />
+            <br />
+            {{!-- [UPDATE ITEM] price --}}
+            <br />
+            <label for="updateItemPrice">Price:</label><br />
+            <input type="number" id="updateItemPrice" name="updateItemPrice">
+            <br />
+            {{!-- [UPDATE ITEM] description--}}
+            <br />
+            <label for="updateItemDescriptionInput">Description:</label><br />
+            <input
+              type="text"
+              id="updateItemDescriptionInput"
+              name="updateItemDescriptionInput"
+            />
+            <br />
+            {{!-- [UPDATE ITEM] availability --}}
+            <br />
+            <select class="form-select" aria-label="type">
+              <option selected>Available?</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+
+            {{!-- [UPDATE ITEM] type --}}
+          <br />
+            <select class="form-select" aria-label="type">
+              <option selected>Type</option>
+              <option value="Food">Food</option>
+              <option value="Drink">Drink</option>
+              <option value="Merchendise">Merchendise</option>
+              <option value="Gift">Gift</option>
+            </select>
+
+          {{!-- [UPDATE ITEM] sub-type --}}
+          <br />
+            <select class="form-select" aria-label="sub-type">
+              <option selected>Sub-Type</option>
+              <option value="Main Course">Main Course</option>
+              <option value="Appetizer">Appetizer</option>
+              <option value="Alcoholic">Alcoholic</option>
+              <option value="Non-Alcoholic">Non-Alcoholic</option>
+              <option value="Hat">Hat</option>
+              <option value="Shirt">Shirt</option>
+              <option value="Card">Card</option>
+              <option value="Certificate">Certificate</option>
+            </select>
+
+          {{!-- [UPDATE ITEM] image URL --}}
+            <br />
+            <label for="updateImageURL">Image URL:</label><br />
+            <input type="url" id="updateImageURL" name="updateImageURL" />
+
+          {{!-- [UPDATE ITEM] Submit Button --}}
+            <br />
+            <br />
+            <input
+              type="submit"
+              class="btn btn-primary"
+              value="Update Item"
+            />
+          </form>
+        </div>
         {{!-- [REMOVE ITEM] form --}}
         <div id="removeItemFormWrap" class="hide">
           <form id="removeItemForm" class="formStyle text-start">
