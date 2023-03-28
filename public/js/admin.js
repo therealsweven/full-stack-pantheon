@@ -278,23 +278,113 @@ const deleteEmployeeInDB = async () => {
   });
 };
 
+// add menu item to database
 const addMenuItem2DB = async () => {
   const itemNameInput = $("#itemNameInput").val().trim();
-  const employeeEmailIn = $("#employeeEmailInput").val().trim();
-  const employeeManagerIn = $("#employeeIsManagerIn").val();
-  const employeeRoleIn = $("#employeeRoleIn").val();
+  const itemDescriptionIn = $("#employeeEmailInput").val().trim();
+  const itemImageIn = $("#employeeIsManagerIn").val();
+  const itemPriceIn = $("#employeeRoleIn").val();
+  const itemSubtypeIn = $("#employeeRoleIn").val();
+  const itemTypeIn = $("#employeeRoleIn").val();
 
-  const employeeLoginIDin = Math.floor(100000 + Math.random() * 900000);
-
-  await fetch("/api/employee", {
+  await fetch("/api/menu", {
     method: "POST",
     body: JSON.stringify({
-      name: employeeNameIn,
-      email: employeeEmailIn,
-      role: employeeRoleIn,
-      login_id: employeeLoginIDin,
-      is_manager: employeeManagerIn,
+      item_name: itemNameInput,
+      description: itemDescriptionIn,
+      image: itemImageIn,
+      price: itemPriceIn,
+      subtype: itemSubtypeIn,
+      type: itemTypeIn,
     }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// update menu item in database
+const updateMenuItemInDB = async () => {
+  const itemIDInput = $("#itemIDInput").val().trim();
+  const itemNameInput = $("#itemNameInput").val().trim();
+  const itemDescriptionIn = $("#employeeEmailInput").val().trim();
+  const itemImageIn = $("#employeeIsManagerIn").val();
+  const itemPriceIn = $("#employeeRoleIn").val();
+  const itemSubtypeIn = $("#employeeRoleIn").val();
+  const itemTypeIn = $("#employeeRoleIn").val();
+  const itemAvail = $("#employeeRoleIn").val();
+
+  const body = {};
+  body.id = itemIDInput;
+  if (itemNameInput !== "") {
+    body.item_name = itemNameInput;
+  }
+  if (itemDescriptionIn !== "") {
+    body.description = itemDescriptionIn;
+  }
+  if (itemImageIn !== "") {
+    body.image = itemImageIn;
+  }
+  if (itemPriceIn !== "") {
+    body.subtype = itemPriceIn;
+  }
+  if (itemTypeIn !== "Type") {
+    body.type = itemTypeIn;
+  }
+  if (itemSubtypeIn !== "Sub-Type") {
+    body.type = itemSubtypeIn;
+  }
+  //**************** */
+  if (itemAvail !== "Sub-Type") {
+    body.available = itemAvail;
+  }
+  console.log(body);
+  await fetch(`/api/menu/`, {
+    method: "PUT",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// delete menu item from database
+const deleteMenuItemInDB = async () => {
+  const deleteItemIdInput = Number($("#removeItemIdInput").val().trim());
+  await fetch(`/api/menu/`, {
+    method: "DELETE",
+    body: JSON.stringify({ id: deleteEmployeeIdInput }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// add employee to database
+const addTable2DB = async () => {
+  const tableNameIn = $("#tableNameInput").val().trim();
+  const maxSizeIn = $("#tableMaxSizeInput").val().trim();
+
+  await fetch("/api/tables", {
+    method: "POST",
+    body: JSON.stringify({
+      table_name: tableNameIn,
+      max_size: maxSizeIn,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// delete table from database
+const deleteTableInDB = async () => {
+  const deleteTableIdInput = Number($("#removeTableIdInput").val().trim());
+  await fetch(`/api/tables/`, {
+    method: "DELETE",
+    body: JSON.stringify({ id: deleteTableIdInput }),
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
+// delete ticket from database
+const deleteTicketInDB = async () => {
+  const deleteTicketIdInput = Number($("#removeTicketIdInput").val().trim());
+  await fetch(`/api/tickets/${deleteTicketIdInput}`, {
+    method: "DELETE",
+    body: JSON.stringify({}),
     headers: { "Content-Type": "application/json" },
   });
 };
@@ -304,7 +394,7 @@ function showEmployees() {
   employeeTableWrap.innerHTML = "";
   apiEmployeeArray.forEach((employee) => {
     let div = document.createElement("div");
-    div.classList.add("employeeList");
+    div.classList.add("tableList");
     div.innerHTML = `<table style="width: 100%">
       <tr>
         <td style="width: 7%">${employee.id}</td>
@@ -314,7 +404,7 @@ function showEmployees() {
         <td style="width: 25%">${employee.email}</td>
       </tr>
     </table>`;
-    employeeTableWrap.append(div);
+    tablesTableWrap.append(div);
   });
 }
 
@@ -341,7 +431,7 @@ function showTables() {
   tablesWrap.innerHTML = "";
   tablesArray.forEach((table) => {
     let div = document.createElement("div");
-    div.classList.add("employeeList");
+    div.classList.add("tableList");
     div.innerHTML = `<table style="width: 100%">
     <tr>
       <td style="width: 20%">${table.id}</td>
@@ -457,6 +547,7 @@ viewTablesButton.addEventListener("click", () => {
   menuWrap.classList.add("hide");
   ordersWrap.classList.add("hide");
   tablesWrap.classList.remove("hide");
+  showTables();
 });
 // ---- [HIDE BUTTON] click listener
 hideTableFormsButton.addEventListener("click", () => {
