@@ -328,7 +328,7 @@
             <br />
             {{!-- [UPDATE ITEM] availability --}}
             <br />
-            <select class="form-select" aria-label="type">
+            <select id="updateItemAvail"class="form-select" aria-label="type">
               <option selected>Available?</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -336,7 +336,7 @@
 
             {{!-- [UPDATE ITEM] type --}}
           <br />
-            <select class="form-select" aria-label="type">
+            <select id="updateItemType"class="form-select" aria-label="type">
               <option selected>Type</option>
               <option value="Food">Food</option>
               <option value="Drink">Drink</option>
@@ -346,7 +346,7 @@
 
           {{!-- [UPDATE ITEM] sub-type --}}
           <br />
-            <select class="form-select" aria-label="sub-type">
+            <select id="updateItemSubtype"class="form-select" aria-label="sub-type">
               <option selected>Sub-Type</option>
               <option value="Main Course">Main Course</option>
               <option value="Appetizer">Appetizer</option>
@@ -486,6 +486,10 @@
       </div>
     </div>
   </div>
-
+<a href="/pos/tables">
+  <button class="btn btn-dark returnBtn">
+    Return to Table Map
+  </button>
+</a>
 </section>
 <script src="/js/admin.js"></script>

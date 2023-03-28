@@ -321,14 +321,14 @@ const addMenuItem2DB = async () => {
 
 // update menu item in database
 const updateMenuItemInDB = async () => {
-  const itemIDInput = $("#itemIDInput").val().trim();
-  const itemNameInput = $("#itemNameInput").val().trim();
-  const itemDescriptionIn = $("#employeeEmailInput").val().trim();
-  const itemImageIn = $("#employeeIsManagerIn").val();
-  const itemPriceIn = $("#employeeRoleIn").val();
-  const itemSubtypeIn = $("#employeeRoleIn").val();
-  const itemTypeIn = $("#employeeRoleIn").val();
-  const itemAvail = $("#employeeRoleIn").val();
+  const itemIDInput = $("#updateItemIdInput").val().trim();
+  const itemNameInput = $("#updateItemNameInput").val().trim();
+  const itemDescriptionIn = $("#updateItemDescriptionInput").val().trim();
+  const itemImageIn = $("#updateImageURL").val();
+  const itemPriceIn = $("#updateItemPrice").val();
+  const itemSubtypeIn = $("#updateItemSubtype").val();
+  const itemTypeIn = $("#updateItemType").val();
+  const itemAvail = $("#updateItemAvail").val();
 
   const body = {};
   body.id = itemIDInput;
@@ -351,7 +351,7 @@ const updateMenuItemInDB = async () => {
     body.type = itemSubtypeIn;
   }
   //**************** */
-  if (itemAvail !== "Is Available?") {
+  if (itemAvail !== "Available?") {
     body.available = itemAvail;
   }
   console.log(body);
@@ -584,8 +584,8 @@ updateItemBtn.addEventListener("click", () => {
 // ---- [UPDATE ITEM] form SUBMIT listener
 updateItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  updateItemFormWrap.classList.add("hide");
   updateMenuItemInDB();
+  updateItemFormWrap.classList.add("hide");
 });
 
 // ---- [HIDE BUTTON] remove item
