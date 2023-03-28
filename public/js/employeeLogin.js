@@ -12,7 +12,8 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/pos/tables");
     } else {
-      alert("Failed to log in.");
+      var login_fail_message = $("#login-fail-message");
+      login_fail_message.text("Invalid Login ID");
     }
   }
 };
