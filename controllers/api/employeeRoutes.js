@@ -120,6 +120,7 @@ req.body should be:
     const dbEmployeeData = await Employee.findOne({
       where: {
         login_id: req.body.login_id,
+        merchant_id: req.session.currentMerchant
       },
     });
 
