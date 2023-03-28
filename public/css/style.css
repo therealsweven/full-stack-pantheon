@@ -927,8 +927,13 @@ header {
   font-weight: bold;
 }
 
+.returnAnchor {
+  text-decoration: none;
+  color: white;
+}
+
 .returnBtn {
-  margin-top: 20rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
