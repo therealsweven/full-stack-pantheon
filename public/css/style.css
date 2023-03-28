@@ -870,12 +870,12 @@ header {
   margin-right: 10px;
   margin-bottom: 30px;
   padding: 0 10px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .btn-add-menu-item:hover {
   color: green;
-  background-color: #e39c7f;
+  background-color: #ebd9d1;
 }
 
 /* END OF LANDING PAGE CSS */
