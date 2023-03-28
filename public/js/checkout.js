@@ -15,7 +15,7 @@ for (var i = 0; i < itemTotal.length; i++) {
 
 const subTotalSum = itemTotals.reduce((total, num) => total + num);
 // console.log(subTotalSum);
-subTotal.append(subTotalSum);
+subTotal.append(subTotalSum.toFixed(2));
 
 ////////////////////////////////////////////////////////////
 // JS for Tip

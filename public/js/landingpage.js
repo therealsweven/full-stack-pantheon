@@ -116,6 +116,7 @@ function renderMenuItems(data) {
   }
 }
 
+//fetching the menu data and filetring by type
 async function retrieveMenuData(type) {
   await fetch("/api/menu", {
     method: "GET",
@@ -129,6 +130,7 @@ async function retrieveMenuData(type) {
     })
 }
 
+//calling increase item quntity which might create the item if doesn't exist
 async function increaseQuantity(menu_item_id, ticket_id) {
   await fetch("/api/tickets/item", {
     method: "POST",
