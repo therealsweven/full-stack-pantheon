@@ -47,8 +47,12 @@ Request Body should be as follows:
   try {
     // assign merchant_id from session variable
     req.body.merchant_id = req.session.currentMerchant;
+    req.session;
     const employeeData = await Employee.create(req.body);
-    await emails.sendNewEmployeeEmail(employeeData, "Choctaw");
+    await emails.sendNewEmployeeEmail(
+      employeeData,
+      req.session.currentMerchantName
+    );
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -117,7 +121,7 @@ req.body should be:
     const dbEmployeeData = await Employee.findOne({
       where: {
         login_id: req.body.login_id,
-        merchant_id: req.session.currentMerchant
+        merchant_id: req.session.currentMerchant,
       },
     });
 
