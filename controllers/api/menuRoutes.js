@@ -93,6 +93,7 @@ Request Body should be as follows:
 
 */
   try {
+    console.log(req.body);
     const menuItem = await Menu_items.update(req.body, {
       where: {
         id: req.body.id,

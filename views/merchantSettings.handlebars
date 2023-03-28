@@ -43,12 +43,12 @@
       <input
         type="text"
         id="addressInput"
-        class="form-control form-control-lg"
+        class="form-control form-control-lg mSettingsInputs"
       />
       <label class="form-label" for="cityInput">City</label>
-      <input type="text" id="cityInput" class="form-control form-control-lg" />
+      <input type="text" id="cityInput" class="form-control form-control-lg mSettingsInputs" />
       <label class="form-label" for="cityInput">State</label>
-      <div class="col-md-6 mb-4">
+      <div class="col-md-6 mb-4 stateInputDiv">
         {{! <p>State</p> }}
         <select id="stateInput" class="select">
           <option value="Alabama">Alabama</option>
@@ -104,45 +104,45 @@
         </select>
       </div>
       <label class="form-label" for="zipInput">Zipcode</label>
-      <input type="text" id="zipInput" class="form-control form-control-lg" />
-      <button id="addressFormSubmit" class="btn btn-dark">Submit</button>
+      <input type="text" id="zipInput" class="form-control form-control-lg mSettingsInputs" />
+      <button id="addressFormSubmit" class="btn btn-dark mt-4">Submit</button>
     </div>
     <div id="phoneForm" class="form-outline mb-4" style="display:none;">
       <label class="form-label" for="phoneInput">Enter new phone number</label>
-      <input type="tel" id="phoneInput" class="form-control form-control-lg" />
-      <button id="phoneFormSubmit" class="btn btn-dark">Submit</button>
+      <input type="tel" id="phoneInput" class="form-control form-control-lg mSettingsInputs" />
+      <button id="phoneFormSubmit" class="btn btn-dark mt-4">Submit</button>
     </div>
     <div id="emailForm" class="form-outline mb-4" style="display:none;">
       <label class="form-label" for="emailInput">Enter new email</label>
-      <input type="text" id="emailInput" class="form-control form-control-lg" />
+      <input type="text" id="emailInput" class="form-control form-control-lg mSettingsInputs" />
       <label class="form-label" for="emailInput2">Re-enter new email</label>
       <input
         type="text"
         id="emailInput2"
-        class="form-control form-control-lg"
+        class="form-control form-control-lg mSettingsInputs"
       />
-      <button id="emailFormSubmit" class="btn btn-dark">Submit</button>
+      <button id="emailFormSubmit" class="btn btn-dark mt-4">Submit</button>
     </div>
     <div id="passwordForm" class="form-outline mb-4" style="display:none;">
       <label class="form-label" for="passwordInput">Enter new password</label>
       <input
         type="password"
         id="passwordInput"
-        class="form-control form-control-lg"
+        class="form-control form-control-lg mSettingsInputs"
       />
       <label class="form-label" for="passwordInput2">Re-enter new password</label>
       <input
         type="password"
         id="passwordInput2"
-        class="form-control form-control-lg"
+        class="form-control form-control-lg mSettingsInputs"
       />
-      <button id="passwordFormSubmit" class="btn btn-dark" >Submit</button>
+      <button id="passwordFormSubmit" class="btn btn-dark mt-4" >Submit</button>
     </div>
   </div>
 </div>
-<a href="/pos/login">
-  <button id="returnBtn" class="btn btn-dark">
-    Return to Employee Login
+<a href="/pos/tables">
+  <button class="btn btn-dark returnBtn">
+    Return to Table Map
   </button>
 </a>
 </div>
