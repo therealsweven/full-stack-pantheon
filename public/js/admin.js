@@ -50,11 +50,11 @@ const menuWrap = document.getElementById("menuWrap");
 const menuButtonsWrap = document.getElementById("menuButtonsWrap");
 const menuTableWrap = document.getElementById("menuTableWrap");
 // ----hide FORM
-const hideMenuFormsButton = document.getElementById("hideMenuFormsButton");
 // ----new
 const addNewItemBtn = document.getElementById("addNewItemBtn");
 const newItemFormWrap = document.getElementById("newItemFormWrap");
 const newItemForm = document.getElementById("newItemForm");
+const hideMenuFormsButton = document.getElementById("hideMenuFormsButton");
 // ----remove
 const removeItemBtn = document.getElementById("removeItemBtn");
 const removeItemFormWrap = document.getElementById("removeItemFormWrap");
@@ -62,7 +62,13 @@ const removeItemForm = document.getElementById("removeItemForm");
 const hideRemoveItemFormButton = document.getElementById(
   "hideRemoveItemFormButton"
 );
-
+// ----update
+const updateItemBtn = document.getElementById("updateItemBtn");
+const updateItemFormWrap = document.getElementById("updateItemFormWrap");
+const updateItemForm = document.getElementById("updateItemForm");
+const hideUpdateItemFormButton = document.getElementById(
+  "hideUpdateItemFormButton"
+);
 // TABLES wraps
 const tablesWrap = document.getElementById("tablesWrap");
 const tablesButtonsWrap = document.getElementById("tablesButtonsWrap");
@@ -552,6 +558,7 @@ hideMenuFormsButton.addEventListener("click", () => {
 // ---- [ADD NEW ITEM] click listener
 addNewItemBtn.addEventListener("click", () => {
   removeItemFormWrap.classList.add("hide");
+  updateItemFormWrap.classList.add("hide");
   newItemFormWrap.classList.remove("hide");
 });
 // ---- [ADD NEW ITEM] form SUBMIT listener
@@ -559,6 +566,17 @@ newItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
   addMenuItem2DB();
 });
+// ---- [HIDE BUTTON] update item
+hideUpdateItemFormButton.addEventListener("click", () => {
+  updateItemFormWrap.classList.add("hide");
+});
+// ---- [UPDATE ITEM] click listener
+updateItemBtn.addEventListener("click", () => {
+  newItemFormWrap.classList.add("hide");
+  removeItemFormWrap.classList.add("hide");
+  updateItemFormWrap.classList.remove("hide");
+});
+
 // ---- [HIDE BUTTON] remove item
 hideRemoveItemFormButton.addEventListener("click", () => {
   removeItemFormWrap.classList.add("hide");
@@ -566,6 +584,7 @@ hideRemoveItemFormButton.addEventListener("click", () => {
 // ---- [REMOVE ITEM] click listener
 removeItemBtn.addEventListener("click", () => {
   newItemFormWrap.classList.add("hide");
+  updateItemFormWrap.classList.add("hide");
   removeItemFormWrap.classList.remove("hide");
 });
 // ---- [REMOVE ITEM] form SUBMIT listener

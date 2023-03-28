@@ -461,7 +461,8 @@ html {
 #updateEmployeeForm,
 #newTableForm,
 #removeTableForm,
-#removeItemForm {
+#removeItemForm,
+#updateItemForm {
   position: relative;
 }
 #hideRemoveEmployeeFormButton,
@@ -470,7 +471,8 @@ html {
 #hideUpdateEmployeeFormsButton,
 #hideTableFormsButton,
 #hideRemoveTableFormsButton,
-#hideRemoveItemFormButton {
+#hideRemoveItemFormButton,
+#hideUpdateItemFormButton {
   position: absolute;
   right: 0;
   top: 0;
