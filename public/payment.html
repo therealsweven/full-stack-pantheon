@@ -1,0 +1,64 @@
+<script src="https://hosted.epxuap.com/post.js"></script>
+<script>
+    function epxSuccessCallback(msg) {
+        alert("Success: " + msg);
+        console.log(msg);
+    }
+    function epxFailureCallback(msg) {
+        alert("Failure: " + msg);
+        console.log(msg);
+    }
+</script>
+<form id="EpxCheckoutForm" name="EpxCheckoutForm">
+    <div>
+        <label for="PAN">Card Number:</label>
+        <input type="text" id="PAN-id" name="PAN" value="4111111111111111" />
+    </div>
+
+    <div>
+        <label for="Expire">Expire:</label>
+        <input type="text" id="Expire" name="Expire" value="0822" />
+    </div>
+
+    <div>
+        <label for="CVV">CVV:</label>
+        <input type="text" id="CVV" name="CVV" value="123" />
+    </div>
+
+    <div>
+        <label for="Amount">Amount:</label>
+        <input type="amount" id="Amount" name="Amount" value="1.00" />
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" value="john@aol.com" />
+    </div>
+
+    <div>
+        <label for="Billing Name">Billing Name:</label><input type="text" id="Billing Name" name="Billing Name"
+            value="John Doe" />
+    </div>
+
+    <div>
+        <input type="hidden" name="FailureCallback" value="epxFailureCallback" /><input type="hidden"
+            name="SuccessCallback" value="epxSuccessCallback" /><input type="hidden" name="PublicKey"
+            value="eyAidGVybWluYWxQcm9maWxlSWQiOiAiMmNlN2RmMmMtY2I4Ni00MmNmLWI2NjMtNTAxOGQxMjA3NzMyIiB9" />
+        <input type="hidden" name="Captcha" value="bypass" />
+    </div>
+
+    <div>
+        <button onclick="Epx.sendPost()" type="button">Send Payment</button>
+    </div>
+</form>
+
+<style>
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
