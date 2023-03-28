@@ -245,15 +245,27 @@
             <br />
             {{! [NEW ITEM] Availability }}
             <br />
+<<<<<<< HEAD
             <select class="form-select" aria-label="type">
               <option selected>Available?</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
+=======
+            <div>Available:
+                <select id = "itemAvailIn"class="form-select" aria-label="type">
+                  <option selected>Is Available?</option>
+                  <option value="true">yes</option>
+                  <option value="false">no</option>
+                </select>
+            <br />
+              
+            </div>
+>>>>>>> main
 
             {{! [NEW ITEM] Type }}
             <br />
-            <select class="form-select" aria-label="type">
+            <select id="itemTypeIn"class="form-select" aria-label="type">
               <option selected>Type</option>
               <option value="Food">Food</option>
               <option value="Drink">Drink</option>
@@ -263,7 +275,7 @@
 
             {{! [NEW ITEM] Sub-Type }}
             <br />
-            <select class="form-select" aria-label="sub-type">
+            <select id="itemSubtypeIn" class="form-select" aria-label="sub-type">
               <option selected>Sub-Type</option>
               <option value="Main Course">Main Course</option>
               <option value="Appetizer">Appetizer</option>

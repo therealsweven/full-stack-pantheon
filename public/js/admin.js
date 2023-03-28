@@ -296,11 +296,12 @@ const deleteEmployeeInDB = async () => {
 // add menu item to database
 const addMenuItem2DB = async () => {
   const itemNameInput = $("#itemNameInput").val().trim();
-  const itemDescriptionIn = $("#employeeEmailInput").val().trim();
-  const itemImageIn = $("#employeeIsManagerIn").val();
-  const itemPriceIn = $("#employeeRoleIn").val();
-  const itemSubtypeIn = $("#employeeRoleIn").val();
-  const itemTypeIn = $("#employeeRoleIn").val();
+  const itemDescriptionIn = $("#itemDescriptionInput").val().trim();
+  const itemImageIn = $("#imageURL").val();
+  const itemPriceIn = $("#itemPriceInput").val();
+  const itemSubtypeIn = $("#itemSubtypeIn").val();
+  const itemTypeIn = $("#itemTypeIn").val();
+  const itemAvail = $("#itemAvailIn").val();
 
   await fetch("/api/menu", {
     method: "POST",
@@ -311,6 +312,8 @@ const addMenuItem2DB = async () => {
       price: itemPriceIn,
       subtype: itemSubtypeIn,
       type: itemTypeIn,
+      available: itemAvail,
+      allergen_ids: [],
     }),
     headers: { "Content-Type": "application/json" },
   });
@@ -348,7 +351,7 @@ const updateMenuItemInDB = async () => {
     body.type = itemSubtypeIn;
   }
   //**************** */
-  if (itemAvail !== "Sub-Type") {
+  if (itemAvail !== "Is Available?") {
     body.available = itemAvail;
   }
   console.log(body);
@@ -364,7 +367,7 @@ const deleteMenuItemInDB = async () => {
   const deleteItemIdInput = Number($("#removeItemIdInput").val().trim());
   await fetch(`/api/menu/`, {
     method: "DELETE",
-    body: JSON.stringify({ id: deleteEmployeeIdInput }),
+    body: JSON.stringify({ id: deleteItemIdInput }),
     headers: { "Content-Type": "application/json" },
   });
 };

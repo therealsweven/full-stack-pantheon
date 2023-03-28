@@ -903,6 +903,15 @@ header {
   );
 }
 
+.mSettingsInputs {
+  margin: auto;
+  width: 25%;
+}
+
+.stateInputDiv {
+  margin: auto;
+}
+
 #merchantPassword {
   margin: auto;
 }
@@ -920,9 +929,9 @@ header {
   font-weight: bold;
 }
 
-#returnBtn {
-  margin-left: 20px;
+.returnBtn {
   margin-top: 20rem;
+  margin-bottom: 1rem;
 }
 
 .login-settings-btn {
