@@ -17,6 +17,9 @@ const employeeTableWrap = document.getElementById("employeeTableWrap");
 const hideEmployeeFormsButton = document.getElementById(
   "hideEmployeeFormsButton"
 );
+const hideUpdateEmployeeFormsButton = document.getElementById(
+  "hideUpdateEmployeeFormsButton"
+);
 // ----add new employee button
 const addNewEmployeeBtn = document.getElementById("addNewEmployeeBtn");
 // ----new employee form
@@ -361,12 +364,11 @@ newEmployeeForm.addEventListener("submit", (event) => {
   addEmployee2DB();
 });
 // ---- [UPDATE EMPLOYEE form HIDE BUTTON] click listener
-hideEmployeeFormsButton.addEventListener("click", () => {
+hideUpdateEmployeeFormsButton.addEventListener("click", () => {
   updateEmployeeFormWrap.classList.add("hide");
 });
 // ---- [UPDATE Employee] click listener
 updateEmployeeBtn.addEventListener("click", () => {
-  console.log("hello");
   updateEmployeeFormWrap.classList.remove("hide");
   newEmployeeFormWrap.classList.add("hide");
   removeEmployeeFormWrap.classList.add("hide");
@@ -382,8 +384,9 @@ hideRemoveEmployeeFormButton.addEventListener("click", () => {
 });
 // ---- [REMOVE EMPLOYEE BUTTON] click listener
 removeEmployeeBtn.addEventListener("click", () => {
-  removeEmployeeFormWrap.classList.remove("hide");
   newEmployeeFormWrap.classList.add("hide");
+  updateEmployeeFormWrap.classList.add("hide");
+  removeEmployeeFormWrap.classList.remove("hide");
 });
 // ---- [REMOVE EMPLOYEE] form SUBMIT listener
 removeEmployeeForm.addEventListener("submit", (event) => {

@@ -458,6 +458,7 @@ html {
 #removeEmployeeForm,
 #newItemForm,
 #newEmployeeForm,
+#updateEmployeeForm,
 #newTableForm,
 #removeTableForm {
   position: relative;
@@ -465,6 +466,7 @@ html {
 #hideRemoveEmployeeFormButton,
 #hideMenuFormsButton,
 #hideEmployeeFormsButton,
+#hideUpdateEmployeeFormsButton,
 #hideTableFormsButton,
 #hideRemoveTableFormsButton {
   position: absolute;
@@ -745,12 +747,13 @@ header {
 .images {
   width: 150px;
   height: 90px;
-  -webkit-transition: all 0.7s ease;
-  transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+ transition: all 0.7s ease;
 }
 
 .images:hover {
-  -webkit-filter: saturate(1.5);
+ -webkit-transform:scale(1.4);
+transform:scale(1.1);
 }
 
 #menu-items {
@@ -767,7 +770,7 @@ header {
 
 .table-map {
   margin-top: 20px;
-  width: 70%;
+  width: 80%;
   height: 80px;
   margin-left: 40px;
   background-color: #e87b72;
@@ -775,6 +778,15 @@ header {
   font-size: 1.5rem;
 }
 
+.send-kitchen {
+  margin-top: 6rem;
+  width: 80%;
+  height: 80px;
+  margin-left: 40px;
+  background-color: #e87b72;
+  border-color: #e87b72;
+  font-size: 1.5rem;
+}
 .server-name {
   margin-top: 30px;
   font-size: 2rem;
@@ -816,15 +828,6 @@ header {
   color: green;
 }
 
-.send-kitchen {
-  margin-top: 6rem;
-  width: 80%;
-  height: 80px;
-  margin-left: 40px;
-  background-color: #e87b72;
-  border-color: #e87b72;
-  font-size: 1.5rem;
-}
 
 .send-kitchen:hover,
 .table-map:hover {
@@ -851,6 +854,7 @@ header {
   margin-left: 10px;
   float: right;
   margin-right: 10px;
+  margin-bottom: 30px;
   padding: 0 10px;
   font-size: 20px;
 }
@@ -937,17 +941,19 @@ header {
 /* START OF THE 404  */
 
 .error-page {
-margin-top: 30px;
-  background-image: linear-gradient(to right,
-        rgba(217, 104, 109, 1),
-        rgba(249, 171, 140, 1));
+  margin-top: 30px;
+  background-image: linear-gradient(
+    to right,
+    rgba(217, 104, 109, 1),
+    rgba(249, 171, 140, 1)
+  );
 }
-.error{
+.error {
   margin-top: 150px;
 }
 
-.error, .error-text {
-
+.error,
+.error-text {
   text-align: center;
 }
 
@@ -956,7 +962,7 @@ margin-top: 30px;
   text-align: center;
 }
 
-.gif-image{
+.gif-image {
   width: 20%;
   height: 25%;
 }
@@ -968,6 +974,5 @@ margin-top: 30px;
 .gif-image-last {
   margin-bottom: 400px;
 }
-
 
 /* --------------------------------------------------------------- */

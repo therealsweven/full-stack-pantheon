@@ -7,6 +7,7 @@ var tabMap;
 var checkout;
 var kitchen;
 var drink, food, merch;
+var menuType;
 
 //on ready function
 $(function () {
@@ -21,10 +22,13 @@ $(function () {
   merch = document.getElementById('merch');
 
   var url = document.URL;
-  ticket_id = url.substring(url.lastIndexOf('/') + 1, url.length);
+  ticket_id = url.substring(url.lastIndexOf('/') + 1, url.indexOf('?'));
+
+  var urlParams = new URLSearchParams(window.location.search);
+  menuType = urlParams.get('type');
 
   //Display food by default on page load.
-  retrieveMenuData('food');
+  retrieveMenuData(menuType);
 
   tableMap.addEventListener('click', () => {
     document.location.replace(`/pos/tables`);
@@ -40,17 +44,24 @@ $(function () {
 
   drink.addEventListener('click', () => {
     removeChildren(menuDisplay);
+    menuType = 'drinks';
     retrieveMenuData('drinks');
   })
 
   food.addEventListener('click', () => {
     removeChildren(menuDisplay);
+    menuType = 'food';
     retrieveMenuData('food');
   })
 
   merch.addEventListener('click', () => {
     removeChildren(menuDisplay);
+    menuType = 'merch';
     retrieveMenuData('merch');
+  })
+
+  kitchen.addEventListener('click', () => {
+    document.getElementById("kitchen-message").style.visibility = "visible";
   })
 })
 
@@ -125,7 +136,7 @@ async function increaseQuantity(menu_item_id, ticket_id) {
       return response.json();
     })
     .then((data) => {
-      document.location.reload();
+      document.location.replace(`/pos/main/${ticket_id}?type=${menuType}`);
     })
 }
 
@@ -138,7 +149,7 @@ async function decreaseQuantity(id) {
       return response.json();
     })
     .then((data) => {
-      document.location.reload();
+      document.location.replace(`/pos/main/${ticket_id}?type=${menuType}`);
     })
 }
 
