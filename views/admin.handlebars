@@ -1,23 +1,38 @@
 {{> header}}
 <section class="main container-fluid text-center">
-  <div id="header_nav" class="row">
-    <div class="col-2 btn nav-btn btn-secondary">Back</div>
-    <h1 class="col text-center">Settings</h1>
-    <div class="col-2 btn nav-btn btn-secondary">Customize</div>
-  </div>
   <div id="contentWrap" class="row">
     <!-- SIDEBAR BUTTONS -->
     <div id="sidebar" class="col-4">
       <!-- EDIT EMPLOYEES button -->
-      <div id="editEmployees" type="button" class="btn action-btn btn-light edit-employees">
+      <div
+        id="editEmployees"
+        type="button"
+        class="btn action-btn btn-light edit-employees"
+      >
         Edit Employees
       </div>
       <!-- EDIT MENU button -->
-      <div id="editMenu" type="button" class="btn action-btn btn-light edit-menu">
+      <div
+        id="editMenu"
+        type="button"
+        class="btn action-btn btn-light edit-menu"
+      >
         Edit Menu
       </div>
+      <!-- VIEW TABLES button -->
+      <div
+        id="viewTables"
+        type="button"
+        class="btn action-btn btn-light view-tables"
+      >
+        View Tables
+      </div>
       <!-- VIEW ORDERS button -->
-      <div id="viewOrders" type="button" class="btn action-btn btn-light view-orders">
+      <div
+        id="viewOrders"
+        type="button"
+        class="btn action-btn btn-light view-orders"
+      >
         View Orders
       </div>
     </div>
@@ -268,6 +283,16 @@
         <div id="menuTableWrap">
         </div>
       </div>
+      <!-- TABLES wrap -->
+      <div id="tablesWrap" class="hide">
+        <div id="tablesButtonsWrap">
+          <div type="button" class="btn btn-success display-action-btn">Add a
+            New Table</div>
+          <div type="button" class="btn btn-danger display-action-btn">Remove a
+            Table</div>
+        </div>
+        <div id="ordersTableWrap"></div>
+      </div>
       <!-- ORDERS wrap -->
       <div id="ordersWrap" class="hide">
         <div id="ordersButtonsWrap">
@@ -282,6 +307,6 @@
       </div>
     </div>
   </div>
-  
+
 </section>
 <script src="/js/admin.js"></script>

@@ -1,4 +1,5 @@
 // Action Buttons
+const viewTablesButton = document.getElementById("viewTables");
 const viewOrdersButton = document.getElementById("viewOrders");
 const deleteOrderButton = document.getElementById("deleteOrder");
 const editEmployeesButton = document.getElementById("editEmployees");
@@ -45,6 +46,11 @@ const addNewItemBtn = document.getElementById("addNewItemBtn");
 // ----new item form
 const newItemFormWrap = document.getElementById("newItemFormWrap");
 const newItemForm = document.getElementById("newItemForm");
+
+//TABLES wraps
+const tablesWrap = document.getElementById("tablesWrap");
+const tablesButtonsWrap = document.getElementById("tablesButtonsWrap");
+const tablesTableWrap = document.getElementById("tablesTableWrap");
 
 //ORDERS wraps
 const ordersWrap = document.getElementById("ordersWrap");
@@ -255,9 +261,17 @@ addNewItemBtn.addEventListener("click", () => {
 newItemForm.addEventListener("submit", (event) => {
   event.preventDefault();
 });
-// [EDIT ORDERS] click listener
+// [VIEW TABLES] click listener
+viewTablesButton.addEventListener("click", () => {
+  employeesWrap.classList.add("hide");
+  menuWrap.classList.add("hide");
+  ordersWrap.classList.add("hide");
+  tablesWrap.classList.remove("hide");
+});
+// [VIEW ORDERS] click listener
 viewOrdersButton.addEventListener("click", () => {
   employeesWrap.classList.add("hide");
   menuWrap.classList.add("hide");
+  tablesWrap.classList.add("hide");
   ordersWrap.classList.remove("hide");
 });

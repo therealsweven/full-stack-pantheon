@@ -413,32 +413,21 @@ html {
     rgba(217, 104, 109, 1),
     rgba(249, 171, 140, 1)
   );
-  height: 150vh;
-}
-
-#header_nav {
-  background-color: whitesmoke;
-  margin-bottom: 30px;
+  height: 100vh;
 }
 
 #contentWrap {
+  padding-top: 100px;
   width: 100%;
 }
 
 #sidebarDisplay {
+  position: relative;
   overflow-y: scroll;
   height: 500px;
   width: 700px;
   background-color: lightgray;
   border: 2px solid whitesmoke;
-}
-
-#footer_nav {
-  bottom: 0;
-  position: fixed;
-  width: 100%;
-  background-color: whitesmoke;
-  padding: 10px;
 }
 
 .nav-btn {
@@ -532,7 +521,8 @@ html {
 
 .edit-employees,
 .edit-menu,
-.view-orders {
+.view-orders,
+.view-tables {
   background-color: black;
   color: white;
   border-color: black;
@@ -541,7 +531,8 @@ html {
 
 .edit-employees:hover,
 .edit-menu:hover,
-.view-orders:hover {
+.view-orders:hover,
+.view-tables:hover {
   background-color: #e39c7f;
   border-color: #e39c7f;
   color: white;
