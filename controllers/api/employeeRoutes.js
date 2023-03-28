@@ -8,7 +8,9 @@ URL route:    /api/employee
 // GET all employee data
 router.get("/", async (req, res) => {
   try {
-    const employeeData = await Employee.findAll();
+    const employeeData = await Employee.findAll({
+      where: { merchant_id: req.session.currentMerchant },
+    });
     res.status(200).json(employeeData);
   } catch (err) {
     console.log(err);
@@ -63,7 +65,6 @@ Request Body should be as follows:
   name:  STRING,
   email: STRING,
   role:  STRING,
-  login_id: STRING,
   is_manager: BOOLEAN,
 }
 

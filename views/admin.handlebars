@@ -49,7 +49,7 @@
           >
             Add a New Employee
           </div>
-          <div type="button" class="btn btn-primary display-action-btn">
+          <div id="updateEmployeeBtn" type="button" class="btn btn-primary display-action-btn">
             Update an Employee
           </div>
           <div
@@ -80,59 +80,95 @@
               name="employeeEmailInput"
             />
             <br />
-            {{! [NEW EMPLOYEE] ID }}
-            <br />
-            <label for="employeeIdInput">Employee ID:</label><br />
-            <input type="number" id="employeeIdInput" name="employeeIdInput" />
-            <br />
             {{! [NEW EMPLOYEE] Manager ? }}
             <br />
             <div>Manager:
-              {{! YES }}
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="answer"
-                  id="employeeYesAnswer"
-                />
-                <label class="form-check-label" for="employeeYesAnswer">
-                  Yes
-                </label>
-              </div>
-              {{! NO }}
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="answer"
-                  id="employeeNoAnswer"
-                />
-                <label class="form-check-label" for="employeeNoAnswer">
-                  No
-                </label>
-              </div>
-            </div>
-            {{! [NEW EMPLOYEE] Role }}
+                <select id = "employeeIsManagerIn"class="form-select" aria-label="type">
+                  <option selected>Is Manager?</option>
+                  <option value="true">yes</option>
+                  <option value="false">no</option>
+                </select>
             <br />
-            <select class="form-select" aria-label="type">
+            </div>Role:
+            {{! [NEW EMPLOYEE] Role }}
+            <select id = "employeeRoleIn"class="form-select" aria-label="type">
               <option selected>Role</option>
-              <option value="1">Team Lead</option>
-              <option value="2">Host</option>
-              <option value="3">Waiter</option>
-              <option value="4">Stove Master</option>
-              <option value="5">Salad Juggler</option>
-              <option value="6">Frying Oil Dipper</option>
-              <option value="7">Janitor</option>
+              <option value="Team Lead">Team Lead</option>
+              <option value="Host">Host</option>
+              <option value="Waiter">Waiter</option>
+              <option value="Stove Master">Stove Master</option>
+              <option value="Salad Juggler">Salad Juggler</option>
+              <option value="Frying Oil Dipper">Frying Oil Dipper</option>
+              <option value="Janitor">Janitor</option>
             </select>
-
             {{! [NEW EMPLOYEE] Submit Button }}
             <br />
             <br />
-            <input
+            <input id="newEmployeeSubmitBtn"
               type="submit"
               class="btn btn-success"
               value="Add a New Employee"
+            />
+          </form>
+        </div>
+        {{! [UPDATE EMPLOYEE] form}}
+        <div id="updateEmployeeFormWrap" class="hide">
+          <form id="updateEmployeeForm" class="formStyle text-start">
+            <div id="hideEmployeeFormsButton" class="btn btn-warning">Hide Form</div>
+            <label for="updateEmployeeIdInput">Enter Employee ID you wish to update:</label>
+            <br />
+
+            <input
+              type="number"
+              id="updateEmployeeIdInput"
+              name="updateEmployeeIdInput"
+            />
+            <br />
+
+            {{! [UPDATE EMPLOYEE] name }}
+            <label for="employeeNameUpdateInput">Name:</label><br />
+            <input
+              type="text"
+              id="employeeNameUpdateInput"
+              name="employeeNameUpdateInput"
+            />
+            <br />
+            {{! [UPDATE EMPLOYEE] email }}
+            <label for="employeeEmailUpdateInput">e-mail:</label><br />
+            <input
+              type="email"
+              id="employeeEmailUpdateInput"
+              name="employeeEmailUpdateInput"
+            />
+            <br />
+            {{! [UPDATE EMPLOYEE] Manager ? }}
+            <br />
+            <div>Is Manager?:
+                <select id = "employeeIsManagerUpdateIn"class="form-select" aria-label="type">
+                  <option selected>Is Manager?</option>
+                  <option value="true">yes</option>
+                  <option value="false">no</option>
+                </select>
+            <br />
+            </div>Role:
+            {{! [UPDATE EMPLOYEE] Role }}
+            <select id = "employeeRoleUpdateIn"class="form-select" aria-label="type">
+              <option selected>Role</option>
+              <option value="Team Lead">Team Lead</option>
+              <option value="Host">Host</option>
+              <option value="Waiter">Waiter</option>
+              <option value="Stove Master">Stove Master</option>
+              <option value="Salad Juggler">Salad Juggler</option>
+              <option value="Frying Oil Dipper">Frying Oil Dipper</option>
+              <option value="Janitor">Janitor</option>
+            </select>
+            {{! [NEW EMPLOYEE] Submit Button }}
+            <br />
+            <br />
+            <input id="updateEmployeeSubmitBtn"
+              type="submit"
+              class="btn btn-success"
+              value="Update an Employee"
             />
           </form>
         </div>
@@ -155,19 +191,23 @@
               Form</div>
           </form>
         </div>
-        {{! form headers }}
+        
+        {{! employee table headers }}
         <table style="width:100%; text-align:start">
           <tr>
-            <th style="width: 10%">ID</th>
-            <th style="width: 40%">Name</th>
+            <th style="width: 7%">ID</th>
+            <th style="width: 10%">Login</th>
+            <th style="width: 33%">Name</th>
             <th style="width: 25%">Role</th>
-            <th style="width: 25%">e-mail</th>
+            <th style="width: 25%">E-mail</th>
           </tr>
         </table>
-        <div id="employeeTableWrap"></div>
+<div id="employeeTableWrap">
+        </div>
       </div>
       <!-- MENU wrap -->
       <div id="menuWrap" class="hide">
+        {{!-- Action Buttons for Menu Items --}}
         <div id="menuButtonsWrap">
           <div
             id="addNewItemBtn"
@@ -270,7 +310,7 @@
             />
           </form>
         </div>
-        {{! table headers }}
+        {{! menu item table headers }}
         <table style="width:100%; text-align:start">
           <tr>
             <th style="width: 10%">ID</th>

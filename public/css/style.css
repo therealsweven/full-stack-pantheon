@@ -743,8 +743,8 @@ header {
 }
 
 .images {
-  width: 185px;
-  height: 120px;
+  width: 150px;
+  height: 90px;
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
 }
@@ -767,7 +767,7 @@ header {
 
 .table-map {
   margin-top: 20px;
-  width: 80%;
+  width: 70%;
   height: 80px;
   margin-left: 40px;
   background-color: #e87b72;
@@ -817,7 +817,7 @@ header {
 }
 
 .send-kitchen {
-  margin-top: 4rem;
+  margin-top: 6rem;
   width: 80%;
   height: 80px;
   margin-left: 40px;
@@ -832,7 +832,7 @@ header {
 }
 
 .sales-tax {
-  margin-top: 30px;
+  margin-top: 50px;
   height: 80px;
   width: 100%;
   margin-left: 50px;
@@ -844,7 +844,7 @@ header {
   width: 80%;
   height: 100px;
   margin-left: 40px;
-  margin-bottom: 10px;
+
   font-size: 2rem;
 }
 .btn-add-menu-item {
@@ -931,5 +931,43 @@ header {
 }
 
 /* END OF HEADERS CSS  */
+
+/* --------------------------------------------------------------- */
+
+/* START OF THE 404  */
+
+.error-page {
+margin-top: 30px;
+  background-image: linear-gradient(to right,
+        rgba(217, 104, 109, 1),
+        rgba(249, 171, 140, 1));
+}
+.error{
+  margin-top: 150px;
+}
+
+.error, .error-text {
+
+  text-align: center;
+}
+
+.gifs {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.gif-image{
+  width: 20%;
+  height: 25%;
+}
+
+.gifs2 {
+  text-align: center;
+}
+
+.gif-image-last {
+  margin-bottom: 400px;
+}
+
 
 /* --------------------------------------------------------------- */

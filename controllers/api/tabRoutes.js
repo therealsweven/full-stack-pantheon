@@ -64,6 +64,7 @@ router.get("/open", async (req, res) => {
         },
       ],
       where: {
+        merchant_id: req.session.currentMerchant,
         paid: false,
       },
     });
