@@ -37,7 +37,7 @@ const createTabDB = async function (tab_name) {
         })
         .then(async function (data) {
           if (data.id !== null) {
-            document.location.replace(`/pos/main/${data.id}`);
+            document.location.replace(`/pos/main/${data.id}?type=food`);
           } else {
             alert("Failed to create ticket");
           }
@@ -76,7 +76,7 @@ const selectTable = async (event) => {
       })
       .then((ticket) => {
         //console.log(ticket);
-        document.location.replace(`/pos/main/${ticket.id}`);
+        document.location.replace(`/pos/main/${ticket.id}?type=food`);
       });
   } else {
     console.log(event.target.id);

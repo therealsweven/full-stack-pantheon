@@ -17,7 +17,7 @@ const seedAll = async () => {
     console.log('\n----- DATABASE SYNCED -----\n');
 
     await seedMerchant();
-    console.log('\n----- EMPLOYEE SEEDED -----\n');
+    console.log('\n----- MERCHANT SEEDED -----\n');
 
     await seedEmployee();
     console.log('\n----- EMPLOYEE SEEDED -----\n');
