@@ -179,24 +179,25 @@
                                             </div>
                                             <div class="payBtn-card-back card-back">
                                               <div class="payBtn-center-wrap center-wrap">
-                                                <div class="payBtn-section section text-center">
+                                                <form class="payBtn-section section text-center" id="EpxCheckoutForm" name="EpxCheckoutForm">
                                                   <h4 class="mb-4 pb-3 payBtn-h4">Total: <span class="receiptTotal"></span></h4>
                                                   <div class="payBtn-form-group form-group">
+                                                    <input type="amount" id="Amount" name="Amount" value="1.00" hidden />
                                                     <input type="text" class="payBtn-form-style form-style"
-                                                      placeholder="Card Number" id="cardNumber" autocomplete="off">
+                                                      placeholder="Card Number" id="cardNumber" name="PAN" value="4111111111111111" autocomplete="off">
                                                   </div>
                                                   <div class="payBtn-form-group form-group d-flex justify-content-between">
                                                     <input type="text" class="payBtn-form-style form-style exp-cvv" id="expDate"
-                                                      placeholder="Exp 03/23" autocomplete="off">
+                                                      placeholder="Exp 03/23" name="Expire" value="08/24" autocomplete="off">
                                                     <input type="text" class="payBtn-form-style form-style exp-cvv" id="cvv"
-                                                      placeholder="CVV" autocomplete="off">
+                                                      placeholder="CVV" name="CVV" value="123" autocomplete="off">
                                                   </div>
                                                   <div class="payBtn-form-group form-group">
-                                                    <input type="text" class="payBtn-form-style form-style"
-                                                      placeholder="Cardholder Name" autocomplete="off" id="cardholderName">
+                                                    <input type="text" class="payBtn-form-style form-style" name="Billing Name" value="John Doe" 
+                                                      placeholder="Cardholder Name"  autocomplete="off" id="cardholderName">
                                                   </div>
                                                   <h6 class="pt-3 payBtn-h4 errorMessage" id="cardMessage"></h6>
-                                                </div>
+                                                </form>
                                               </div>
                                             </div>
                                           </div>
@@ -223,5 +224,5 @@
           </div>
   </section>
 </div>
-
+<script src="https://hosted.epxuap.com/post.js"></script>
 <script src="/js/checkout.js"></script>
