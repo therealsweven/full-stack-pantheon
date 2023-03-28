@@ -24,6 +24,7 @@ router.get("/login", (req, res) => {
     req.session.setTableTab = null;
     req.session.currentEmployee = null;
     req.session.currentEmployeeID = null;
+    req.session.employeeLoggedIn = false;
     const sesh = req.session;
     res.status(200).render("userLogin", { sesh });
   } catch (err) {
@@ -66,7 +67,12 @@ router.get("/tables", async (req, res) => {
     console.log(tickets[0].bar_tab.tab_name);
     console.log(tickets);
     const sesh = req.session;
-    res.status(200).render("tableMap", { tickets, tables, sesh });
+    console.log(req.session);
+    if (req.session.employeeLoggedIn) {
+      res.status(200).render("tableMap", { tickets, tables, sesh });
+    } else {
+      res.redirect("/pos/login");
+    }
   } catch (err) {
     res.status(500).json(err);
   }
@@ -181,7 +187,9 @@ router.get("/checkout/:id", async (req, res) => {
 // admin page
 router.get("/admin", (req, res) => {
   try {
-    res.status(200).render("admin");
+    req.session.setTableTab = null;
+    const sesh = req.session;
+    res.status(200).render("admin", { sesh });
   } catch (err) {
     res.status(500).json(err);
   }
